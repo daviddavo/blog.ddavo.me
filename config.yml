@@ -1,5 +1,15 @@
 baseURL: 'https://blog.ddavo.me/'
-languageCode: 'en-uk'
+defaultContentLanguage: en
+languages:
+  en:
+    weight: 1
+  es:
+    weight: 2
+    blackfriday:
+      angledQuotes: true
+    params:
+      description: >
+        Blog de desarrollador de David Davó, en el que encontrarás notas sobre mis proyectos (entre otras cosas)
 title: >
   David Davó's dev log
 copyright: 'David Davó (c) 2021'
@@ -11,6 +21,7 @@ params:
     David Davó's dev log where you'll find notes about my projects, among other things
   author: David Davó
   keywords: [Blog, Portfolio, Devlog]
+  DateFormat: "2006-02-01"
   socialIcons:
     - name: kofi
       url: 'https://ko-fi.com/ddavo'

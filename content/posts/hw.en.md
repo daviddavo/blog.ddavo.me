@@ -1,7 +1,6 @@
 ---
 title: "Hello World!"
 date: 2021-12-14T22:39:51+01:00
-draft: true
 ---
 Hi! First, I wanted to present myself. I'm David Davó, a last-year CS student from Madrid, Spain.
 
@@ -18,11 +17,7 @@ In this blog (name yet to be determined) you'll find:
 - A byte or two about self-hosting
 - My projects and whereabouts
 - Translations to spanish of content I found interesting (always crediting the original poster)
+- Software, blogs and books recommendations...
 
 If you see this entry is not the first one, that's because when I publish my notes about projects, I'll add them
 using the date when the notes were written, and not the date the post was uploaded.
-
-```python
-def f():
-    print("Hello World!")
-```
