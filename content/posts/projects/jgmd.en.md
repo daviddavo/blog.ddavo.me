@@ -5,7 +5,6 @@ author: David Davó
 original:
     site: LiGNUx.com
     link: https://lignux.com/justgetmydata-accede-a-tus-datos-de-distintos-servicios-web
-draft: true
 tags: [projects, imported, translated]
 ---
 We all know that since the last couple of years we can ask any web that services EU citizens to delete our data, but... **we can also ask them to send us our data, in a legible format.**
