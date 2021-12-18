@@ -21,7 +21,7 @@ params:
     David Davó's dev log where you'll find notes about my projects, among other things
   author: David Davó
   keywords: [Blog, Portfolio, Devlog]
-  DateFormat: "2006-02-01"
+  DateFormat: "2006-01-02"
   socialIcons:
     - name: kofi
       url: 'https://ko-fi.com/ddavo'

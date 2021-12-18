@@ -1,6 +1,9 @@
 ---
 title: "{{ replace .Name "-" " " | title }}"
-date: {{ .Date | time.Format ":date_full" }}
+date: {{ .Date }}
 draft: true
+author: David Davó
+tags: [here, some, sample, tags]
+showToc: false
 ---
 
