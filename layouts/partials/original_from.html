@@ -1,6 +1,5 @@
 {{- if .Params.original }}
 {{- if or .Params.author $.Site.Params.author (.Param "ShowReadingTime") (not .Date.IsZero) }}&nbsp;|&nbsp;{{- end -}}
-{{- end }}
 <span>
     {{- i18n "original_from" | default "Original from" }}
     <a href="{{- .Params.original.link }}">
@@ -10,3 +9,4 @@
         {{- printf (i18n "original_by" | default "by %s") (.Params.original.author)}}
     {{- end}}
 </span>
+{{- end }}
