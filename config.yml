@@ -5,8 +5,6 @@ languages:
     weight: 1
   es:
     weight: 2
-    blackfriday:
-      angledQuotes: true
     params:
       description: >
         Blog de desarrollador de David Davó, en el que encontrarás notas sobre mis proyectos (entre otras cosas)
@@ -15,6 +13,16 @@ title: >
 copyright: 'David Davó (c) 2021'
 theme: "PaperMod"
 paginate: 5
+markup:
+  goldmark:
+    extensions:
+      strikethrough: true
+      table: true
+    parser:
+      attribute:
+        block: true
+    renderer:
+      unsafe: true
 params:
   ShowShareButtons: true
   description: >
