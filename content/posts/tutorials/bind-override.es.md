@@ -1,24 +1,20 @@
 ---
 title: "Cómo sobreescribir solo algunos nombres de dominio en tu red local"
-date: 2021-12-21T19:17:17+01:00
-draft: true
+date: 2021-12-22T13:17:17+01:00
 author: David Davó
-original:
-    site: serverfault.com
-    link: https://serverfault.com/questions/18748/overriding-some-dns-entries-in-bind-for-internal-networks
-tags: [here, some, sample, tags]
+tags: [tutorial, dns, self-hosting, homelab]
 showToc: true
 ---
 Si tienes una pequeña red en casa, alguna vez habrás tenido problemas con el tema de dominios.
 Como ya sabrás, está la IP pública (la que se ve desde fuera de tu red, y conecta con el router), y las IPs privadas (las de tu red local, que empiezan por 192.168.0...).
-Esta tecnología de asignar varias "IP privadas" a una única "IP pública" se llama enmascaramiento o "Traducción de Direcciones de Red" o NAT por sus siglas en inglés.
+Esta tecnología de asignar varias "IP privadas" a una única "IP pública" se llama enmascaramiento o "Traducción de Direcciones de Red" (NAT por sus siglas en inglés).
 
-Esto puede causar problemas si usas DNS para asignarle un nombre de dominio a un servicio. Pongamos que tienes un blog, y le asignas el dominio `blog.example.com` la IP pública `1.2.3.4`. En tu rúter mapeas los puertos a tu dirección local `192.168.1.66`, pero cuando quieres acceder a `blog.example.com`, ¡no funciona! Te dirá que no se puede conectar al 
+Esto puede causar problemas si usas DNS para asignarle un nombre de dominio a un servicio. Pongamos que tienes un blog, y le asignas el dominio `blog.example.com` a la IP pública `1.2.3.4`. En tu rúter mapeas los puertos a tu dirección local `192.168.1.66`, pero cuando quieres acceder a `blog.example.com`... ¡no funciona! Te dirá que no se puede conectar al 
 host o algo así --¿Cómo que no? ¡Si lo tengo aquí al lado!--. Lo que pasa es que
 tu ordenador se está intentando conectar a la dirección `1.2.3.4`, cuando lo que en
 realidad quieres es acceder a la dirección `192.168.1.66`. Una alternativa sería modificar
-el archivo hosts, pero si quieres modificarlo en TODA tu red local a la vez, existe
-otra solución: ¡cambiar los DNS!. Pero no el DNS de todo el mundo, porque dejaría de funcionar tu web. El truco está en cambiar únicamente los DNS en tu red local.
+el archivo hosts, pero si quieres modificarlo en todos los dispositivos de tu red local a la vez, existe
+otra solución: ¡cambiar los DNS! Pero no el DNS de todo el mundo, porque dejaría de funcionar tu web para la gente que no esté en tu red local. El truco está en cambiar únicamente los DNS dentro de tu red local.
 
 > Requisitos antes de seguir:
 > - Saber un poco qué es DNS y como cambiar los registros desde el panel de tu registrador de nombres de dominio.
@@ -35,7 +31,7 @@ Ahora veremos como instalar y montar todo.
 ## Instalar bind
 
 Dependiendo tu distro de linux o tu sistema operativo, el proceso de instalación será diferente. En este caso el tutorial se ha realizado con una máquina con Debian/Ubuntu.
-Tan sólo es necesario introducir en la terminal el siguiente comando.
+Tan sólo es necesario instalar un par de paquetes, introducir en la terminal el siguiente comando.
 
 ```
 sudo apt install bind9 bind9utils bind9-doc
@@ -43,7 +39,7 @@ sudo apt install bind9 bind9utils bind9-doc
 
 ## Configurando BIND
 
-> Recuerda que para todas estas operaciones es necesario ser root o usar `sudo`
+> Recuerda que para modificar estos archivos es necesario ser root o usar `sudo`
 
 Lo primero es configurar una nueva zona a la que añadir nuestros subdominios, la vamos a llamar "rpz", y estableceremos
 su "base de datos" en el fichero `/etc/bind/db.rpz`. Para ello editamos el fichero `/etc/bind/named.conf.default-zones` y añadimos las siguientes líneas:
@@ -80,10 +76,10 @@ blog.example2.org.   A       192.168.1.31              ; También podemos añadi
 ```
 
 Además, el objetivo también es que todas las direcciones que tu servidor no conozca, se las pregunte a otro servidor. Para ello es necesario habilitar la recursión y especificar
-los servidores a los que preguntar.
+los servidores a los que preguntar en caso de no encontrar la entrada en el rpz.
 
 
-> Los servidores a los que preguntar pueden ser dados por tu ISP, o puede ser tu rúter (192.168.1.1), aunque recomendamos usar los de Google/Cloudflare por su fiabilidad y rapidez
+> Los servidores a los que preguntar pueden ser dados por tu ISP, también puede ser tu rúter (192.168.1.1). Yo recomiendo usar los de Google/Cloudflare por su fiabilidad y rapidez.
 
 ```
 options {
@@ -102,7 +98,7 @@ options {
 
 	dnssec-validation auto;
 
-	listen-on-v6 { any; };
+	listen-on-v6 { any; }; # Puedes poner "none" si no quieres que funcione por ipv6
 };
 ```
 
@@ -110,11 +106,13 @@ options {
 
 Para aplicar los cambios, iniciamos el servidor con systemctl
 
-```bash
-systemctl enable --now bind9
+```console
+sudo systemctl enable --now bind9
 ```
 
-Podemos probar que funciona con el comando `dig` (tal vez necesites instalarlo)
+Podemos probar que funciona con el comando `dig` (tal vez necesites instalarlo),
+que nos permite hacer consultas a un servidor DNS en concreto (y no al por defecto)
+del Sistema Operativo.
 
 Primero probamos que funcionen las consultas normales, como a Google
 ```console
@@ -164,7 +162,7 @@ nas.example.com.	5	IN	A	192.168.1.42
 ;; MSG SIZE  rcvd: 89
 ```
 
-**¡¡Parece que funciona!!** La dirección IP que nos retorna es la dirección de área local.
+**¡¡Parece que funciona!!** La dirección IP que nos retorna es la dirección de área local, en lugar de la global.
 
 ### Usando el servidor
 
@@ -174,3 +172,8 @@ Es necesario configurar los dispositivos de tu red para que usen la nueva direcc
 
 Si te es posible, puedes cambiarlo directamente desde el rúter,
 para que se propague al resto de dispositivos automágicamente.
+
+## Fuentes y más información
+- [Serverfault.com: Overriding some DNS entries in BIND for internal networks](https://serverfault.com/questions/18748/overriding-some-dns-entries-in-bind-for-internal-networks)
+- [Wikipedia: Response policy zone](https://en.wikipedia.org/wiki/Response_policy_zone)
+- [dnsrpz.info](https://dnsrpz.info/)
