@@ -30,6 +30,7 @@ params:
   author: David Davó
   keywords: [Blog, Portfolio, Devlog]
   DateFormat: "2006-01-02"
+  comments: true
   socialIcons:
     - name: kofi
       url: 'https://ko-fi.com/ddavo'
