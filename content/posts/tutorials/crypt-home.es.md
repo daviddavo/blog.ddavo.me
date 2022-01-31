@@ -8,8 +8,7 @@ tags:
     - manjaro
     - archlinux
 showToc: true
-draft: true
-lastmod: '2022-01-31T21:00:40.278Z'
+lastmod: '2022-01-31T21:10:15.725Z'
 ---
 Alguna que otra vez toca llevar de paseo el portátil por las calles y el Metro de Madrid, con todos los riesgos que ello conlleva.
 
@@ -23,6 +22,8 @@ alguna factura con tu dirección de casa, y correos electrónicos con alguna con
 ![Gif from The Office with Dwight saying "Identity Theft is not a joke, Jim!"](/gifs/dwight-theoffice-identity-theft.gif)
 > El robo de identidad no es una broma, Jim!
 > -- Dwight K. Schrute
+
+Por eso vamos a aprender a encriptar TODA tu carpeta home personal, con un método que funciona en Arch Linux y otras distros derivadas como Manjaro.
 
 > **¡¡ANTES DE CONTINUAR!!**
 >
