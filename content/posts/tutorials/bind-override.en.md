@@ -25,7 +25,7 @@ The thing is, your computer is trying to connect to `1.2.3.4` (the address resol
 > Requirements before reading this post
 > - Knowing what is DNS and how to change the records in your registrar
 
-## BIND: The ubiquitous DNS server
+## BIND: The ubiquitous Domain Name System server
 With the Domain Name System, you ask a Domain Name server for the IP associated to a Domain Name. I'm pretty sure that you already have a bind system in your home without you knowing it, your ISP given router. In fact, having a DNS server in your LAN has a lot of advantages, because you are querying a device located 10 meters from you, instead of a server hundreds of kilometers from you.
 
 To override some records we can use a _Response Policy Zone_ (RPZ), which allows us to override some domain name mappings inside our local network. 
@@ -40,7 +40,7 @@ Depending on your Linux distro or your operating system, the installing process 
 $ sudo apt install bind9 bind9utils bind9-doc
 ```
 
-## BIND configuration
+## BIND configuration for your local network
 
 > Remember: To be able to modify these file you'll need to be root or use `sudo`
 
