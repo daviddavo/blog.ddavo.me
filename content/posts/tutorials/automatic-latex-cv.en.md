@@ -6,7 +6,7 @@ tags:
   - tutorial
   - LaTeX
   - GitHub actions
-lastmod: 2022-09-01T20:08:15.596Z
+lastmod: 2022-09-04T10:35:26.103Z
 categories:
   - tutorial
 ---
