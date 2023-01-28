@@ -88,7 +88,7 @@ options {
 	recursion yes; # Habilitamos la recursión
 	listen-on { 192.168.1.11; }; # La dirección IP de nuestro servidor
 	allow-transfer { none; };
-	response-policy { zone "rpz"; }; # La response policy zone
+	response-policy { zone "rpz"; } break-dnssec yes; # La response policy zone
 
 	forwarders {
 		8.8.8.8;
@@ -101,6 +101,9 @@ options {
 	listen-on-v6 { any; }; # Puedes poner "none" si no quieres que funcione por ipv6
 };
 ```
+
+> Es importante decirle al servidor que ignore las peticiones "seguras",
+> de no ser así, podría devolver una dirección firmada, pero incorrecta.
 
 ### Arrancando el servidor
 

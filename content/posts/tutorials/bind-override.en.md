@@ -79,7 +79,7 @@ options {
 	# You can set it to any if you want it to listen to petitions
 	# from outside
 	allow-transfer { none; };
-	response-policy { zone "rpz"; }; # The response policy zone name
+	response-policy { zone "rpz"; } break-dnssec yes; # The response policy zone name
 
 	forwarders {
 		8.8.8.8;
@@ -92,6 +92,10 @@ options {
 	listen-on-v6 { any; }; # You can set it to "none" if you don't want to use IPv6 DNS
 };
 ```
+
+> It is important to tell the server to ignore dnssec requests.
+> If we don't do that, the server could reply with a signed response, but with
+> an incorrect (outside) address.
 
 ### Starting the server
 
