@@ -1,24 +1,34 @@
 ---
-title: "How to override some domain names in your local network"
+title: How to override some domain names in your local network
 date: 2021-12-22T13:17:17+01:00
 author: David Davó
-tags: [tutorial, dns, self-hosting, homelab]
+tags:
+  - tutorial
+  - dns
+  - self-hosting
+  - homelab
 showToc: true
+keywords:
+  - lan
+  - local network
+  - domain name
+description: In this tutorial you will learn how to override some domain names in your
+  local network configuring a Response Policy Zone in the bind9 server
 ---
-If you have a small home network, perhaps you've had problems accessing your domain names.
+If you have a small home local network, perhaps you've had problems accessing your domain names.
 As you may already know, in your home network you have a public IP (given by your ISP) and a set of private or local IP addresses used among your devices in your local network.
 The technology that allows mapping a lot of private addresses to a unique public address is called masquerading or Network Address Translation (NAT).
 
-Issues arise when you use a DNS to assign a domain name to a service. For example, let's say you have a blog, and you want to map the domain `blog.example.com` to the public IP `1.2.3.4`. In your router, you do a port mapping to the device with a local address `192.168.1.66`. But when you want to access `blog.example.com` in your web browser... it doesn't work! It says something along the lines of "Unable to connect to the host" -- but the host is just right THERE! --.
+Issues arise when you use a DNS to assign a domain name to a service. For example, let's say you have a blog, and you want to map the domain `blog.example.com` to the public IP `1.2.3.4`. In your router, you do a port mapping to the device with a local address `192.168.1.66`. But when you want to access `blog.example.com` in your web browser inside your local network... it doesn't work! It says something along the lines of "Unable to connect to the host" -- but the host is just right THERE! --.
 The thing is, your computer is trying to connect to `1.2.3.4` (the address resolved by the DNS), when what you really want is to connect to `192.168.1.66` (your local address). You could modify the `/etc/hosts` file in every device in your home, but there's an alternative: hosting your own DNS.
 
 > Requirements before reading this post
 > - Knowing what is DNS and how to change the records in your registrar
 
-## BIND: The ubiquitous DNS server
+## BIND: The ubiquitous Domain Name System server
 With the Domain Name System, you ask a Domain Name server for the IP associated to a Domain Name. I'm pretty sure that you already have a bind system in your home without you knowing it, your ISP given router. In fact, having a DNS server in your LAN has a lot of advantages, because you are querying a device located 10 meters from you, instead of a server hundreds of kilometers from you.
 
-To override some records we can use a _Response Policy Zone_ (RPZ), which allows us to override some domain name mappings. 
+To override some records we can use a _Response Policy Zone_ (RPZ), which allows us to override some domain name mappings inside our local network. 
 
 Let's see how to set up everything
 
@@ -30,7 +40,7 @@ Depending on your Linux distro or your operating system, the installing process 
 $ sudo apt install bind9 bind9utils bind9-doc
 ```
 
-## BIND configuration
+## BIND configuration for your local network
 
 > Remember: To be able to modify these file you'll need to be root or use `sudo`
 
@@ -66,7 +76,7 @@ ftp                  CNAME   nas                       ; Un simple alias of ftp.
 blog.example2.org.   A       192.168.1.31              ; We can also add fully qualified domain names
 ```
 
-But we need to tell the DNS to ask for the records it doesn't have in its database. For this, we need to enable _recursion_ and to specify the upstream servers to ask when we don't have the record in our RPZ.
+But we need to tell the DNS to ask for the records (domain name) it doesn't have in its database to another server. For this, we need to enable _recursion_ and to specify the upstream servers to ask when we don't have the record in our RPZ.
 
 > The forwarders servers can be given by your ISP, or your local router (192.168.1.1), but I recommend using Google's or Cloudflare's DNS servers because of their reliability and speed.
 
@@ -97,7 +107,11 @@ options {
 > If we don't do that, the server could reply with a signed response, but with
 > an incorrect (outside) address.
 
-### Starting the server
+> It is important to tell the server to ignore dnssec requests.
+> If we don't do that, the server could reply with a signed response, but with
+> an incorrect (outside) address.
+
+### Starting the DNS server
 
 To apply the changes, we start the server using systemctl
 
@@ -156,13 +170,13 @@ nas.example.com.	5	IN	A	192.168.1.42
 ;; MSG SIZE  rcvd: 89
 ```
 
-**It works!!** The returned IP address is the local address, instead of the global one.
+**It works!!** The returned IP address is the address from our local network, instead of the global one.
 
-### Using the server
+### Using the DNS server
 
 Nevertheless, it doesn't work in the web browser, or with any other program apart from `dig`...
 
-We need to set our DNS server as the default DNS in each device. Every device is different, but it shouldn't be very difficult.
+We need to set our DNS server as the default DNS in each device. Every device is different, but it shouldn't be very difficult. Perhaps your router can propagate its config using DHCP through the local network!
 
 If you have any questions, you can let me know in the comments
 
