@@ -3,15 +3,17 @@ defaultContentLanguage: en
 languages:
   en:
     weight: 1
+    languageName: ":uk: English"
   es:
     weight: 2
+    languageName: ":es: Spanish"
     params:
       description: >
         Blog de desarrollador de David Davó, en el que encontrarás notas sobre mis proyectos (entre otras cosas)
 title: >
   David Davó's dev log
 copyright: 'David Davó (c) 2021'
-theme: "PaperMod"
+theme: "PaperModX"
 paginate: 5
 markup:
   goldmark:
@@ -23,6 +25,11 @@ markup:
         block: true
     renderer:
       unsafe: true
+  highlight:
+    style: monokai
+    guessSyntax: true
+    lineNos: false
+    noClasses: false
 params:
   ShowShareButtons: true
   description: >
@@ -31,6 +38,19 @@ params:
   keywords: [Blog, Portfolio, Devlog]
   DateFormat: "2006-01-02"
   comments: true
+  tocOpen: true
+  tocSide: left
+  DisableLanguageSwitch: false
+  ShowShareButtons: true
+  ShowCodeCopyButtons: true
+  ShowReadingTime: true
+  ShowWordCount: true
+  ShowShareButtons: true
+  displayFullLangName: true
+  ShareButtons:
+    - twitter
+    - telegram
+    - linkedin
   socialIcons:
     - name: kofi
       url: 'https://ko-fi.com/ddavo'
