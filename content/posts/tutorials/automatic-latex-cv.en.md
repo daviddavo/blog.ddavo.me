@@ -21,7 +21,7 @@ either in Spanish or English, making the document available in multiple language
 Thanks to `iflang`, depending on the option you pass to the `babel` package, the document will be rendered in Spanish or English.
 
 ```latex
-\documetnclass[a4paper]{awesome-cv}
+\documentclass[a4paper]{awesome-cv}
 \usepackage[<lang>]{babel}
 \usepackage{iflang}
 

@@ -24,7 +24,7 @@ Gracias a `iflang`, dependiendo de la opción que le pasemos al importar el paqu
 el documento en un idioma u otro.
 
 ```latex
-\documetnclass[a4paper]{awesome-cv}
+\documentclass[a4paper]{awesome-cv}
 \usepackage[<lang>]{babel}
 \usepackage{iflang}
 
