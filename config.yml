@@ -6,7 +6,7 @@ languages:
     languageName: ":uk: English"
   es:
     weight: 2
-    languageName: ":es: Spanish"
+    languageName: ":es: Español"
     params:
       description: >
         Blog de desarrollador de David Davó, en el que encontrarás notas sobre mis proyectos (entre otras cosas)

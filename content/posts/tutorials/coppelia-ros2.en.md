@@ -1,6 +1,6 @@
 ---
 title: Using ROS2 in Coppelia
-date: 2022-12-13T15:25:49.194Z
+date: 2023-01-31T20:08:41.804Z
 author: David Davó
 tags:
   - tutorial
@@ -10,24 +10,24 @@ tags:
 categories:
   - tutorial
 showToc: true
-draft: true
+draft: false
 keywords:
+  - Coppelia
   - lidar
-  - pointcloud
+  - PointCloud
   - ros2
-  - coppelia
-  - rviz
-  - vrep
-slug: ros2-coppelia
+  - V-REP
+  - SLAM toolbox
+slug: ros2-coppelia-lidar
 description: With this tutorial you will learn how to use ROS2 in the Coppelia simulator
-  (formerly V-REP) with the simExtROS2 library, publishing transforms and
-  messages.
+  (formerly V-REP) with the simExtROS2 library, using the lidar to build a map.
+type: default
 ---
 
 ## Introduction
 
-Let's be honest, if you're here its probably because you found this blog on Google.
-As I understand it, at the moment there is no comprehensible resources to use
+Let's be honest, if you're here it's probably because you found this blog on Google.
+As I understand it, at the moment there are no comprehensible resources to use
 ROS2 with the Coppelia simulator (previously known as V-REP), and it is no simple task.
 
 In this tutorial, we will make a simple project using a Pioneer P3DX with a Lidar, in which we
@@ -41,7 +41,7 @@ The end product will look something like this:
 I made it work but I'm no expert in robotics, so if I made some error, please let
 me know in the comments or [on GitHub](https://github.com/daviddavo/blog.ddavo.me).
 
-I will center on the programming part, because the way of adding a robot and a lidar is the same wether you're using ROS2 or not.
+I will center on the programming part because the way of adding a robot and lidar is the same whether you're using ROS2 or not.
 
 > The original project was made as homework for the Master Universitario en Inteligencia Articial (MUIA) at Universidad Politécnica de Madrid (UPM)
 
@@ -49,7 +49,7 @@ I will center on the programming part, because the way of adding a robot and a l
 
 ROS2 works by creating publishers and subscribers that emit and receive messages of a _message type_. To be able to do this from Coppelia, we will use the module [simExtROS2](https://github.com/CoppeliaRobotics/simExtROS2).
 
-Coppelia comes with this module installed, but it's compiled with too few message types embeded.
+Coppelia comes with this module installed, but it's compiled with too few message types embedded.
 If you try publishing some sensor data, it will fail. You need to modify a config file from the source code and
 compile it again so it supports that message type.
 
@@ -62,7 +62,7 @@ mv simExtROS2 sim_ros2_interface
 git checkout coppeliasim-v4.4.0-rev0
 ```
 
-Before compiling, we need to modify a config file to specify the message types you want to compile. This file is `meta/interfaces.txt`, and in my case it ended up with the following contents:
+Before compiling, we need to modify a config file to specify the message types you want to compile. This file is `meta/interfaces.txt`, and in my case, it ended up with the following contents:
 
 {{< collapse "`meta/interfaces.txt`">}}
 ```
@@ -106,7 +106,7 @@ nav_msgs/msg/Odometry
 ```
 {{< /collapse >}}
 
-Before compiling, you will have to add the following enviroment variable, either modifying ros' `setup.bash` or your `.bashrc`. 
+Ultimately, you will have to add the following environment variable, either modifying ROS' `setup.bash` or your `.bashrc`. 
 
 ```bash
 export COPPELIASIM_ROOT_DIR="<your coppelia installation path>"
@@ -116,7 +116,7 @@ Now we can proceed to compile and install the library
 
 ### Compiling libsimExtROS2
 
-After downloading everything, we can install it with _colcon_, using the following command:
+After downloading everything, we can install it with _Colcon_, using the following command:
 
 ```bash
 colcon build --symlink-install
@@ -128,9 +128,9 @@ This will take lots of resources and will take up a while the first time, but do
 
 ### Publishing the simulation time
 
-We can't use a "wall clock" because the simulation is not in real time. Let's imagine
-you implement an odometry module, and you try to calculate your speed by substracting
-your current position from a previous position, and dividing by the number of seconds
+We can't use a "wall clock" because the simulation is not in real-time. Let's imagine
+you implement an odometry module, and you try to calculate your speed by subtracting
+your current position from a previous position and dividing by the number of seconds
 elapsed. This formula will be wrong if your simulation is a bit slow, or if it is too fast.
 That's why we need to publish Coppelia's simulation time into the topic `/clock`.
 
@@ -160,20 +160,20 @@ end
 
 ### Publishing transforms
 
-The transforms allow ROS modules to calculate the exact distance between any two objects, publishing just the partial distances. For example, we can publish the distance of the laser's reference frame to the robot, and ROS is able to calculate the distance from the laser to anything automatically.
+The transforms allow ROS modules to calculate the exact distance between any two objects, publishing just the partial distances. For example, we can publish the distance of the laser's reference frame to the robot, and ROS can able to calculate the distance from the laser to anything automatically.
 
 ![Image of the robot transforms](https://navigation.ros.org/_images/simple_robot.png)
 
-![Another sample iamge of how the transforms work](https://navigation.ros.org/_images/tf_robot.png)
+![Another sample image of how the transforms work](https://navigation.ros.org/_images/tf_robot.png)
 
 Each published transform has a parent, and the _root_ of this hierarchy is the transform that is not published (it is just referenced as a parent). According to the standard [REP105](https://www.ros.org/reps/rep-0105.html), this root should be `world` or `map` if we have just one robot.
 
 We will publish the following transforms:
 - From the lidar frame to the robot frame
-- From the robot to odometry frame
+- From the robot to the odometry frame
 - From the wheels to the robot frame (needed to display the robot in the simulator)
 
-The final transform, from the odometry frame to the world map is published by another module, so we won't send it from coppelia.
+The final transform, from the odometry frame to the world map is published by another module, so we won't send it from Coppelia.
 
 To publish all these transforms, we use the following code (remember to change the constants as needed):
 
@@ -208,9 +208,9 @@ function sysCall_actuation()
 end
 ```
 
-### Publishing Lidar pointcloud
+### Publishing Lidar PointCloud
 
-The lidar we used returns a pointcloud in Coppelia's signal `Pioneer_p3dx_lidar_data`. This pointcloud is an array of triplets of floats, each triplet representing the x, y, z coordinates of each point. We want to publish this data in a topic of type [`sensor_msgs/msg/PointCloud2`](https://docs.ros2.org/foxy/api/sensor_msgs/msg/PointCloud2.html).
+The lidar we used returns a PointCloud in Coppelia's signal `Pioneer_p3dx_lidar_data`. This PointCloud is an array of triplets of floats, each triplet representing the x, y and z coordinates of each point. We want to publish this data in a topic of type [`sensor_msgs/msg/PointCloud2`](https://docs.ros2.org/foxy/api/sensor_msgs/msg/PointCloud2.html).
 
 This message needs us to send a stream of binary data and specify the type of this data in the parameter `fields`. We will see exactly how with the following commented code:
 
@@ -267,25 +267,110 @@ end
 
 After all of this, the PointCloud message will be available on the topic `/lidarPC`
 
-## ROS2 and RVIZ
+### Setting the robot's speed
 
-The main advantage of using ROS2 instead of programming the behaviour of our robot
+In this case, instead of a publisher, we will need to create a subscriber that receives
+a message of type _Twist_. This message contains the desired linear and angular velocities.
+
+We need to convert this to the angular velocity of the motors of the wheels, so, after applying some basic arithmetics, we get the following code:
+
+```lua
+function sysCall_init()
+  ...
+  velSub = simROS2.createSubscription('/cmd_vel', 'geometry_msgs/msg/Twist', 'setVelocity_cb')
+  ...
+end
+
+function setVelocity_cb(msg)
+  -- The message provides linear velocity in m/s
+  -- but coppelia receives it in rad/s, we need to convert it
+  linear = msg.linear.x
+  angular = msg.angular.z
+
+  -- https://www.inf.ufrgs.br/~prestes/Courses/Robotics/manual_pioneer.pdf
+  wheel_radius = 0.195 / 2 -- 19.5 cmm
+  robot_width = 0.33 -- 38 cm minus wheel width
+  vl = linear - (angular * robot_width) / 2
+  vr = linear + (angular * robot_width) / 2
+
+  sim.setJointTargetVelocity(leftMotor, vl / wheel_radius)
+  sim.setJointTargetVelocity(rightMotor, vr / wheel_radius)
+end
+```
+
+## ROS2
+
+The main advantage of using ROS2 instead of programming the behavior of our robot
 directly on Coppelia is that ROS2 is platform agnostic and we can use it with any simulator, and even with a real robot.
 
 The system has just 3 nodes:
-- `pointcloud_to_laserscan`: It transforms the data from type _Pointcloud2_ to _LaserScan_ so Slam Toolbox is able to use it.
-- `async_toolbox_node`: Makes a map and localizes the robot in the map.
+- [`pointcloud_to_laserscan`](https://github.com/ros-perception/pointcloud_to_laserscan): It transforms the data from type _Pointcloud2_ to _LaserScan_ so Slam Toolbox is able to use it.
+- [`async_toolbox_node`](https://github.com/SteveMacenski/slam_toolbox): Makes a map and localizes the robot in the map.
+- [`teleop_twist_keyboard`](https://github.com/ros2/teleop_twist_keyboard): Allows us to move the robot
 
-<!-- TODO: Use the keyboard thing -->
+You'll need to install them before proceeding
 
-<!-- TODO: The tutorial on how to generate the URDF -->
+### Running the nodes
 
-<!-- TODO: The tutorial on how to use RVIZ2 -->
- 
-<!-- TODO: The tutorial on how to use a launch file -->
+The easiest way by far is to open three terminals and run the command to start the
+node in each one. The order doesn't really matter as nodes usually wait for the info
+to become available.
+
+> Remember to source the ROS `setup.bash` file to make the `ros2` command available!
+
+{{< collapse "Starting `pointcloud_to_laserscan`">}}
+We'll use the following bash command
+
+```bash
+ros2 run pointcloud_to_laserscan pointcloud_to_laserscan_node --ros-args \
+  -p use_sim_time:=true \
+  --remap cloud_in:=/lidarPC
+```
+
+This will create a new topic called `/scan` with the data converted.
+{{< /collapse >}}
+
+{{< collapse "Starting `async_toolbox_node`">}}
+We need to specify the name of the frames (remember to change the name of the frames if you changed them)
+
+```bash
+ros2 run slam_toolbox async_slam_toolbox_ndoe --ros-args \
+  -p base_frame:="base_link" \
+  -p odom_frame:="odom" \
+  -p map_frame:="map" \
+  -p scan_topic:="/scan" \
+  -p use_sim_time:=true
+```
+
+This will create a `/map` topic
+{{< /collapse >}}
+
+{{< collapse "Starting `teleop_twist_keyboard`">}}
+We don't need to modify anything, so the command is just
+
+```bash
+ros2 run teleop_twist_keyboard teleop_twist_keyboard
+```
+
+This will send the velocity commands via the `/cmd_vel` topic
+{{< /collapse >}}
+
+## Conclusion
+
+Finally, you can open rviz2 and start adding visualizations to visualize the map
+that SLAM Toolbox created, you can also visualize the position and velocity of
+the robot, and even the PointCloud and LaserScan!
+
+Using the `teleop_twist_keyboard` you can move the robot around, and the map will change
+in real-time. Pretty fun to drive. If you want, you can try with other nodes, or even
+create your own to make the robot move autonomously.
+
+If you have any doubts, feel free to leave a comment or [open an issue on GitHub](https://github.com/daviddavo/blog.ddavo.me/issues). If you already know a bit about robotics and you detect some mistake that I made, please tell me so and I'll modify the post. Thank you for reading me and see you next time!
  
 ## Sources and more information
-- [GitHub - coppeliaRobotics/simExtROS2](https://github.com/CoppeliaRobotics/simExtROS2)
-- [ROS Planning. Setting Up Transformations](https://navigation.ros.org/setup_guides/transformation/setup_transforms.html)
+- [ArchWiki - ROS](https://wiki.archlinux.org/title/ROS). On how to install ROS and solve problems in ArchLinux / Manjaro.
+- [CoppeliaSim User Manual](https://www.coppeliarobotics.com/helpFiles/en/ros2Interface.htm). One of these things that is not on google, but solves a lot of problems.
+- [GitHub - coppeliaRobotics/simExtROS2](https://github.com/CoppeliaRobotics/simExtROS2). In the "Issues" part there are some interesting problems and solutions.
+- [ROS Planning. Setting Up Transformations](https://navigation.ros.org/setup_guides/transformation/setup_transforms.html). NAV2 documentation is overall a good source material to understand how ROS works.
 - [REP 105 -- Coordinate Frames for Mobile Platforms](https://www.ros.org/reps/rep-0105.html)
  

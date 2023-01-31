@@ -57,5 +57,11 @@
     "[markdown]": {
     },
     "frontMatter.content.autoUpdateDate": true,
-    "ros.distro": "humble"
+    "ros.distro": "humble",
+    "grammarly.selectors": [
+        {
+            "language": "markdown",
+            "scheme": "file"
+        }
+    ]
 }
