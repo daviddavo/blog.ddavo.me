@@ -1,5 +1,5 @@
 ---
-title: "Cómo sobreescribir solo algunos nombres de dominio en tu red local"
+title: "Cómo sobreescribir solo algunos subdominios en tu red local"
 date: 2021-12-22T13:17:17+01:00
 author: David Davó
 tags: [tutorial, dns, self-hosting, homelab]

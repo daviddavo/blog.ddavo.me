@@ -30,7 +30,7 @@ Por eso vamos a aprender a encriptar TODA tu carpeta home personal, con un méto
 > Has de tener cuidado porque los datos encriptados, en caso de perder la clave o 
 > la contraseña, no podrán ser recuperados de ninguna forma (o por lo menos, esa es la idea)
 
-# Migrando el `home`
+## Migrando el `home`
 
 Es sencillo, simplemente debemos llamar, desde el usuario `root`, a un script que viene ya hecho y te configura todo él solito.
 Eso sí, vas a necesitar más o menos 2.5 veces el espacio de tu carpeta `$HOME`, por lo que borra primero la caché y todo lo que
@@ -55,7 +55,7 @@ $ ecryptfs-migrate-home -u <usuario>
 
 Este comando te creará una "copia de seguridad" en `/home/<usuario>.<cadena>`, que deberías borrar una vez todo funcione correctamente.
 
-# Habilitando el automontaje
+## Habilitando el automontaje
 Para habilitar el automontaje, usaremos un "módulo de autenticación conectable" o PAM (*Pluggable Authentication Module*). Es básicamente una especie de plugin del sistema de inicio de sesión de Linux, que en este caso nos permitirá montar una carpeta cifrada mientras iniciamos sesión (pero antes de cargar nuestro entorno de escritorio y esas cosas).
 
 Vamos a editar el archivo `/etc/pam.d/system-auth`
@@ -85,7 +85,7 @@ Debería estar todo justo donde lo dejaste.
 
 También puedes probar a iniciar sesión desde otro usuario (con tu sesión cerrada, claro), e intentar acceder a `/home/<nombreusuarioprotegido>`. ¿Que pasará?
 
-# Fuentes y más información
+## Fuentes y más información
 - [eCryptfs - ArchWiki](https://wiki.archlinux.org/title/ECryptfs)
 - [PAM - ArchWiki](https://wiki.archlinux.org/title/PAM)
 - [pam_mount - ArchWiki](https://wiki.archlinux.org/title/Pam_mount)
