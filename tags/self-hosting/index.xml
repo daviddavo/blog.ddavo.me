@@ -1,1 +1,141 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>self-hosting on David Davó's dev log</title><link>https://blog.ddavo.me/tags/self-hosting/</link><description>Recent content in self-hosting on David Davó's dev log</description><generator>Hugo -- gohugo.io</generator><copyright>David Davó (c) 2021</copyright><lastBuildDate>Wed, 22 Dec 2021 13:17:17 +0100</lastBuildDate><atom:link href="https://blog.ddavo.me/tags/self-hosting/index.xml" rel="self" type="application/rss+xml"/><item><title>How to override some domain names in your local network</title><link>https://blog.ddavo.me/posts/tutorials/bind-override/</link><pubDate>Wed, 22 Dec 2021 13:17:17 +0100</pubDate><guid>https://blog.ddavo.me/posts/tutorials/bind-override/</guid><description>In this tutorial you will learn how to override some domain names in your local network configuring a Response Policy Zone in the bind9 server</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>self-hosting on David Davó's dev log</title><link>https://blog.ddavo.me/tags/self-hosting/</link><description>Recent content in self-hosting on David Davó's dev log</description><generator>Hugo -- gohugo.io</generator><copyright>David Davó (c) 2021</copyright><lastBuildDate>Wed, 22 Dec 2021 13:17:17 +0100</lastBuildDate><atom:link href="https://blog.ddavo.me/tags/self-hosting/index.xml" rel="self" type="application/rss+xml"/><item><title>How to override some domain names in your local network</title><link>https://blog.ddavo.me/posts/tutorials/bind-override/</link><pubDate>Wed, 22 Dec 2021 13:17:17 +0100</pubDate><guid>https://blog.ddavo.me/posts/tutorials/bind-override/</guid><description>In this tutorial you will learn how to override some domain names in your local network configuring a Response Policy Zone in the bind9 server</description><content:encoded><![CDATA[<p>If you have a small home local network, perhaps you&rsquo;ve had problems accessing your domain names.
+As you may already know, in your home network you have a public IP (given by your ISP) and a set of private or local IP addresses used among your devices in your local network.
+The technology that allows mapping a lot of private addresses to a unique public address is called masquerading or Network Address Translation (NAT).</p>
+<p>Issues arise when you use a DNS to assign a domain name to a service. For example, let&rsquo;s say you have a blog, and you want to map the domain <code>blog.example.com</code> to the public IP <code>1.2.3.4</code>. In your router, you do a port mapping to the device with a local address <code>192.168.1.66</code>. But when you want to access <code>blog.example.com</code> in your web browser inside your local network&hellip; it doesn&rsquo;t work! It says something along the lines of &ldquo;Unable to connect to the host&rdquo; &ndash; but the host is just right THERE! &ndash;.
+The thing is, your computer is trying to connect to <code>1.2.3.4</code> (the address resolved by the DNS), when what you really want is to connect to <code>192.168.1.66</code> (your local address). You could modify the <code>/etc/hosts</code> file in every device in your home, but there&rsquo;s an alternative: hosting your own DNS.</p>
+<blockquote>
+<p>Requirements before reading this post</p>
+<ul>
+<li>Knowing what is DNS and how to change the records in your registrar</li>
+</ul>
+</blockquote>
+<h2 id="bind-the-ubiquitous-domain-name-system-server">BIND: The ubiquitous Domain Name System server</h2>
+<p>With the Domain Name System, you ask a Domain Name server for the IP associated to a Domain Name. I&rsquo;m pretty sure that you already have a bind system in your home without you knowing it, your ISP given router. In fact, having a DNS server in your LAN has a lot of advantages, because you are querying a device located 10 meters from you, instead of a server hundreds of kilometers from you.</p>
+<p>To override some records we can use a <em>Response Policy Zone</em> (RPZ), which allows us to override some domain name mappings inside our local network.</p>
+<p>Let&rsquo;s see how to set up everything</p>
+<h2 id="installing-bind">Installing BIND</h2>
+<p>Depending on your Linux distro or your operating system, the installing process (and the files to modify) may vary. In this tutorial, we use a machine with Debian/Ubuntu. We just need to install a couple of packages, using the following command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo apt install bind9 bind9utils bind9-doc
+</span></span></code></pre></div><h2 id="bind-configuration-for-your-local-network">BIND configuration for your local network</h2>
+<blockquote>
+<p>Remember: To be able to modify these file you&rsquo;ll need to be root or use <code>sudo</code></p>
+</blockquote>
+<p>First, we need to set up a new zone to add our subdomains, we are going to call it &ldquo;rpz&rdquo;, and we&rsquo;ll set its DNS database at <code>/etc/bind/db.rpz</code>. We&rsquo;ll edit the file <code>/etc/bind/named.conf.default-zones</code> and add the following lines:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">zone &#34;rpz&#34; {
+</span></span><span class="line"><span class="cl">    type master;
+</span></span><span class="line"><span class="cl">    file &#34;/etc/bind/db.rpz&#34;;
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div><p>Now, we add our records to the database (<code>/etc/bind/db.rpz</code>)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dns" data-lang="dns"><span class="line"><span class="cl"><span class="c">; Our LAN records</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="na">$TTL</span><span class="w"> </span><span class="sc">3600</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">; These two records specify which is the DNS for this zone</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nc">@</span><span class="w">		</span><span class="k">IN</span><span class="w">	</span><span class="k">SOA</span><span class="w">	</span><span class="py">localhost. root.localhost. </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			      </span><span class="sc">2</span><span class="w">		</span><span class="c">; Serial</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			 </span><span class="sc">604800</span><span class="w">		</span><span class="c">; Refresh</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			  </span><span class="sc">86400</span><span class="w">		</span><span class="c">; Retry</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="sc">2419200</span><span class="w">		</span><span class="c">; Expire</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			 </span><span class="sc">604800</span><span class="w"> </span><span class="p">)</span><span class="w">	</span><span class="c">; Negative Cache TTL</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nc">@</span><span class="w">		</span><span class="k">IN</span><span class="w">	</span><span class="k">NS</span><span class="w">	</span><span class="py">localhost.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">; Using $ORIGIN we can add only the subdomain and not the full domain</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="na">$ORIGIN</span><span class="w"> </span><span class="err">example.com</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nc">nas</span><span class="w">                  </span><span class="k">A</span><span class="w">       </span><span class="mi">192.168.1.42</span><span class="w">              </span><span class="c">; IPv4 address of nas.example.com</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nc">nas</span><span class="w">                  </span><span class="k">AAAA</span><span class="w">    </span><span class="il">fe80::1ff:fe23:4567:890a</span><span class="w">  </span><span class="c">; IPv6 address of nas.example.com</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nc">ftp</span><span class="w">                  </span><span class="k">CNAME</span><span class="w">   </span><span class="err">nas</span><span class="w">                       </span><span class="c">; Un simple alias of ftp.example.com a nas.example.com</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="py">blog.example2.org. </span><span class="w">  </span><span class="k">A</span><span class="w">       </span><span class="mi">192.168.1.31</span><span class="w">              </span><span class="c">; We can also add fully qualified domain names</span><span class="w">
+</span></span></span></code></pre></div><p>But we need to tell the DNS to ask for the records (domain name) it doesn&rsquo;t have in its database to another server. For this, we need to enable <em>recursion</em> and to specify the upstream servers to ask when we don&rsquo;t have the record in our RPZ.</p>
+<blockquote>
+<p>The forwarders servers can be given by your ISP, or your local router (192.168.1.1), but I recommend using Google&rsquo;s or Cloudflare&rsquo;s DNS servers because of their reliability and speed.</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">options {
+</span></span><span class="line"><span class="cl">	directory &#34;/var/cache/bind&#34;;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	recursion yes; # Enabling recursion
+</span></span><span class="line"><span class="cl">	listen-on { 192.168.1.11; }; # The IP address of THIS DNS server
+</span></span><span class="line"><span class="cl">	# You can set it to any if you want it to listen to petitions
+</span></span><span class="line"><span class="cl">	# from outside
+</span></span><span class="line"><span class="cl">	allow-transfer { none; };
+</span></span><span class="line"><span class="cl">	response-policy { zone &#34;rpz&#34;; } break-dnssec yes; # The response policy zone name
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	forwarders {
+</span></span><span class="line"><span class="cl">		8.8.8.8;
+</span></span><span class="line"><span class="cl">		8.8.4.4;
+</span></span><span class="line"><span class="cl">		1.1.1.1;
+</span></span><span class="line"><span class="cl">	};
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	dnssec-validation auto;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	listen-on-v6 { any; }; # You can set it to &#34;none&#34; if you don&#39;t want to use IPv6 DNS
+</span></span><span class="line"><span class="cl">};
+</span></span></code></pre></div><blockquote>
+<p>It is important to tell the server to ignore dnssec requests.
+If we don&rsquo;t do that, the server could reply with a signed response, but with
+an incorrect (outside) address.</p>
+</blockquote>
+<blockquote>
+<p>It is important to tell the server to ignore dnssec requests.
+If we don&rsquo;t do that, the server could reply with a signed response, but with
+an incorrect (outside) address.</p>
+</blockquote>
+<h3 id="starting-the-dns-server">Starting the DNS server</h3>
+<p>To apply the changes, we start the server using systemctl</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo systemctl <span class="nb">enable</span> --now bind9
+</span></span></code></pre></div><p>We can check whether it works using <code>dig</code> (perhaps you need to install it first),
+which allows us to make queries to a given DNS server instead of using the default.</p>
+<p>First, we check if usual queries work, like google.com</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> dig google.es
+</span></span><span class="line"><span class="cl"><span class="go">; &lt;&lt;&gt;&gt; DiG 9.16.23 &lt;&lt;&gt;&gt; google.es
+</span></span></span><span class="line"><span class="cl"><span class="go">;; global options: +cmd
+</span></span></span><span class="line"><span class="cl"><span class="go">;; Got answer:
+</span></span></span><span class="line"><span class="cl"><span class="go">;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 5016
+</span></span></span><span class="line"><span class="cl"><span class="go">;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">;; OPT PSEUDOSECTION:
+</span></span></span><span class="line"><span class="cl"><span class="go">; EDNS: version: 0, flags:; udp: 4096
+</span></span></span><span class="line"><span class="cl"><span class="go">; COOKIE: 01db1f47a27adb9e90e4c7fb61c24bc2bf8c6a88296c3923 (good)
+</span></span></span><span class="line"><span class="cl"><span class="go">;; QUESTION SECTION:
+</span></span></span><span class="line"><span class="cl"><span class="go">;google.es.			IN	A
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">;; ANSWER SECTION:
+</span></span></span><span class="line"><span class="cl"><span class="go">google.es.		300	IN	A	142.250.200.131
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">;; Query time: 39 msec
+</span></span></span><span class="line"><span class="cl"><span class="go">;; SERVER: 192.168.1.11#53(192.168.1.11)
+</span></span></span><span class="line"><span class="cl"><span class="go">;; WHEN: Tue Dec 21 22:48:50 CET 2021
+</span></span></span><span class="line"><span class="cl"><span class="go">;; MSG SIZE  rcvd: 82
+</span></span></span></code></pre></div><p>Now we check that our RPZ works</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> dig chikyuu.ddavo.me @192.168.1.11
+</span></span><span class="line"><span class="cl"><span class="go">; &lt;&lt;&gt;&gt; DiG 9.16.23 &lt;&lt;&gt;&gt; nas.example.com
+</span></span></span><span class="line"><span class="cl"><span class="go">;; global options: +cmd
+</span></span></span><span class="line"><span class="cl"><span class="go">;; Got answer:
+</span></span></span><span class="line"><span class="cl"><span class="go">;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 45881
+</span></span></span><span class="line"><span class="cl"><span class="go">;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">;; OPT PSEUDOSECTION:
+</span></span></span><span class="line"><span class="cl"><span class="go">; EDNS: version: 0, flags:; udp: 4096
+</span></span></span><span class="line"><span class="cl"><span class="go">; COOKIE: d200bc3ba9741e2ab2c8935661c24b4b401d43ae997c39de (good)
+</span></span></span><span class="line"><span class="cl"><span class="go">;; QUESTION SECTION:
+</span></span></span><span class="line"><span class="cl"><span class="go">;nas.example.com.		IN	A
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">;; ANSWER SECTION:
+</span></span></span><span class="line"><span class="cl"><span class="go">nas.example.com.	5	IN	A	192.168.1.42
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">;; Query time: 0 msec
+</span></span></span><span class="line"><span class="cl"><span class="go">;; SERVER: 192.168.1.11#53(192.168.1.11)
+</span></span></span><span class="line"><span class="cl"><span class="go">;; WHEN: Tue Dec 21 22:46:51 CET 2021
+</span></span></span><span class="line"><span class="cl"><span class="go">;; MSG SIZE  rcvd: 89
+</span></span></span></code></pre></div><p><strong>It works!!</strong> The returned IP address is the address from our local network, instead of the global one.</p>
+<h3 id="using-the-dns-server">Using the DNS server</h3>
+<p>Nevertheless, it doesn&rsquo;t work in the web browser, or with any other program apart from <code>dig</code>&hellip;</p>
+<p>We need to set our DNS server as the default DNS in each device. Every device is different, but it shouldn&rsquo;t be very difficult. Perhaps your router can propagate its config using DHCP through the local network!</p>
+<p>If you have any questions, you can let me know in the comments</p>
+<h2 id="sources--more-information">Sources &amp; more information</h2>
+<ul>
+<li><a href="https://serverfault.com/questions/18748/overriding-some-dns-entries-in-bind-for-internal-networks">Serverfault.com: Overriding some DNS entries in BIND for internal networks</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Response_policy_zone">Wikipedia: Response policy zone</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Network_address_translation">Wikipedia: Network Address Translation</a></li>
+<li><a href="https://dnsrpz.info/">dnsrpz.info</a></li>
+</ul>
+]]></content:encoded></item></channel></rss>

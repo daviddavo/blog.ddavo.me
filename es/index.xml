@@ -1,6 +1,350 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>David Davó's dev log</title><link>https://blog.ddavo.me/es/</link><description>Recent content on David Davó's dev log</description><generator>Hugo -- gohugo.io</generator><copyright>David Davó (c) 2021</copyright><lastBuildDate>Thu, 01 Sep 2022 19:14:22 +0000</lastBuildDate><atom:link href="https://blog.ddavo.me/es/index.xml" rel="self" type="application/rss+xml"/><item><title>Compilando LaTeX bilingüe y publicándolo con GitHub pages</title><link>https://blog.ddavo.me/es/posts/tutorials/automatic-latex-cv/</link><pubDate>Thu, 01 Sep 2022 19:14:22 +0000</pubDate><guid>https://blog.ddavo.me/es/posts/tutorials/automatic-latex-cv/</guid><description>Hace tiempo que quería poner mi currículum en la página web, pero para ello debía asegurarme de que estaba SIEMPRE actualizado. Es decir, que se compilaba y publicaba automáticamente cada vez que realizase cambios en el fichero fuente.
-Desde hace ya más de 5 años, mi currículum está escrito en LaTeX, usando (y modificando) la plantilla Awesome CV. Además, le añadí un par de cosas para hacerlo &amp;ldquo;bilingüe&amp;rdquo; y poder compilar o bien al inglés o al castellano, haciendo que el documento esté disponible en múltiples idiomas.</description></item><item><title>Como crear un banner de "Sitio en construcción"</title><link>https://blog.ddavo.me/es/posts/tutorials/work-in-progress/</link><pubDate>Mon, 15 Aug 2022 22:38:38 +0200</pubDate><guid>https://blog.ddavo.me/es/posts/tutorials/work-in-progress/</guid><description>Mi página personal está hecha en Symfony. Ya, ya sé, no es la mejor elección, pero empecé cuando era joven y más descuidado, pensando que iba a haber más dinamismo, haría muchas cosas, y una página web compilada no sería suficiente.
-Hace un par de días decidí que ya era hora de empezar de cero y crear una página nueva, esta vez usando un generador estático. Acabé decidiéndome por Hugo.</description></item><item><title>Como encriptar tu home y desencriptarla automágicamente</title><link>https://blog.ddavo.me/es/posts/tutorials/crypt-home/</link><pubDate>Sun, 30 Jan 2022 15:38:09 +0000</pubDate><guid>https://blog.ddavo.me/es/posts/tutorials/crypt-home/</guid><description>Alguna que otra vez toca llevar de paseo el portátil por las calles y el Metro de Madrid, con todos los riesgos que ello conlleva.
-El portátil en sí no me da mucha pena, pero en el disco duro hay datos. Datos relevantes. Todos pensamos que no hemos hecho nada malo y que no tenemos nada que ocultar&amp;hellip; &amp;ndash;&amp;quot;¿por qué iba a querer encriptar cosas si no soy de la mafia?</description></item><item><title>Cómo sobreescribir solo algunos nombres de dominio en tu red local</title><link>https://blog.ddavo.me/es/posts/tutorials/bind-override/</link><pubDate>Wed, 22 Dec 2021 13:17:17 +0100</pubDate><guid>https://blog.ddavo.me/es/posts/tutorials/bind-override/</guid><description>Si tienes una pequeña red en casa, alguna vez habrás tenido problemas con el tema de dominios. Como ya sabrás, está la IP pública (la que se ve desde fuera de tu red, y conecta con el router), y las IPs privadas (las de tu red local, que empiezan por 192.168.0&amp;hellip;). Esta tecnología de asignar varias &amp;ldquo;IP privadas&amp;rdquo; a una única &amp;ldquo;IP pública&amp;rdquo; se llama enmascaramiento o &amp;ldquo;Traducción de Direcciones de Red&amp;rdquo; (NAT por sus siglas en inglés).</description></item><item><title>Hola Mundo!</title><link>https://blog.ddavo.me/es/posts/hw/</link><pubDate>Tue, 14 Dec 2021 22:39:51 +0100</pubDate><guid>https://blog.ddavo.me/es/posts/hw/</guid><description>Buenos días. Primero, me presento: Soy David Davó, estudiante de último año de Ingeniería Informática en la Universidad Complutense de Madrid.
-Me gusta mucho jugar con los ordenadores, montar cosas, romperlas, y luego volverlas a arrelgar. Pero, a veces, para poder arreglar las cosas necesitas acordarte de cómo lo hiciste la ultima vez (lo que puede ser difícil si nunca te acuerdas de nada) Por eso y por muchas otras razones estoy montando este blog.</description></item><item><title>Just Get My Data: Accede a tus datos de distintos servicios web</title><link>https://blog.ddavo.me/es/posts/projects/jgmd/</link><pubDate>Sat, 09 Jan 2021 11:50:13 +0100</pubDate><guid>https://blog.ddavo.me/es/posts/projects/jgmd/</guid><description>Muchos sabemos que desde hace un par de años podemos pedir a cualquier servicio de la Unión Europea que borre nuestros datos, pero&amp;hellip; también podemos pedir que nos los envíen en un formato legible.
-Para evitar que ejerzas tal derecho, muchas páginas web utilizan dark patterns, o diseños web laberínticos para que desistas antes de cumplir tu cometido. Una forma agresiva de diseño que hace que acabemos gritando ¡pues ya no quiero mis datos!</description></item></channel></rss>
+Desde hace ya más de 5 años, mi currículum está escrito en LaTeX, usando (y modificando) la plantilla Awesome CV. Además, le añadí un par de cosas para hacerlo &amp;ldquo;bilingüe&amp;rdquo; y poder compilar o bien al inglés o al castellano, haciendo que el documento esté disponible en múltiples idiomas.</description><content:encoded><![CDATA[<p>Hace tiempo que quería poner mi currículum en la página web, pero para ello
+debía asegurarme de que estaba SIEMPRE actualizado. Es decir, que se compilaba y
+publicaba automáticamente cada vez que realizase cambios en el fichero fuente.</p>
+<p>Desde hace ya más de 5 años, mi currículum está escrito en LaTeX, usando (y modificando) la
+plantilla <a href="https://github.com/posquit0/Awesome-CV">Awesome CV</a>. Además, le añadí
+un par de cosas para hacerlo &ldquo;bilingüe&rdquo; y poder compilar o bien al inglés o al castellano,
+haciendo que el documento esté disponible en múltiples idiomas.</p>
+<p>Gracias a <code>iflang</code>, dependiendo de la opción que le pasemos al importar el paquete <code>babel</code>, se renderizará
+el documento en un idioma u otro.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="line"><span class="cl"><span class="k">\documentclass</span><span class="na">[a4paper]</span><span class="nb">{</span>awesome-cv<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\usepackage</span><span class="na">[&lt;lang&gt;]</span><span class="nb">{</span>babel<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\usepackage</span><span class="nb">{</span>iflang<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\es</span><span class="nb">}</span>[1]<span class="nb">{</span><span class="k">\IfLanguageName</span><span class="nb">{</span>spanish<span class="nb">}{</span>#1<span class="nb">}{}}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\en</span><span class="nb">}</span>[1]<span class="nb">{</span><span class="k">\IfLanguageName</span><span class="nb">{</span>english<span class="nb">}{</span>#1<span class="nb">}{}}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">\es</span><span class="nb">{</span>¡Hola Mundo!<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">\en</span><span class="nb">{</span>Hello World!<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
+</span></span></code></pre></div><p>Sin embargo, es necesario cambiar <code>&lt;lang&gt;</code> a mano, por lo que no puede ser automatizado. Una opción sencilla sería usar <code>sed</code> para modificar el fichero, pero puede no estar instalado en el sistema (si usas Windows) y me apetecía usar algo LaTeX puro.</p>
+<p>Juan Carlos Fabero me dio la idea de usar un par de ficheros
+envoltorio (<em>wrappers</em>) que simplemente definan la variable y e importen el contenido de <code>main.tex</code>. En cuanto al fichero principal, solo sería necesario añadir un par de líneas para comprobar si dicha variable está definida o no.</p>
+<h3 id="modificación-maintex">Modificación <code>main.tex</code></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="line"><span class="cl"><span class="c">% Usamos la variable si está definida
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\ifdefined\babellang</span>
+</span></span><span class="line"><span class="cl">    <span class="k">\usepackage</span><span class="na">[\babellang]</span><span class="nb">{</span>babel<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="c">% Si no, usamos el por defecto (o cambiado manualmente desde el IDE)
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\else</span>
+</span></span><span class="line"><span class="cl">    <span class="k">\usepackage</span><span class="na">[english]</span><span class="nb">{</span>babel<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\fi</span>
+</span></span></code></pre></div><h3 id="fichero-englishtex">Fichero <code>english.tex</code></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="line"><span class="cl"><span class="k">\def\babellang</span><span class="nb">{</span>english<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\input</span><span class="nb">{</span>main.tex<span class="nb">}</span>
+</span></span></code></pre></div><h3 id="fichero-spanishtex">Fichero <code>spanish.tex</code></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="line"><span class="cl"><span class="k">\def\babellang</span><span class="nb">{</span>spanish<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\input</span><span class="nb">{</span>main.tex<span class="nb">}</span>
+</span></span></code></pre></div><p>De esta manera, si compilamos <code>english.tex</code> se generará un documento en Inglés, y si compilamos <code>spanish.tex</code> se creará en castellano.</p>
+<h2 id="automatizando-con-github-pages">Automatizando con GitHub pages</h2>
+<p>No nos podemos olvidar de hacer que todo esto se haga de manera automática, sin tocar nada. Para ello, el CV está
+en un <a href="https://github.com/daviddavo/22CV">proyecto de GitHub</a>, y cada vez que se hace un <em>commit</em>, se compila el fichero y se aloja usando GitHub pages. Así, queda el CV accesible desde <em>github.io</em>:</p>
+<ul>
+<li>Inglés: <a href="https://daviddavo.github.io/22CV/David_Davo_CV_English.pdf">https://daviddavo.github.io/22CV/David_Davo_CV_English.pdf</a></li>
+<li>Castellano: <a href="https://daviddavo.github.io/22CV/David_Davo_CV_Spanish.pdf">https://daviddavo.github.io/22CV/David_Davo_CV_Spanish.pdf</a></li>
+</ul>
+<p>El <em>workflow</em> es bastante sencillo, lo creé directamente desde la página web modificando un poco el por defecto para que compile el PDF usando <a href="https://github.com/marketplace/actions/github-action-for-latex">latex-action</a>, y lo suba a GitHub pages. Ya de paso comprueba que
+el PDF generado no tiene más de 2 páginas (un folio por las dos caras).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">CI</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># Controls when the workflow will run</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">on</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Triggers the workflow on push or pull request events but only for the &#34;main&#34; branch</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">push</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&#34;main&#34;</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Allows you to run this workflow manually from the Actions tab</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">workflow_dispatch</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># A workflow run is made up of one or more jobs that can run sequentially or in parallel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">jobs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">build</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># The type of runner that the job will run on</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l">ubuntu-latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># Steps represent a sequence of tasks that will be executed as part of the job</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/checkout@v3</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Build LaTeX</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">xu-cheng/latex-action@v2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">latexmk_use_xelatex</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="c"># Compile multiple documents</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">root_file</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">            english.tex
+</span></span></span><span class="line"><span class="cl"><span class="sd">            spanish.tex</span><span class="w">            
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Assert built files are 2 pages long</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">          sudo apt-get install -y poppler-utils
+</span></span></span><span class="line"><span class="cl"><span class="sd">          [ $(pdfinfo english.pdf | awk &#39;/^Pages:/ {print $2}&#39;) -le 2 ]
+</span></span></span><span class="line"><span class="cl"><span class="sd">          [ $(pdfinfo spanish.pdf | awk &#39;/^Pages:/ {print $2}&#39;) -le 2 ]</span><span class="w">          
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Build Github page</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">          mv english.pdf _site/David_Davo_CV_English.pdf
+</span></span></span><span class="line"><span class="cl"><span class="sd">          mv spanish.pdf _site/David_Davo_CV_Spanish.pdf</span><span class="w">          
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Upload GitHub Pages artifact</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/upload-pages-artifact@v1.0.3</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">deploy</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">needs</span><span class="p">:</span><span class="w"> </span><span class="l">build</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># Grant GITHUB_TOKEN the permissions required to make a Pages deployment</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">permissions</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">pages</span><span class="p">:</span><span class="w"> </span><span class="l">write     </span><span class="w"> </span><span class="c"># to deploy to Pages</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">id-token</span><span class="p">:</span><span class="w"> </span><span class="l">write  </span><span class="w"> </span><span class="c"># to verify the deployment originates from an appropriate source</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># Deploy to the github-pages environment</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">github-pages</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">${{ steps.deployment.outputs.page_url }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># Specify runner + deployment step</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l">ubuntu-latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Deploy to GitHub Pages</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l">deployment</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/deploy-pages@v1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">artifact-name</span><span class="p">:</span><span class="w"> </span><span class="l">build</span><span class="w">
+</span></span></span></code></pre></div><p>El toque final está en una pequeña página html por si alguien entra en la raíz del GitHub pages (<a href="https://daviddavo.github.io/22CV">daviddavo.github.io/22CV</a>),
+que simplemente redirige a mi página web personal.</p>
+]]></content:encoded></item><item><title>Como crear un banner de "Sitio en construcción"</title><link>https://blog.ddavo.me/es/posts/tutorials/work-in-progress/</link><pubDate>Mon, 15 Aug 2022 22:38:38 +0200</pubDate><guid>https://blog.ddavo.me/es/posts/tutorials/work-in-progress/</guid><description>Mi página personal está hecha en Symfony. Ya, ya sé, no es la mejor elección, pero empecé cuando era joven y más descuidado, pensando que iba a haber más dinamismo, haría muchas cosas, y una página web compilada no sería suficiente.
+Hace un par de días decidí que ya era hora de empezar de cero y crear una página nueva, esta vez usando un generador estático. Acabé decidiéndome por Hugo.</description><content:encoded><![CDATA[<p>Mi página personal está hecha en Symfony. Ya, ya sé, no es la mejor elección, pero empecé cuando era joven y más descuidado, pensando que iba a haber más dinamismo, haría muchas cosas, y una página web compilada no sería suficiente.</p>
+<p>Hace un par de días decidí que ya era hora de empezar de cero y crear una página nueva, esta vez usando un generador estático. Acabé decidiéndome por <a href="https://gohugo.io">Hugo</a>.</p>
+<p>Como la página antigua era un poco&hellip; malurria, quería sacar la nueva lo antes posible. Sin embargo, aún me faltaba un banner que dijese &ldquo;eh, aún estoy trabajando en ello y seguro que faltan cosas&rdquo;. Bueno, en realidad no es completamente necesario, pero queda chulo.</p>
+<p>Mi objetivo era emular una especie de cinta de peligro, de estas negras y amarillas que te recuerdan a las obras. Hacer el fondo de rayas no fue difícil, gracias a herramientas como <a href="https://stripesgenerator.com/">stripesgenerator.com</a>, pero lo más importante es girar un poquito el componente, simulando una cinta mal colocada y cediendo ante la gravedad.</p>
+<p>No fue tan difícil, gracias a la propiedad <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/rotate"><code>transform: rotate()</code></a>.</p>
+<p>Al final quedó algo así:</p>
+<p class="codepen" data-height="300" data-default-tab="css,result" data-slug-hash="bGvQdxo" data-user="daviddavo" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/daviddavo/pen/bGvQdxo">
+  Untitled</a> by David Davó (<a href="https://codepen.io/daviddavo">@daviddavo</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+<p>¿Qué opinas? Ha quedado chulo, ¿no? Si haces alguna modificación, ¡no te olvides de compartirla!</p>
+]]></content:encoded></item><item><title>Como encriptar tu home y desencriptarla automágicamente</title><link>https://blog.ddavo.me/es/posts/tutorials/crypt-home/</link><pubDate>Sun, 30 Jan 2022 15:38:09 +0000</pubDate><guid>https://blog.ddavo.me/es/posts/tutorials/crypt-home/</guid><description>Alguna que otra vez toca llevar de paseo el portátil por las calles y el Metro de Madrid, con todos los riesgos que ello conlleva.
+El portátil en sí no me da mucha pena, pero en el disco duro hay datos. Datos relevantes. Todos pensamos que no hemos hecho nada malo y que no tenemos nada que ocultar&amp;hellip; &amp;ndash;&amp;quot;¿por qué iba a querer encriptar cosas si no soy de la mafia?</description><content:encoded><![CDATA[<p>Alguna que otra vez toca llevar de paseo el portátil por las calles y el Metro de Madrid, con todos los riesgos que ello conlleva.</p>
+<p>El portátil en sí no me da mucha pena, pero en el disco duro hay datos. Datos relevantes.
+Todos pensamos que no hemos hecho nada malo y que no tenemos nada que ocultar&hellip; &ndash;&quot;¿por qué iba a
+querer encriptar cosas si no soy de la mafia?&quot;</p>
+<p>Pero seguro que tienes una o dos copias de tus DNIs. Tanto caducados como vigentes. Y también tendrás
+alguna factura con tu dirección de casa, y correos electrónicos con alguna contraseña, y papeles de la universidad/trabajo, y&hellip; Pues eso.</p>
+<p></p>
+<blockquote>
+<p>El robo de identidad no es una broma, Jim!
+&ndash; Dwight K. Schrute</p>
+</blockquote>
+<p>Por eso vamos a aprender a encriptar TODA tu carpeta home personal, con un método que funciona en Arch Linux y otras distros derivadas como Manjaro.</p>
+<blockquote>
+<p><strong>¡¡ANTES DE CONTINUAR!!</strong></p>
+<p>Has de tener cuidado porque los datos encriptados, en caso de perder la clave o
+la contraseña, no podrán ser recuperados de ninguna forma (o por lo menos, esa es la idea)</p>
+</blockquote>
+<h2 id="migrando-el-home">Migrando el <code>home</code></h2>
+<p>Es sencillo, simplemente debemos llamar, desde el usuario <code>root</code>, a un script que viene ya hecho y te configura todo él solito.
+Eso sí, vas a necesitar más o menos 2.5 veces el espacio de tu carpeta <code>$HOME</code>, por lo que borra primero la caché y todo lo que
+no te preocupe mucho borrar. Ese espacio extra podrá ser liberado después del proceso, así que en el peor de los casos puedes mover algunas cosas a otro disco duro, y luego volver a dejarlas donde estaban.</p>
+<p>Antes de continuar, necesitarás asegurarte de que los siguientes comandos están instalados y funcionando:</p>
+<ul>
+<li><input disabled="" type="checkbox"> <code>rsync</code></li>
+<li><input disabled="" type="checkbox"> <code>lsof</code></li>
+<li><input disabled="" type="checkbox"> <code>which</code></li>
+</ul>
+<p>Inicia sesión con el usuario root (<strong>no vale usar tu usuario con <code>sudo</code></strong>). Una vez hayas comprobado que los comandos funcionan, debemos cargar el módulo del kernel encargado de la encriptación, usando <code>modprobe</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ modprobe ecryptfs
+</span></span></code></pre></div><p>Finalmente, antes de comenzar con la migración, asegurate de que ningún proceso del usuario del que quieres migrar está ejecutándose, pues podría dar problemas. Puedes usar <code>ps -U &lt;usuario&gt;</code> (si la lista está vacía, es que no hay ningún proceso siendo ejecutado por ese usuario). Ahora sí, tan sólo tienes que introducir el siguiente comando y seguir las instrucciones:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ ecryptfs-migrate-home -u &lt;usuario&gt;
+</span></span></code></pre></div><p>Este comando te creará una &ldquo;copia de seguridad&rdquo; en <code>/home/&lt;usuario&gt;.&lt;cadena&gt;</code>, que deberías borrar una vez todo funcione correctamente.</p>
+<h2 id="habilitando-el-automontaje">Habilitando el automontaje</h2>
+<p>Para habilitar el automontaje, usaremos un &ldquo;módulo de autenticación conectable&rdquo; o PAM (<em>Pluggable Authentication Module</em>). Es básicamente una especie de plugin del sistema de inicio de sesión de Linux, que en este caso nos permitirá montar una carpeta cifrada mientras iniciamos sesión (pero antes de cargar nuestro entorno de escritorio y esas cosas).</p>
+<p>Vamos a editar el archivo <code>/etc/pam.d/system-auth</code></p>
+<hr>
+<p><strong>Después</strong> de la línea <code>auth required pam_unix.so</code> (o <code>auth [default=die] pam_faillock.so authfail</code> si existe) inserta:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">auth [success=1 default=ignore] pam_succeed_if.so service = systemd-user quiet
+</span></span><span class="line"><span class="cl">auth required                   pam_ecryptfs.so unwrap
+</span></span></code></pre></div><hr>
+<p><strong>Sobre</strong> la línea <code>password required pam_unix.so</code> (o <code>-password [success=1 default=ignore] pam_systemd_home.so</code> si existe), añade:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">password    optional    pam_ecryptfs.so
+</span></span></code></pre></div><hr>
+<p>Para terminar, <strong>tras</strong> la linea <code>session required pam_unix.so</code> pon:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">session [success=1 default=ignore] pam_succeed_if.so service = systemd-user quiet
+</span></span><span class="line"><span class="cl">session optional                   pam_ecryptfs.so unwrap
+</span></span></code></pre></div><p>Ahora ya puedes cerrar tu sesión de root e iniciar sesión con tu usuario normal.
+Debería estar todo justo donde lo dejaste.</p>
+<p>También puedes probar a iniciar sesión desde otro usuario (con tu sesión cerrada, claro), e intentar acceder a <code>/home/&lt;nombreusuarioprotegido&gt;</code>. ¿Que pasará?</p>
+<h2 id="fuentes-y-más-información">Fuentes y más información</h2>
+<ul>
+<li><a href="https://wiki.archlinux.org/title/ECryptfs">eCryptfs - ArchWiki</a></li>
+<li><a href="https://wiki.archlinux.org/title/PAM">PAM - ArchWiki</a></li>
+<li><a href="https://wiki.archlinux.org/title/Pam_mount">pam_mount - ArchWiki</a></li>
+</ul>
+]]></content:encoded></item><item><title>Cómo sobreescribir solo algunos subdominios en tu red local</title><link>https://blog.ddavo.me/es/posts/tutorials/bind-override/</link><pubDate>Wed, 22 Dec 2021 13:17:17 +0100</pubDate><guid>https://blog.ddavo.me/es/posts/tutorials/bind-override/</guid><description>Si tienes una pequeña red en casa, alguna vez habrás tenido problemas con el tema de dominios. Como ya sabrás, está la IP pública (la que se ve desde fuera de tu red, y conecta con el router), y las IPs privadas (las de tu red local, que empiezan por 192.168.0&amp;hellip;). Esta tecnología de asignar varias &amp;ldquo;IP privadas&amp;rdquo; a una única &amp;ldquo;IP pública&amp;rdquo; se llama enmascaramiento o &amp;ldquo;Traducción de Direcciones de Red&amp;rdquo; (NAT por sus siglas en inglés).</description><content:encoded><![CDATA[<p>Si tienes una pequeña red en casa, alguna vez habrás tenido problemas con el tema de dominios.
+Como ya sabrás, está la IP pública (la que se ve desde fuera de tu red, y conecta con el router), y las IPs privadas (las de tu red local, que empiezan por 192.168.0&hellip;).
+Esta tecnología de asignar varias &ldquo;IP privadas&rdquo; a una única &ldquo;IP pública&rdquo; se llama enmascaramiento o &ldquo;Traducción de Direcciones de Red&rdquo; (NAT por sus siglas en inglés).</p>
+<p>Esto puede causar problemas si usas DNS para asignarle un nombre de dominio a un servicio. Pongamos que tienes un blog, y le asignas el dominio <code>blog.example.com</code> a la IP pública <code>1.2.3.4</code>. En tu rúter mapeas los puertos a tu dirección local <code>192.168.1.66</code>, pero cuando quieres acceder a <code>blog.example.com</code>&hellip; ¡no funciona! Te dirá que no se puede conectar al
+host o algo así &ndash;¿Cómo que no? ¡Si lo tengo aquí al lado!&ndash;. Lo que pasa es que
+tu ordenador se está intentando conectar a la dirección <code>1.2.3.4</code>, cuando lo que en
+realidad quieres es acceder a la dirección <code>192.168.1.66</code>. Una alternativa sería modificar
+el archivo hosts, pero si quieres modificarlo en todos los dispositivos de tu red local a la vez, existe
+otra solución: ¡cambiar los DNS! Pero no el DNS de todo el mundo, porque dejaría de funcionar tu web para la gente que no esté en tu red local. El truco está en cambiar únicamente los DNS dentro de tu red local.</p>
+<blockquote>
+<p>Requisitos antes de seguir:</p>
+<ul>
+<li>Saber un poco qué es DNS y como cambiar los registros desde el panel de tu registrador de nombres de dominio.</li>
+</ul>
+</blockquote>
+<h2 id="bind-tu-servidor-dns-de-confianza">BIND: Tu servidor DNS de confianza</h2>
+<p>Bind es un servidor DNS, al que tú le preguntas un nombre de dominio (como google.es) y este te responde su dirección IP (<a href="http://142.250.200.131">142.250.200.131</a>). Lo más
+seguro es que ya tengas un servidor bind en casa sin que tú lo sepas: el del rúter de la compañía telefónica. Y esque tener un servidor DNS en tu red local tiene muchas ventajas, sobre todo porque las consultas se hacen a un dispositivo que está a 10 metros, y no a un servidor a 100km.</p>
+<p>Lo de sobreescribir algunas entradas es posible gracias al mecanismo <a href="https://dnsrpz.info">RPZ</a>, o <em>Políticas de Zonas de Respuesta</em>, que nos permite establecer espacios
+de nombres de dominio especiales que sobreescriban a otros.</p>
+<p>Ahora veremos como instalar y montar todo.</p>
+<h2 id="instalar-bind">Instalar bind</h2>
+<p>Dependiendo tu distro de linux o tu sistema operativo, el proceso de instalación será diferente. En este caso el tutorial se ha realizado con una máquina con Debian/Ubuntu.
+Tan sólo es necesario instalar un par de paquetes, introducir en la terminal el siguiente comando.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo apt install bind9 bind9utils bind9-doc
+</span></span></code></pre></div><h2 id="configurando-bind">Configurando BIND</h2>
+<blockquote>
+<p>Recuerda que para modificar estos archivos es necesario ser root o usar <code>sudo</code></p>
+</blockquote>
+<p>Lo primero es configurar una nueva zona a la que añadir nuestros subdominios, la vamos a llamar &ldquo;rpz&rdquo;, y estableceremos
+su &ldquo;base de datos&rdquo; en el fichero <code>/etc/bind/db.rpz</code>. Para ello editamos el fichero <code>/etc/bind/named.conf.default-zones</code> y añadimos las siguientes líneas:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">zone &#34;rpz&#34; {
+</span></span><span class="line"><span class="cl">    type master;
+</span></span><span class="line"><span class="cl">    file &#34;/etc/bind/db.rpz&#34;;
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div><p>Ahora editamos la base de datos donde se encuentran nuestros dominios (<code>/etc/bind/db.rpz</code>), añadiendo todos los registros que queramos.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dns" data-lang="dns"><span class="line"><span class="cl"><span class="c">; Fichero para mi LAN (Red de Área Local)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="na">$TTL</span><span class="w"> </span><span class="sc">3600</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">; Estas dos entradas indican cual es el servidor DNS al que consultar (este mismo)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nc">@</span><span class="w">		</span><span class="k">IN</span><span class="w">	</span><span class="k">SOA</span><span class="w">	</span><span class="py">localhost. root.localhost. </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			      </span><span class="sc">2</span><span class="w">		</span><span class="c">; Serial</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			 </span><span class="sc">604800</span><span class="w">		</span><span class="c">; Refresh</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			  </span><span class="sc">86400</span><span class="w">		</span><span class="c">; Retry</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="sc">2419200</span><span class="w">		</span><span class="c">; Expire</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			 </span><span class="sc">604800</span><span class="w"> </span><span class="p">)</span><span class="w">	</span><span class="c">; Negative Cache TTL</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nc">@</span><span class="w">		</span><span class="k">IN</span><span class="w">	</span><span class="k">NS</span><span class="w">	</span><span class="py">localhost.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">; Si establecemos un $ORIGIN, solo es necesario indicar el subdominio</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="na">$ORIGIN</span><span class="w"> </span><span class="err">example.com</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nc">nas</span><span class="w">                  </span><span class="k">A</span><span class="w">       </span><span class="mi">192.168.1.42</span><span class="w">              </span><span class="c">; Dirección IPv4 de nas.example.com</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nc">nas</span><span class="w">                  </span><span class="k">AAAA</span><span class="w">    </span><span class="il">fe80::1ff:fe23:4567:890a</span><span class="w">  </span><span class="c">; Dirección IPv6 de nas.example.com</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nc">ftp</span><span class="w">                  </span><span class="k">CNAME</span><span class="w">   </span><span class="err">nas</span><span class="w">                       </span><span class="c">; Un simple alias de ftp.example.com a nas.example.com</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="py">blog.example2.org. </span><span class="w">  </span><span class="k">A</span><span class="w">       </span><span class="mi">192.168.1.31</span><span class="w">              </span><span class="c">; También podemos añadir dominios completos</span><span class="w">
+</span></span></span></code></pre></div><p>Además, el objetivo también es que todas las direcciones que tu servidor no conozca, se las pregunte a otro servidor. Para ello es necesario habilitar la recursión y especificar
+los servidores a los que preguntar en caso de no encontrar la entrada en el rpz.</p>
+<blockquote>
+<p>Los servidores a los que preguntar pueden ser dados por tu ISP, también puede ser tu rúter (192.168.1.1). Yo recomiendo usar los de Google/Cloudflare por su fiabilidad y rapidez.</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">options {
+</span></span><span class="line"><span class="cl">	directory &#34;/var/cache/bind&#34;;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	recursion yes; # Habilitamos la recursión
+</span></span><span class="line"><span class="cl">	listen-on { 192.168.1.11; }; # La dirección IP de nuestro servidor
+</span></span><span class="line"><span class="cl">	allow-transfer { none; };
+</span></span><span class="line"><span class="cl">	response-policy { zone &#34;rpz&#34;; } break-dnssec yes; # La response policy zone
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	forwarders {
+</span></span><span class="line"><span class="cl">		8.8.8.8;
+</span></span><span class="line"><span class="cl">		8.8.4.4;
+</span></span><span class="line"><span class="cl">		1.1.1.1;
+</span></span><span class="line"><span class="cl">	};
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	dnssec-validation auto;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	listen-on-v6 { any; }; # Puedes poner &#34;none&#34; si no quieres que funcione por ipv6
+</span></span><span class="line"><span class="cl">};
+</span></span></code></pre></div><blockquote>
+<p>Es importante decirle al servidor que ignore las peticiones &ldquo;seguras&rdquo;,
+de no ser así, podría devolver una dirección firmada, pero incorrecta.</p>
+</blockquote>
+<h3 id="arrancando-el-servidor">Arrancando el servidor</h3>
+<p>Para aplicar los cambios, iniciamos el servidor con systemctl</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo systemctl enable --now bind9
+</span></span></span></code></pre></div><p>Podemos probar que funciona con el comando <code>dig</code> (tal vez necesites instalarlo),
+que nos permite hacer consultas a un servidor DNS en concreto (y no al por defecto)
+del Sistema Operativo.</p>
+<p>Primero probamos que funcionen las consultas normales, como a Google</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> dig google.es
+</span></span><span class="line"><span class="cl"><span class="go">; &lt;&lt;&gt;&gt; DiG 9.16.23 &lt;&lt;&gt;&gt; google.es
+</span></span></span><span class="line"><span class="cl"><span class="go">;; global options: +cmd
+</span></span></span><span class="line"><span class="cl"><span class="go">;; Got answer:
+</span></span></span><span class="line"><span class="cl"><span class="go">;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 5016
+</span></span></span><span class="line"><span class="cl"><span class="go">;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">;; OPT PSEUDOSECTION:
+</span></span></span><span class="line"><span class="cl"><span class="go">; EDNS: version: 0, flags:; udp: 4096
+</span></span></span><span class="line"><span class="cl"><span class="go">; COOKIE: 01db1f47a27adb9e90e4c7fb61c24bc2bf8c6a88296c3923 (good)
+</span></span></span><span class="line"><span class="cl"><span class="go">;; QUESTION SECTION:
+</span></span></span><span class="line"><span class="cl"><span class="go">;google.es.			IN	A
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">;; ANSWER SECTION:
+</span></span></span><span class="line"><span class="cl"><span class="go">google.es.		300	IN	A	142.250.200.131
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">;; Query time: 39 msec
+</span></span></span><span class="line"><span class="cl"><span class="go">;; SERVER: 192.168.1.11#53(192.168.1.11)
+</span></span></span><span class="line"><span class="cl"><span class="go">;; WHEN: Tue Dec 21 22:48:50 CET 2021
+</span></span></span><span class="line"><span class="cl"><span class="go">;; MSG SIZE  rcvd: 82
+</span></span></span></code></pre></div><p>Y ahora probamos que funcione nuestro RPZ</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> dig chikyuu.ddavo.me @192.168.1.11
+</span></span><span class="line"><span class="cl"><span class="go">; &lt;&lt;&gt;&gt; DiG 9.16.23 &lt;&lt;&gt;&gt; nas.example.com
+</span></span></span><span class="line"><span class="cl"><span class="go">;; global options: +cmd
+</span></span></span><span class="line"><span class="cl"><span class="go">;; Got answer:
+</span></span></span><span class="line"><span class="cl"><span class="go">;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 45881
+</span></span></span><span class="line"><span class="cl"><span class="go">;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">;; OPT PSEUDOSECTION:
+</span></span></span><span class="line"><span class="cl"><span class="go">; EDNS: version: 0, flags:; udp: 4096
+</span></span></span><span class="line"><span class="cl"><span class="go">; COOKIE: d200bc3ba9741e2ab2c8935661c24b4b401d43ae997c39de (good)
+</span></span></span><span class="line"><span class="cl"><span class="go">;; QUESTION SECTION:
+</span></span></span><span class="line"><span class="cl"><span class="go">;nas.example.com.		IN	A
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">;; ANSWER SECTION:
+</span></span></span><span class="line"><span class="cl"><span class="go">nas.example.com.	5	IN	A	192.168.1.42
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">;; Query time: 0 msec
+</span></span></span><span class="line"><span class="cl"><span class="go">;; SERVER: 192.168.1.11#53(192.168.1.11)
+</span></span></span><span class="line"><span class="cl"><span class="go">;; WHEN: Tue Dec 21 22:46:51 CET 2021
+</span></span></span><span class="line"><span class="cl"><span class="go">;; MSG SIZE  rcvd: 89
+</span></span></span></code></pre></div><p><strong>¡¡Parece que funciona!!</strong> La dirección IP que nos retorna es la dirección de área local, en lugar de la global.</p>
+<h3 id="usando-el-servidor">Usando el servidor</h3>
+<p>Sin embargo, no funciona desde el navegador, ni desde cualquier otro programa que no sea <code>dig</code>&hellip;</p>
+<p>Es necesario configurar los dispositivos de tu red para que usen la nueva dirección. Cada sistema operativo es un mundo, pero tampoco suele ser algo muy difícil.</p>
+<p>Si te es posible, puedes cambiarlo directamente desde el rúter,
+para que se propague al resto de dispositivos automágicamente.</p>
+<h2 id="fuentes-y-más-información">Fuentes y más información</h2>
+<ul>
+<li><a href="https://serverfault.com/questions/18748/overriding-some-dns-entries-in-bind-for-internal-networks">Serverfault.com: Overriding some DNS entries in BIND for internal networks</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Response_policy_zone">Wikipedia: Response policy zone</a></li>
+<li><a href="https://dnsrpz.info/">dnsrpz.info</a></li>
+</ul>
+]]></content:encoded></item><item><title>Hola Mundo!</title><link>https://blog.ddavo.me/es/posts/hw/</link><pubDate>Tue, 14 Dec 2021 22:39:51 +0100</pubDate><guid>https://blog.ddavo.me/es/posts/hw/</guid><description>Buenos días. Primero, me presento: Soy David Davó, estudiante de último año de Ingeniería Informática en la Universidad Complutense de Madrid.
+Me gusta mucho jugar con los ordenadores, montar cosas, romperlas, y luego volverlas a arrelgar. Pero, a veces, para poder arreglar las cosas necesitas acordarte de cómo lo hiciste la ultima vez (lo que puede ser difícil si nunca te acuerdas de nada) Por eso y por muchas otras razones estoy montando este blog.</description><content:encoded><![CDATA[<p>Buenos días. Primero, me presento: Soy David Davó, estudiante de último año de Ingeniería Informática en la Universidad Complutense de Madrid.</p>
+<p>Me gusta mucho jugar con los ordenadores, montar cosas, romperlas, y luego volverlas a arrelgar.
+Pero, a veces, para poder arreglar las cosas necesitas acordarte de cómo lo hiciste la ultima vez (lo que puede ser difícil si nunca te acuerdas de nada)
+Por eso y por muchas otras razones estoy montando este blog. Para que, cada vez que rompa algo en la red de mi casa
+o lo que sea, pueda venir a este blog y arreglarlo otra vez. También encontrarás cosas que considere que merezca la pena compartir,
+por si acaso a alguien le son útiles.</p>
+<p>Aquí una lista de cosas que podrás encontrar:</p>
+<ul>
+<li>Un poquito sobre cosas descentralizadas</li>
+<li>Tal vez algo sobre ciencias de la computación, características de lenguajes de programación, etc.</li>
+<li>Como montarte tus propios servicios&hellip;</li>
+<li>Mis proyectos y qué he estado haciendo</li>
+<li>Traducciones al español de contenido que encuentre interesante (acreditando al autor original)</li>
+<li>Recomendaciones de software/libros/blogs/etc</li>
+</ul>
+<p>Si ves que esta entrada no es la primera, es porque cuando publique mis notas sobre proyectos, las añadiré
+con la fecha en la que escribí la nota (y no en la que la subí al blog)</p>
+]]></content:encoded></item><item><title>Just Get My Data: Accede a tus datos de distintos servicios web</title><link>https://blog.ddavo.me/es/posts/projects/jgmd/</link><pubDate>Sat, 09 Jan 2021 11:50:13 +0100</pubDate><guid>https://blog.ddavo.me/es/posts/projects/jgmd/</guid><description>Muchos sabemos que desde hace un par de años podemos pedir a cualquier servicio de la Unión Europea que borre nuestros datos, pero&amp;hellip; también podemos pedir que nos los envíen en un formato legible.
+Para evitar que ejerzas tal derecho, muchas páginas web utilizan dark patterns, o diseños web laberínticos para que desistas antes de cumplir tu cometido. Una forma agresiva de diseño que hace que acabemos gritando ¡pues ya no quiero mis datos!</description><content:encoded><![CDATA[<p>Muchos sabemos que desde hace un par de años podemos pedir a cualquier servicio de la Unión Europea que borre nuestros datos, pero&hellip; <strong>también podemos pedir que nos los envíen en un formato legible.</strong></p>
+<p>Para evitar que ejerzas tal derecho, muchas páginas web utilizan <a href="https://darkpatterns.org/">dark patterns</a>, o diseños web laberínticos para que desistas antes de cumplir tu cometido. Una forma agresiva de diseño que hace que acabemos gritando ¡pues ya no quiero mis datos!</p>
+<p>Por eso surge <a href="https://justgetmydata.com/es">Just Get My Data</a>, un directorio con enlaces y notas para que sea más fácil acceder a tus datos. Cuentas con montón de servicios ordenados alfabéticamente, pero también puedes buscar, filtrar por dificultad, o mostrar simplemente los más populares.</p>
+<p>Por ejemplo, Apple, Coinbase, LinkedIn o Google salen con dificultad &ldquo;fácil&rdquo; en verde. Tienen un proceso automatizado o con guías fáciles de seguir. Sin embargo, sitios como Twitch salen en rojo como &ldquo;difícil&rdquo; pues hay que seguir un proceso manual, enviando correos en Inglés, dando más datos personales, alegando motivos por los que quieres ejercer tal derecho, y buscando el anillo único.</p>
+<p>Este sistema de &ldquo;semáforo&rdquo; permite señalar fácilmente a las compañías y, quien sabe, tal vez a alguien algún día le dará vergüenza que su compañía salga en rojo.</p>
+<p>JustGetMyData es un fork o ramificación de <a href="https://justdeleteme.xyz/">JustDeleteMe</a>, página web que ayuda del mismo modo a eliminar tus datos de internet, evitando los patrones oscuros.</p>
+<p>Se trata de Software Libre por lo que, a pesar de su corta vida, muchas personas contribuyen en el proyecto añadiendo traducciones a diversos idiomas, o nuevas entradas sobre como acceder a tus datos de distintos sitios, por lo que cada vez hay más información disponible. Si quieres participar en Just Get My Data puedes hacerlo en <a href="https://github.com/justgetmydata/jgmd">GitHub</a>, ¡estamos encantados de recibir ayuda!</p>
+<p>¿Y tú? ¿Conocías tus derechos? ¿O tal vez solo conocías el derecho a borrar tus datos?</p>
+]]></content:encoded></item></channel></rss>

@@ -1,2 +1,57 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>manjaro on David Davó's dev log</title><link>https://blog.ddavo.me/es/tags/manjaro/</link><description>Recent content in manjaro on David Davó's dev log</description><generator>Hugo -- gohugo.io</generator><copyright>David Davó (c) 2021</copyright><lastBuildDate>Sun, 30 Jan 2022 15:38:09 +0000</lastBuildDate><atom:link href="https://blog.ddavo.me/es/tags/manjaro/index.xml" rel="self" type="application/rss+xml"/><item><title>Como encriptar tu home y desencriptarla automágicamente</title><link>https://blog.ddavo.me/es/posts/tutorials/crypt-home/</link><pubDate>Sun, 30 Jan 2022 15:38:09 +0000</pubDate><guid>https://blog.ddavo.me/es/posts/tutorials/crypt-home/</guid><description>Alguna que otra vez toca llevar de paseo el portátil por las calles y el Metro de Madrid, con todos los riesgos que ello conlleva.
-El portátil en sí no me da mucha pena, pero en el disco duro hay datos. Datos relevantes. Todos pensamos que no hemos hecho nada malo y que no tenemos nada que ocultar&amp;hellip; &amp;ndash;&amp;quot;¿por qué iba a querer encriptar cosas si no soy de la mafia?</description></item></channel></rss>
+El portátil en sí no me da mucha pena, pero en el disco duro hay datos. Datos relevantes. Todos pensamos que no hemos hecho nada malo y que no tenemos nada que ocultar&amp;hellip; &amp;ndash;&amp;quot;¿por qué iba a querer encriptar cosas si no soy de la mafia?</description><content:encoded><![CDATA[<p>Alguna que otra vez toca llevar de paseo el portátil por las calles y el Metro de Madrid, con todos los riesgos que ello conlleva.</p>
+<p>El portátil en sí no me da mucha pena, pero en el disco duro hay datos. Datos relevantes.
+Todos pensamos que no hemos hecho nada malo y que no tenemos nada que ocultar&hellip; &ndash;&quot;¿por qué iba a
+querer encriptar cosas si no soy de la mafia?&quot;</p>
+<p>Pero seguro que tienes una o dos copias de tus DNIs. Tanto caducados como vigentes. Y también tendrás
+alguna factura con tu dirección de casa, y correos electrónicos con alguna contraseña, y papeles de la universidad/trabajo, y&hellip; Pues eso.</p>
+<p></p>
+<blockquote>
+<p>El robo de identidad no es una broma, Jim!
+&ndash; Dwight K. Schrute</p>
+</blockquote>
+<p>Por eso vamos a aprender a encriptar TODA tu carpeta home personal, con un método que funciona en Arch Linux y otras distros derivadas como Manjaro.</p>
+<blockquote>
+<p><strong>¡¡ANTES DE CONTINUAR!!</strong></p>
+<p>Has de tener cuidado porque los datos encriptados, en caso de perder la clave o
+la contraseña, no podrán ser recuperados de ninguna forma (o por lo menos, esa es la idea)</p>
+</blockquote>
+<h2 id="migrando-el-home">Migrando el <code>home</code></h2>
+<p>Es sencillo, simplemente debemos llamar, desde el usuario <code>root</code>, a un script que viene ya hecho y te configura todo él solito.
+Eso sí, vas a necesitar más o menos 2.5 veces el espacio de tu carpeta <code>$HOME</code>, por lo que borra primero la caché y todo lo que
+no te preocupe mucho borrar. Ese espacio extra podrá ser liberado después del proceso, así que en el peor de los casos puedes mover algunas cosas a otro disco duro, y luego volver a dejarlas donde estaban.</p>
+<p>Antes de continuar, necesitarás asegurarte de que los siguientes comandos están instalados y funcionando:</p>
+<ul>
+<li><input disabled="" type="checkbox"> <code>rsync</code></li>
+<li><input disabled="" type="checkbox"> <code>lsof</code></li>
+<li><input disabled="" type="checkbox"> <code>which</code></li>
+</ul>
+<p>Inicia sesión con el usuario root (<strong>no vale usar tu usuario con <code>sudo</code></strong>). Una vez hayas comprobado que los comandos funcionan, debemos cargar el módulo del kernel encargado de la encriptación, usando <code>modprobe</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ modprobe ecryptfs
+</span></span></code></pre></div><p>Finalmente, antes de comenzar con la migración, asegurate de que ningún proceso del usuario del que quieres migrar está ejecutándose, pues podría dar problemas. Puedes usar <code>ps -U &lt;usuario&gt;</code> (si la lista está vacía, es que no hay ningún proceso siendo ejecutado por ese usuario). Ahora sí, tan sólo tienes que introducir el siguiente comando y seguir las instrucciones:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ ecryptfs-migrate-home -u &lt;usuario&gt;
+</span></span></code></pre></div><p>Este comando te creará una &ldquo;copia de seguridad&rdquo; en <code>/home/&lt;usuario&gt;.&lt;cadena&gt;</code>, que deberías borrar una vez todo funcione correctamente.</p>
+<h2 id="habilitando-el-automontaje">Habilitando el automontaje</h2>
+<p>Para habilitar el automontaje, usaremos un &ldquo;módulo de autenticación conectable&rdquo; o PAM (<em>Pluggable Authentication Module</em>). Es básicamente una especie de plugin del sistema de inicio de sesión de Linux, que en este caso nos permitirá montar una carpeta cifrada mientras iniciamos sesión (pero antes de cargar nuestro entorno de escritorio y esas cosas).</p>
+<p>Vamos a editar el archivo <code>/etc/pam.d/system-auth</code></p>
+<hr>
+<p><strong>Después</strong> de la línea <code>auth required pam_unix.so</code> (o <code>auth [default=die] pam_faillock.so authfail</code> si existe) inserta:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">auth [success=1 default=ignore] pam_succeed_if.so service = systemd-user quiet
+</span></span><span class="line"><span class="cl">auth required                   pam_ecryptfs.so unwrap
+</span></span></code></pre></div><hr>
+<p><strong>Sobre</strong> la línea <code>password required pam_unix.so</code> (o <code>-password [success=1 default=ignore] pam_systemd_home.so</code> si existe), añade:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">password    optional    pam_ecryptfs.so
+</span></span></code></pre></div><hr>
+<p>Para terminar, <strong>tras</strong> la linea <code>session required pam_unix.so</code> pon:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">session [success=1 default=ignore] pam_succeed_if.so service = systemd-user quiet
+</span></span><span class="line"><span class="cl">session optional                   pam_ecryptfs.so unwrap
+</span></span></code></pre></div><p>Ahora ya puedes cerrar tu sesión de root e iniciar sesión con tu usuario normal.
+Debería estar todo justo donde lo dejaste.</p>
+<p>También puedes probar a iniciar sesión desde otro usuario (con tu sesión cerrada, claro), e intentar acceder a <code>/home/&lt;nombreusuarioprotegido&gt;</code>. ¿Que pasará?</p>
+<h2 id="fuentes-y-más-información">Fuentes y más información</h2>
+<ul>
+<li><a href="https://wiki.archlinux.org/title/ECryptfs">eCryptfs - ArchWiki</a></li>
+<li><a href="https://wiki.archlinux.org/title/PAM">PAM - ArchWiki</a></li>
+<li><a href="https://wiki.archlinux.org/title/Pam_mount">pam_mount - ArchWiki</a></li>
+</ul>
+]]></content:encoded></item></channel></rss>

@@ -1,3 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>web design on David Davó's dev log</title><link>https://blog.ddavo.me/tags/web-design/</link><description>Recent content in web design on David Davó's dev log</description><generator>Hugo -- gohugo.io</generator><copyright>David Davó (c) 2021</copyright><lastBuildDate>Mon, 15 Aug 2022 22:38:38 +0200</lastBuildDate><atom:link href="https://blog.ddavo.me/tags/web-design/index.xml" rel="self" type="application/rss+xml"/><item><title>How to create a "Work in progress" banner for your website</title><link>https://blog.ddavo.me/posts/tutorials/work-in-progress/</link><pubDate>Mon, 15 Aug 2022 22:38:38 +0200</pubDate><guid>https://blog.ddavo.me/posts/tutorials/work-in-progress/</guid><description>My personal website is currently made in Symfony. Yeah, I know, not the best thing for this purpose, but I started it a few years ago, when I was younger and carelessler&amp;hellip;
 A few days ago, I decided I wanted to refactor my website and create a whole new one, using a static site generator. Ended up deciding on Hugo, btw.
-As the old one was a bit, well, clunky, I wanted the new one to be online ASAP as possible.</description></item></channel></rss>
+As the old one was a bit, well, clunky, I wanted the new one to be online ASAP as possible.</description><content:encoded><![CDATA[<p>My personal website is currently made in Symfony. Yeah, I know, not the best thing for this purpose, but I started it a few years ago, when I was younger and carelessler&hellip;</p>
+<p>A few days ago, I decided I wanted to refactor my website and create a whole new one, using a static site generator. Ended up deciding on Hugo, btw.</p>
+<p>As the old one was a bit, well, clunky, I wanted the new one to be online ASAP as possible. But I needed a banner that said &ldquo;hey, I&rsquo;m still working on it, be careful&rdquo;. Well, I don&rsquo;t really needed it, but it&rsquo;s cool nevertheless.</p>
+<p>My objective was to emulate a kind of &ldquo;caution&rdquo; tape, the yellow and black one that reminds you of roadworks. Making a stripes background wasn&rsquo;t difficult, thanks to tools like <a href="https://stripesgenerator.com/">stripesgenerator.com</a>, but the most important thing of all is adding a little tilt, simulating the falling tape.</p>
+<p>This could be accomplished thanks to the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/rotate"><code>transform: rotate()</code></a> CSS property.</p>
+<p>It ended up being something like this:</p>
+<p class="codepen" data-height="300" data-default-tab="css,result" data-slug-hash="bGvQdxo" data-user="daviddavo" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/daviddavo/pen/bGvQdxo">
+  Untitled</a> by David Davó (<a href="https://codepen.io/daviddavo">@daviddavo</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+<p>What do you think? Pretty neat, huh? If you have any comments on it, share your modifications!.</p>
+]]></content:encoded></item></channel></rss>
