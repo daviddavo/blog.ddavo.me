@@ -158,13 +158,127 @@ function sysCall_cleanup()
 end
 ```
 
-<!-- TODO: The tutorial on how to publish transforms -->
+### Publishing transforms
+
+The transforms allow ROS modules to calculate the exact distance between any two objects, publishing just the partial distances. For example, we can publish the distance of the laser's reference frame to the robot, and ROS is able to calculate the distance from the laser to anything automatically.
+
+![Image of the robot transforms](https://navigation.ros.org/_images/simple_robot.png)
+
+![Another sample iamge of how the transforms work](https://navigation.ros.org/_images/tf_robot.png)
+
+Each published transform has a parent, and the _root_ of this hierarchy is the transform that is not published (it is just referenced as a parent). According to the standard [REP105](https://www.ros.org/reps/rep-0105.html), this root should be `world` or `map` if we have just one robot.
+
+We will publish the following transforms:
+- From the lidar frame to the robot frame
+- From the robot to odometry frame
+- From the wheels to the robot frame (needed to display the robot in the simulator)
+
+The final transform, from the odometry frame to the world map is published by another module, so we won't send it from coppelia.
+
+To publish all these transforms, we use the following code (remember to change the constants as needed):
+
+```lua
+function getTransformStamped(objHandle,name,relTo,relToName)
+  p=sim.getObjectPosition(objHandle,relTo)
+  o=sim.getObjectQuaternion(objHandle,relTo)
+  return {
+    header={
+      stamp=simROS2.getSimulationTime(),
+      frame_id=relToName
+    },
+    child_frame_id=name,
+    transform={
+      translation={x=p[1],y=p[2],z=p[3]},
+      rotation={x=o[1],y=o[2],z=o[3],w=o[4]}
+    }
+  }
+end
+
+function sysCall_actuation()
+  ...
+  simROS2.sendTransforms({
+    getTransformStamped(robotHandle, ROBOT_FRAME_ID, -1, PODOM_FRAME_ID),
+    getTransformStamped(leftWheel, 'Pioneer_p3dx_leftWheel', robotHandle, ROBOT_FRAME_ID),
+    getTransformStamped(rightWheel, 'Pioneer_p3dx_rightWheel', robotHandle,ROBOT_FRAME_ID),
+    getTransformStamped(caster_link, 'Pioneer_p3dx_caster_link', robotHandle, ROBOT_FRAME_ID),
+    getTransformStamped(caster_wheel, 'Pioneer_p3dx_caster_wheel', caster_link, 'Pioneer_p3dx_caster_link'),
+    getTransformStamped(sensorRefHandle, SENSOR_REF_FRAME, robotHandle, ROBOT_FRAME_ID),
+  })
+  ...
+end
+```
+
+### Publishing Lidar pointcloud
+
+The lidar we used returns a pointcloud in Coppelia's signal `Pioneer_p3dx_lidar_data`. This pointcloud is an array of triplets of floats, each triplet representing the x, y, z coordinates of each point. We want to publish this data in a topic of type [`sensor_msgs/msg/PointCloud2`](https://docs.ros2.org/foxy/api/sensor_msgs/msg/PointCloud2.html).
+
+This message needs us to send a stream of binary data and specify the type of this data in the parameter `fields`. We will see exactly how with the following commented code:
+
+```lua
+function sysCall_init()
+  ...
+  lidarDataTopicName = '/lidarPC'
+  lidarDataPub=simROS2.createPublisher(lidarDataTopicName, 'sensor_msgs/msg/PointCloud2')
+  ...
+end
+
+function sysCall_actuation()
+  ...
+  lidar_signal = 'Pioneer_p3dx_lidar_data'
+
+  -- Get binary data from signal
+  data = sim.getStringSignal(lidar_signal)
+
+  if (data == nil or #data == 0) then
+    -- It's normal for this to happend in the first iteration of simulation
+    sim.addLog(sim.verbosity_scripterrors, 'signal name ' .. lidar_signal .. ', returned nil value')
+  else
+    -- Unpack binary data as array of floats
+    floats = sim.unpackFloatTable(data)
+
+    -- Each point is 3 floats, so the number of points
+    -- is number of floats / 3
+    n = #floats//3
+
+    simROS2.publish(lidarDataPub, {
+      header={
+        stamp=simROS2.getSimulationTime(),
+        frame_id='lidar_ref_frame',
+      },
+      height=1,
+      -- Number of points (not bytes)
+      width=n,
+      -- Each point is 3*4 = 12 bytes
+      point_step=12,
+      fields={
+        -- datatype 7 is FLOAT32
+        -- the offset is in BYTES
+        {name='x', offset=0, datatype=7, count=1},
+        {name='y', offset=4, datatype=7, count=1},
+        {name='z', offset=8, datatype=7, count=1},
+      },
+      -- Unpack data as bytes (uint8)
+      data=sim.unpackUInt8Table(data),
+    })
+  end
+  ...
+end
+```
+
+After all of this, the PointCloud message will be available on the topic `/lidarPC`
+
+## ROS2 and RVIZ
+
+The main advantage of using ROS2 instead of programming the behaviour of our robot
+directly on Coppelia is that ROS2 is platform agnostic and we can use it with any simulator, and even with a real robot.
+
+The system has just 3 nodes:
+- `pointcloud_to_laserscan`: It transforms the data from type _Pointcloud2_ to _LaserScan_ so Slam Toolbox is able to use it.
+- `async_toolbox_node`: Makes a map and localizes the robot in the map.
+
+<!-- TODO: Use the keyboard thing -->
 
 <!-- TODO: The tutorial on how to generate the URDF -->
-
-<!-- TODO: The tutorial on how to publish lidar data using LaserScan -->
-
-<!-- TODO: The tutorial on how to publish lidar data using PointCloud -->
 
 <!-- TODO: The tutorial on how to use RVIZ2 -->
  
@@ -172,4 +286,6 @@ end
  
 ## Sources and more information
 - [GitHub - coppeliaRobotics/simExtROS2](https://github.com/CoppeliaRobotics/simExtROS2)
+- [ROS Planning. Setting Up Transformations](https://navigation.ros.org/setup_guides/transformation/setup_transforms.html)
+- [REP 105 -- Coordinate Frames for Mobile Platforms](https://www.ros.org/reps/rep-0105.html)
  
