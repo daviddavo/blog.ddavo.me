@@ -1,4 +1,295 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>David Davó's dev log</title><link>https://blog.ddavo.me/</link><description>Recent content on David Davó's dev log</description><generator>Hugo -- gohugo.io</generator><copyright>David Davó (c) 2021</copyright><lastBuildDate>Thu, 01 Sep 2022 19:14:22 +0000</lastBuildDate><atom:link href="https://blog.ddavo.me/index.xml" rel="self" type="application/rss+xml"/><item><title>Compiling and publishing multilingual LaTeX with GitHub</title><link>https://blog.ddavo.me/posts/tutorials/automatic-latex-cv/</link><pubDate>Thu, 01 Sep 2022 19:14:22 +0000</pubDate><guid>https://blog.ddavo.me/posts/tutorials/automatic-latex-cv/</guid><description>I have been wanting to publish my CV in my personal site for quite some time, but first I needed to make sure that it was always up-to-date. I.e. that it was compiled and published automatically every time I made some changes to the source file.
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>David Davó's dev log</title><link>https://blog.ddavo.me/</link><description>Recent content on David Davó's dev log</description><generator>Hugo -- gohugo.io</generator><copyright>David Davó (c) 2021</copyright><lastBuildDate>Tue, 31 Jan 2023 20:08:41 +0000</lastBuildDate><atom:link href="https://blog.ddavo.me/index.xml" rel="self" type="application/rss+xml"/><item><title>Using ROS2 in Coppelia</title><link>https://blog.ddavo.me/posts/tutorials/ros2-coppelia-lidar/</link><pubDate>Tue, 31 Jan 2023 20:08:41 +0000</pubDate><guid>https://blog.ddavo.me/posts/tutorials/ros2-coppelia-lidar/</guid><description>With this tutorial you will learn how to use ROS2 in the Coppelia simulator (formerly V-REP) with the simExtROS2 library, using the lidar to build a map.</description><content:encoded><![CDATA[<h2 id="introduction">Introduction</h2>
+<p>Let&rsquo;s be honest, if you&rsquo;re here it&rsquo;s probably because you found this blog on Google.
+As I understand it, at the moment there are no comprehensible resources to use
+ROS2 with the Coppelia simulator (previously known as V-REP), and it is no simple task.</p>
+<p>In this tutorial, we will make a simple project using a Pioneer P3DX with a Lidar, in which we
+will use <em>Slam Toolbox</em> to create a map of the room, all using ROS2 tools like RVIZ2
+and NAV2&rsquo;s Slam Toolbox, but using Coppelia as a simulator instead of Gazebo.</p>
+<p>The end product will look something like this:</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/SYblPjsOgAM" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<p>I made it work but I&rsquo;m no expert in robotics, so if I made some error, please let
+me know in the comments or <a href="https://github.com/daviddavo/blog.ddavo.me">on GitHub</a>.</p>
+<p>I will center on the programming part because the way of adding a robot and lidar is the same whether you&rsquo;re using ROS2 or not.</p>
+<blockquote>
+<p>The original project was made as homework for the Master Universitario en Inteligencia Articial (MUIA) at Universidad Politécnica de Madrid (UPM)</p>
+</blockquote>
+<h2 id="installing-simextros2">Installing simExtROS2</h2>
+<p>ROS2 works by creating publishers and subscribers that emit and receive messages of a <em>message type</em>. To be able to do this from Coppelia, we will use the module <a href="https://github.com/CoppeliaRobotics/simExtROS2">simExtROS2</a>.</p>
+<p>Coppelia comes with this module installed, but it&rsquo;s compiled with too few message types embedded.
+If you try publishing some sensor data, it will fail. You need to modify a config file from the source code and
+compile it again so it supports that message type.</p>
+<p>First, we will download the source code. Because I&rsquo;m using Coppelia 4.4.0, I&rsquo;ll checkout to that version too. Feel free to change the version number if you need to.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone --recursive https://github.com/CoppeliaRobotics/simExtROS2.git
+</span></span><span class="line"><span class="cl"><span class="c1"># according to the docs, we have to rename the folder</span>
+</span></span><span class="line"><span class="cl">mv simExtROS2 sim_ros2_interface
+</span></span><span class="line"><span class="cl">git checkout coppeliasim-v4.4.0-rev0
+</span></span></code></pre></div><p>Before compiling, we need to modify a config file to specify the message types you want to compile. This file is <code>meta/interfaces.txt</code>, and in my case, it ended up with the following contents:</p>
+<p><details >
+  <summary markdown="span"><code>meta/interfaces.txt</code></summary>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">builtin_interfaces/msg/Duration
+</span></span><span class="line"><span class="cl">builtin_interfaces/msg/Time
+</span></span><span class="line"><span class="cl">rosgraph_msgs/msg/Clock
+</span></span><span class="line"><span class="cl">geometry_msgs/msg/Quaternion
+</span></span><span class="line"><span class="cl">geometry_msgs/msg/Transform
+</span></span><span class="line"><span class="cl">geometry_msgs/msg/TransformStamped
+</span></span><span class="line"><span class="cl">geometry_msgs/msg/Vector3
+</span></span><span class="line"><span class="cl">geometry_msgs/msg/Point
+</span></span><span class="line"><span class="cl">geometry_msgs/msg/Pose
+</span></span><span class="line"><span class="cl">geometry_msgs/msg/PoseStamped
+</span></span><span class="line"><span class="cl">geometry_msgs/msg/Twist
+</span></span><span class="line"><span class="cl">geometry_msgs/msg/PoseWithCovariance
+</span></span><span class="line"><span class="cl">geometry_msgs/msg/TwistWithCovariance
+</span></span><span class="line"><span class="cl">sensor_msgs/msg/Image
+</span></span><span class="line"><span class="cl">sensor_msgs/msg/PointCloud2
+</span></span><span class="line"><span class="cl">sensor_msgs/msg/PointField
+</span></span><span class="line"><span class="cl">sensor_msgs/msg/LaserScan
+</span></span><span class="line"><span class="cl">std_msgs/msg/Bool
+</span></span><span class="line"><span class="cl">std_msgs/msg/Byte
+</span></span><span class="line"><span class="cl">std_msgs/msg/ColorRGBA
+</span></span><span class="line"><span class="cl">std_msgs/msg/Empty
+</span></span><span class="line"><span class="cl">std_msgs/msg/Float32
+</span></span><span class="line"><span class="cl">std_msgs/msg/Float64
+</span></span><span class="line"><span class="cl">std_msgs/msg/Header
+</span></span><span class="line"><span class="cl">std_msgs/msg/Int8
+</span></span><span class="line"><span class="cl">std_msgs/msg/Int16
+</span></span><span class="line"><span class="cl">std_msgs/msg/Int32
+</span></span><span class="line"><span class="cl">std_msgs/msg/Int64
+</span></span><span class="line"><span class="cl">std_msgs/msg/String
+</span></span><span class="line"><span class="cl">std_msgs/msg/UInt8
+</span></span><span class="line"><span class="cl">std_msgs/msg/UInt16
+</span></span><span class="line"><span class="cl">std_msgs/msg/UInt32
+</span></span><span class="line"><span class="cl">std_msgs/msg/UInt64
+</span></span><span class="line"><span class="cl">std_srvs/srv/Empty
+</span></span><span class="line"><span class="cl">std_srvs/srv/SetBool
+</span></span><span class="line"><span class="cl">std_srvs/srv/Trigger
+</span></span><span class="line"><span class="cl">nav_msgs/msg/Odometry
+</span></span></code></pre></div>
+</details></p>
+
+<p>Ultimately, you will have to add the following environment variable, either modifying ROS&rsquo; <code>setup.bash</code> or your <code>.bashrc</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">COPPELIASIM_ROOT_DIR</span><span class="o">=</span><span class="s2">&#34;&lt;your coppelia installation path&gt;&#34;</span>
+</span></span></code></pre></div><p>Now we can proceed to compile and install the library</p>
+<h3 id="compiling-libsimextros2">Compiling libsimExtROS2</h3>
+<p>After downloading everything, we can install it with <em>Colcon</em>, using the following command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">colcon build --symlink-install
+</span></span></code></pre></div><p>This will take lots of resources and will take up a while the first time, but don&rsquo;t worry, it will finish and install it.</p>
+<h2 id="modifications-in-coppelia">Modifications in Coppelia</h2>
+<h3 id="publishing-the-simulation-time">Publishing the simulation time</h3>
+<p>We can&rsquo;t use a &ldquo;wall clock&rdquo; because the simulation is not in real-time. Let&rsquo;s imagine
+you implement an odometry module, and you try to calculate your speed by subtracting
+your current position from a previous position and dividing by the number of seconds
+elapsed. This formula will be wrong if your simulation is a bit slow, or if it is too fast.
+That&rsquo;s why we need to publish Coppelia&rsquo;s simulation time into the topic <code>/clock</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-lua" data-lang="lua"><span class="line"><span class="cl"><span class="kr">function</span> <span class="nf">sysCall_init</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="n">simTimePub</span><span class="o">=</span><span class="n">simROS2.createPublisher</span><span class="p">(</span><span class="s1">&#39;/clock&#39;</span><span class="p">,</span><span class="s1">&#39;rosgraph_msgs/msg/Clock&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="kr">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">function</span> <span class="nf">sysCall_actuation</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="n">t</span><span class="o">=</span><span class="n">sim.getSimulationTime</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="n">simROS2.publish</span><span class="p">(</span><span class="n">simTimePub</span><span class="p">,</span> <span class="p">{</span><span class="n">clock</span><span class="o">=</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">sec</span><span class="o">=</span><span class="n">math.floor</span><span class="p">(</span><span class="n">t</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">nanosec</span><span class="o">=</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">math.floor</span><span class="p">(</span><span class="n">t</span><span class="p">))</span><span class="o">*</span><span class="mi">10</span><span class="o">^</span><span class="mi">9</span><span class="p">}}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="kr">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">function</span> <span class="nf">sysCall_cleanup</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="n">simROS2.shutdownPublisher</span><span class="p">(</span><span class="n">simTimePub</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="kr">end</span>
+</span></span></code></pre></div><h3 id="publishing-transforms">Publishing transforms</h3>
+<p>The transforms allow ROS modules to calculate the exact distance between any two objects, publishing just the partial distances. For example, we can publish the distance of the laser&rsquo;s reference frame to the robot, and ROS can able to calculate the distance from the laser to anything automatically.</p>
+<p>
+  <img loading="lazy" src="https://navigation.ros.org/_images/simple_robot.png" alt="Image of the robot transforms"  /></p>
+<p>
+  <img loading="lazy" src="https://navigation.ros.org/_images/tf_robot.png" alt="Another sample image of how the transforms work"  /></p>
+<p>Each published transform has a parent, and the <em>root</em> of this hierarchy is the transform that is not published (it is just referenced as a parent). According to the standard <a href="https://www.ros.org/reps/rep-0105.html">REP105</a>, this root should be <code>world</code> or <code>map</code> if we have just one robot.</p>
+<p>We will publish the following transforms:</p>
+<ul>
+<li>From the lidar frame to the robot frame</li>
+<li>From the robot to the odometry frame</li>
+<li>From the wheels to the robot frame (needed to display the robot in the simulator)</li>
+</ul>
+<p>The final transform, from the odometry frame to the world map is published by another module, so we won&rsquo;t send it from Coppelia.</p>
+<p>To publish all these transforms, we use the following code (remember to change the constants as needed):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-lua" data-lang="lua"><span class="line"><span class="cl"><span class="kr">function</span> <span class="nf">getTransformStamped</span><span class="p">(</span><span class="n">objHandle</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="n">relTo</span><span class="p">,</span><span class="n">relToName</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">p</span><span class="o">=</span><span class="n">sim.getObjectPosition</span><span class="p">(</span><span class="n">objHandle</span><span class="p">,</span><span class="n">relTo</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">o</span><span class="o">=</span><span class="n">sim.getObjectQuaternion</span><span class="p">(</span><span class="n">objHandle</span><span class="p">,</span><span class="n">relTo</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">header</span><span class="o">=</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">stamp</span><span class="o">=</span><span class="n">simROS2.getSimulationTime</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">      <span class="n">frame_id</span><span class="o">=</span><span class="n">relToName</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="n">child_frame_id</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">transform</span><span class="o">=</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">translation</span><span class="o">=</span><span class="p">{</span><span class="n">x</span><span class="o">=</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">y</span><span class="o">=</span><span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">z</span><span class="o">=</span><span class="n">p</span><span class="p">[</span><span class="mi">3</span><span class="p">]},</span>
+</span></span><span class="line"><span class="cl">      <span class="n">rotation</span><span class="o">=</span><span class="p">{</span><span class="n">x</span><span class="o">=</span><span class="n">o</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">y</span><span class="o">=</span><span class="n">o</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">z</span><span class="o">=</span><span class="n">o</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span><span class="n">w</span><span class="o">=</span><span class="n">o</span><span class="p">[</span><span class="mi">4</span><span class="p">]}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kr">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">function</span> <span class="nf">sysCall_actuation</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="n">simROS2.sendTransforms</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">    <span class="n">getTransformStamped</span><span class="p">(</span><span class="n">robotHandle</span><span class="p">,</span> <span class="n">ROBOT_FRAME_ID</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">PODOM_FRAME_ID</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">getTransformStamped</span><span class="p">(</span><span class="n">leftWheel</span><span class="p">,</span> <span class="s1">&#39;Pioneer_p3dx_leftWheel&#39;</span><span class="p">,</span> <span class="n">robotHandle</span><span class="p">,</span> <span class="n">ROBOT_FRAME_ID</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">getTransformStamped</span><span class="p">(</span><span class="n">rightWheel</span><span class="p">,</span> <span class="s1">&#39;Pioneer_p3dx_rightWheel&#39;</span><span class="p">,</span> <span class="n">robotHandle</span><span class="p">,</span><span class="n">ROBOT_FRAME_ID</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">getTransformStamped</span><span class="p">(</span><span class="n">caster_link</span><span class="p">,</span> <span class="s1">&#39;Pioneer_p3dx_caster_link&#39;</span><span class="p">,</span> <span class="n">robotHandle</span><span class="p">,</span> <span class="n">ROBOT_FRAME_ID</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">getTransformStamped</span><span class="p">(</span><span class="n">caster_wheel</span><span class="p">,</span> <span class="s1">&#39;Pioneer_p3dx_caster_wheel&#39;</span><span class="p">,</span> <span class="n">caster_link</span><span class="p">,</span> <span class="s1">&#39;Pioneer_p3dx_caster_link&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">getTransformStamped</span><span class="p">(</span><span class="n">sensorRefHandle</span><span class="p">,</span> <span class="n">SENSOR_REF_FRAME</span><span class="p">,</span> <span class="n">robotHandle</span><span class="p">,</span> <span class="n">ROBOT_FRAME_ID</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">  <span class="p">})</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="kr">end</span>
+</span></span></code></pre></div><h3 id="publishing-lidar-pointcloud">Publishing Lidar PointCloud</h3>
+<p>The lidar we used returns a PointCloud in Coppelia&rsquo;s signal <code>Pioneer_p3dx_lidar_data</code>. This PointCloud is an array of triplets of floats, each triplet representing the x, y and z coordinates of each point. We want to publish this data in a topic of type <a href="https://docs.ros2.org/foxy/api/sensor_msgs/msg/PointCloud2.html"><code>sensor_msgs/msg/PointCloud2</code></a>.</p>
+<p>This message needs us to send a stream of binary data and specify the type of this data in the parameter <code>fields</code>. We will see exactly how with the following commented code:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-lua" data-lang="lua"><span class="line"><span class="cl"><span class="kr">function</span> <span class="nf">sysCall_init</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="n">lidarDataTopicName</span> <span class="o">=</span> <span class="s1">&#39;/lidarPC&#39;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">lidarDataPub</span><span class="o">=</span><span class="n">simROS2.createPublisher</span><span class="p">(</span><span class="n">lidarDataTopicName</span><span class="p">,</span> <span class="s1">&#39;sensor_msgs/msg/PointCloud2&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="kr">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">function</span> <span class="nf">sysCall_actuation</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="n">lidar_signal</span> <span class="o">=</span> <span class="s1">&#39;Pioneer_p3dx_lidar_data&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1">-- Get binary data from signal</span>
+</span></span><span class="line"><span class="cl">  <span class="n">data</span> <span class="o">=</span> <span class="n">sim.getStringSignal</span><span class="p">(</span><span class="n">lidar_signal</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kr">if</span> <span class="p">(</span><span class="n">data</span> <span class="o">==</span> <span class="kc">nil</span> <span class="ow">or</span> <span class="o">#</span><span class="n">data</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="kr">then</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">-- It&#39;s normal for this to happend in the first iteration of simulation</span>
+</span></span><span class="line"><span class="cl">    <span class="n">sim.addLog</span><span class="p">(</span><span class="n">sim.verbosity_scripterrors</span><span class="p">,</span> <span class="s1">&#39;signal name &#39;</span> <span class="o">..</span> <span class="n">lidar_signal</span> <span class="o">..</span> <span class="s1">&#39;, returned nil value&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">else</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">-- Unpack binary data as array of floats</span>
+</span></span><span class="line"><span class="cl">    <span class="n">floats</span> <span class="o">=</span> <span class="n">sim.unpackFloatTable</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">-- Each point is 3 floats, so the number of points</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">-- is number of floats / 3</span>
+</span></span><span class="line"><span class="cl">    <span class="n">n</span> <span class="o">=</span> <span class="o">#</span><span class="n">floats</span><span class="o">//</span><span class="mi">3</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">simROS2.publish</span><span class="p">(</span><span class="n">lidarDataPub</span><span class="p">,</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">header</span><span class="o">=</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">stamp</span><span class="o">=</span><span class="n">simROS2.getSimulationTime</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">frame_id</span><span class="o">=</span><span class="s1">&#39;lidar_ref_frame&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="n">height</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">-- Number of points (not bytes)</span>
+</span></span><span class="line"><span class="cl">      <span class="n">width</span><span class="o">=</span><span class="n">n</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">-- Each point is 3*4 = 12 bytes</span>
+</span></span><span class="line"><span class="cl">      <span class="n">point_step</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="n">fields</span><span class="o">=</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">-- datatype 7 is FLOAT32</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">-- the offset is in BYTES</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">datatype</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">datatype</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">datatype</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">-- Unpack data as bytes (uint8)</span>
+</span></span><span class="line"><span class="cl">      <span class="n">data</span><span class="o">=</span><span class="n">sim.unpackUInt8Table</span><span class="p">(</span><span class="n">data</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">end</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="kr">end</span>
+</span></span></code></pre></div><p>After all of this, the PointCloud message will be available on the topic <code>/lidarPC</code></p>
+<h3 id="setting-the-robots-speed">Setting the robot&rsquo;s speed</h3>
+<p>In this case, instead of a publisher, we will need to create a subscriber that receives
+a message of type <em>Twist</em>. This message contains the desired linear and angular velocities.</p>
+<p>We need to convert this to the angular velocity of the motors of the wheels, so, after applying some basic arithmetics, we get the following code:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-lua" data-lang="lua"><span class="line"><span class="cl"><span class="kr">function</span> <span class="nf">sysCall_init</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="n">velSub</span> <span class="o">=</span> <span class="n">simROS2.createSubscription</span><span class="p">(</span><span class="s1">&#39;/cmd_vel&#39;</span><span class="p">,</span> <span class="s1">&#39;geometry_msgs/msg/Twist&#39;</span><span class="p">,</span> <span class="s1">&#39;setVelocity_cb&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="kr">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">function</span> <span class="nf">setVelocity_cb</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">-- The message provides linear velocity in m/s</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">-- but coppelia receives it in rad/s, we need to convert it</span>
+</span></span><span class="line"><span class="cl">  <span class="n">linear</span> <span class="o">=</span> <span class="n">msg.linear</span><span class="p">.</span><span class="n">x</span>
+</span></span><span class="line"><span class="cl">  <span class="n">angular</span> <span class="o">=</span> <span class="n">msg.angular</span><span class="p">.</span><span class="n">z</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1">-- https://www.inf.ufrgs.br/~prestes/Courses/Robotics/manual_pioneer.pdf</span>
+</span></span><span class="line"><span class="cl">  <span class="n">wheel_radius</span> <span class="o">=</span> <span class="mf">0.195</span> <span class="o">/</span> <span class="mi">2</span> <span class="c1">-- 19.5 cmm</span>
+</span></span><span class="line"><span class="cl">  <span class="n">robot_width</span> <span class="o">=</span> <span class="mf">0.33</span> <span class="c1">-- 38 cm minus wheel width</span>
+</span></span><span class="line"><span class="cl">  <span class="n">vl</span> <span class="o">=</span> <span class="n">linear</span> <span class="o">-</span> <span class="p">(</span><span class="n">angular</span> <span class="o">*</span> <span class="n">robot_width</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl">  <span class="n">vr</span> <span class="o">=</span> <span class="n">linear</span> <span class="o">+</span> <span class="p">(</span><span class="n">angular</span> <span class="o">*</span> <span class="n">robot_width</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">sim.setJointTargetVelocity</span><span class="p">(</span><span class="n">leftMotor</span><span class="p">,</span> <span class="n">vl</span> <span class="o">/</span> <span class="n">wheel_radius</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">sim.setJointTargetVelocity</span><span class="p">(</span><span class="n">rightMotor</span><span class="p">,</span> <span class="n">vr</span> <span class="o">/</span> <span class="n">wheel_radius</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kr">end</span>
+</span></span></code></pre></div><h2 id="ros2">ROS2</h2>
+<p>The main advantage of using ROS2 instead of programming the behavior of our robot
+directly on Coppelia is that ROS2 is platform agnostic and we can use it with any simulator, and even with a real robot.</p>
+<p>The system has just 3 nodes:</p>
+<ul>
+<li><a href="https://github.com/ros-perception/pointcloud_to_laserscan"><code>pointcloud_to_laserscan</code></a>: It transforms the data from type <em>Pointcloud2</em> to <em>LaserScan</em> so Slam Toolbox is able to use it.</li>
+<li><a href="https://github.com/SteveMacenski/slam_toolbox"><code>async_toolbox_node</code></a>: Makes a map and localizes the robot in the map.</li>
+<li><a href="https://github.com/ros2/teleop_twist_keyboard"><code>teleop_twist_keyboard</code></a>: Allows us to move the robot</li>
+</ul>
+<p>You&rsquo;ll need to install them before proceeding</p>
+<h3 id="running-the-nodes">Running the nodes</h3>
+<p>The easiest way by far is to open three terminals and run the command to start the
+node in each one. The order doesn&rsquo;t really matter as nodes usually wait for the info
+to become available.</p>
+<blockquote>
+<p>Remember to source the ROS <code>setup.bash</code> file to make the <code>ros2</code> command available!</p>
+</blockquote>
+<p><details >
+  <summary markdown="span">Starting <code>pointcloud_to_laserscan</code></summary>
+  <p>We&rsquo;ll use the following bash command</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ros2 run pointcloud_to_laserscan pointcloud_to_laserscan_node --ros-args <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -p use_sim_time:<span class="o">=</span><span class="nb">true</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --remap cloud_in:<span class="o">=</span>/lidarPC
+</span></span></code></pre></div><p>This will create a new topic called <code>/scan</code> with the data converted.</p>
+
+</details></p>
+
+<p><details >
+  <summary markdown="span">Starting <code>async_toolbox_node</code></summary>
+  <p>We need to specify the name of the frames (remember to change the name of the frames if you changed them)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ros2 run slam_toolbox async_slam_toolbox_ndoe --ros-args <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -p base_frame:<span class="o">=</span><span class="s2">&#34;base_link&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -p odom_frame:<span class="o">=</span><span class="s2">&#34;odom&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -p map_frame:<span class="o">=</span><span class="s2">&#34;map&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -p scan_topic:<span class="o">=</span><span class="s2">&#34;/scan&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -p use_sim_time:<span class="o">=</span><span class="nb">true</span>
+</span></span></code></pre></div><p>This will create a <code>/map</code> topic</p>
+
+</details></p>
+
+<p><details >
+  <summary markdown="span">Starting <code>teleop_twist_keyboard</code></summary>
+  <p>We don&rsquo;t need to modify anything, so the command is just</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ros2 run teleop_twist_keyboard teleop_twist_keyboard
+</span></span></code></pre></div><p>This will send the velocity commands via the <code>/cmd_vel</code> topic</p>
+
+</details></p>
+
+<h2 id="conclusion">Conclusion</h2>
+<p>Finally, you can open rviz2 and start adding visualizations to visualize the map
+that SLAM Toolbox created, you can also visualize the position and velocity of
+the robot, and even the PointCloud and LaserScan!</p>
+<p>Using the <code>teleop_twist_keyboard</code> you can move the robot around, and the map will change
+in real-time. Pretty fun to drive. If you want, you can try with other nodes, or even
+create your own to make the robot move autonomously.</p>
+<p>If you have any doubts, feel free to leave a comment or <a href="https://github.com/daviddavo/blog.ddavo.me/issues">open an issue on GitHub</a>. If you already know a bit about robotics and you detect some mistake that I made, please tell me so and I&rsquo;ll modify the post. Thank you for reading me and see you next time!</p>
+<h2 id="sources-and-more-information">Sources and more information</h2>
+<ul>
+<li><a href="https://wiki.archlinux.org/title/ROS">ArchWiki - ROS</a>. On how to install ROS and solve problems in ArchLinux / Manjaro.</li>
+<li><a href="https://www.coppeliarobotics.com/helpFiles/en/ros2Interface.htm">CoppeliaSim User Manual</a>. One of these things that is not on google, but solves a lot of problems.</li>
+<li><a href="https://github.com/CoppeliaRobotics/simExtROS2">GitHub - coppeliaRobotics/simExtROS2</a>. In the &ldquo;Issues&rdquo; part there are some interesting problems and solutions.</li>
+<li><a href="https://navigation.ros.org/setup_guides/transformation/setup_transforms.html">ROS Planning. Setting Up Transformations</a>. NAV2 documentation is overall a good source material to understand how ROS works.</li>
+<li><a href="https://www.ros.org/reps/rep-0105.html">REP 105 &ndash; Coordinate Frames for Mobile Platforms</a></li>
+</ul>
+]]></content:encoded></item><item><title>Compiling and publishing multilingual LaTeX with GitHub</title><link>https://blog.ddavo.me/posts/tutorials/automatic-latex-cv/</link><pubDate>Thu, 01 Sep 2022 19:14:22 +0000</pubDate><guid>https://blog.ddavo.me/posts/tutorials/automatic-latex-cv/</guid><description>I have been wanting to publish my CV in my personal site for quite some time, but first I needed to make sure that it was always up-to-date. I.e. that it was compiled and published automatically every time I made some changes to the source file.
 Since 5 years ago, my CV is written using LaTeX, using (and modifying) the Awesome CV template. On top of that, I added a few things to make it bilingual, compiling either in Spanish or English, making the document available in multiple languages.</description><content:encoded><![CDATA[<p>I have been wanting to publish my CV in my personal site for quite some time, but first I needed
 to make sure that it was always up-to-date. I.e. that it was compiled and published automatically
 every time I made some changes to the source file.</p>
