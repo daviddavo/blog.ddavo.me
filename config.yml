@@ -15,6 +15,7 @@ title: >
 copyright: 'David Davó (c) 2021'
 theme: "PaperModX"
 paginate: 5
+enableRobotsTXT: true
 markup:
   goldmark:
     extensions:
