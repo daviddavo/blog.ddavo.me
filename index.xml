@@ -1,4 +1,28 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>David Davó's dev log</title><link>https://blog.ddavo.me/</link><description>Recent content on David Davó's dev log</description><generator>Hugo -- gohugo.io</generator><copyright>David Davó (c) 2021</copyright><lastBuildDate>Tue, 31 Jan 2023 20:08:41 +0000</lastBuildDate><atom:link href="https://blog.ddavo.me/index.xml" rel="self" type="application/rss+xml"/><item><title>Using ROS2 in Coppelia</title><link>https://blog.ddavo.me/posts/tutorials/ros2-coppelia-lidar/</link><pubDate>Tue, 31 Jan 2023 20:08:41 +0000</pubDate><guid>https://blog.ddavo.me/posts/tutorials/ros2-coppelia-lidar/</guid><description>With this tutorial you will learn how to use ROS2 in the Coppelia simulator (formerly V-REP) with the simExtROS2 library, using the lidar to build a map.</description><content:encoded><![CDATA[<h2 id="introduction">Introduction</h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>David Davó's dev log</title><link>https://blog.ddavo.me/</link><description>Recent content on David Davó's dev log</description><generator>Hugo -- gohugo.io</generator><copyright>David Davó (c) 2023</copyright><lastBuildDate>Sun, 21 May 2023 18:13:36 +0000</lastBuildDate><atom:link href="https://blog.ddavo.me/index.xml" rel="self" type="application/rss+xml"/><item><title>How to export your Pocket data and migrate to Omnivore</title><link>https://blog.ddavo.me/posts/tutorials/pocket-to-omnivore/</link><pubDate>Sun, 21 May 2023 18:13:36 +0000</pubDate><guid>https://blog.ddavo.me/posts/tutorials/pocket-to-omnivore/</guid><description>In this tutorial I provide a Jupyter notebook to process your data from Pocket and upload it to Omnivore</description><content:encoded><![CDATA[<p>I tried to use Pocket, I really tried, but I had to stop using it because it only allowed you 3 highlights per post for free.
+I know that Pocket is just a company and that they are just trying to provide value to its shareholders, but, come on, is that really a
+PREMIUM feature? Are you really trying to charge me for a couple of extra bytes?</p>
+<p>That&rsquo;s why I decided to search for another read-it-later app, and I came across <a href="https://omnivore.app">Omnivore</a>. It is also
+Open Source, which would let me self-host the application if I wanted to. I&rsquo;d be more than happy to pay a fair price for a
+service I like, but in this case, it isn&rsquo;t necessary because it&rsquo;s completely free.</p>
+<p>But first, I needed to migrate my data from Pocket to Omnivore. There is currently an open Issue in GitHub (<a href="https://github.com/omnivore-app/omnivore/issues/2050">#2050</a>) to provide an official Pocket integration, check in that thread if it has been already implemented before
+continuing in this tutorial. In my case, after waiting a few weeks, I decided to get on my knees and implement it myself,
+learning a bit of GraphQL on the way.</p>
+<h1 id="exporting-your-data-from-pocket">Exporting your data from Pocket</h1>
+<p>This was by far the easiest part, just visit <a href="https://getpocket.com/export">getpocket.com/export</a> and download the <code>ril_export.html</code> file.</p>
+<h1 id="uploading-your-data-to-omnivore">Uploading your data to Omnivore</h1>
+<p>I created a Jupyter Notebook to parse the <code>ril_export.html</code> file and make the proper GraphQL queries to Omnivore&rsquo;s API.
+This notebook doesn&rsquo;t just create the article, it also archives it if it has been read in Pocket, and sets the upload date.</p>
+<h2 id="getting-an-omnivore-api-key">Getting an Omnivore API key</h2>
+<p>Because we are using a custom-made application, you will need a key to interact with Omnivore. You can find info on how
+to create an Omnivore API key in the <a href="https://docs.omnivore.app/integrations/api.html#getting-an-api-token">official documentation</a>.</p>
+<p><img loading="lazy" src="/images/omnivore-web-create-api-token.png" type="" alt="Getting an omnivore API key"  /></p>
+<h2 id="running-the-jupyter-notebook">Running the Jupyter Notebook</h2>
+<p>I made a Jupyter Notebook using Beautiful Soup to process the <code>ril_export.html</code> file, and gql to run the GraphQL queries, as simple as it is. You can <a href="https://mybinder.org/v2/gh/daviddavo/pocket2omnivore/HEAD?labpath=pocket2omnivore.ipynb">run it online on Binder</a>.</p>
+<p>It will ask you to upload the <code>ril_export.html</code> file. Remember to set up the global variables first! Especially the <code>OMNIVORE_API_KEY</code>.</p>
+<p>After running, it will start uploading the URLs one by one. It will take a while. If you visit Omnivore, you&rsquo;ll see that some of these posts don&rsquo;t
+have a title or a description. This is because it takes a while to crawl the website.</p>
+<p>By the way, did you know that this page is intended to be fully compatible with Omnivore? Try adding some of my posts to your list!</p>
+]]></content:encoded></item><item><title>Using ROS2 in Coppelia</title><link>https://blog.ddavo.me/posts/tutorials/ros2-coppelia-lidar/</link><pubDate>Tue, 31 Jan 2023 20:08:41 +0000</pubDate><guid>https://blog.ddavo.me/posts/tutorials/ros2-coppelia-lidar/</guid><description>With this tutorial you will learn how to use ROS2 in the Coppelia simulator (formerly V-REP) with the simExtROS2 library, using the lidar to build a map.</description><content:encoded><![CDATA[<h2 id="introduction">Introduction</h2>
 <p>Let&rsquo;s be honest, if you&rsquo;re here it&rsquo;s probably because you found this blog on Google.
 As I understand it, at the moment there are no comprehensible resources to use
 ROS2 with the Coppelia simulator (previously known as V-REP), and it is no simple task.</p>
