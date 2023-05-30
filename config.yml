@@ -1,5 +1,6 @@
 baseURL: 'https://blog.ddavo.me/'
 defaultContentLanguage: en
+enableEmoji: true
 languages:
   en:
     weight: 1
