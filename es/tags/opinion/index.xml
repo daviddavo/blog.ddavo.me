@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>opinion on David Davó's dev log</title><link>https://blog.ddavo.me/es/tags/opinion/</link><description>Recent content in opinion on David Davó's dev log</description><generator>Hugo -- gohugo.io</generator><language>es</language><copyright>David Davó (c) 2023</copyright><lastBuildDate>Tue, 30 May 2023 18:11:58 +0000</lastBuildDate><atom:link href="https://blog.ddavo.me/es/tags/opinion/index.xml" rel="self" type="application/rss+xml"/><item><title>Muerte al algoritmo: Alternativas a los sistemas recomendadores</title><link>https://blog.ddavo.me/es/posts/muerte-al-algoritmo/</link><pubDate>Tue, 30 May 2023 18:11:58 +0000</pubDate><guid>https://blog.ddavo.me/es/posts/muerte-al-algoritmo/</guid><description>Los algoritmos recomendadores son útiles, pero en ocasiones queremos descubrir contenido por nosotros mismos. Presento 7 alternativas manuales al &amp;#34;algoritmo&amp;#34;</description><content:encoded><![CDATA[<p>A veces estamos cansados y abrumados por la gran oferta de contenido que nos
+dan nuestras plataformas favoritas, y de entre Todas Las Cosas Del Universo, pues
+nos cuesta elegir. Pero no te preocupes, que por algo todas estas plataformas
+tienen un <em>algoritmo</em> que elige por tí y reduce Todas Las Cosas Del Universo
+a una docena de opciones entre las que escoger. Además, suele acertar&hellip; Si me gustó
+Toy Story 3, pues me gustará Toy Story 4. Razón no le falta.</p>
+<p>Un sistema recomendador, comúnmente conocido como &ldquo;el algoritmo&rdquo;, es un sistema
+que intenta predecir la valoración que le darás a un <em>ítem</em>, como puede ser una
+serie de Netflix, un vídeo de YouTube, o un producto de Amazon, basándose en las valoraciones que hayas hecho. Ojo, que ver un vídeo hasta el final también es una valoración (y mucho más importante que que le des a like o dislike).</p>
+<figure>
+    <img loading="lazy" src="youtube.png"
+         alt="Captura de pantalla de mis recomendaciones de YouTube"/> <figcaption>
+            <p>El algoritmo de YouTube es el reflejo del alma</p>
+        </figcaption>
+</figure>
+
+<p>En este artículo no me voy a explayar en cómo funcionan. Aunque aún no hay mucha
+divulgación en castellano, no quiero que se alargue demasiado. Sin embargo, puedes
+encontrar una lista con más info <a href="#m%C3%A1s-informaci%C3%B3n">al final de este artículo</a>.</p>
+<p>En resumidas cuentas, normalmente son sistemas de aprendizaje automático
+encargados de buscar grupos de usuarios con gustos similares, y recomendarles cosas
+entre ellos. <strong>Si a Alicia y Bob les gustan casi los mismos grupos, y de repente
+Bob escucha un grupo nuevo, seguramente ese grupo le guste también a Alicia.</strong></p>
+<p>Es bastante normal que estos sistemas no sepan de qué va el vídeo, o cuál es el género
+musical de esa canción. Solo tienen en cuenta cómo de similares son los gustos
+de Alice y Bob.</p>
+<p>Sin embargo, el objetivo último de cualquier sistema de aprendizaje automático
+es optimizar <em>algo</em>. ¿La <em>diversión</em>? ¿El <em>entretenimiento</em>? ¿El <em>aprendizaje</em>?
+Pues no, lo más seguro
+es que las empresas que diseñan estos algoritmos decidan optimizarlos para que
+generes la mayor cantidad de dinero posible, es decir, que pases todo el tiempo
+que puedas <strong>enganchado a sus recomendaciones</strong>. Y funcionan <em>demasiado</em> bien.</p>
+<p>A veces nos apetece salir de esa zona de confort que nos crea &ldquo;el algoritmo&rdquo; y
+nos apetece empezar a comprar libros de fantasía aunque nunca hayamos leído uno,
+o escuchar algo de electro-cumbia psicodélica, si esque existe.
+Sin embargo, es muy difícil &ldquo;domar al algoritmo&rdquo;
+para que nos muestre lo que queremos, y suele llevarte o bien a la corriente principal
+o bien por una madriguera sin salida hasta llegar a nichos insospechados.</p>
+<p>Por eso, en este artículo presento varias alternativas a los algoritmos recomendadores:</p>
+<blockquote>
+<p>Este artículo está <em>vivo</em> y ha sido actualizado por última vez el 31 de mayo de 2023</p>
+</blockquote>
+<h2 id="1-el-curador-podcasts-radios-blogs">1. El Curador: Podcasts, radios, blogs&hellip;</h2>
+<p>Voy a empezar hablando de Radio 3, de quien tomo prestado su lema «¡muerte al algoritmo!» para el título de este artículo.</p>
+<p>Una gran opción para descubrir cosas nuevas es buscar a <strong>gente especializada</strong> en hablar de esas cosas. Lee blogs, escucha programas
+de radio y podcasts, mira vídeos y vlogs, pregunta a gente que conozcas, lee artículos en revistas, ¡lo que sea!</p>
+<p>Además de descubrir cosas nuevas, también es una manera mucho más activa de participar en ese hobby que tanto te gusta,
+y puede proporcionarte una nueva perspectiva. <strong>El simple hecho de estar leyendo sobre ello ya es entretenido y puede ser un hobby
+en sí mismo.</strong> Por ejemplo, en cuanto a anime a mí me gusta la revista 🇪🇸 <a href="https://otakubunka.com">Otaku Bunka</a>, en la que además de hablar de manga y anime cuentan con varios artículos en los que analizan la cultura japonesa o la industria en sí.
+Es increíble la cantidad de títulos que no descubriría si no fuese porque hablan de ellos.</p>
+<p>En cuanto a música, además de la radio en directo, Radio 3 sube <a href="https://www.rtve.es/play/radio/radio-3">todos sus programas</a> en formato Podcast
+para que los escuches cuando quieras. Algunos ponen música y apenas comentan, otros son de entrevistas, otros analizan las novedades de la semana&hellip;
+Últimamente estoy enganchado a <a href="https://www.rtve.es/play/audios/el-sotano/">El sótano</a> y <a href="https://www.rtve.es/play/audios/melodias-pizarras/">Melodías Pizarras</a>, con los que escucho música que, directamente, no está en muchas plataformas&hellip;</p>
+<p>Al final, acabas teniendo una cartera de &ldquo;referentes&rdquo; a los que puedes volver para descubrir cosas nuevas</p>
+<h2 id="2-déjate-llevar-con-_playlists_-_mixes_-_ciclos_">2. Déjate llevar con <em>playlists</em>, <em>mixes</em>, <em>ciclos</em>&hellip;</h2>
+<p>Sin embargo, sí que es verdad que a veces queremos ver una peli y ya, sin tragarnos un programa muy interesante sobre
+películas en las que se basó el director y que tratan temas tangenciales. De igual modo, en ocasiones nos apetece <em>darle
+al play</em> y ponernos a escuchar música, sin pensar en qué canción, álbum y artista en concreto están sonando en ese momento.</p>
+<p>Por esa razón se crearon los ciclos de cine, las listas de reproducción y los remixes. Un &ldquo;paquetito&rdquo; de contenido que
+algún extraño ha considerado que está guay que vayan juntos.</p>
+<p>En Deezer, por ejemplo, cuentas con Playlists creadas por especialistas basadas en estados de ánimo, géneros, épocas,
+lo que quieras. Además en el buscador también hay multitud de playlists de la comunidad. Si no te convence nada, siempre puedes tirar de los mixes automáticos y dejarte llevar por el algoritmo. En Filmin, sin embargo, directamente pasan de algoritmos y solo cuentan con colecciones y ciclos <strong>hechos a mano</strong> con títulos como «Tiempo de elecciones», «00&rsquo;s icons» o «California Dreamin&rsquo;».</p>
+<figure>
+    <img loading="lazy" src="filmin.png"
+         alt="Captura de pantalla de las listas de Filmin"/> <figcaption>
+            <p>En Filmin podemos encontrar loss títulos agrupados por colecciones creadas por un <em>humano</em></p>
+        </figcaption>
+</figure>
+
+<p>Personalmente, en cuanto a música me encantan los vídeos de YouTube de una hora del canal <a href="https://www.youtube.com/@MyAnalogJournal">My Analog Journal</a>. El canal <a href="https://www.youtube.com/@umekotakun2810">umetokakun</a> también cuenta con mixes con títulos inspirados como «Citypop para huír de tus sentimientos» o «Soft indie rock raro psicodélico para tumbarse en la nieve y contemplar la vida». Simplemente la forma en la que aparecen las canciones (el título, como están ordenadas, la sutileza de las transiciones) ya es una experiencia en sí que supera con creces cualquier algoritmo.</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/E_b-Q0xiTmo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<h2 id="3-el-efecto-_bola-de-nieve_">3. El efecto <em>bola de nieve</em></h2>
+<p>El efecto bola de nieve es muy usado por científicos para descubrir nuevos artículos a leer. En nuestro caso, vas a las citas y referencias de un artículo que te interesa para descubrir nuevos artículos interesantes. En esos artículos, vuelves a ir a las referencias para descubrir aún más artículos y, antes de darte cuenta, tienes un crecimiento exponencial de descubrimiento.</p>
+<p>Si queremos aplicarlo al entretenimiento, podemos fijarnos en cosas que tengan algo en común con lo que acabamos de leer/escuchar/ver. Podemos buscar más álbumes y canciones del mismo grupo (o incluso de la misma discográfica), más libros de la misma editorial, más películas del mismo director o de un actor en concreto, más series de la misma productora&hellip; Antes de que te des cuenta, tendrás muchísimas cosas que quieras ver, y habrás aprendido un poquito de historia y cultura, que no viene mal para jugar al Trivial.</p>
+<p>Por ejemplo, Bandcamp te permite explorar los <em>tags</em> de un ábum, y puedes descubrir géneros que no sabías ni que existían.</p>
+<h2 id="4-plataformas-y-usuarios">4. Plataformas y usuarios</h2>
+<p>Existen plataformas de contenido generado por usuarios como <a href="https://myanimelist.net/profile/daviddavo">MyAnimeList</a> en el que los usuarios pueden hacer recomendaciones basadas en algo que hayas visto. Normalmente, estas recomendaciones pueden ir acompañadas de un pequeño texto en el que <em>argumentas</em> por qué recomendarías esa otra cosa. Para libros también tienes <a href="https://www.goodreads.com/">Goodreads</a>. Y, para pelis y series, <a href="https://letterboxd.com">Letterboxd</a>. En música existe el viejo y confiable <a href="https://www.last.fm/user/davidavo">last.fm</a>.</p>
+<figure>
+    <img loading="lazy" src="myanimelist.png"
+         alt="Captura de pantalla de las recomendaciones de MyAnimeList"/> <figcaption>
+            <p>Como dicen <em>BlueYoshi</em> y otros 117 usuarios: si te gustó Cowboy Bebop te gustará Samurai Champloo</p>
+        </figcaption>
+</figure>
+
+<p>Además, no es necesario ir explícitamente a páginas de recomendaciones. Puedes encontrar hueco para sugerencias en cualquier red social o plataforma, prueba a buscar en Google «reddit recommendation LOQUESEA&quot; y te sorprenderá los buenos resultados que obtienes. Y, si no, siempre puedes preguntarlo tú mismo.</p>
+<h2 id="5-juzga-al-libro-por-el-lomo">5. Juzga al libro por el lomo</h2>
+<p>Siempre se dice la frase «No juzgues a un libro por la portada», pero, si fuese cierta, ¿entonces para qué tienen portadas los libros? Yo propongo dejarse llevar un poco más y ser más prejuzgones, no pensarse tanto las cosas y <em>juzgar el libro por el lomo</em>.</p>
+<p>En esta sociedad aceleracionista estamos optimizando hasta nuestro tiempo libre y parece que es necesario que cada minuto que pasamos <strong>consumiendo contenido</strong> este sea de la mayor calidad posible y que más valor nos aporte. Acabamos priorizando ver cosas «de mejor calidad» ante cosas que nos gustaría ver, o directamente ignorando algo porque «no nos suena» antes de tan si quiera plantearnos si verlo.</p>
+<p>La próxima vez que veas la carátula de una peli que te llama, o un libro con un título muy interesante, échale un vistazo aunque no hayas oído nunca antes hablar de él y no estés seguro de si es o no la película del año.</p>
+<h2 id="6-algoritmos-transparentes">6. Algoritmos transparentes</h2>
+<p><strong>Decir que una web no tiene algoritmos es como decir que una fruta no lleva químicos</strong>. La materia orgánica está compuesta de moléculas y de química, y el software está compuesto de algoritmos, es un hecho.</p>
+<p>Sin embargo, igual que existen compuestos químicos a evitar por no ser precisamente buenos para la salud, también existen algoritmos mejores que pueden ayudar al usuario a descubrir lo que quieren.</p>
+<p>Un ejemplo de ello es <a href="https://music-map.com">music-map.com</a>, que te muestra un amplio conjunto de artistas parecidos a un artista dado, donde la distancia representa la similitud.</p>
+<figure>
+    <img loading="lazy" src="music-map.png"
+         alt="Captura de pantalla de music-map.com"/> <figcaption>
+            <p>Parece ser que Zombies es muy parecido a The Kinks, pero si quiero irme por la tangente puedo escuchar The Who</p>
+        </figcaption>
+</figure>
+
+<p><a href="https://everynoise.com/">Every Noise at Once</a> es una página similar que muestra muchísimos géneros musicales, y puedes ver cuales se parecen entre ellos. Además, haciendo click puedes escuchar una muestra de audio y ver si te gusta.</p>
+<p>Desde luego, cualquier algoritmo que te muestre el por qué te recomienda algo, o que te permita seleccionar <em>el punto de partida</em> ya te va a ser muy útil para expandir tus horizontes.</p>
+<h2 id="conclusión">Conclusión</h2>
+<p>Aunque los algoritmos recomendadores son herramientas poderosas que nos ayudan a navegar por la vasta cantidad de contenido disponible en nuestras plataformas favoritas, a veces deseamos escapar de su influencia y descubrir cosas nuevas por nuestra cuenta. Afortunadamente, existen varias alternativas que nos permiten tomar el control de nuestras elecciones y ampliar los horizontes de nuestro entretenimiento.</p>
+<blockquote>
+<p>Si consideras que puedo añadir algo más a este artículo puedes escribir un comentario o mandar un correo a david [arroba] ddavo.me</p>
+</blockquote>
+<h2 id="más-información">Más información</h2>
+<ul>
+<li>🇬🇧 El canal de entretenidos vídeos de 5 minutos <em>Half as Interesting</em> presenta <a href="https://www.youtube.com/watch?v=RzuvZDSmIco">El sistema matemático de Spotify que determina tus gustos musicales</a></li>
+<li>🇬🇧 <a href="https://youtu.be/n3RKsY2H-NE">How Recommender Systems Work</a>: Un <strong>vídeo</strong> de 10 minutos algo más serio que se mete en las matemáticas del asunto</li>
+<li>🇬🇧 Para celebrar el millón de suscriptores, <em>Answer in Progress</em> crea un extenso (50 minutos) pero ameno <a href="https://youtu.be/r1N81RRQ4ec">vídeo sobre la historia del algoritmo de YouTube</a>, explicando en el proceso como funciona su opaco sistema.</li>
+<li>🇪🇸 Pequeño <a href="https://youtu.be/0pwKxK1fo0g">vídeo de La Vanguardia</a> que explica cómo funcionan los algoritmos recomendadores, aunque se ha quedado un poco desactualizado.</li>
+<li>🇪🇸 La página de <a href="Sistema_de_recomendaci%C3%B3n">Sistemas de recomendación de Wikipedia</a> tampoco está nada mal</li>
+</ul>
+]]></content:encoded></item></channel></rss>
