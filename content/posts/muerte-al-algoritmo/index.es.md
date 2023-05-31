@@ -1,9 +1,8 @@
 ---
 title: "Muerte al algoritmo: Alternativas a los sistemas recomendadores"
 date: 2023-05-30T18:11:58.112Z
-draft: true
 author: David Davó
-lastmod: 2023-05-31T20:38:33.446Z
+lastmod: 2023-05-31T20:41:30.103Z
 description: Los algoritmos recomendadores son útiles, pero en ocasiones queremos descubrir contenido por nosotros mismos. Presento 7 alternativas manuales al "algoritmo"
 preview: /photo-1621711678457-a314cede97d0.avif
 tags:
