@@ -64,3 +64,9 @@ params:
       url: 'https://gitlab.com/daviddavo'
     - name: linkedin
       url: 'https://www.linkedin.com/in/ddavo/'
+  cover:
+    linkFullImages: false
+    responsiveImages: true
+    hidden: false
+    hiddenInList: false
+    hiddenInSingle: false
