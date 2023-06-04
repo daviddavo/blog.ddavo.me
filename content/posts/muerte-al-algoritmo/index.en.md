@@ -2,7 +2,7 @@
 title: "Death to the algorithm: Alternatives to recommendation systems"
 date: 2023-05-30T18:11:58.112Z
 author: David Davó
-lastmod: 2023-06-03T19:27:01.390Z
+lastmod: 2023-06-04T11:55:24.739Z
 description: Recommendation systems are useful, but sometimes we just want to discover new things by ourselves. In this article I present 6 alternatives to "the algorithm".
 cover:
   image: cover.webp
@@ -16,7 +16,7 @@ categories:
 keywords:
   - algorithm
   - recommendation system
-draft: true
+slug: death-to-the-algorithm
 ---
 
 Often, we find ourselves exhausted by the overwhelming amount of content available on our favourite platforms. It can be a real challenge to make a selection from the vast sea of options. Luckily, all platforms have a great _algorithm_ that chooses for you and **reduces the sea of options to just a dozen of items**. Furthermore, it's usually accurate... If I enjoyed Toy Story 3, I'd certainly like Toy Story 4. It's almost always spot on.
@@ -35,13 +35,11 @@ However, the ultimate goal of any machine learning system is to optimize somethi
 
 Sometimes, we want to break free from the comfort zone created by "the algorithm" and explore new things. We might want to start buying fantasy books even if we've never read one before or listen to some electro-psychedelic cumbia, if such a genre exists. However, taming the algorithm to show us exactly what we want can be extremely challenging. It often leads us either to mainstream content or down a rabbit hole with no way out, eventually leading us to unexpected and undiscovered niches.
 
-For these reasons, in this article I present 6 alternatives to recommendation algorithms:
+For these reasons, in this article, I present 6 alternatives to recommendation algorithms:
 
 > This article is _alive_ and was updated on {{% lastmod/iso %}}
 
 ## 1. The Curator: Podcasts, radios, blogs...
-
-Voy a empezar hablando de Radio 3, de quien tomo prestado su lema «¡muerte al algoritmo!» para el título de este artículo.
 
 I will start by talking about Radio 3, from whom I borrowed the slogan "death to the algorithm!" for the title of this article. For readers outside of Spain, Radio 3 is a Spanish public radio known for its alternative but wide programming. In their last publicity campaign, they decided to emphasize human curation and DJ selection rather than relying on algorithms for music recommendations.
 
@@ -55,70 +53,65 @@ In the end, you end up building a roster of "influencers" to whom you can return
 
 ## 2. Roll with _playlists_, _mixes_, _series_...
 
-Sin embargo, sí que es verdad que a veces queremos ver una peli y ya, sin tragarnos un programa muy interesante sobre
-películas en las que se basó el director y que tratan temas tangenciales. De igual modo, en ocasiones nos apetece _darle
-al play_ y ponernos a escuchar música, sin pensar en qué canción, álbum y artista en concreto están sonando en ese momento.
+However, it is true that sometimes we just want to watch a movie without delving into an interesting program about the director's inspirations or related topics. Similarly, there are times when we simply want to hit play and listen to music without considering the specific song, album, or artist playing at that moment.
 
-Por esa razón se crearon los ciclos de cine, las listas de reproducción y los remixes. Un "paquetito" de contenido que
-algún extraño ha considerado que está guay que vayan juntos. 
+That's why film series, playlists, and remixes were created. They are curated packages of content that someone thought would go well together.
 
-En Deezer, por ejemplo, cuentas con Playlists creadas por especialistas basadas en estados de ánimo, géneros, épocas,
-lo que quieras. Además en el buscador también hay multitud de playlists de la comunidad. Si no te convence nada, siempre puedes tirar de los mixes automáticos y dejarte llevar por el algoritmo. En Filmin, sin embargo, directamente pasan de algoritmos y solo cuentan con colecciones y ciclos **hechos a mano** con títulos como «Tiempo de elecciones», «00's icons» o «California Dreamin'».
+In Deezer, for example, you have playlists created by specialists based on moods, genres, eras, or whatever you prefer. Additionally, there are plenty of community-created playlists available through the search feature. If nothing satisfies you, you can always rely on automatic mixes and let the algorithm guide you. On the other hand, Filmin completely bypasses algorithms and exclusively offers **handcrafted collections** and film series with titles like "Time for Elections," "00's Icons," or "California Dreamin'."
 
-{{< figure src="filmin.png" alt="Captura de pantalla de las listas de Filmin" caption="En Filmin podemos encontrar loss títulos agrupados por colecciones creadas por un _humano_" >}}
+{{< figure src="filmin.png" alt="Screenshot of Filmin's list titles" caption="In Filmin, you can find titles grouped into collections curated by a _human_" >}}
 
-Personalmente, en cuanto a música me encantan los vídeos de YouTube de una hora del canal [My Analog Journal](https://www.youtube.com/@MyAnalogJournal). El canal [umetokakun](https://www.youtube.com/@umekotakun2810) también cuenta con mixes con títulos inspirados como «Citypop para huír de tus sentimientos» o «Soft indie rock raro psicodélico para tumbarse en la nieve y contemplar la vida». Simplemente la forma en la que aparecen las canciones (el título, como están ordenadas, la sutileza de las transiciones) ya es una experiencia en sí que supera con creces cualquier algoritmo.
+Personally, when it comes to music, I love the hour-long videos on YouTube from the channel [My Analog Journal](https://www.youtube.com/@MyAnalogJournal). The channel [umetokakun](https://www.youtube.com/@umekotakun2810) also offers mixes with creatively titled playlists such as "Citypop to Escape Your Feelings" or "Rare Psychedelic Soft Indie Rock to Lie in the Snow and Contemplate Life." Just the way the songs are presented, including the titles, their order, and the subtle transitions, creates an experience in itself that surpasses any algorithm.
 
 {{< youtube E_b-Q0xiTmo >}}
 
 ## 3. The snowball effect
 
-El efecto bola de nieve es muy usado por científicos para descubrir nuevos artículos a leer. En nuestro caso, vas a las citas y referencias de un artículo que te interesa para descubrir nuevos artículos interesantes. En esos artículos, vuelves a ir a las referencias para descubrir aún más artículos y, antes de darte cuenta, tienes un crecimiento exponencial de descubrimiento.
+The snowball effect is widely used by scientists to discover new articles to read. In our case, you go to the citations and references of an article that interests you to discover new interesting articles. In those articles, you go back to the references again to discover even more articles, and before you know it, you experience exponential growth in discovery.
 
-Si queremos aplicarlo al entretenimiento, podemos fijarnos en cosas que tengan algo en común con lo que acabamos de leer/escuchar/ver. Podemos buscar más álbumes y canciones del mismo grupo (o incluso de la misma discográfica), más libros de la misma editorial, más películas del mismo director o de un actor en concreto, más series de la misma productora... Antes de que te des cuenta, tendrás muchísimas cosas que quieras ver, y habrás aprendido un poquito de historia y cultura, que no viene mal para jugar al Trivial.
+If we want to apply it to entertainment, we can look for things that have something in common with what we just read/listened/watched. We can search for more albums and songs from the same band (or even the same record label), more books from the same publisher, more movies from the same director or a specific actor, more TV series from the same production company, etc.
+Before you know it, you'll have a long list of things you want to explore, and you'll have learned a bit of history and culture along the way, which can come in handy for trivia games.
 
-Por ejemplo, Bandcamp te permite explorar los _tags_ de un ábum, y puedes descubrir géneros que no sabías ni que existían.
+For example, Bandcamp allows you to explore the _tags_ of an album, where you can discover genres you didn't even know existed.
 
 ## 4. Platforms and user-generated content
 
-Existen plataformas de contenido generado por usuarios como [MyAnimeList](https://myanimelist.net/profile/daviddavo) en el que los usuarios pueden hacer recomendaciones basadas en algo que hayas visto. Normalmente, estas recomendaciones pueden ir acompañadas de un pequeño texto en el que _argumentas_ por qué recomendarías esa otra cosa. Para libros también tienes [Goodreads](https://www.goodreads.com/). Y, para pelis y series, [Letterboxd](https://letterboxd.com). En música existe el viejo y confiable [last.fm](https://www.last.fm/user/davidavo).
+There are user-generated content platforms like [MyAnimeList](https://myanimelist.net/profile/daviddavo) where users can make recommendations based on what they've watched. Usually, these recommendations can be accompanied by a brief text where you _justify_ why you would recommend that. For books, you also have [Goodreads](https://www.goodreads.com/). And for movies and series, there's [Letterboxd](https://letterboxd.com). In the music world, you can rely on the old and trustworthy [last.fm](https://www.last.fm/user/davidavo).
 
-{{< figure src="myanimelist.png" alt="Captura de pantalla de las recomendaciones de MyAnimeList" caption="Como dicen _BlueYoshi_ y otros 117 usuarios: si te gustó Cowboy Bebop te gustará Samurai Champloo" >}}
+{{< figure src="myanimelist.png" alt="Screenshot of recommendations on MyAnimeList" caption="As _BlueYoshi_ and 117 other users say: if you liked Cowboy Bebop, you'll like Samurai Champloo" >}}
 
-Además, no es necesario ir explícitamente a páginas de recomendaciones. Puedes encontrar hueco para sugerencias en cualquier red social o plataforma, prueba a buscar en Google «reddit recommendation LOQUESEA" y te sorprenderá los buenos resultados que obtienes. Y, si no, siempre puedes preguntarlo tú mismo.
+Additionally, it's not necessary to explicitly visit recommendation pages. You can find room for suggestions on any social media or platform. Try searching on Google for "Reddit recommendation [TOPIC]" and you'll be surprised by the good results you get. And if all else fails, you can always ask for recommendations yourself.
 
 ## 5. Judge a book by its spine
 
-Siempre se dice la frase «No juzgues a un libro por la portada», pero, si fuese cierta, ¿entonces para qué tienen portadas los libros? Yo propongo dejarse llevar un poco más y ser más prejuzgones, no pensarse tanto las cosas y _juzgar el libro por el lomo_.
+It is often said, "Don't judge a book by its cover", but if that were true, then why do books have covers? I propose letting ourselves go a little more and being more judgmental, not overthinking things and _judging the book by its spine_.
 
-En esta sociedad aceleracionista estamos optimizando hasta nuestro tiempo libre y parece que es necesario que cada minuto que pasamos **consumiendo contenido** este sea de la mayor calidad posible y que más valor nos aporte. Acabamos priorizando ver cosas «de mejor calidad» ante cosas que nos gustaría ver, o directamente ignorando algo porque «no nos suena» antes de tan si quiera plantearnos si verlo.
+In this accelerationist society, we are optimizing even our leisure time, and it seems necessary that every minute we spend **consuming content** is of the highest possible quality and provides us with the most value. We end up prioritizing watching things that are "of better quality" over things we would like to watch or simply ignoring something because "it doesn't ring a bell" before even considering whether to watch it.
 
-La próxima vez que veas la carátula de una peli que te llama, o un libro con un título muy interesante, échale un vistazo aunque no hayas oído nunca antes hablar de él y no estés seguro de si es o no la película del año.
+The next time you see the cover of a movie that catches your eye, or a book with a very interesting title, take a look at it even if you've never heard of it before and you're not sure if it's the movie of the year or not.
 
 ## 6. Transparent algorithms
 
-**Decir que una web no tiene algoritmos es como decir que una fruta no lleva químicos**. La materia orgánica está compuesta de moléculas y de química, y el software está compuesto de algoritmos, es un hecho.
+**Saying that a website has no algorithms is like saying that fruit has no chemicals**. Organic matter is composed of molecules, and software is composed of algorithms, it's a fact.
 
-Sin embargo, igual que existen compuestos químicos a evitar por no ser precisamente buenos para la salud, también existen algoritmos mejores que pueden ayudar al usuario a descubrir lo que quieren.
+However, just as there are chemical compounds to avoid for not being particularly good for health, there are also better algorithms that can help users discover what they want.
 
-Un ejemplo de ello es [music-map.com](https://music-map.com), que te muestra un amplio conjunto de artistas parecidos a un artista dado, donde la distancia representa la similitud.
+An example of this is [music-map.com](https://music-map.com), which shows you a wide range of artists similar to a given artist, where the distance represents similarity.
 
-{{< figure src="music-map.png" alt="Captura de pantalla de music-map.com" caption="Parece ser que Zombies es muy parecido a The Kinks, pero si quiero irme por la tangente puedo escuchar The Who" >}}
+{{< figure src="music-map.png" alt="Screenshot of music-map.com" caption="It seems that Zombies is very similar to The Kinks, but if I want to go off on a tangent I can listen to The Who" >}}
 
-[Every Noise at Once](https://everynoise.com/) es una página similar que muestra muchísimos géneros musicales, y puedes ver cuales se parecen entre ellos. Además, haciendo click puedes escuchar una muestra de audio y ver si te gusta.
+[Every Noise at Once](https://everynoise.com/) is a similar website that showcases a huge variety of music genres, and you can see which ones are similar to each other. Additionally, by clicking, you can listen to an audio sample and see if you like it.
 
-Desde luego, cualquier algoritmo que te muestre el por qué te recomienda algo, o que te permita seleccionar _el punto de partida_ ya te va a ser muy útil para expandir tus horizontes.
+Certainly, any algorithm that shows you **why** it recommends you something or allows you to select the starting point will be better for expanding your horizons.
 
 ## Conclusion
 
-Aunque los algoritmos recomendadores son herramientas poderosas que nos ayudan a navegar por la vasta cantidad de contenido disponible en nuestras plataformas favoritas, a veces deseamos escapar de su influencia y descubrir cosas nuevas por nuestra cuenta. Afortunadamente, existen varias alternativas que nos permiten tomar el control de nuestras elecciones y ampliar los horizontes de nuestro entretenimiento.
+Although recommendation algorithms are powerful tools that help us navigate through the vast amount of content available on our favourite platforms, sometimes we desire to escape their influence and discover new things on our own. Fortunately, there are other options that empower us to take control of our choices and broaden the horizons of our entertainment.
 
-> Si consideras que puedo añadir algo más a este artículo puedes escribir un comentario o mandar un correo a david [arroba] ddavo.me
+> If you think there's something else I can add to this article, feel free to leave a comment or send an email to david [at] ddavo.me.
 
 ## Further reading
-- :uk: El canal de entretenidos vídeos de 5 minutos _Half as Interesting_ presenta [El sistema matemático de Spotify que determina tus gustos musicales](https://www.youtube.com/watch?v=RzuvZDSmIco)
-- :uk: [How Recommender Systems Work](https://youtu.be/n3RKsY2H-NE): Un **vídeo** de 10 minutos algo más serio que se mete en las matemáticas del asunto
-- :uk: Para celebrar el millón de suscriptores, _Answer in Progress_ crea un extenso (50 minutos) pero ameno [vídeo sobre la historia del algoritmo de YouTube](https://youtu.be/r1N81RRQ4ec), explicando en el proceso como funciona su opaco sistema.
-- :es: Pequeño [vídeo de La Vanguardia](https://youtu.be/0pwKxK1fo0g) que explica cómo funcionan los algoritmos recomendadores, aunque se ha quedado un poco desactualizado.
-- :es: La página de [Sistemas de recomendación de Wikipedia](Sistema_de_recomendación) tampoco está nada mal
+- The entertaining 5-minute video channel _Half as Interesting_ presents [Spotify's Mathematical System for Determining Your Music Taste](https://www.youtube.com/watch?v=RzuvZDSmIco).
+- [How Recommender Systems Work](https://youtu.be/n3RKsY2H-NE): A 10-minute video that delves into the mathematics behind the subject.
+- To celebrate reaching one million subscribers, _Answer in Progress_ has created an extensive (50-minute) yet engaging [video on the history of the YouTube algorithm](https://youtu.be/r1N81RRQ4ec), explaining in the process how its opaque system works.
 
