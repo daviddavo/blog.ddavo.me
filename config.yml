@@ -11,8 +11,7 @@ languages:
     params:
       description: >
         Blog de desarrollador de David Davó, en el que encontrarás notas sobre mis proyectos (entre otras cosas)
-title: >
-  David Davó's dev log
+title: David Davó's dev log
 copyright: 'David Davó (c) 2023'
 theme: "PaperModX"
 paginate: 5
@@ -37,6 +36,7 @@ params:
   description: >
     David Davó's dev log where you'll find notes about my projects, among other things
   author: David Davó
+  shortTitle: David Davó
   keywords: [Blog, Portfolio, Devlog]
   DateFormat: "2006-01-02"
   comments: true
