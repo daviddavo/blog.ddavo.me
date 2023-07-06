@@ -2,10 +2,11 @@
 title: "Death to the algorithm: Alternatives to recommendation systems"
 date: 2023-05-30T18:11:58.112Z
 author: David Davó
-lastmod: 2023-06-04T11:55:24.739Z
+lastmod: 2023-07-06T07:31:44.331Z
 description: Recommendation systems are useful, but sometimes we just want to discover new things by ourselves. In this article I present 6 alternatives to "the algorithm".
 cover:
   image: cover.webp
+  alt: Abstract graph illustrating the article
 tags:
   - algorithms
   - artificial intelligence
