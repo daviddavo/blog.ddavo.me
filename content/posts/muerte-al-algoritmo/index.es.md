@@ -2,7 +2,7 @@
 title: "Muerte al algoritmo: Alternativas a los sistemas recomendadores"
 date: 2023-05-30T18:11:58.112Z
 author: David Davó
-lastmod: 2023-07-06T07:30:42.612Z
+lastmod: 2023-07-12T12:47:29.895Z
 description: Los algoritmos recomendadores son útiles, pero en ocasiones queremos descubrir contenido por nosotros mismos.
 cover:
   image: cover.webp
@@ -148,4 +148,4 @@ Aunque los algoritmos recomendadores son herramientas poderosas que nos ayudan a
 - :uk: Para celebrar el millón de suscriptores, _Answer in Progress_ crea un extenso (50 minutos) pero ameno [vídeo sobre la historia del algoritmo de YouTube](https://youtu.be/r1N81RRQ4ec), explicando en el proceso como funciona su opaco sistema.
 - :es: Pequeño [vídeo de La Vanguardia](https://youtu.be/0pwKxK1fo0g) que explica cómo funcionan los algoritmos recomendadores, aunque se ha quedado un poco desactualizado.
 - :es: La página de [Sistemas de recomendación de Wikipedia](Sistema_de_recomendación) tampoco está nada mal
-
+- :uk: Towardsdatascience tiene un muy buen [artículo introductorio a la implementación de sistemas recomendadores](https://towardsdatascience.com/introduction-to-recommender-systems-6c66cf15ada).

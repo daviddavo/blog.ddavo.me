@@ -2,7 +2,7 @@
 title: "Death to the algorithm: Alternatives to recommendation systems"
 date: 2023-05-30T18:11:58.112Z
 author: David Davó
-lastmod: 2023-07-06T07:31:44.331Z
+lastmod: 2023-07-12T12:47:57.067Z
 description: Recommendation systems are useful, but sometimes we just want to discover new things by ourselves. In this article I present 6 alternatives to "the algorithm".
 cover:
   image: cover.webp
@@ -115,4 +115,5 @@ Although recommendation algorithms are powerful tools that help us navigate thro
 - The entertaining 5-minute video channel _Half as Interesting_ presents [Spotify's Mathematical System for Determining Your Music Taste](https://www.youtube.com/watch?v=RzuvZDSmIco).
 - [How Recommender Systems Work](https://youtu.be/n3RKsY2H-NE): A 10-minute video that delves into the mathematics behind the subject.
 - To celebrate reaching one million subscribers, _Answer in Progress_ has created an extensive (50-minute) yet engaging [video on the history of the YouTube algorithm](https://youtu.be/r1N81RRQ4ec), explaining in the process how its opaque system works.
+- Towardsdatascience has a really great [introductory article to recommendation systems](https://towardsdatascience.com/introduction-to-recommender-systems-6c66cf15ada)
 
