@@ -38,7 +38,7 @@ para que nos muestre lo que queremos, y suele llevarte o bien a la corriente pri
 o bien por una madriguera sin salida hasta llegar a nichos insospechados.</p>
 <p>Por eso, en este artículo presento varias alternativas a los algoritmos recomendadores:</p>
 <blockquote>
-<p>Este artículo está <em>vivo</em> y ha sido actualizado por última vez el 6 de julio de 2023</p>
+<p>Este artículo está <em>vivo</em> y ha sido actualizado por última vez el 12 de julio de 2023</p>
 </blockquote>
 <h2 id="1-el-curador-podcasts-radios-blogs">1. El Curador: Podcasts, radios, blogs&hellip;</h2>
 <p>Voy a empezar hablando de Radio 3, de quien tomo prestado su lema «¡muerte al algoritmo!» para el título de este artículo.</p>
@@ -116,5 +116,6 @@ lo que quieras. Además en el buscador también hay multitud de playlists de la 
 <li>🇬🇧 Para celebrar el millón de suscriptores, <em>Answer in Progress</em> crea un extenso (50 minutos) pero ameno <a href="https://youtu.be/r1N81RRQ4ec">vídeo sobre la historia del algoritmo de YouTube</a>, explicando en el proceso como funciona su opaco sistema.</li>
 <li>🇪🇸 Pequeño <a href="https://youtu.be/0pwKxK1fo0g">vídeo de La Vanguardia</a> que explica cómo funcionan los algoritmos recomendadores, aunque se ha quedado un poco desactualizado.</li>
 <li>🇪🇸 La página de <a href="Sistema_de_recomendaci%C3%B3n">Sistemas de recomendación de Wikipedia</a> tampoco está nada mal</li>
+<li>🇬🇧 Towardsdatascience tiene un muy buen <a href="https://towardsdatascience.com/introduction-to-recommender-systems-6c66cf15ada">artículo introductorio a la implementación de sistemas recomendadores</a>.</li>
 </ul>
 ]]></content:encoded></item></channel></rss>

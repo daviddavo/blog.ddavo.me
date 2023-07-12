@@ -14,7 +14,7 @@
 <p>Sometimes, we want to break free from the comfort zone created by &ldquo;the algorithm&rdquo; and explore new things. We might want to start buying fantasy books even if we&rsquo;ve never read one before or listen to some electro-psychedelic cumbia, if such a genre exists. However, taming the algorithm to show us exactly what we want can be extremely challenging. It often leads us either to mainstream content or down a rabbit hole with no way out, eventually leading us to unexpected and undiscovered niches.</p>
 <p>For these reasons, in this article, I present 6 alternatives to recommendation algorithms:</p>
 <blockquote>
-<p>This article is <em>alive</em> and was updated on July 6, 2023</p>
+<p>This article is <em>alive</em> and was updated on July 12, 2023</p>
 </blockquote>
 <h2 id="1-the-curator-podcasts-radios-blogs">1. The Curator: Podcasts, radios, blogs&hellip;</h2>
 <p>I will start by talking about Radio 3, from whom I borrowed the slogan &ldquo;death to the algorithm!&rdquo; for the title of this article. For readers outside of Spain, Radio 3 is a Spanish public radio known for its alternative but wide programming. In their last publicity campaign, they decided to emphasize human curation and DJ selection rather than relying on algorithms for music recommendations.</p>
@@ -81,6 +81,7 @@ Before you know it, you&rsquo;ll have a long list of things you want to explore,
 <li>The entertaining 5-minute video channel <em>Half as Interesting</em> presents <a href="https://www.youtube.com/watch?v=RzuvZDSmIco">Spotify&rsquo;s Mathematical System for Determining Your Music Taste</a>.</li>
 <li><a href="https://youtu.be/n3RKsY2H-NE">How Recommender Systems Work</a>: A 10-minute video that delves into the mathematics behind the subject.</li>
 <li>To celebrate reaching one million subscribers, <em>Answer in Progress</em> has created an extensive (50-minute) yet engaging <a href="https://youtu.be/r1N81RRQ4ec">video on the history of the YouTube algorithm</a>, explaining in the process how its opaque system works.</li>
+<li>Towardsdatascience has a really great <a href="https://towardsdatascience.com/introduction-to-recommender-systems-6c66cf15ada">introductory article to recommendation systems</a></li>
 </ul>
 ]]></content:encoded></item><item><title>How to export your Pocket data to Omnivore</title><link>https://blog.ddavo.me/posts/tutorials/pocket-to-omnivore/</link><pubDate>Sun, 21 May 2023 18:13:36 +0000</pubDate><guid>https://blog.ddavo.me/posts/tutorials/pocket-to-omnivore/</guid><description>In this tutorial I provide a Jupyter notebook to process your data from Pocket and upload it to Omnivore</description><content:encoded><![CDATA[<p>I tried to use Pocket, I really tried, but I had to stop using it because it only allowed you 3 highlights per post for free.
 I know that Pocket is just a company and that they are just trying to provide value to its shareholders, but, come on, is that really a
