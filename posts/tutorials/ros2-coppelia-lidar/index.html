@@ -6,7 +6,36 @@
 As I understand it, at the moment there are no comprehensible resources to use
 ROS2 with the Coppelia simulator (previously known as V-REP), and it is no simple task.</p><p>In this tutorial, we will make a simple project using a Pioneer P3DX with a Lidar, in which we
 will use <em>Slam Toolbox</em> to create a map of the room, all using ROS2 tools like RVIZ2
-and NAV2&rsquo;s Slam Toolbox, but using Coppelia as a simulator instead of Gazebo.</p><p>The end product will look something like this:</p><div style=position:relative;padding-bottom:56.25%;height:0;overflow:hidden><iframe src=https://www.youtube.com/embed/SYblPjsOgAM style=position:absolute;top:0;left:0;width:100%;height:100%;border:0 allowfullscreen title="YouTube Video"></iframe></div><p>I made it work but I&rsquo;m no expert in robotics, so if I made some error, please let
+and NAV2&rsquo;s Slam Toolbox, but using Coppelia as a simulator instead of Gazebo.</p><p>The end product will look something like this:</p><div style=position:relative;padding-bottom:56.25%;height:0;overflow:hidden><div style=width:100%;position:relative;padding-bottom:56.15%;height:0;overflow:hidden><iframe style=position:absolute;top:0;left:0;width:100%;height:100%;border:0 loading=lazy ; srcdoc="<style>
+      * {
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+      }
+      body, html {
+        height: 100%;
+      }
+      img, svg {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+      }
+      svg {
+        filter: drop-shadow(1px 1px 10px hsl(206.5, 70.7%, 8%));
+        transition: all 250ms ease-in-out;
+      }
+      body:hover svg {
+        filter: drop-shadow(1px 1px 10px hsl(206.5, 0%, 10%));
+        transform: scale(1.2);
+      }
+    </style>
+    <a href='https://www.youtube.com/embed/SYblPjsOgAM?autoplay=1'>
+      <img src='https://img.youtube.com/vi/SYblPjsOgAM/hqdefault.jpg' alt='YouTube Video'>
+      <svg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 24 24' fill='none' stroke='#ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-play-circle'><circle cx='12' cy='12' r='10'></circle><polygon points='10 8 16 12 10 16 10 8'></polygon></svg>
+    </a>
+    " src=https://www.youtube.com/embed/SYblPjsOgAM title="YouTube Video" frameborder=0 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div><p>I made it work but I&rsquo;m no expert in robotics, so if I made some error, please let
 me know in the comments or <a href=https://github.com/daviddavo/blog.ddavo.me>on GitHub</a>.</p><p>I will center on the programming part because the way of adding a robot and lidar is the same whether you&rsquo;re using ROS2 or not.</p><blockquote><p>The original project was made as homework for the Master Universitario en Inteligencia Articial (MUIA) at Universidad Politécnica de Madrid (UPM)</p></blockquote><h2 id=installing-simextros2>Installing simExtROS2<a hidden class=anchor aria-hidden=true href=#installing-simextros2>¶</a></h2><p>ROS2 works by creating publishers and subscribers that emit and receive messages of a <em>message type</em>. To be able to do this from Coppelia, we will use the module <a href=https://github.com/CoppeliaRobotics/simExtROS2>simExtROS2</a>.</p><p>Coppelia comes with this module installed, but it&rsquo;s compiled with too few message types embedded.
 If you try publishing some sensor data, it will fail. You need to modify a config file from the source code and
 compile it again so it supports that message type.</p><p>First, we will download the source code. Because I&rsquo;m using Coppelia 4.4.0, I&rsquo;ll checkout to that version too. Feel free to change the version number if you need to.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>git clone --recursive https://github.com/CoppeliaRobotics/simExtROS2.git
