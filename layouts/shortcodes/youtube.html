@@ -1,10 +1,10 @@
+{{/* From https://chrispennington.blog/blog/lazy-load-youtube-embed-with-custom-poster/#user-content-fn-1 */}}
 {{- $pc := .Page.Site.Config.Privacy.YouTube -}}
 {{- $ytHost := cond $pc.PrivacyEnhanced  "www.youtube-nocookie.com" "www.youtube.com" -}}
 {{- $id := .Get "id" | default (.Get 0) -}}
 {{- $class := .Get "class" | default (.Get 1) -}}
 {{- $title := .Get "title" | default "YouTube Video" }}
 <div {{ with $class }}class="{{ . }}"{{ else }}style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;"{{ end }}>
-<!-- <div style="width: 100%; max-width: 550px; box-shadow: 6px 6px 10px hsl(206.5, 0%, 75%); margin: 2rem;"> -->
 <div style="width:100%; position: relative; padding-bottom: 56.15%; height: 0; overflow: hidden;">
   <iframe
     style="position: absolute; top: 0; left:0; width: 100%; height: 100%; border: 0;"
