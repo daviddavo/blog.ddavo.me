@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>opinion on David Davó's dev log</title><link>https://blog.ddavo.me/tags/opinion/</link><description>Recent content in opinion on David Davó's dev log</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>David Davó (c) 2023</copyright><lastBuildDate>Tue, 30 May 2023 18:11:58 +0000</lastBuildDate><atom:link href="https://blog.ddavo.me/tags/opinion/index.xml" rel="self" type="application/rss+xml"/><item><title>Death to the algorithm: Alternatives to recommendation systems</title><link>https://blog.ddavo.me/posts/death-to-the-algorithm/</link><pubDate>Tue, 30 May 2023 18:11:58 +0000</pubDate><guid>https://blog.ddavo.me/posts/death-to-the-algorithm/</guid><description>Recommendation systems are useful, but sometimes we just want to discover new things by ourselves. In this article I present 6 alternatives to &amp;#34;the algorithm&amp;#34;.</description><content:encoded><![CDATA[<p>Often, we find ourselves exhausted by the overwhelming amount of content available on our favourite platforms. It can be a real challenge to make a selection from the vast sea of options. Luckily, all platforms have a great <em>algorithm</em> that chooses for you and <strong>reduces the sea of options to just a dozen of items</strong>. Furthermore, it&rsquo;s usually accurate&hellip; If I enjoyed Toy Story 3, I&rsquo;d certainly like Toy Story 4. It&rsquo;s almost always spot on.</p>
 <p>A recommendation system, also known as &ldquo;the algorithm,&rdquo; is a system designed to predict how you will rate items like Netflix series, YouTube videos, or Amazon products based on your past ratings. It goes beyond just your explicit likes or dislikes and takes into consideration factors such as watching a video until the end, which can be even more influential in understanding your preferences.</p>
 <figure>
-    <img loading="lazy" src="youtube.png"
-         alt="Screenshot of my YouTube recommendations"/> <figcaption>
+        <img loading="lazy" srcset="https://blog.ddavo.me/posts/death-to-the-algorithm/youtube_hu04233eebc058b943f626a2d2ae01c26c_905639_360x0_resize_box_3.png 360w ,https://blog.ddavo.me/posts/death-to-the-algorithm/youtube_hu04233eebc058b943f626a2d2ae01c26c_905639_480x0_resize_box_3.png 480w ,https://blog.ddavo.me/posts/death-to-the-algorithm/youtube_hu04233eebc058b943f626a2d2ae01c26c_905639_720x0_resize_box_3.png 720w ,https://blog.ddavo.me/posts/death-to-the-algorithm/youtube_hu04233eebc058b943f626a2d2ae01c26c_905639_1080x0_resize_box_3.png 1080w ,https://blog.ddavo.me/posts/death-to-the-algorithm/youtube.png 1267w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="https://blog.ddavo.me/posts/death-to-the-algorithm/youtube.png" alt="Screenshot of my YouTube recommendations" 
+            width="1267" height="827">
+
+     <figcaption>
             <p>YouTube&rsquo;s algorithm is like a mirror</p>
         </figcaption>
 </figure>
@@ -27,8 +30,11 @@
 <p>That&rsquo;s why film series, playlists, and remixes were created. They are curated packages of content that someone thought would go well together.</p>
 <p>In Deezer, for example, you have playlists created by specialists based on moods, genres, eras, or whatever you prefer. Additionally, there are plenty of community-created playlists available through the search feature. If nothing satisfies you, you can always rely on automatic mixes and let the algorithm guide you. On the other hand, Filmin completely bypasses algorithms and exclusively offers <strong>handcrafted collections</strong> and film series with titles like &ldquo;Time for Elections,&rdquo; &ldquo;00&rsquo;s Icons,&rdquo; or &ldquo;California Dreamin&rsquo;.&rdquo;</p>
 <figure>
-    <img loading="lazy" src="filmin.png"
-         alt="Screenshot of Filmin&#39;s list titles"/> <figcaption>
+        <img loading="lazy" srcset="https://blog.ddavo.me/posts/death-to-the-algorithm/filmin_hu368d394aea90b9466c84177a4f9776c4_1845422_360x0_resize_box_3.png 360w ,https://blog.ddavo.me/posts/death-to-the-algorithm/filmin_hu368d394aea90b9466c84177a4f9776c4_1845422_480x0_resize_box_3.png 480w ,https://blog.ddavo.me/posts/death-to-the-algorithm/filmin_hu368d394aea90b9466c84177a4f9776c4_1845422_720x0_resize_box_3.png 720w ,https://blog.ddavo.me/posts/death-to-the-algorithm/filmin_hu368d394aea90b9466c84177a4f9776c4_1845422_1080x0_resize_box_3.png 1080w ,https://blog.ddavo.me/posts/death-to-the-algorithm/filmin_hu368d394aea90b9466c84177a4f9776c4_1845422_1500x0_resize_box_3.png 1500w ,https://blog.ddavo.me/posts/death-to-the-algorithm/filmin.png 1886w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="https://blog.ddavo.me/posts/death-to-the-algorithm/filmin.png" alt="Screenshot of Filmin&#39;s list titles" 
+            width="1886" height="949">
+
+     <figcaption>
             <p>In Filmin, you can find titles grouped into collections curated by a <em>human</em></p>
         </figcaption>
 </figure>
@@ -47,8 +53,11 @@ Before you know it, you&rsquo;ll have a long list of things you want to explore,
 <h2 id="4-platforms-and-user-generated-content">4. Platforms and user-generated content</h2>
 <p>There are user-generated content platforms like <a href="https://myanimelist.net/profile/daviddavo">MyAnimeList</a> where users can make recommendations based on what they&rsquo;ve watched. Usually, these recommendations can be accompanied by a brief text where you <em>justify</em> why you would recommend that. For books, you also have <a href="https://www.goodreads.com/">Goodreads</a>. And for movies and series, there&rsquo;s <a href="https://letterboxd.com">Letterboxd</a>. In the music world, you can rely on the old and trustworthy <a href="https://www.last.fm/user/davidavo">last.fm</a>.</p>
 <figure>
-    <img loading="lazy" src="myanimelist.png"
-         alt="Screenshot of recommendations on MyAnimeList"/> <figcaption>
+        <img loading="lazy" srcset="https://blog.ddavo.me/posts/death-to-the-algorithm/myanimelist_hu305bb524df96e84324aab94ffa598737_174783_360x0_resize_box_3.png 360w ,https://blog.ddavo.me/posts/death-to-the-algorithm/myanimelist_hu305bb524df96e84324aab94ffa598737_174783_480x0_resize_box_3.png 480w ,https://blog.ddavo.me/posts/death-to-the-algorithm/myanimelist_hu305bb524df96e84324aab94ffa598737_174783_720x0_resize_box_3.png 720w ,https://blog.ddavo.me/posts/death-to-the-algorithm/myanimelist.png 852w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="https://blog.ddavo.me/posts/death-to-the-algorithm/myanimelist.png" alt="Screenshot of recommendations on MyAnimeList" 
+            width="852" height="310">
+
+     <figcaption>
             <p>As <em>BlueYoshi</em> and 117 other users say: if you liked Cowboy Bebop, you&rsquo;ll like Samurai Champloo</p>
         </figcaption>
 </figure>
@@ -63,8 +72,11 @@ Before you know it, you&rsquo;ll have a long list of things you want to explore,
 <p>However, just as there are chemical compounds to avoid for not being particularly good for health, there are also better algorithms that can help users discover what they want.</p>
 <p>An example of this is <a href="https://music-map.com">music-map.com</a>, which shows you a wide range of artists similar to a given artist, where the distance represents similarity.</p>
 <figure>
-    <img loading="lazy" src="music-map.png"
-         alt="Screenshot of music-map.com"/> <figcaption>
+        <img loading="lazy" srcset="https://blog.ddavo.me/posts/death-to-the-algorithm/music-map_hu5d708a4afd784ea7a8ad5c108205cf0a_89651_360x0_resize_box_3.png 360w ,https://blog.ddavo.me/posts/death-to-the-algorithm/music-map_hu5d708a4afd784ea7a8ad5c108205cf0a_89651_480x0_resize_box_3.png 480w ,https://blog.ddavo.me/posts/death-to-the-algorithm/music-map_hu5d708a4afd784ea7a8ad5c108205cf0a_89651_720x0_resize_box_3.png 720w ,https://blog.ddavo.me/posts/death-to-the-algorithm/music-map.png 893w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="https://blog.ddavo.me/posts/death-to-the-algorithm/music-map.png" alt="Screenshot of music-map.com" 
+            width="893" height="957">
+
+     <figcaption>
             <p>It seems that Zombies is very similar to The Kinks, but if I want to go off on a tangent I can listen to The Who</p>
         </figcaption>
 </figure>
