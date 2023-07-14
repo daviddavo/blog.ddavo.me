@@ -31,6 +31,9 @@ markup:
     guessSyntax: true
     lineNos: false
     noClasses: false
+services:
+  youtube:
+    PrivacyEnhanced: true
 params:
   ShowShareButtons: true
   description: >
