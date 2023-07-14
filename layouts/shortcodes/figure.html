@@ -26,19 +26,15 @@
         <img loading="lazy" src="{{ (path.Join $.Page.RelPermalink (.Get "src")) | absURL }}" alt="{{ .Get "alt" }}">
         {{- end }}
     {{- else }}{{/* For absolute urls and external links, no img processing here */}}
-            <img loading="lazy" src="{{ (.Get "src") | absURL }}" alt="{{ .Get "alt" }}">
+            <img loading="lazy" src="{{ (.Get "src") | absURL }}" alt="{{ .Get "alt" }}"
+            {{- with .Get "width" }} width="{{ . }}"{{ end -}}
+            {{- with .Get "height" }} height="{{ . }}"{{ end -}}
+            /> <!-- Clossing img tag -->
     {{- end }}
     {{- if .Get "link" -}}
         </a>
     {{- end }}
 
-    <!--<img loading="lazy" src="{{ .Get "src" }}{{- if eq (.Get "align") "center" }}#center{{- end }}"
-         {{- if or (.Get "alt") (.Get "caption") }}
-         alt="{{ with .Get "alt" }}{{ . }}{{ else }}{{ .Get "caption" | markdownify| plainify }}{{ end }}"
-         {{- end -}}
-         {{- with .Get "width" }} width="{{ . }}"{{ end -}}
-         {{- with .Get "height" }} height="{{ . }}"{{ end -}}
-    /> --> <!-- Closing img tag -->
     {{- if or (or (.Get "title") (.Get "caption")) (.Get "attr") -}}
         <figcaption>
             {{ with (.Get "title") -}}
