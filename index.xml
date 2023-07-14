@@ -3,9 +3,7 @@
 <figure>
         <img loading="lazy" srcset="https://blog.ddavo.me/posts/death-to-the-algorithm/youtube_hu04233eebc058b943f626a2d2ae01c26c_905639_360x0_resize_box_3.png 360w ,https://blog.ddavo.me/posts/death-to-the-algorithm/youtube_hu04233eebc058b943f626a2d2ae01c26c_905639_480x0_resize_box_3.png 480w ,https://blog.ddavo.me/posts/death-to-the-algorithm/youtube_hu04233eebc058b943f626a2d2ae01c26c_905639_720x0_resize_box_3.png 720w ,https://blog.ddavo.me/posts/death-to-the-algorithm/youtube_hu04233eebc058b943f626a2d2ae01c26c_905639_1080x0_resize_box_3.png 1080w ,https://blog.ddavo.me/posts/death-to-the-algorithm/youtube.png 1267w" 
             sizes="(min-width: 768px) 720px, 100vw" src="https://blog.ddavo.me/posts/death-to-the-algorithm/youtube.png" alt="Screenshot of my YouTube recommendations" 
-            width="1267" height="827">
-
-     <figcaption>
+            width="1267" height="827"><figcaption>
             <p>YouTube&rsquo;s algorithm is like a mirror</p>
         </figcaption>
 </figure>
@@ -32,9 +30,7 @@
 <figure>
         <img loading="lazy" srcset="https://blog.ddavo.me/posts/death-to-the-algorithm/filmin_hu368d394aea90b9466c84177a4f9776c4_1845422_360x0_resize_box_3.png 360w ,https://blog.ddavo.me/posts/death-to-the-algorithm/filmin_hu368d394aea90b9466c84177a4f9776c4_1845422_480x0_resize_box_3.png 480w ,https://blog.ddavo.me/posts/death-to-the-algorithm/filmin_hu368d394aea90b9466c84177a4f9776c4_1845422_720x0_resize_box_3.png 720w ,https://blog.ddavo.me/posts/death-to-the-algorithm/filmin_hu368d394aea90b9466c84177a4f9776c4_1845422_1080x0_resize_box_3.png 1080w ,https://blog.ddavo.me/posts/death-to-the-algorithm/filmin_hu368d394aea90b9466c84177a4f9776c4_1845422_1500x0_resize_box_3.png 1500w ,https://blog.ddavo.me/posts/death-to-the-algorithm/filmin.png 1886w" 
             sizes="(min-width: 768px) 720px, 100vw" src="https://blog.ddavo.me/posts/death-to-the-algorithm/filmin.png" alt="Screenshot of Filmin&#39;s list titles" 
-            width="1886" height="949">
-
-     <figcaption>
+            width="1886" height="949"><figcaption>
             <p>In Filmin, you can find titles grouped into collections curated by a <em>human</em></p>
         </figcaption>
 </figure>
@@ -55,9 +51,7 @@ Before you know it, you&rsquo;ll have a long list of things you want to explore,
 <figure>
         <img loading="lazy" srcset="https://blog.ddavo.me/posts/death-to-the-algorithm/myanimelist_hu305bb524df96e84324aab94ffa598737_174783_360x0_resize_box_3.png 360w ,https://blog.ddavo.me/posts/death-to-the-algorithm/myanimelist_hu305bb524df96e84324aab94ffa598737_174783_480x0_resize_box_3.png 480w ,https://blog.ddavo.me/posts/death-to-the-algorithm/myanimelist_hu305bb524df96e84324aab94ffa598737_174783_720x0_resize_box_3.png 720w ,https://blog.ddavo.me/posts/death-to-the-algorithm/myanimelist.png 852w" 
             sizes="(min-width: 768px) 720px, 100vw" src="https://blog.ddavo.me/posts/death-to-the-algorithm/myanimelist.png" alt="Screenshot of recommendations on MyAnimeList" 
-            width="852" height="310">
-
-     <figcaption>
+            width="852" height="310"><figcaption>
             <p>As <em>BlueYoshi</em> and 117 other users say: if you liked Cowboy Bebop, you&rsquo;ll like Samurai Champloo</p>
         </figcaption>
 </figure>
@@ -74,9 +68,7 @@ Before you know it, you&rsquo;ll have a long list of things you want to explore,
 <figure>
         <img loading="lazy" srcset="https://blog.ddavo.me/posts/death-to-the-algorithm/music-map_hu5d708a4afd784ea7a8ad5c108205cf0a_89651_360x0_resize_box_3.png 360w ,https://blog.ddavo.me/posts/death-to-the-algorithm/music-map_hu5d708a4afd784ea7a8ad5c108205cf0a_89651_480x0_resize_box_3.png 480w ,https://blog.ddavo.me/posts/death-to-the-algorithm/music-map_hu5d708a4afd784ea7a8ad5c108205cf0a_89651_720x0_resize_box_3.png 720w ,https://blog.ddavo.me/posts/death-to-the-algorithm/music-map.png 893w" 
             sizes="(min-width: 768px) 720px, 100vw" src="https://blog.ddavo.me/posts/death-to-the-algorithm/music-map.png" alt="Screenshot of music-map.com" 
-            width="893" height="957">
-
-     <figcaption>
+            width="893" height="957"><figcaption>
             <p>It seems that Zombies is very similar to The Kinks, but if I want to go off on a tangent I can listen to The Who</p>
         </figcaption>
 </figure>

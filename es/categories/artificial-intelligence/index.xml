@@ -10,9 +10,7 @@ serie de Netflix, un vídeo de YouTube, o un producto de Amazon, basándose en l
 <figure>
         <img loading="lazy" srcset="https://blog.ddavo.me/es/posts/muerte-al-algoritmo/youtube_hu04233eebc058b943f626a2d2ae01c26c_905639_360x0_resize_box_3.png 360w ,https://blog.ddavo.me/es/posts/muerte-al-algoritmo/youtube_hu04233eebc058b943f626a2d2ae01c26c_905639_480x0_resize_box_3.png 480w ,https://blog.ddavo.me/es/posts/muerte-al-algoritmo/youtube_hu04233eebc058b943f626a2d2ae01c26c_905639_720x0_resize_box_3.png 720w ,https://blog.ddavo.me/es/posts/muerte-al-algoritmo/youtube_hu04233eebc058b943f626a2d2ae01c26c_905639_1080x0_resize_box_3.png 1080w ,https://blog.ddavo.me/es/posts/muerte-al-algoritmo/youtube.png 1267w" 
             sizes="(min-width: 768px) 720px, 100vw" src="https://blog.ddavo.me/es/posts/muerte-al-algoritmo/youtube.png" alt="Captura de pantalla de mis recomendaciones de YouTube" 
-            width="1267" height="827">
-
-     <figcaption>
+            width="1267" height="827"><figcaption>
             <p>El algoritmo de YouTube es el reflejo del alma</p>
         </figcaption>
 </figure>
@@ -66,9 +64,7 @@ lo que quieras. Además en el buscador también hay multitud de playlists de la 
 <figure>
         <img loading="lazy" srcset="https://blog.ddavo.me/es/posts/muerte-al-algoritmo/filmin_hu368d394aea90b9466c84177a4f9776c4_1845422_360x0_resize_box_3.png 360w ,https://blog.ddavo.me/es/posts/muerte-al-algoritmo/filmin_hu368d394aea90b9466c84177a4f9776c4_1845422_480x0_resize_box_3.png 480w ,https://blog.ddavo.me/es/posts/muerte-al-algoritmo/filmin_hu368d394aea90b9466c84177a4f9776c4_1845422_720x0_resize_box_3.png 720w ,https://blog.ddavo.me/es/posts/muerte-al-algoritmo/filmin_hu368d394aea90b9466c84177a4f9776c4_1845422_1080x0_resize_box_3.png 1080w ,https://blog.ddavo.me/es/posts/muerte-al-algoritmo/filmin_hu368d394aea90b9466c84177a4f9776c4_1845422_1500x0_resize_box_3.png 1500w ,https://blog.ddavo.me/es/posts/muerte-al-algoritmo/filmin.png 1886w" 
             sizes="(min-width: 768px) 720px, 100vw" src="https://blog.ddavo.me/es/posts/muerte-al-algoritmo/filmin.png" alt="Captura de pantalla de las listas de Filmin" 
-            width="1886" height="949">
-
-     <figcaption>
+            width="1886" height="949"><figcaption>
             <p>En Filmin podemos encontrar loss títulos agrupados por colecciones creadas por un <em>humano</em></p>
         </figcaption>
 </figure>
@@ -88,9 +84,7 @@ lo que quieras. Además en el buscador también hay multitud de playlists de la 
 <figure>
         <img loading="lazy" srcset="https://blog.ddavo.me/es/posts/muerte-al-algoritmo/myanimelist_hu305bb524df96e84324aab94ffa598737_174783_360x0_resize_box_3.png 360w ,https://blog.ddavo.me/es/posts/muerte-al-algoritmo/myanimelist_hu305bb524df96e84324aab94ffa598737_174783_480x0_resize_box_3.png 480w ,https://blog.ddavo.me/es/posts/muerte-al-algoritmo/myanimelist_hu305bb524df96e84324aab94ffa598737_174783_720x0_resize_box_3.png 720w ,https://blog.ddavo.me/es/posts/muerte-al-algoritmo/myanimelist.png 852w" 
             sizes="(min-width: 768px) 720px, 100vw" src="https://blog.ddavo.me/es/posts/muerte-al-algoritmo/myanimelist.png" alt="Captura de pantalla de las recomendaciones de MyAnimeList" 
-            width="852" height="310">
-
-     <figcaption>
+            width="852" height="310"><figcaption>
             <p>Como dicen <em>BlueYoshi</em> y otros 117 usuarios: si te gustó Cowboy Bebop te gustará Samurai Champloo</p>
         </figcaption>
 </figure>
@@ -107,9 +101,7 @@ lo que quieras. Además en el buscador también hay multitud de playlists de la 
 <figure>
         <img loading="lazy" srcset="https://blog.ddavo.me/es/posts/muerte-al-algoritmo/music-map_hu5d708a4afd784ea7a8ad5c108205cf0a_89651_360x0_resize_box_3.png 360w ,https://blog.ddavo.me/es/posts/muerte-al-algoritmo/music-map_hu5d708a4afd784ea7a8ad5c108205cf0a_89651_480x0_resize_box_3.png 480w ,https://blog.ddavo.me/es/posts/muerte-al-algoritmo/music-map_hu5d708a4afd784ea7a8ad5c108205cf0a_89651_720x0_resize_box_3.png 720w ,https://blog.ddavo.me/es/posts/muerte-al-algoritmo/music-map.png 893w" 
             sizes="(min-width: 768px) 720px, 100vw" src="https://blog.ddavo.me/es/posts/muerte-al-algoritmo/music-map.png" alt="Captura de pantalla de music-map.com" 
-            width="893" height="957">
-
-     <figcaption>
+            width="893" height="957"><figcaption>
             <p>Parece ser que Zombies es muy parecido a The Kinks, pero si quiero irme por la tangente puedo escuchar The Who</p>
         </figcaption>
 </figure>
