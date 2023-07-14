@@ -8,7 +8,6 @@ and NAV2&rsquo;s Slam Toolbox, but using Coppelia as a simulator instead of Gaze
 <p>The end product will look something like this:</p>
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-
 <div style="width:100%; position: relative; padding-bottom: 56.15%; height: 0; overflow: hidden;">
   <iframe
     style="position: absolute; top: 0; left:0; width: 100%; height: 100%; border: 0;"
