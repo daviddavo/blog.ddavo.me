@@ -9,13 +9,13 @@ tags:
   - Read Later
 categories:
   - tutorial
-lastmod: 2023-07-06T07:27:35.017Z
+lastmod: 2023-08-02T11:36:10.982Z
 keywords:
   - pocket
   - omnivore
   - export
   - import
-description: In this tutorial I provide a Jupyter notebook to process your data from Pocket and upload it to Omnivore
+description: In this tutorial I provide a Jupyter notebook to exp your data from Pocket and upload it to Omnivoreort
 ---
 
 I tried to use Pocket, I really tried, but I had to stop using it because it only allowed you 3 highlights per post for free.
@@ -49,6 +49,11 @@ to create an Omnivore API key in the [official documentation](https://docs.omniv
 ### Running the Jupyter Notebook
 
 I made a Jupyter Notebook using Beautiful Soup to process the `ril_export.html` file, and gql to run the GraphQL queries, as simple as it is. You can [run it online on Binder](https://mybinder.org/v2/gh/daviddavo/pocket2omnivore/HEAD?labpath=pocket2omnivore.ipynb).
+
+> You can also download the notebook from [GitHub](https://github.com/daviddavo/pocket2omnivore/blob/main/pocket2omnivore.ipynb) and run it in VSCode or Jupyter. In that case, install all the packages required by running:
+> ```
+> pip install -r https://raw.githubusercontent.com/daviddavo/pocket2omnivore/main/requirements.txt
+> ```
 
 It will ask you to upload the `ril_export.html` file. Remember to set up the global variables first! Especially the `OMNIVORE_API_KEY`.
 
