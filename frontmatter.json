@@ -86,6 +86,11 @@
           "title": "lastmod",
           "name": "lastmod",
           "type": "datetime"
+        },
+        {
+          "title": "math",
+          "name": "math",
+          "type": "boolean"
         }
       ]
     }
