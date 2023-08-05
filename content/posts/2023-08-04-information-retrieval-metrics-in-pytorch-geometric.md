@@ -6,12 +6,13 @@ draft: false
 tags:
   - artificial intelligence
   - PyTorch
+  - Python
 categories:
   - tutorial
 author: David Davó
 slug: pytorch-geometric-metrics
 math: true
-lastmod: 2023-08-05T07:19:13.260Z
+lastmod: 2023-08-05T07:28:29.679Z
 keywords:
   - precision
   - pytorch
