@@ -91,6 +91,11 @@
           "title": "math",
           "name": "math",
           "type": "boolean"
+        },
+        {
+          "title": "type",
+          "name": "type",
+          "type": "string"
         }
       ]
     }
