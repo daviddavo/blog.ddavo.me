@@ -9,7 +9,7 @@ categories:
   - tutorial
 author: David Davó
 slug: aduanas-envios-correos-amiami
-lastmod: 2023-08-09T20:57:16.513Z
+lastmod: 2023-08-10T07:49:10.445Z
 keywords:
   - correos
   - aduanas
@@ -38,7 +38,7 @@ Como acabo de decir, correos te cobra hasta 15 euros sólo por ir a tu casa a re
 
 #### App de Correos
 
-Necesitarás descargar la aplicación oficial de Correos disponible en [Google Play](https://play.google.com/store/apps/details?id=es.correos.widget) y en la [App Store](https://apps.apple.com/es/app/correos/id486322953).
+Necesitarás descargar la aplicación oficial de Correos disponible en [Google Play](https://play.google.com/store/apps/details?id=es.correos.widget) y en la [App Store](https://apps.apple.com/es/app/correos/id486322953). Tal vez tengas que crear una cuenta, si no quieres puedes hacerlo desde la Web.
 
 Tienes que meterte todos los días un par de veces a ver cómo está tu envío, hasta que aparezca un mensaje diciendo que ya está en aduanas. Aunque correos no manda SMS ni e-mails avisando del estado de tu pedido, puedes usar la web de [Japan Post](https://trackings.post.japanpost.jp/services/srv/search/?locale=en) para seguir el envío y activar alertas por correo electrónico. 
 
@@ -47,6 +47,9 @@ Una vez en la aplicación salga el aviso de que está en aduanas, puedes ir al a
 {{< figure src="Screenshot_2023-06-23-11-00-24-033_es.correos.widget.jpg" alt="Captura de pantalla de la aplicación de correos">}}
 
 **Muy importante**: Correos no suele mandar ni SMS ni e-mails, así que si te llega uno, seguramente sea un phishing. Comprueba la información siempre entrando a la App o la web y no hagas click en los enlaces de los correos.
+
+Sobre lo de que correos no manda nada, lo sé porque directamente he preguntado:
+> Referente a tu consulta te informamos que desde Correos Aduanas no enviamos sms ni email de solicitud o información de pago del  IVA, te sugerimos realizar las comprobacion de los envíos pendientes de recibir en nuestra página de Correos Aduanas "Situación de mi envío" ahí es donde te aparece si puedes realizar el pago anticipado del IVA o el envío se encuentra pendiente de documentación que aportar.
 
 #### Web de Aduanas
 
@@ -58,4 +61,4 @@ En mi opinión, el 1.50€ está bien invertido y te quita de muchos problemas, 
 
 Si quieres intentarlo, aquí tienes la [Web de la Agencia Tributaria con información al respecto](https://sede.agenciatributaria.gob.es/Sede/procedimientoini/DB20.shtml). Es necesario certificado digital o DNI electrónico para tramitar el formulario H7, pero con el método de Correos, no.
 
-## Valor mayor de 150€## Valor mayor de 150€
+## Valor mayor de 150€
