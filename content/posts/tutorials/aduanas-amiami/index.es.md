@@ -1,5 +1,5 @@
 ---
-title: Como evitar los gastos de aduanas de Amiami en España
+title: Evitar los gastos de aduanas de Amiami España
 description: En este tutorial veremos como evitar pagar entre 5 y 25€ al pasar por aduanas en un envío que viene por correos España
 date: 2023-08-09T20:03:41.719Z
 cover:
@@ -13,7 +13,7 @@ categories:
   - tutorial
 author: David Davó
 slug: aduanas-envios-correos-amiami
-lastmod: 2023-08-10T10:41:43.750Z
+lastmod: 2023-08-14T07:55:48.447Z
 keywords:
   - correos
   - aduanas
