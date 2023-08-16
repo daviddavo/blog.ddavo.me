@@ -12,7 +12,7 @@ categories:
 author: David Davó
 slug: pytorch-geometric-metrics
 math: true
-lastmod: 2023-08-05T07:28:29.679Z
+lastmod: 2023-08-16T11:29:07.998Z
 keywords:
   - precision
   - pytorch
@@ -56,7 +56,7 @@ def prec_rec(k: int):
     R = item_count = PyG.utils.degree(gt_index[0], num_nodes=n_users)
     # Then, we get the top max(R) recomendations. This is a bit
     # expensive but less than sorting all the recommendations
-    topr = model.recommend(edge_index, src_index=users, dst_index=items, k=int(R.max()))
+    topr = model.recommend(edge_index, src_index=users, dst_index=items, k=int(R.max()), sorted=True)
     
     # We transform the pair of vertices format to a 
     # bipartite adjacency matrix
