@@ -9,7 +9,7 @@ tags:
   - Read Later
 categories:
   - tutorial
-lastmod: 2023-08-02T11:36:10.982Z
+lastmod: 2023-09-01T18:22:44.757Z
 keywords:
   - pocket
   - omnivore
@@ -46,6 +46,10 @@ to create an Omnivore API key in the [official documentation](https://docs.omniv
 
 ![Getting an omnivore API key](/images/omnivore-web-create-api-token.png)
 
+Keep in mind that this API key will be hidden, so make sure to copy it somewhere and don't lose it, as we will need it in the next step.
+
+If you lose it, don't worry though, you can always create a new one and delete the unused one.
+
 ### Running the Jupyter Notebook
 
 I made a Jupyter Notebook using Beautiful Soup to process the `ril_export.html` file, and gql to run the GraphQL queries, as simple as it is. You can [run it online on Binder](https://mybinder.org/v2/gh/daviddavo/pocket2omnivore/HEAD?labpath=pocket2omnivore.ipynb).
@@ -55,9 +59,15 @@ I made a Jupyter Notebook using Beautiful Soup to process the `ril_export.html` 
 > pip install -r https://raw.githubusercontent.com/daviddavo/pocket2omnivore/main/requirements.txt
 > ```
 
-It will ask you to upload the `ril_export.html` file. Remember to set up the global variables first! Especially the `OMNIVORE_API_KEY`.
+After running the second cell, It will ask you to upload the `ril_export.html` file. And then to enter your omnivore API key in the next one. Just paste the API key you obtained in the previous step into the prompt and press ENTER. The text that prompts for the API key can be pretty small, but the notebook won't continue running until you press ENTER.
 
-After running, it will start uploading the URLs one by one. It will take a while. If you visit Omnivore, you'll see that some of these posts don't
+> If you know any programming, you can also change the `OMNIVORE_API_KEY` environment variable.
+
+#### Continuing
+
+After running all the remaining cells, it will start uploading the URLs one by one. It will take a while. If you visit Omnivore, you'll see that some of these posts don't
 have a title or a description. This is because it takes a while to crawl the website.
+
+If it raises a 403 error, the most probable thing is that you entered your API key wrong, or that it expired. Feel free to comment any errors you encounter below or in [GitHub Issues](https://github.com/daviddavo/pocket2omnivore/issues).
 
 By the way, did you know that this page is intended to be fully compatible with Omnivore? Try adding some of my posts to your list!
