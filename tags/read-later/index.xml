@@ -16,14 +16,21 @@ This notebook doesn&rsquo;t just create the article, it also archives it if it h
 <p>Because we are using a custom-made application, you will need a key to interact with Omnivore. You can find info on how
 to create an Omnivore API key in the <a href="https://docs.omnivore.app/integrations/api.html#getting-an-api-token">official documentation</a>.</p>
 <p><img loading="lazy" src="/images/omnivore-web-create-api-token.png" type="" alt="Getting an omnivore API key"  /></p>
+<p>Keep in mind that this API key will be hidden, so make sure to copy it somewhere and don&rsquo;t lose it, as we will need it in the next step.</p>
+<p>If you lose it, don&rsquo;t worry though, you can always create a new one and delete the unused one.</p>
 <h3 id="running-the-jupyter-notebook">Running the Jupyter Notebook</h3>
 <p>I made a Jupyter Notebook using Beautiful Soup to process the <code>ril_export.html</code> file, and gql to run the GraphQL queries, as simple as it is. You can <a href="https://mybinder.org/v2/gh/daviddavo/pocket2omnivore/HEAD?labpath=pocket2omnivore.ipynb">run it online on Binder</a>.</p>
 <blockquote>
 <p>You can also download the notebook from <a href="https://github.com/daviddavo/pocket2omnivore/blob/main/pocket2omnivore.ipynb">GitHub</a> and run it in VSCode or Jupyter. In that case, install all the packages required by running:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">pip install -r https://raw.githubusercontent.com/daviddavo/pocket2omnivore/main/requirements.txt
 </span></span></code></pre></div></blockquote>
-<p>It will ask you to upload the <code>ril_export.html</code> file. Remember to set up the global variables first! Especially the <code>OMNIVORE_API_KEY</code>.</p>
-<p>After running, it will start uploading the URLs one by one. It will take a while. If you visit Omnivore, you&rsquo;ll see that some of these posts don&rsquo;t
+<p>After running the second cell, It will ask you to upload the <code>ril_export.html</code> file. And then to enter your omnivore API key in the next one. Just paste the API key you obtained in the previous step into the prompt and press ENTER. The text that prompts for the API key can be pretty small, but the notebook won&rsquo;t continue running until you press ENTER.</p>
+<blockquote>
+<p>If you know any programming, you can also change the <code>OMNIVORE_API_KEY</code> environment variable.</p>
+</blockquote>
+<h4 id="continuing">Continuing</h4>
+<p>After running all the remaining cells, it will start uploading the URLs one by one. It will take a while. If you visit Omnivore, you&rsquo;ll see that some of these posts don&rsquo;t
 have a title or a description. This is because it takes a while to crawl the website.</p>
+<p>If it raises a 403 error, the most probable thing is that you entered your API key wrong, or that it expired. Feel free to comment any errors you encounter below or in <a href="https://github.com/daviddavo/pocket2omnivore/issues">GitHub Issues</a>.</p>
 <p>By the way, did you know that this page is intended to be fully compatible with Omnivore? Try adding some of my posts to your list!</p>
 ]]></content:encoded></item></channel></rss>
