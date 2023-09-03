@@ -1,13 +1,12 @@
 ---
 title: ¿Cómo se llaman mis servidores?
 date: 2023-09-03T11:19:15.811Z
-draft: true
 tags:
   - personal
   - homelab
 categories: []
 author: David Davó
-lastmod: 2023-09-03T14:26:51.037Z
+lastmod: 2023-09-03T16:31:05.416Z
 math: false
 type: ""
 cover:
