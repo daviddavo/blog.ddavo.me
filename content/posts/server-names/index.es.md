@@ -6,7 +6,7 @@ tags:
   - homelab
 categories: []
 author: David Davó
-lastmod: 2023-09-03T16:31:05.416Z
+lastmod: 2023-09-03T16:52:56.232Z
 math: false
 type: ""
 cover:
@@ -33,4 +33,4 @@ En este caso, el nuevo portátil fue bautizado como **Aerial**, igual que el mec
 
 {{< figure src="aerial.webp" alt="Suletta Mercury y su robot Aerial" caption="Suletta Mercury y su robot mecha Aerial. Fuente: [Pixiv](https://www.pixiv.net/en/artworks/107380318)">}}
 
-Los nombres que elegimos para los servidores son un viaje que refleja nuestros intereses y experiencias, cada nombre cuenta una historia. Para los que tenemos este hobby, nuestros dispositivos se convierten en algo más que simples herramientas, son _personajes_ dentro de nuestra narrativa, personajes por los que llegamos a sentir cierto cariño u orgullo, por los que sentimos cierta pena cuando dejan de funcionar y hay que desconectarlos de la red tras años de servicio. Asi que, la próxima vez que estés configurando un equipo, recuerda que el nombre que le das puede ser mucho más que una etiqueta, es una forma de expresar nuestra conexión personal con la tecnología, un arte.
+Los nombres que elegimos para los servidores reflejan nuestros intereses y experiencias, cada nombre cuenta una historia. Para los que tenemos este hobby, nuestros dispositivos se convierten en algo más que simples herramientas, son _personajes_ dentro de nuestra épica y narrativa, personajes por los que llegamos a sentir cierto cariño u orgullo, por los que sentimos cierta pena cuando dejan de funcionar y hay que desconectarlos de la red tras años de servicio. Asi que, la próxima vez que estés configurando un equipo, recuerda que el nombre que le das puede ser mucho más que una etiqueta, es una forma de expresar nuestra conexión personal con la tecnología, un arte.
