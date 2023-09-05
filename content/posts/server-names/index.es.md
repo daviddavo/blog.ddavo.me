@@ -6,7 +6,7 @@ tags:
   - homelab
 categories: []
 author: David Davó
-lastmod: 2023-09-03T16:52:56.232Z
+lastmod: 2023-09-05T08:33:08.398Z
 math: false
 type: ""
 cover:
@@ -20,7 +20,7 @@ Como los servidores los montan informáticos y estos tienden a ser un poco friki
 
 En un principio, mis equipos tenían nombres sosos: _davo-pc_ y _davo-laptop_. Pero todo cambió cuando compré mi primera Raspberry Pi. En un principio era _rpi_ o algo por el estilo, el nombre por defecto, vamos. Empezó a dar fallos y había que reiniciarla del botoncito, así que decidí poner una nueva tarjeta y, ya que estaba, re-instalar el SO en el resto de equipos y así borrar todos los programas tochos que había tenido que instalar para la uni.
 
-Por esa época, yo estaba viendo el anime de ciencia ficción  _Space Battleship Yamato_. En esta serie, la humanidad se ha diezmado por una pandemia y unos valientes deben ir en el barco espacial _Yamato_ desde la tierra (_Chikyuu_ en Japonés) hasta _Iscandar_, el planeta donde se encuentra la cura. Por esa razón, decidí llamar a mi raspberry **Chikyuu**, a mi pc principal y servidor secundario **Iscandar** y, al portátil que usaba desde fuera de casa para conectarme a ambos, **Iscandar**. Además, este tocho portátil de varios kilos era igual de basto que el propio Yamato.
+Por esa época, yo estaba viendo el anime de ciencia ficción  _Space Battleship Yamato_. En esta serie, la humanidad se ha diezmado por una pandemia y unos valientes deben ir en el barco espacial _Yamato_ desde la tierra (_Chikyuu_ en Japonés) hasta _Iscandar_, el planeta donde se encuentra la cura. Por esa razón, decidí llamar a mi raspberry **Chikyuu**, a mi pc principal y servidor secundario **Iscandar** y, al portátil que usaba desde fuera de casa para conectarme a ambos, **Yamato**. Además, este tocho portátil de varios kilos era igual de basto que el propio Yamato.
 
 {{< figure src="yamato.webp" alt="Visualización del barco destructor Yamato, en el espacio" caption="El famoso Barco Espacial Yamato surcando los confines del espacio hacia Iscandar. Fuente: [Crunchyroll](https://www.crunchyroll.com/es-es/series/GG5H5X3Z9/space-battleship-yamato)">}}
 
