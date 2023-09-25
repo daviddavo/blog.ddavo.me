@@ -26,9 +26,26 @@
 </blockquote>
 <h4 id="web-de-aduanas">Web de Aduanas</h4>
 <p>Con este método no hace falta crearse una cuenta, tan solo tienes que entrar en <a href="https://www.correosaduanas.es">correosaduanas.es</a>.</p>
-<p>Tienes que entrar todos los días un par de veces y poner el número de envío en donde pone &ldquo;Situación de mi envío&rdquo;. Hasta que no llegue a España, no saldrá en la aplicación, así que no te preocupes si en el tracking de Correos o Japan Post sale pero aquí no. El estado irá cambiando hasta que aparezca un enlace que te permita &ldquo;Hacer el pago del IVA&rdquo;. Sigues las instrucciones para pagar por tarjeta y te cobrarán el 21% de tu pedido más 1.50 euros de gastos de gestión (en lugar de 8 o 15 o lo que tocase). Si te cobran un poco más o un poco menos del 21% es porque hacen el cambio Yen-Euro el día que entra a aduanas, no el día que lo compraste. Es el mercado amigos.</p>
+<p>Tienes que entrar todos los días un par de veces y poner el número de envío en donde pone &ldquo;Situación de mi envío&rdquo;. Hasta que no llegue a España, no saldrá en la aplicación, así que no te preocupes si en el localizador de envíos de Correos o Japan Post sale pero aquí no.</p>
+<figure>
+        <img loading="lazy" srcset="https://blog.ddavo.me/es/posts/tutorials/aduanas-envios-correos-amiami/Captura_seguimiento_pre_hu5d99eb7eb5b6f2e5be81143e1b562652_75137_360x0_resize_box_3.png 360w ,https://blog.ddavo.me/es/posts/tutorials/aduanas-envios-correos-amiami/Captura_seguimiento_pre_hu5d99eb7eb5b6f2e5be81143e1b562652_75137_480x0_resize_box_3.png 480w ,https://blog.ddavo.me/es/posts/tutorials/aduanas-envios-correos-amiami/Captura_seguimiento_pre_hu5d99eb7eb5b6f2e5be81143e1b562652_75137_720x0_resize_box_3.png 720w ,https://blog.ddavo.me/es/posts/tutorials/aduanas-envios-correos-amiami/Captura_seguimiento_pre.png 931w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="https://blog.ddavo.me/es/posts/tutorials/aduanas-envios-correos-amiami/Captura_seguimiento_pre.png" alt="Captura de pantalla del seguimiento de envío de Correos" 
+            width="931" height="757"><figcaption>
+            <p>En concreto, deberás esperar hasta que en el seguimiento de envío aparezca el estado «En tramitación aduanera: El envío está a la espera de presentación a la Aduana»</p>
+        </figcaption>
+</figure>
+
+<p>El estado irá cambiando hasta que aparezca un enlace que te permita &ldquo;Hacer el pago del IVA&rdquo;. Sigues las instrucciones para pagar por tarjeta de crédito y te cobrarán el 21% de tu pedido más 1.50 euros de gastos de gestión (en lugar de 8 o 15 o lo que tocase). Si te cobran un poco más o un poco menos del 21% es porque hacen el cambio Yen-Euro el día que entra a aduanas, no el día que lo compraste. Es el mercado amigos.</p>
+<figure>
+        <img loading="lazy" srcset="https://blog.ddavo.me/es/posts/tutorials/aduanas-envios-correos-amiami/correosaduanas_pago_hucd63f7a0b1a0b86b0215f55e4157d92c_127391_360x0_resize_box_3.png 360w ,https://blog.ddavo.me/es/posts/tutorials/aduanas-envios-correos-amiami/correosaduanas_pago_hucd63f7a0b1a0b86b0215f55e4157d92c_127391_480x0_resize_box_3.png 480w ,https://blog.ddavo.me/es/posts/tutorials/aduanas-envios-correos-amiami/correosaduanas_pago_hucd63f7a0b1a0b86b0215f55e4157d92c_127391_720x0_resize_box_3.png 720w ,https://blog.ddavo.me/es/posts/tutorials/aduanas-envios-correos-amiami/correosaduanas_pago_hucd63f7a0b1a0b86b0215f55e4157d92c_127391_1080x0_resize_box_3.png 1080w ,https://blog.ddavo.me/es/posts/tutorials/aduanas-envios-correos-amiami/correosaduanas_pago_hucd63f7a0b1a0b86b0215f55e4157d92c_127391_1500x0_resize_box_3.png 1500w ,https://blog.ddavo.me/es/posts/tutorials/aduanas-envios-correos-amiami/correosaduanas_pago.png 1879w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="https://blog.ddavo.me/es/posts/tutorials/aduanas-envios-correos-amiami/correosaduanas_pago.png" alt="Captura de pantalla del seguimiento de envío en correosaduanas" 
+            width="1879" height="588"><figcaption>
+            <p>Así será la pantalla en la que por fin de permiten pagar el IVA de tu envío.</p>
+        </figcaption>
+</figure>
+
 <p>Recuerda guardar el resguardo de que ya has pagado el IVA, por si acaso intentan cobrarte en la oficina así puedes demostrar que ya lo has pagado anteriormente.</p>
-<p>Lo malo es que Correos no envía ni e-mails ni SMS, así que tienes que meterte todos los días. Otra opción es suscribirse en la web de <a href="https://trackings.post.japanpost.jp/services/srv/search/?locale=en">Japan Post</a>, que si te permite recibir correos electrónicos, aunque va con unas horas de retraso.</p>
+<p>Lo malo es que Correos no envía ni e-mails ni SMS, así que tienes que meterte todos los días. Otra opción es suscribirse en la web de <a href="https://trackings.post.japanpost.jp/services/srv/search/?locale=en">Japan Post</a>, que sí te permite recibir correos electrónicos, aunque va con unas horas de retraso, y a veces no funciona muy bien&hellip;</p>
 <h3 id="complicado-y-gratuito">Complicado y gratuito</h3>
 <p>Supuestamente, deberías poder hacer el autodespacho y hacer tú la gestión aduanera y ahorrarte el euro cincuenta que te cobra Correos. Sin embargo, si haces algo mal estarás cometiendo fraude fiscal, y además el trámite es bastante complicado.</p>
 <p>Esto hay que hacerlo antes de que llegue a aduanas, es decir, en el tiempo en el que te dan el código de envío y llega a España.</p>
