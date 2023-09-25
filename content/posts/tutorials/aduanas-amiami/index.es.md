@@ -13,7 +13,7 @@ categories:
   - tutorial
 author: David Davó
 slug: aduanas-envios-correos-amiami
-lastmod: 2023-08-14T07:55:48.447Z
+lastmod: 2023-09-25T07:56:00.840Z
 keywords:
   - correos
   - aduanas
@@ -59,11 +59,17 @@ Sobre lo de que Correos no manda nada, lo sé porque directamente he preguntado:
 
 Con este método no hace falta crearse una cuenta, tan solo tienes que entrar en [correosaduanas.es](https://www.correosaduanas.es).
 
-Tienes que entrar todos los días un par de veces y poner el número de envío en donde pone "Situación de mi envío". Hasta que no llegue a España, no saldrá en la aplicación, así que no te preocupes si en el tracking de Correos o Japan Post sale pero aquí no. El estado irá cambiando hasta que aparezca un enlace que te permita "Hacer el pago del IVA". Sigues las instrucciones para pagar por tarjeta y te cobrarán el 21% de tu pedido más 1.50 euros de gastos de gestión (en lugar de 8 o 15 o lo que tocase). Si te cobran un poco más o un poco menos del 21% es porque hacen el cambio Yen-Euro el día que entra a aduanas, no el día que lo compraste. Es el mercado amigos.
+Tienes que entrar todos los días un par de veces y poner el número de envío en donde pone "Situación de mi envío". Hasta que no llegue a España, no saldrá en la aplicación, así que no te preocupes si en el localizador de envíos de Correos o Japan Post sale pero aquí no.
+
+{{< figure src="Captura_seguimiento_pre.png" alt="Captura de pantalla del seguimiento de envío de Correos" caption="En concreto, deberás esperar hasta que en el seguimiento de envío aparezca el estado «En tramitación aduanera: El envío está a la espera de presentación a la Aduana»">}}
+
+El estado irá cambiando hasta que aparezca un enlace que te permita "Hacer el pago del IVA". Sigues las instrucciones para pagar por tarjeta de crédito y te cobrarán el 21% de tu pedido más 1.50 euros de gastos de gestión (en lugar de 8 o 15 o lo que tocase). Si te cobran un poco más o un poco menos del 21% es porque hacen el cambio Yen-Euro el día que entra a aduanas, no el día que lo compraste. Es el mercado amigos.
+
+{{< figure src="correosaduanas_pago.png" alt="Captura de pantalla del seguimiento de envío en correosaduanas" caption="Así será la pantalla en la que por fin de permiten pagar el IVA de tu envío.">}}
 
 Recuerda guardar el resguardo de que ya has pagado el IVA, por si acaso intentan cobrarte en la oficina así puedes demostrar que ya lo has pagado anteriormente.
 
-Lo malo es que Correos no envía ni e-mails ni SMS, así que tienes que meterte todos los días. Otra opción es suscribirse en la web de [Japan Post](https://trackings.post.japanpost.jp/services/srv/search/?locale=en), que si te permite recibir correos electrónicos, aunque va con unas horas de retraso.
+Lo malo es que Correos no envía ni e-mails ni SMS, así que tienes que meterte todos los días. Otra opción es suscribirse en la web de [Japan Post](https://trackings.post.japanpost.jp/services/srv/search/?locale=en), que sí te permite recibir correos electrónicos, aunque va con unas horas de retraso, y a veces no funciona muy bien...
 
 ### Complicado y gratuito
 
