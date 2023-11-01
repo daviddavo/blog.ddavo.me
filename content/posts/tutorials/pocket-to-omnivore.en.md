@@ -9,7 +9,7 @@ tags:
   - Read Later
 categories:
   - tutorial
-lastmod: 2023-09-01T18:22:44.757Z
+lastmod: 2023-11-01T10:27:37.364Z
 keywords:
   - pocket
   - omnivore
@@ -17,6 +17,13 @@ keywords:
   - import
 description: In this tutorial I provide a Jupyter notebook to exp your data from Pocket and upload it to Omnivoreort
 ---
+
+> **Important notice**: Pocket connection is now officialy available in their [integrations](https://omnivore.app/settings/integrations) page
+>
+> -- https://docs.omnivore.app/using/importing.html#importing-data-from-pocket
+>
+> Nevertheless, you can read the code if you want to learn about
+> web information processing
 
 I tried to use Pocket, I really tried, but I had to stop using it because it only allowed you 3 highlights per post for free.
 I know that Pocket is just a company and that they are just trying to provide value to its shareholders, but, come on, is that really a
