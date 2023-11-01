@@ -128,7 +128,7 @@ o bien por una madriguera sin salida hasta llegar a nichos insospechados.</p>
 de radio y podcasts, mira vídeos y vlogs, pregunta a gente que conozcas, lee artículos en revistas, ¡lo que sea!</p>
 <p>Además de descubrir cosas nuevas, también es una manera mucho más activa de participar en ese hobby que tanto te gusta,
 y puede proporcionarte una nueva perspectiva. <strong>El simple hecho de estar leyendo sobre ello ya es entretenido y puede ser un hobby
-en sí mismo.</strong> Por ejemplo, en cuanto a anime a mí me gusta la revista 🇪🇸 <a href="https://otakubunka.com">Otaku Bunka</a>, en la que además de hablar de manga y anime cuentan con varios artículos en los que analizan la cultura japonesa o la industria en sí.
+en sí mismo.</strong> Por ejemplo, en cuanto a anime a mí me gusta la revista &#x1f1ea;&#x1f1f8; <a href="https://otakubunka.com">Otaku Bunka</a>, en la que además de hablar de manga y anime cuentan con varios artículos en los que analizan la cultura japonesa o la industria en sí.
 Es increíble la cantidad de títulos que no descubriría si no fuese porque hablan de ellos.</p>
 <p>En cuanto a música, además de la radio en directo, Radio 3 sube <a href="https://www.rtve.es/play/radio/radio-3">todos sus programas</a> en formato Podcast
 para que los escuches cuando quieras. Algunos ponen música y apenas comentan, otros son de entrevistas, otros analizan las novedades de la semana&hellip;
@@ -236,12 +236,12 @@ lo que quieras. Además en el buscador también hay multitud de playlists de la 
 </blockquote>
 <h2 id="más-información">Más información</h2>
 <ul>
-<li>🇬🇧 El canal de entretenidos vídeos de 5 minutos <em>Half as Interesting</em> presenta <a href="https://www.youtube.com/watch?v=RzuvZDSmIco">El sistema matemático de Spotify que determina tus gustos musicales</a></li>
-<li>🇬🇧 <a href="https://youtu.be/n3RKsY2H-NE">How Recommender Systems Work</a>: Un <strong>vídeo</strong> de 10 minutos algo más serio que se mete en las matemáticas del asunto</li>
-<li>🇬🇧 Para celebrar el millón de suscriptores, <em>Answer in Progress</em> crea un extenso (50 minutos) pero ameno <a href="https://youtu.be/r1N81RRQ4ec">vídeo sobre la historia del algoritmo de YouTube</a>, explicando en el proceso como funciona su opaco sistema.</li>
-<li>🇪🇸 Pequeño <a href="https://youtu.be/0pwKxK1fo0g">vídeo de La Vanguardia</a> que explica cómo funcionan los algoritmos recomendadores, aunque se ha quedado un poco desactualizado.</li>
-<li>🇪🇸 La página de <a href="Sistema_de_recomendaci%C3%B3n">Sistemas de recomendación de Wikipedia</a> tampoco está nada mal</li>
-<li>🇬🇧 Towardsdatascience tiene un muy buen <a href="https://towardsdatascience.com/introduction-to-recommender-systems-6c66cf15ada">artículo introductorio a la implementación de sistemas recomendadores</a>.</li>
+<li>&#x1f1ec;&#x1f1e7; El canal de entretenidos vídeos de 5 minutos <em>Half as Interesting</em> presenta <a href="https://www.youtube.com/watch?v=RzuvZDSmIco">El sistema matemático de Spotify que determina tus gustos musicales</a></li>
+<li>&#x1f1ec;&#x1f1e7; <a href="https://youtu.be/n3RKsY2H-NE">How Recommender Systems Work</a>: Un <strong>vídeo</strong> de 10 minutos algo más serio que se mete en las matemáticas del asunto</li>
+<li>&#x1f1ec;&#x1f1e7; Para celebrar el millón de suscriptores, <em>Answer in Progress</em> crea un extenso (50 minutos) pero ameno <a href="https://youtu.be/r1N81RRQ4ec">vídeo sobre la historia del algoritmo de YouTube</a>, explicando en el proceso como funciona su opaco sistema.</li>
+<li>&#x1f1ea;&#x1f1f8; Pequeño <a href="https://youtu.be/0pwKxK1fo0g">vídeo de La Vanguardia</a> que explica cómo funcionan los algoritmos recomendadores, aunque se ha quedado un poco desactualizado.</li>
+<li>&#x1f1ea;&#x1f1f8; La página de <a href="Sistema_de_recomendaci%C3%B3n">Sistemas de recomendación de Wikipedia</a> tampoco está nada mal</li>
+<li>&#x1f1ec;&#x1f1e7; Towardsdatascience tiene un muy buen <a href="https://towardsdatascience.com/introduction-to-recommender-systems-6c66cf15ada">artículo introductorio a la implementación de sistemas recomendadores</a>.</li>
 </ul>
 ]]></content:encoded></item><item><title>Compilando LaTeX bilingüe y publicándolo con GitHub pages</title><link>https://blog.ddavo.me/es/posts/tutorials/automatic-latex-cv/</link><pubDate>Thu, 01 Sep 2022 19:14:22 +0000</pubDate><guid>https://blog.ddavo.me/es/posts/tutorials/automatic-latex-cv/</guid><description>Hace tiempo que quería poner mi currículum en la página web, pero para ello debía asegurarme de que estaba SIEMPRE actualizado. Es decir, que se compilaba y publicaba automáticamente cada vez que realizase cambios en el fichero fuente.
 Desde hace ya más de 5 años, mi currículum está escrito en LaTeX, usando (y modificando) la plantilla Awesome CV. Además, le añadí un par de cosas para hacerlo &amp;ldquo;bilingüe&amp;rdquo; y poder compilar o bien al inglés o al castellano, haciendo que el documento esté disponible en múltiples idiomas.</description><content:encoded><![CDATA[<p>Hace tiempo que quería poner mi currículum en la página web, pero para ello
@@ -483,24 +483,24 @@ los servidores a los que preguntar en caso de no encontrar la entrada en el rpz.
 <blockquote>
 <p>Los servidores a los que preguntar pueden ser dados por tu ISP, también puede ser tu rúter (192.168.1.1). Yo recomiendo usar los de Google/Cloudflare por su fiabilidad y rapidez.</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">options {
-</span></span><span class="line"><span class="cl">	directory &#34;/var/cache/bind&#34;;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">options</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">directory</span> <span class="s2">&#34;/var/cache/bind&#34;</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	recursion yes; # Habilitamos la recursión
-</span></span><span class="line"><span class="cl">	listen-on { 192.168.1.11; }; # La dirección IP de nuestro servidor
-</span></span><span class="line"><span class="cl">	allow-transfer { none; };
-</span></span><span class="line"><span class="cl">	response-policy { zone &#34;rpz&#34;; } break-dnssec yes; # La response policy zone
+</span></span><span class="line"><span class="cl">	<span class="n">recursion</span> <span class="n">yes</span><span class="p">;</span> <span class="c1"># Habilitamos la recursión</span>
+</span></span><span class="line"><span class="cl">	<span class="n">listen</span><span class="o">-</span><span class="n">on</span> <span class="p">{</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.11</span><span class="p">;</span> <span class="p">};</span> <span class="c1"># La dirección IP de nuestro servidor</span>
+</span></span><span class="line"><span class="cl">	<span class="n">allow</span><span class="o">-</span><span class="n">transfer</span> <span class="p">{</span> <span class="n">none</span><span class="p">;</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">	<span class="n">response</span><span class="o">-</span><span class="n">policy</span> <span class="p">{</span> <span class="n">zone</span> <span class="s2">&#34;rpz&#34;</span><span class="p">;</span> <span class="p">}</span> <span class="k">break</span><span class="o">-</span><span class="n">dnssec</span> <span class="n">yes</span><span class="p">;</span> <span class="c1"># La response policy zone</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	forwarders {
-</span></span><span class="line"><span class="cl">		8.8.8.8;
-</span></span><span class="line"><span class="cl">		8.8.4.4;
-</span></span><span class="line"><span class="cl">		1.1.1.1;
-</span></span><span class="line"><span class="cl">	};
+</span></span><span class="line"><span class="cl">	<span class="n">forwarders</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="mf">8.8</span><span class="o">.</span><span class="mf">8.8</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="mf">8.8</span><span class="o">.</span><span class="mf">4.4</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="mf">1.1</span><span class="o">.</span><span class="mf">1.1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">};</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	dnssec-validation auto;
+</span></span><span class="line"><span class="cl">	<span class="n">dnssec</span><span class="o">-</span><span class="n">validation</span> <span class="n">auto</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	listen-on-v6 { any; }; # Puedes poner &#34;none&#34; si no quieres que funcione por ipv6
-</span></span><span class="line"><span class="cl">};
+</span></span><span class="line"><span class="cl">	<span class="n">listen</span><span class="o">-</span><span class="n">on</span><span class="o">-</span><span class="n">v6</span> <span class="p">{</span> <span class="n">any</span><span class="p">;</span> <span class="p">};</span> <span class="c1"># Puedes poner &#34;none&#34; si no quieres que funcione por ipv6</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span></code></pre></div><blockquote>
 <p>Es importante decirle al servidor que ignore las peticiones &ldquo;seguras&rdquo;,
 de no ser así, podría devolver una dirección firmada, pero incorrecta.</p>

@@ -55,7 +55,13 @@ The main problem I had with sshfs is that it is not very reliable as a file syst
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">nfs_publicmedia:/media</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l">ls /media &amp;&amp; sleep 3600</span><span class="w">
 </span></span></span></code></pre></div><p>There&rsquo;s no need anymore to mount the filesystem in each machine, it is automatically deployed thanks to docker stack!</p>
-]]></content:encoded></item><item><title>How to export your Pocket data to Omnivore</title><link>https://blog.ddavo.me/posts/tutorials/pocket-to-omnivore/</link><pubDate>Sun, 21 May 2023 18:13:36 +0000</pubDate><guid>https://blog.ddavo.me/posts/tutorials/pocket-to-omnivore/</guid><description>In this tutorial I provide a Jupyter notebook to exp your data from Pocket and upload it to Omnivoreort</description><content:encoded><![CDATA[<p>I tried to use Pocket, I really tried, but I had to stop using it because it only allowed you 3 highlights per post for free.
+]]></content:encoded></item><item><title>How to export your Pocket data to Omnivore</title><link>https://blog.ddavo.me/posts/tutorials/pocket-to-omnivore/</link><pubDate>Sun, 21 May 2023 18:13:36 +0000</pubDate><guid>https://blog.ddavo.me/posts/tutorials/pocket-to-omnivore/</guid><description>In this tutorial I provide a Jupyter notebook to exp your data from Pocket and upload it to Omnivoreort</description><content:encoded><![CDATA[<blockquote>
+<p><strong>Important notice</strong>: Pocket connection is now officialy available in their <a href="https://omnivore.app/settings/integrations">integrations</a> page</p>
+<p>&ndash; <a href="https://docs.omnivore.app/using/importing.html#importing-data-from-pocket">https://docs.omnivore.app/using/importing.html#importing-data-from-pocket</a></p>
+<p>Nevertheless, you can read the code if you want to learn about
+web information processing</p>
+</blockquote>
+<p>I tried to use Pocket, I really tried, but I had to stop using it because it only allowed you 3 highlights per post for free.
 I know that Pocket is just a company and that they are just trying to provide value to its shareholders, but, come on, is that really a
 PREMIUM feature? Are you really trying to charge me for a couple of extra bytes?</p>
 <p>That&rsquo;s why I decided to search for another read-it-later app, and I came across <a href="https://omnivore.app">Omnivore</a>. It is also
@@ -162,43 +168,43 @@ compile it again so it supports that message type.</p>
 </span></span></code></pre></div><p>Before compiling, we need to modify a config file to specify the message types you want to compile. This file is <code>meta/interfaces.txt</code>, and in my case, it ended up with the following contents:</p>
 <p><details >
   <summary markdown="span"><code>meta/interfaces.txt</code></summary>
-  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">builtin_interfaces/msg/Duration
-</span></span><span class="line"><span class="cl">builtin_interfaces/msg/Time
-</span></span><span class="line"><span class="cl">rosgraph_msgs/msg/Clock
-</span></span><span class="line"><span class="cl">geometry_msgs/msg/Quaternion
-</span></span><span class="line"><span class="cl">geometry_msgs/msg/Transform
-</span></span><span class="line"><span class="cl">geometry_msgs/msg/TransformStamped
-</span></span><span class="line"><span class="cl">geometry_msgs/msg/Vector3
-</span></span><span class="line"><span class="cl">geometry_msgs/msg/Point
-</span></span><span class="line"><span class="cl">geometry_msgs/msg/Pose
-</span></span><span class="line"><span class="cl">geometry_msgs/msg/PoseStamped
-</span></span><span class="line"><span class="cl">geometry_msgs/msg/Twist
-</span></span><span class="line"><span class="cl">geometry_msgs/msg/PoseWithCovariance
-</span></span><span class="line"><span class="cl">geometry_msgs/msg/TwistWithCovariance
-</span></span><span class="line"><span class="cl">sensor_msgs/msg/Image
-</span></span><span class="line"><span class="cl">sensor_msgs/msg/PointCloud2
-</span></span><span class="line"><span class="cl">sensor_msgs/msg/PointField
-</span></span><span class="line"><span class="cl">sensor_msgs/msg/LaserScan
-</span></span><span class="line"><span class="cl">std_msgs/msg/Bool
-</span></span><span class="line"><span class="cl">std_msgs/msg/Byte
-</span></span><span class="line"><span class="cl">std_msgs/msg/ColorRGBA
-</span></span><span class="line"><span class="cl">std_msgs/msg/Empty
-</span></span><span class="line"><span class="cl">std_msgs/msg/Float32
-</span></span><span class="line"><span class="cl">std_msgs/msg/Float64
-</span></span><span class="line"><span class="cl">std_msgs/msg/Header
-</span></span><span class="line"><span class="cl">std_msgs/msg/Int8
-</span></span><span class="line"><span class="cl">std_msgs/msg/Int16
-</span></span><span class="line"><span class="cl">std_msgs/msg/Int32
-</span></span><span class="line"><span class="cl">std_msgs/msg/Int64
-</span></span><span class="line"><span class="cl">std_msgs/msg/String
-</span></span><span class="line"><span class="cl">std_msgs/msg/UInt8
-</span></span><span class="line"><span class="cl">std_msgs/msg/UInt16
-</span></span><span class="line"><span class="cl">std_msgs/msg/UInt32
-</span></span><span class="line"><span class="cl">std_msgs/msg/UInt64
-</span></span><span class="line"><span class="cl">std_srvs/srv/Empty
-</span></span><span class="line"><span class="cl">std_srvs/srv/SetBool
-</span></span><span class="line"><span class="cl">std_srvs/srv/Trigger
-</span></span><span class="line"><span class="cl">nav_msgs/msg/Odometry
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">builtin_interfaces</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">Duration</span>
+</span></span><span class="line"><span class="cl"><span class="n">builtin_interfaces</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">Time</span>
+</span></span><span class="line"><span class="cl"><span class="n">rosgraph_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">Clock</span>
+</span></span><span class="line"><span class="cl"><span class="n">geometry_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">Quaternion</span>
+</span></span><span class="line"><span class="cl"><span class="n">geometry_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="ne">Transform</span>
+</span></span><span class="line"><span class="cl"><span class="n">geometry_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">TransformStamped</span>
+</span></span><span class="line"><span class="cl"><span class="n">geometry_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="ne">Vector3</span>
+</span></span><span class="line"><span class="cl"><span class="n">geometry_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">Point</span>
+</span></span><span class="line"><span class="cl"><span class="n">geometry_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">Pose</span>
+</span></span><span class="line"><span class="cl"><span class="n">geometry_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">PoseStamped</span>
+</span></span><span class="line"><span class="cl"><span class="n">geometry_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">Twist</span>
+</span></span><span class="line"><span class="cl"><span class="n">geometry_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">PoseWithCovariance</span>
+</span></span><span class="line"><span class="cl"><span class="n">geometry_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">TwistWithCovariance</span>
+</span></span><span class="line"><span class="cl"><span class="n">sensor_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="ne">Image</span>
+</span></span><span class="line"><span class="cl"><span class="n">sensor_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">PointCloud2</span>
+</span></span><span class="line"><span class="cl"><span class="n">sensor_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">PointField</span>
+</span></span><span class="line"><span class="cl"><span class="n">sensor_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">LaserScan</span>
+</span></span><span class="line"><span class="cl"><span class="n">std_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">Bool</span>
+</span></span><span class="line"><span class="cl"><span class="n">std_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">Byte</span>
+</span></span><span class="line"><span class="cl"><span class="n">std_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">ColorRGBA</span>
+</span></span><span class="line"><span class="cl"><span class="n">std_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">Empty</span>
+</span></span><span class="line"><span class="cl"><span class="n">std_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">Float32</span>
+</span></span><span class="line"><span class="cl"><span class="n">std_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">Float64</span>
+</span></span><span class="line"><span class="cl"><span class="n">std_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">Header</span>
+</span></span><span class="line"><span class="cl"><span class="n">std_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">Int8</span>
+</span></span><span class="line"><span class="cl"><span class="n">std_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">Int16</span>
+</span></span><span class="line"><span class="cl"><span class="n">std_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">Int32</span>
+</span></span><span class="line"><span class="cl"><span class="n">std_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">Int64</span>
+</span></span><span class="line"><span class="cl"><span class="n">std_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="ne">String</span>
+</span></span><span class="line"><span class="cl"><span class="n">std_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">UInt8</span>
+</span></span><span class="line"><span class="cl"><span class="n">std_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">UInt16</span>
+</span></span><span class="line"><span class="cl"><span class="n">std_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">UInt32</span>
+</span></span><span class="line"><span class="cl"><span class="n">std_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">UInt64</span>
+</span></span><span class="line"><span class="cl"><span class="n">std_srvs</span><span class="o">/</span><span class="n">srv</span><span class="o">/</span><span class="n">Empty</span>
+</span></span><span class="line"><span class="cl"><span class="n">std_srvs</span><span class="o">/</span><span class="n">srv</span><span class="o">/</span><span class="n">SetBool</span>
+</span></span><span class="line"><span class="cl"><span class="n">std_srvs</span><span class="o">/</span><span class="n">srv</span><span class="o">/</span><span class="n">Trigger</span>
+</span></span><span class="line"><span class="cl"><span class="n">nav_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">Odometry</span>
 </span></span></code></pre></div>
 </details></p>
 
@@ -595,26 +601,26 @@ The thing is, your computer is trying to connect to <code>1.2.3.4</code> (the ad
 <blockquote>
 <p>The forwarders servers can be given by your ISP, or your local router (192.168.1.1), but I recommend using Google&rsquo;s or Cloudflare&rsquo;s DNS servers because of their reliability and speed.</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">options {
-</span></span><span class="line"><span class="cl">	directory &#34;/var/cache/bind&#34;;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">options</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">directory</span> <span class="s2">&#34;/var/cache/bind&#34;</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	recursion yes; # Enabling recursion
-</span></span><span class="line"><span class="cl">	listen-on { 192.168.1.11; }; # The IP address of THIS DNS server
-</span></span><span class="line"><span class="cl">	# You can set it to any if you want it to listen to petitions
-</span></span><span class="line"><span class="cl">	# from outside
-</span></span><span class="line"><span class="cl">	allow-transfer { none; };
-</span></span><span class="line"><span class="cl">	response-policy { zone &#34;rpz&#34;; } break-dnssec yes; # The response policy zone name
+</span></span><span class="line"><span class="cl">	<span class="n">recursion</span> <span class="n">yes</span><span class="p">;</span> <span class="c1"># Enabling recursion</span>
+</span></span><span class="line"><span class="cl">	<span class="n">listen</span><span class="o">-</span><span class="n">on</span> <span class="p">{</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.11</span><span class="p">;</span> <span class="p">};</span> <span class="c1"># The IP address of THIS DNS server</span>
+</span></span><span class="line"><span class="cl">	<span class="c1"># You can set it to any if you want it to listen to petitions</span>
+</span></span><span class="line"><span class="cl">	<span class="c1"># from outside</span>
+</span></span><span class="line"><span class="cl">	<span class="n">allow</span><span class="o">-</span><span class="n">transfer</span> <span class="p">{</span> <span class="n">none</span><span class="p">;</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">	<span class="n">response</span><span class="o">-</span><span class="n">policy</span> <span class="p">{</span> <span class="n">zone</span> <span class="s2">&#34;rpz&#34;</span><span class="p">;</span> <span class="p">}</span> <span class="k">break</span><span class="o">-</span><span class="n">dnssec</span> <span class="n">yes</span><span class="p">;</span> <span class="c1"># The response policy zone name</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	forwarders {
-</span></span><span class="line"><span class="cl">		8.8.8.8;
-</span></span><span class="line"><span class="cl">		8.8.4.4;
-</span></span><span class="line"><span class="cl">		1.1.1.1;
-</span></span><span class="line"><span class="cl">	};
+</span></span><span class="line"><span class="cl">	<span class="n">forwarders</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="mf">8.8</span><span class="o">.</span><span class="mf">8.8</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="mf">8.8</span><span class="o">.</span><span class="mf">4.4</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="mf">1.1</span><span class="o">.</span><span class="mf">1.1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">};</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	dnssec-validation auto;
+</span></span><span class="line"><span class="cl">	<span class="n">dnssec</span><span class="o">-</span><span class="n">validation</span> <span class="n">auto</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	listen-on-v6 { any; }; # You can set it to &#34;none&#34; if you don&#39;t want to use IPv6 DNS
-</span></span><span class="line"><span class="cl">};
+</span></span><span class="line"><span class="cl">	<span class="n">listen</span><span class="o">-</span><span class="n">on</span><span class="o">-</span><span class="n">v6</span> <span class="p">{</span> <span class="n">any</span><span class="p">;</span> <span class="p">};</span> <span class="c1"># You can set it to &#34;none&#34; if you don&#39;t want to use IPv6 DNS</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span></code></pre></div><blockquote>
 <p>It is important to tell the server to ignore dnssec requests.
 If we don&rsquo;t do that, the server could reply with a signed response, but with

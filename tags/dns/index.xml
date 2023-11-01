@@ -49,26 +49,26 @@ The thing is, your computer is trying to connect to <code>1.2.3.4</code> (the ad
 <blockquote>
 <p>The forwarders servers can be given by your ISP, or your local router (192.168.1.1), but I recommend using Google&rsquo;s or Cloudflare&rsquo;s DNS servers because of their reliability and speed.</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">options {
-</span></span><span class="line"><span class="cl">	directory &#34;/var/cache/bind&#34;;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">options</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">directory</span> <span class="s2">&#34;/var/cache/bind&#34;</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	recursion yes; # Enabling recursion
-</span></span><span class="line"><span class="cl">	listen-on { 192.168.1.11; }; # The IP address of THIS DNS server
-</span></span><span class="line"><span class="cl">	# You can set it to any if you want it to listen to petitions
-</span></span><span class="line"><span class="cl">	# from outside
-</span></span><span class="line"><span class="cl">	allow-transfer { none; };
-</span></span><span class="line"><span class="cl">	response-policy { zone &#34;rpz&#34;; } break-dnssec yes; # The response policy zone name
+</span></span><span class="line"><span class="cl">	<span class="n">recursion</span> <span class="n">yes</span><span class="p">;</span> <span class="c1"># Enabling recursion</span>
+</span></span><span class="line"><span class="cl">	<span class="n">listen</span><span class="o">-</span><span class="n">on</span> <span class="p">{</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.11</span><span class="p">;</span> <span class="p">};</span> <span class="c1"># The IP address of THIS DNS server</span>
+</span></span><span class="line"><span class="cl">	<span class="c1"># You can set it to any if you want it to listen to petitions</span>
+</span></span><span class="line"><span class="cl">	<span class="c1"># from outside</span>
+</span></span><span class="line"><span class="cl">	<span class="n">allow</span><span class="o">-</span><span class="n">transfer</span> <span class="p">{</span> <span class="n">none</span><span class="p">;</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">	<span class="n">response</span><span class="o">-</span><span class="n">policy</span> <span class="p">{</span> <span class="n">zone</span> <span class="s2">&#34;rpz&#34;</span><span class="p">;</span> <span class="p">}</span> <span class="k">break</span><span class="o">-</span><span class="n">dnssec</span> <span class="n">yes</span><span class="p">;</span> <span class="c1"># The response policy zone name</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	forwarders {
-</span></span><span class="line"><span class="cl">		8.8.8.8;
-</span></span><span class="line"><span class="cl">		8.8.4.4;
-</span></span><span class="line"><span class="cl">		1.1.1.1;
-</span></span><span class="line"><span class="cl">	};
+</span></span><span class="line"><span class="cl">	<span class="n">forwarders</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="mf">8.8</span><span class="o">.</span><span class="mf">8.8</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="mf">8.8</span><span class="o">.</span><span class="mf">4.4</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="mf">1.1</span><span class="o">.</span><span class="mf">1.1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">};</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	dnssec-validation auto;
+</span></span><span class="line"><span class="cl">	<span class="n">dnssec</span><span class="o">-</span><span class="n">validation</span> <span class="n">auto</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	listen-on-v6 { any; }; # You can set it to &#34;none&#34; if you don&#39;t want to use IPv6 DNS
-</span></span><span class="line"><span class="cl">};
+</span></span><span class="line"><span class="cl">	<span class="n">listen</span><span class="o">-</span><span class="n">on</span><span class="o">-</span><span class="n">v6</span> <span class="p">{</span> <span class="n">any</span><span class="p">;</span> <span class="p">};</span> <span class="c1"># You can set it to &#34;none&#34; if you don&#39;t want to use IPv6 DNS</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span></code></pre></div><blockquote>
 <p>It is important to tell the server to ignore dnssec requests.
 If we don&rsquo;t do that, the server could reply with a signed response, but with
