@@ -62,7 +62,7 @@
 ]]></content:encoded></item><item><title>How to export your Pocket data to Omnivore</title><link>https://blog.ddavo.me/posts/tutorials/pocket-to-omnivore/</link><pubDate>Sun, 21 May 2023 18:13:36 +0000</pubDate><guid>https://blog.ddavo.me/posts/tutorials/pocket-to-omnivore/</guid><description>In this tutorial I provide a Jupyter notebook to exp your data from Pocket and upload it to Omnivoreort</description><content:encoded><![CDATA[<blockquote>
 <p><strong>Important notice</strong>: Pocket connection is now officialy available in their <a href="https://omnivore.app/settings/integrations">integrations</a> page</p>
 <p>&ndash; <a href="https://docs.omnivore.app/using/importing.html#importing-data-from-pocket">https://docs.omnivore.app/using/importing.html#importing-data-from-pocket</a></p>
-<p>Nevertheless, you can read the code if you want to learn about
+<p>Nevertheless, you can read our code if you want to learn about
 web information processing</p>
 </blockquote>
 <p>I tried to use Pocket, I really tried, but I had to stop using it because it only allowed you 3 highlights per post for free.
