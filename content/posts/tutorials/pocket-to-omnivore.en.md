@@ -9,7 +9,7 @@ tags:
   - Read Later
 categories:
   - tutorial
-lastmod: 2023-11-01T10:27:37.364Z
+lastmod: 2023-11-01T10:32:20.978Z
 keywords:
   - pocket
   - omnivore
@@ -22,7 +22,7 @@ description: In this tutorial I provide a Jupyter notebook to exp your data from
 >
 > -- https://docs.omnivore.app/using/importing.html#importing-data-from-pocket
 >
-> Nevertheless, you can read the code if you want to learn about
+> Nevertheless, you can read our code if you want to learn about
 > web information processing
 
 I tried to use Pocket, I really tried, but I had to stop using it because it only allowed you 3 highlights per post for free.
