@@ -50,7 +50,6 @@ params:
   ShowCodeCopyButtons: true
   ShowReadingTime: true
   ShowWordCount: true
-  ShowShareButtons: true
   displayFullLangName: true
   ShareButtons:
     - twitter
