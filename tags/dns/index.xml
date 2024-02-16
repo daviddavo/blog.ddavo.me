@@ -39,7 +39,7 @@ The thing is, your computer is trying to connect to <code>1.2.3.4</code> (the ad
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nc">@</span><span class="w">		</span><span class="k">IN</span><span class="w">	</span><span class="k">NS</span><span class="w">	</span><span class="py">localhost.</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">; Using $ORIGIN we can add only the subdomain and not the full domain</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="na">$ORIGIN</span><span class="w"> </span><span class="err">example.com</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="na">$ORIGIN</span><span class="w"> </span><span class="nc">example.com</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nc">nas</span><span class="w">                  </span><span class="k">A</span><span class="w">       </span><span class="mi">192.168.1.42</span><span class="w">              </span><span class="c">; IPv4 address of nas.example.com</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nc">nas</span><span class="w">                  </span><span class="k">AAAA</span><span class="w">    </span><span class="il">fe80::1ff:fe23:4567:890a</span><span class="w">  </span><span class="c">; IPv6 address of nas.example.com</span><span class="w">
