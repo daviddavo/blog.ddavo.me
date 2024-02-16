@@ -10,8 +10,11 @@ tags:
 categories:
     - python
 author: David Davó
-lastmod: 2024-02-16T16:42:25.720Z
+lastmod: 2024-02-16T17:00:18.283Z
 math: false
+cover:
+    image: cover.webp
+    alt: The graph illustrating the article
 keywords:
     - data visualization
     - heatmap
