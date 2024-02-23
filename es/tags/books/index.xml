@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Books on David Davó's dev log</title><link>https://blog.ddavo.me/es/tags/books/</link><description>Recent content in Books on David Davó's dev log</description><generator>Hugo -- gohugo.io</generator><language>es</language><copyright>© David Davó 2015 - 2023</copyright><lastBuildDate>Mon, 20 Dec 2021 09:25:02 +0100</lastBuildDate><atom:link href="https://blog.ddavo.me/es/tags/books/index.xml" rel="self" type="application/rss+xml"/><item><title>N libros recomendados de historia de la informática</title><link>https://blog.ddavo.me/es/posts/lists/cs-history-books/</link><pubDate>Mon, 20 Dec 2021 09:25:02 +0100</pubDate><guid>https://blog.ddavo.me/es/posts/lists/cs-history-books/</guid><description>Aunque en este blog recomendamos el comercio local (pista: puedes pedir libros en la librería de tu barrio, y a los dos o tres días, te lo traen. Además, como los libros tienen PVP no los vas a encontrar más baratos ni más caros), encontrarás también enlaces a distintas grandes plataformas online en caso de que no te quede otra.
+Hackers: Heroes of The Computer Revolution (1984) Este libro de Steven Levy sobre la cultura hacker fue escrito en 1984, cuando a penas acababa de salir el Macbook.</description><content:encoded><![CDATA[<blockquote>
+<p>Aunque en este blog recomendamos el comercio local (pista: puedes pedir libros en la librería de tu barrio, y a los dos o tres días, te lo traen. Además, como los libros tienen PVP <strong>no los vas a encontrar más baratos ni más caros</strong>), encontrarás también enlaces a distintas grandes plataformas online en caso de que no te quede otra.</p>
+</blockquote>
+<h2 id="hackers-heroes-of-the-computer-revolution-1984">Hackers: Heroes of The Computer Revolution (1984)</h2>
+<p>Este libro de Steven Levy sobre la cultura hacker fue escrito en 1984, cuando a penas acababa de salir el Macbook. Por aquel entonces, <em>hacking</em> todavía no tenía connotaciones negativas, y significaba más bien «<em>jugar</em> con ordenadores». Steven Levy nos narra la historia de los primeros hackers: personas que les gustaba investigar y aprovechar el máximo potencial de esos amasijos de chips y lucecitas. Esta es la historia de varios hackers, desde los inicios del hacking en los años cincuenta del club de modelismo ferroviario del MIT, hasta el genio detrás del Apple I (<a href="https://es.wikipedia.org/wiki/Steve_Wozniak">Steve Wozniak</a>), pasando por los primeros juegos para computadora.</p>
+<p>También retrata fidedignamente la filosofía hacker en la época, y como fue cambiando a lo largo de los años hasta convertirse, pasando por Richard Stallman (el último de los Hackers del MIT), en la cultura del software libre que ahora conocemos. Todo ello por culpa de las malditas impresoras que todos los informáticos odiamos (y las impresoras nos odian a nosotros).</p>
+<p>En mi humilde opinión, la principal ventaja de este libro es que todo lo que relata pasó hace menos de 20 años (desde la fecha en la que se publicó), por lo que carece de los sesgos hacia ciertas figuras que han ido apareciendo poco a poco gracias a las campañas de marketing de grandes compañías. Sin embargo, creo que Levy se pasó de optimismo pensando que con la democratización de las computadoras todos los usuarios serían inherentemente hackers, pero creo que está en nuestro deber como amantes de la informática el seguir ese ideal y que, cualquiera que quiera, pueda serlo.</p>
+<p>Si te gusta o te interesa la cultura del software libre, o alguna vez has trasteado demasiado con el panel de control del Windows, o te has puesto a desmontar y montar cosas para ver como funcionan, este libro es para tí.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Título Original</td>
+<td style="text-align:center">Hackers: Heroes of the Computer Revolution</td>
+</tr>
+<tr>
+<td style="text-align:center">Autor</td>
+<td style="text-align:center">Steven Levy</td>
+</tr>
+<tr>
+<td style="text-align:center">ISBN</td>
+<td style="text-align:center">0141000511</td>
+</tr>
+<tr>
+<td style="text-align:center">ISBN13</td>
+<td style="text-align:center">9780141000510</td>
+</tr>
+<tr>
+<td style="text-align:center">Páginas</td>
+<td style="text-align:center">439</td>
+</tr>
+<tr>
+<td style="text-align:center">Precio</td>
+<td style="text-align:center">?</td>
+</tr>
+</tbody>
+</table>
+<h3 id="donde-encontrarlo">Donde encontrarlo</h3>
+<ul>
+<li><a href="https://www.goodreads.com/book/show/56829.Hackers?ac=1&from_search=true&qid=YTQlSP1lfm&rank=3Goodreads">Goodreads</a></li>
+<li><a href="https://ucm.on.worldcat.org/oclc/1085767893">Biblioteca Informática UCM</a></li>
+<li>La Casa del Libro</li>
+<li>Imosver</li>
+<li>ISBN: 0141000511</li>
+</ul>
+<p>TODO: Librearias con afiliados</p>
+<ul>
+<li><input disabled="" type="checkbox"> Imosver</li>
+<li><input disabled="" type="checkbox"> La Casa del Libro</li>
+</ul>
+<h2 id="the-soul-of-a-new-machine-">The Soul of a New Machine ()</h2>
+<h2 id="where-wizards-stay-up-late-the-origins-of-the-internet-">Where Wizards Stay Up Late: The Origins of the Internet ()</h2>
+<h2 id="building-ibm-shaping-an-industry-and-its-technology">Building IBM: Shaping an Industry and It&rsquo;s Technology</h2>
+]]></content:encoded></item></channel></rss>
