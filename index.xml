@@ -1,4 +1,48 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>David Davó's dev log</title><link>https://blog.ddavo.me/</link><description>Recent content on David Davó's dev log</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>© David Davó 2015 - 2023</copyright><lastBuildDate>Wed, 22 May 2024 17:54:42 +0000</lastBuildDate><atom:link href="https://blog.ddavo.me/index.xml" rel="self" type="application/rss+xml"/><item><title>Creating a HeatMap with marginal distributions using Seaborn</title><link>https://blog.ddavo.me/posts/tutorials/seaborn-heatmap-marginal-distribution/</link><pubDate>Fri, 16 Feb 2024 16:34:58 +0000</pubDate><guid>https://blog.ddavo.me/posts/tutorials/seaborn-heatmap-marginal-distribution/</guid><description>In this post I create a neat heatmap using Seaborn&amp;#39;s JointGrid without modifying the DataFrame, and using data from my master&amp;#39;s thesis&amp;#34;</description><content:encoded><![CDATA[<p>In this short post I will just share the code on how I created a very neat Heatmap for my Master&rsquo;s Thesis using <a href="https://seaborn.pydata.org">Seaborn</a>. It took me a while but I&rsquo;m very proud of how it turned out.</p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>David Davó's dev log</title><link>https://blog.ddavo.me/</link><description>Recent content on David Davó's dev log</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>© David Davó 2015 - 2023</copyright><lastBuildDate>Wed, 22 May 2024 17:54:42 +0000</lastBuildDate><atom:link href="https://blog.ddavo.me/index.xml" rel="self" type="application/rss+xml"/><item><title>Using hugo from a GitHub codespace</title><link>https://blog.ddavo.me/posts/tutorials/hugo-codespace/</link><pubDate>Wed, 22 May 2024 17:54:42 +0000</pubDate><guid>https://blog.ddavo.me/posts/tutorials/hugo-codespace/</guid><description>In this tutorial we will learn how to set up GitHub codespaces to comfortably write your Hugo posts</description><content:encoded><![CDATA[<p>Once again, this post is more like a tutorial for myself (because every time I want to write a post I forget how it worked) that then I decide to share with everyone.</p>
+<h2 id="setting-up-the-devcontainer">Setting up the devcontainer</h2>
+<p>The devcontainer file tells GitHub Codespaces how to create your file. You can find my current codespaces file <a href="https://github.com/daviddavo/blog.ddavo.me/blob/main/.devcontainer/devcontainer.json">on GitHub</a>.</p>
+<p>Bellow, I copied the simplified version that was used while I was writing this post:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Ubuntu&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nt">&#34;image&#34;</span><span class="p">:</span> <span class="s2">&#34;mcr.microsoft.com/devcontainers/base:jammy&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">&#34;features&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nt">&#34;ghcr.io/devcontainers/features/hugo:1&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="nt">&#34;extended&#34;</span><span class="p">:</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl">		<span class="p">},</span>
+</span></span><span class="line"><span class="cl">		<span class="nt">&#34;ghcr.io/devcontainers-contrib/features/actionlint:1&#34;</span><span class="p">:</span> <span class="p">{},</span>
+</span></span><span class="line"><span class="cl">		<span class="nt">&#34;ghcr.io/devcontainers-contrib/features/gh-cli:1&#34;</span><span class="p">:</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">},</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">&#34;customizations&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nt">&#34;vscode&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="nt">&#34;extensions&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">				<span class="s2">&#34;eliostruyf.vscode-front-matter&#34;</span>
+</span></span><span class="line"><span class="cl">			<span class="p">]</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">},</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// Features to add to the dev container. More info: https://containers.dev/features.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// &#34;features&#34;: {},
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Use &#39;forwardPorts&#39; to make a list of ports inside the container available locally.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nt">&#34;forwardPorts&#34;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1313</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// You can use go mod instead
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nt">&#34;postCreateCommand&#34;</span><span class="p">:</span> <span class="s2">&#34;git submodule update --init&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>The most important part is <code>forwardPorts</code>, as it will &ldquo;open&rdquo; the port that hugo server uses. You can also specify what extensions you want to be installed. I really like FrontMatter, as it has multiple useful features for writing blog posts.</p>
+<h2 id="running-hugo">Running hugo</h2>
+<p>Finally, we have to run hugo, which is, surprisignly, the most difficult part. I just wrote this post to save and publish this command.</p>
+<p>We will use some readily available environment variables to set the base url, that is changed by github to allow you and only you to access the open port.</p>
+<ul>
+<li><code>CODESPACE_NAME</code>: This is the name of the codespace, e.g.: curly-fortnight-asfajkghajhgajhg</li>
+<li><code>GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN</code>: This is the base domain that github uses for these redirects: <code>app.github.dev</code></li>
+</ul>
+<p>We can combine these two variables to create the URL that will be used by your blog, and enter it into hugo:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo server -D --appendPort<span class="o">=</span><span class="nb">false</span> --baseURL https://<span class="nv">$CODESPACE_NAME</span>-1313.<span class="nv">$GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN</span>
+</span></span></code></pre></div><h2 id="ussing-frontmatters-run-server-button">Ussing FrontMatter&rsquo;s RUN SERVER button</h2>
+<p>To finish, the Front Matter extension has a cool &ldquo;START SERVER&rdquo; button, we can set what it does by just modifying Visual Studio&rsquo;s config, and then we will just have to press that button.</p>
+]]></content:encoded></item><item><title>Creating a HeatMap with marginal distributions using Seaborn</title><link>https://blog.ddavo.me/posts/tutorials/seaborn-heatmap-marginal-distribution/</link><pubDate>Fri, 16 Feb 2024 16:34:58 +0000</pubDate><guid>https://blog.ddavo.me/posts/tutorials/seaborn-heatmap-marginal-distribution/</guid><description>In this post I create a neat heatmap using Seaborn&amp;#39;s JointGrid without modifying the DataFrame, and using data from my master&amp;#39;s thesis&amp;#34;</description><content:encoded><![CDATA[<p>In this short post I will just share the code on how I created a very neat Heatmap for my Master&rsquo;s Thesis using <a href="https://seaborn.pydata.org">Seaborn</a>. It took me a while but I&rsquo;m very proud of how it turned out.</p>
 <p>For this, I used the <a href="https://seaborn.pydata.org/generated/seaborn.JointGrid.html#seaborn.JointGrid">JointGrid</a> tool, which allows me to make a multi-plot grid for conditional relationships, where we can show the marginal distributions on the top and right parts of the graph.</p>
 <p>The <a href="https://seaborn.pydata.org/generated/seaborn.jointplot.html#seaborn.jointplot">jointplot</a> function has already many things built in, for plotting something like a scatter plot (with x and y variables) while showing its distribution.</p>
 <figure>
