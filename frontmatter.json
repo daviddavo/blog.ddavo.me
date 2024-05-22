@@ -8,32 +8,6 @@
       "path": "[[workspace]]/content/posts"
     }
   ],
-  "frontMatter.taxonomy.tags": [
-    "Coppelia",
-    "GitHub actions",
-    "LaTeX",
-    "Omnivore",
-    "Pocket",
-    "ROS2",
-    "Read Later",
-    "Robotics",
-    "archlinux",
-    "books",
-    "crypt",
-    "dns",
-    "homelab",
-    "imported",
-    "lists",
-    "manjaro",
-    "projects",
-    "self-hosting",
-    "translated",
-    "tutorial",
-    "web design"
-  ],
-  "frontMatter.taxonomy.categories": [
-    "tutorial"
-  ],
   "frontMatter.content.autoUpdateDate": true,
   "frontMatter.taxonomy.contentTypes": [
     {
