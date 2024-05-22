@@ -3,7 +3,7 @@ title: Using hugo from a GitHub codespace
 description: In this tutorial we will learn how to set up GitHub codespaces to comfortably write your Hugo posts
 date: 2024-05-22T17:54:42.962Z
 preview: ""
-draft: true
+draft: false
 tags:
     - GitHub
     - tutorial
@@ -12,7 +12,7 @@ categories:
     - tutorial
 author: David Davó
 slug: hugo-codespace
-lastmod: 2024-05-22T18:24:38.238Z
+lastmod: 2024-05-22T18:28:03.974Z
 math: false
 type: tutorial
 keywords:
