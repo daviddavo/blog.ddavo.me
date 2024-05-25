@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Python on David Davó's dev log</title><link>https://blog.ddavo.me/categories/python/</link><description>Recent content in Python on David Davó's dev log</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>© David Davó 2015 - 2023</copyright><lastBuildDate>Wed, 22 May 2024 18:27:50 +0000</lastBuildDate><atom:link href="https://blog.ddavo.me/categories/python/index.xml" rel="self" type="application/rss+xml"/><item><title>Less confusing confusion matrices with Seaborn</title><link>https://blog.ddavo.me/posts/tutorials/confusing-confusion-matrices-seaborn/</link><pubDate>Wed, 22 May 2024 18:27:50 +0000</pubDate><guid>https://blog.ddavo.me/posts/tutorials/confusing-confusion-matrices-seaborn/</guid><description>In this post I use a JointGrid with bar plots to make confusion matrices less confusing</description><content:encoded><![CDATA[<p>The other day my supervisor gave me an interesting paper to read on data visualization: <a href="https://dl.acm.org/doi/pdf/10.1145/3415224">Designing Alternative Representations of Confusion
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Bar Plot on David Davó's dev log</title><link>https://blog.ddavo.me/tags/bar-plot/</link><description>Recent content in Bar Plot on David Davó's dev log</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>© David Davó 2015 - 2023</copyright><lastBuildDate>Wed, 22 May 2024 18:27:50 +0000</lastBuildDate><atom:link href="https://blog.ddavo.me/tags/bar-plot/index.xml" rel="self" type="application/rss+xml"/><item><title>Less confusing confusion matrices with Seaborn</title><link>https://blog.ddavo.me/posts/tutorials/confusing-confusion-matrices-seaborn/</link><pubDate>Wed, 22 May 2024 18:27:50 +0000</pubDate><guid>https://blog.ddavo.me/posts/tutorials/confusing-confusion-matrices-seaborn/</guid><description>In this post I use a JointGrid with bar plots to make confusion matrices less confusing</description><content:encoded><![CDATA[<p>The other day my supervisor gave me an interesting paper to read on data visualization: <a href="https://dl.acm.org/doi/pdf/10.1145/3415224">Designing Alternative Representations of Confusion
 Matrices to Support Non-Expert Public Understanding of
 Algorithm Performance</a> (full reference below, on <em>further reading</em>).</p>
 <p>In case you don&rsquo;t know what a confusion matrix is, is a tool that we use in machine learning to visualize the performance of a classification algorithm.</p>
@@ -80,74 +80,4 @@ Algorithm Performance</a> (full reference below, on <em>further reading</em>).</
 <li><a href="https://en.wikipedia.org/wiki/Confusion_matrix">Confusion Matrix - Wikipedia</a></li>
 </ul>
 <p>Finally, if you liked this post, you might like other posts about data visualization like <a href="https://blog.ddavo.me/posts/tutorials/seaborn-heatmap-marginal-distribution/">Creating a HeatMap with marginal distributions using Seaborn</a></p>
-]]></content:encoded></item><item><title>Creating a HeatMap with marginal distributions using Seaborn</title><link>https://blog.ddavo.me/posts/tutorials/seaborn-heatmap-marginal-distribution/</link><pubDate>Fri, 16 Feb 2024 16:34:58 +0000</pubDate><guid>https://blog.ddavo.me/posts/tutorials/seaborn-heatmap-marginal-distribution/</guid><description>In this post I create a neat heatmap using Seaborn&amp;#39;s JointGrid without modifying the DataFrame, and using data from my master&amp;#39;s thesis&amp;#34;</description><content:encoded><![CDATA[<p>In this short post I will just share the code on how I created a very neat Heatmap for my Master&rsquo;s Thesis using <a href="https://seaborn.pydata.org">Seaborn</a>. It took me a while but I&rsquo;m very proud of how it turned out.</p>
-<p>For this, I used the <a href="https://seaborn.pydata.org/generated/seaborn.JointGrid.html#seaborn.JointGrid">JointGrid</a> tool, which allows me to make a multi-plot grid for conditional relationships, where we can show the marginal distributions on the top and right parts of the graph.</p>
-<p>The <a href="https://seaborn.pydata.org/generated/seaborn.jointplot.html#seaborn.jointplot">jointplot</a> function has already many things built in, for plotting something like a scatter plot (with x and y variables) while showing its distribution.</p>
-<figure>
-            <img loading="lazy" src="https://seaborn.pydata.org/_images/jointplot_17_0.png" alt=""/> <figcaption>
-            <p>Sample figure from Seaborn&rsquo;s official documentation</p>
-        </figcaption>
-</figure>
-
-<p>In my case, what I wanted to plot wasn&rsquo;t a scatter plot, It did not have an x nor an y, it was a ol&rsquo; heatmap created from a <a href="https://pandas.pydata.org/docs/reference/api/pandas.crosstab.html">pd.crosstab</a>.</p>
-<p>This is my data:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">array([[4850, 5713, 2401, 1715, 1523, 1328,  848],
-</span></span><span class="line"><span class="cl">       [1335, 5474, 6127, 3121, 2153, 1792, 1239],
-</span></span><span class="line"><span class="cl">       [1618,  874, 4309, 5731, 2849, 2117, 1381],
-</span></span><span class="line"><span class="cl">       [1802, 1353,  950, 4494, 5385, 2781, 1994],
-</span></span><span class="line"><span class="cl">       [2199, 1401,  989,  636, 4047, 4811, 2754],
-</span></span><span class="line"><span class="cl">       [2267, 1306,  973,  649,  542, 3161, 3462],
-</span></span><span class="line"><span class="cl">       [2988, 1452, 1035,  606,  602,  506, 2917]])
-</span></span></code></pre></div><p>At first, I was going to create a Heatmap and two barplots, but then I decided to try to combine them all into one, and <strong>here is the result</strong>:</p>
-<figure>
-        <img loading="lazy" srcset="https://blog.ddavo.me/posts/tutorials/seaborn-heatmap-marginal-distribution/download_hua9674c314d701374f65f1d9b70634b14_80081_360x0_resize_box_3.png 360w ,https://blog.ddavo.me/posts/tutorials/seaborn-heatmap-marginal-distribution/download_hua9674c314d701374f65f1d9b70634b14_80081_480x0_resize_box_3.png 480w ,https://blog.ddavo.me/posts/tutorials/seaborn-heatmap-marginal-distribution/download.png 655w" 
-            sizes="(min-width: 768px) 720px, 100vw" src="https://blog.ddavo.me/posts/tutorials/seaborn-heatmap-marginal-distribution/download.png" alt="My own Heatmap with marginal distributions" 
-            width="655" height="641"><figcaption>
-            <p>A heatmap on when a proposal is created and when is voted in a certain voting system (to be published)</p>
-        </figcaption>
-</figure>
-
-<p>The code to accomplish this was the following:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># _toplot = pd.crosstab(...)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Create an empty joint grid</span>
-</span></span><span class="line"><span class="cl"><span class="n">grid</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">JointGrid</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Fill the centre with our heatmap</span>
-</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">_toplot</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">grid</span><span class="o">.</span><span class="n">ax_joint</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;mako&#39;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># Draw total bars, both with width 1, but the Y one with horizontal orientation</span>
-</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">_toplot</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">ax</span><span class="o">=</span><span class="n">grid</span><span class="o">.</span><span class="n">ax_marg_x</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">_toplot</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">ax</span><span class="o">=</span><span class="n">grid</span><span class="o">.</span><span class="n">ax_marg_y</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># Offset value (just half an unit)</span>
-</span></span><span class="line"><span class="cl"><span class="n">_off</span> <span class="o">=</span> <span class="mf">.5</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Fix x</span>
-</span></span><span class="line"><span class="cl"><span class="n">_xmin</span><span class="p">,</span> <span class="n">_xmax</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">ax_joint</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="n">grid</span><span class="o">.</span><span class="n">ax_joint</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">_xmin</span><span class="o">+</span><span class="n">_off</span><span class="p">,</span> <span class="n">_xmax</span><span class="o">+</span><span class="n">_off</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">bar</span> <span class="ow">in</span> <span class="n">grid</span><span class="o">.</span><span class="n">ax_marg_x</span><span class="o">.</span><span class="n">containers</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
-</span></span><span class="line"><span class="cl">    <span class="n">bar</span><span class="o">.</span><span class="n">set_x</span><span class="p">(</span><span class="n">bar</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span> <span class="o">+</span> <span class="n">_off</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Fix y</span>
-</span></span><span class="line"><span class="cl"><span class="n">_ymin</span><span class="p">,</span> <span class="n">_ymax</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">ax_joint</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="n">grid</span><span class="o">.</span><span class="n">ax_joint</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">_ymin</span><span class="o">+</span><span class="n">_off</span><span class="p">,</span> <span class="n">_ymax</span><span class="o">+</span><span class="n">_off</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">bar</span> <span class="ow">in</span> <span class="n">grid</span><span class="o">.</span><span class="n">ax_marg_y</span><span class="o">.</span><span class="n">containers</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
-</span></span><span class="line"><span class="cl">    <span class="n">bar</span><span class="o">.</span><span class="n">set_y</span><span class="p">(</span><span class="n">bar</span><span class="o">.</span><span class="n">get_y</span><span class="p">()</span> <span class="o">+</span> <span class="n">_off</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Need to use this to set the horizontal_alignment</span>
-</span></span><span class="line"><span class="cl"><span class="n">grid</span><span class="o">.</span><span class="n">ax_joint</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span>
-</span></span><span class="line"><span class="cl">    <span class="n">grid</span><span class="o">.</span><span class="n">ax_joint</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">(),</span> 
-</span></span><span class="line"><span class="cl">    <span class="n">rotation</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>    
-</span></span><span class="line"><span class="cl">    <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span>
-</span></span><span class="line"><span class="cl"><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">grid</span><span class="o">.</span><span class="n">ax_joint</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">grid</span><span class="o">.</span><span class="n">ax_joint</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Día de votación&#39;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">grid</span><span class="o">.</span><span class="n">ax_joint</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Día de creación&#39;</span><span class="p">)</span>
-</span></span></code></pre></div><h2 id="further-reading">Further reading</h2>
-<p>After coming up with this solution, I found this StackOverflow post:</p>
-<ul>
-<li><a href="https://stackoverflow.com/a/65921757/4505998">How to create a heatmap with marginal histograms, similar to a jointplot?</a></li>
-</ul>
-<p>But the answer relies too much on modifying the data, and won&rsquo;t work if the indexes are not a range of integers.</p>
-<p>There&rsquo;s also a <a href="https://github.com/mwaskom/seaborn/discussions/3198">discussion on GitHub</a> about this which I replied to.</p>
 ]]></content:encoded></item></channel></rss>
