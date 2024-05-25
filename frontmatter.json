@@ -73,5 +73,7 @@
         }
       ]
     }
-  ]
+  ],
+  "frontMatter.dashboard.openOnStart": false,
+  "frontMatter.framework.startCommand": "hugo server -D --appendPort=false -p 1313 -b https://$CODESPACE_NAME-1313.$GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN"
 }
