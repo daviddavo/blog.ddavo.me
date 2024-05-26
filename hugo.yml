@@ -12,7 +12,7 @@ languages:
       description: >
         Blog de desarrollador de David Davó, en el que encontrarás notas sobre mis proyectos (entre otras cosas)
 title: David Davó's dev log
-copyright: '© David Davó 2015 - 2023'
+copyright: '© David Davó 2015 - 2024'
 theme: "PaperModX"
 paginate: 5
 enableRobotsTXT: true
