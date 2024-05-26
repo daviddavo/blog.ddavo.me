@@ -18,6 +18,9 @@ jobs:
           hugo-version: 'latest'
           extended: true
 
+      - name: Set relative urls
+        run: "echo relativeURLs: true >> hugo.yml"
+
       - name: Build
         run: hugo --buildDrafts --buildFuture --baseURL ""
 
