@@ -22,7 +22,7 @@ jobs:
         run: "echo relativeURLs: true >> hugo.yml"
 
       - name: Build
-        run: hugo --buildDrafts --buildFuture --baseURL ""
+        run: hugo --buildDrafts --buildFuture --baseURL "/"
 
       - name: Publish to Cloudflare Pages
         uses: cloudflare/pages-action@v1
