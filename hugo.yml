@@ -35,7 +35,6 @@ services:
   youtube:
     PrivacyEnhanced: true
 params:
-  ShowShareButtons: true
   description: >
     David Davó's dev log where you'll find notes about my projects, among other things
   author: David Davó

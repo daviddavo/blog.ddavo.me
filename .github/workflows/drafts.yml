@@ -19,7 +19,7 @@ jobs:
           extended: true
 
       - name: Build
-        run: hugo -EDF --baseURL "https://drafts.blog.ddavo.me/"
+        run: hugo -EDF --environment drafts
 
       - name: Publish to Cloudflare Pages
         uses: cloudflare/pages-action@v1
