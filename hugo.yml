@@ -18,6 +18,9 @@ paginate: 5
 enableRobotsTXT: true
 markup:
   goldmark:
+    # TODO: Fix figure shortcode and set to false
+    # https://discourse.gohugo.io/t/no-resources-in-page-bundle-multilanguage/50061
+    duplicateResourceFiles: true
     extensions:
       strikethrough: true
       table: true
