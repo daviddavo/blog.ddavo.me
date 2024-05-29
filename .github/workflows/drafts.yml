@@ -5,6 +5,9 @@ on:
       - main
 jobs:
   build-and-deploy-drafts:
+    strategy:
+      matrix:
+        version: ['0.118.0', '0.119.0', '0.120.0', '0.121.0', '0.122.0', '0.123.0', '0.124.0', '0.125.0', '0.126.0', '0.126.1']
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -15,7 +18,7 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: '0.118.2'
+          hugo-version: ${{ matrix.version }}
           extended: true
 
       - name: Build
@@ -29,4 +32,4 @@ jobs:
           projectName: "blog-ddavo"
           directory: "public"
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          branch: drafts
+          branch: drafts-${{ matrix.version }}
