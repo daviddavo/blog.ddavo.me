@@ -23,7 +23,7 @@
             sizes="(min-width: 768px) 720px, 100vw" src="{{ $img.Permalink }}" alt="{{ .Get "alt" }}" 
             width="{{ $img.Width }}" height="{{ $img.Height }}">
         {{- else }}{{/* Unprocessable image or responsive images disabled */}}
-        <img loading="lazy" src="{{ (path.Join $.Page.RelPermalink (.Get "src")) | absURL }}" alt="{{ .Get "alt" }}">
+        <img loading="lazy" src="{{ $img.RelPermalink }}" alt="{{ .Get "alt" }}">
         {{- end }}
     {{- else }}{{/* For absolute urls and external links, no img processing here */}}
             <img loading="lazy" src="{{ (.Get "src") | absURL }}" alt="{{ .Get "alt" }}"
