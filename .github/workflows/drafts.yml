@@ -15,7 +15,7 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: '0.123.8'
+          hugo-version: '0.118.2'
           extended: true
 
       - name: Build
