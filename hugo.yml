@@ -1,5 +1,6 @@
 baseURL: 'https://blog.ddavo.me/'
 defaultContentLanguage: en
+defaultContentLanguageInSubdir: false
 enableEmoji: true
 languages:
   en:
@@ -12,12 +13,15 @@ languages:
       description: >
         Blog de desarrollador de David Davó, en el que encontrarás notas sobre mis proyectos (entre otras cosas)
 title: David Davó's dev log
-copyright: '© David Davó 2015 - 2023'
+copyright: '© David Davó 2015 - 2024'
 theme: "PaperModX"
 paginate: 5
 enableRobotsTXT: true
 markup:
   goldmark:
+    # TODO: Fix figure shortcode and set to false
+    # https://discourse.gohugo.io/t/no-resources-in-page-bundle-multilanguage/50061
+    duplicateResourceFiles: false
     extensions:
       strikethrough: true
       table: true
@@ -35,7 +39,6 @@ services:
   youtube:
     PrivacyEnhanced: true
 params:
-  ShowShareButtons: true
   description: >
     David Davó's dev log where you'll find notes about my projects, among other things
   author: David Davó
@@ -50,7 +53,6 @@ params:
   ShowCodeCopyButtons: true
   ShowReadingTime: true
   ShowWordCount: true
-  ShowShareButtons: true
   displayFullLangName: true
   ShareButtons:
     - twitter

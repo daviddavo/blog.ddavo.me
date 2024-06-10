@@ -14,7 +14,8 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"eliostruyf.vscode-front-matter"
+				"eliostruyf.vscode-front-matter",
+				"adamvoss.vscode-languagetool"
 			]
 		}
 	},
@@ -26,7 +27,7 @@
 	"forwardPorts": [1313],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "uname -a",
+	"postCreateCommand": "git submodule update --init",
 
 	// Configure tool-specific properties.
 	// "customizations": {},

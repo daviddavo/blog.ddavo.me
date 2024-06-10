@@ -1,10 +1,13 @@
 ---
-title: "N libros recomendados de historia de la informática"
-date: 2021-12-20T09:25:02+01:00
+title: N libros recomendados de historia de la informática
+date: 2024-05-26T09:46:41.059Z
 draft: true
 author: David Davó
-tags: [lists, books]
+tags:
+  - lists
+  - books
 showToc: true
+lastmod: 2024-05-26T09:46:42.196Z
 ---
 
 > Aunque en este blog recomendamos el comercio local (pista: puedes pedir libros en la librería de tu barrio, y a los dos o tres días, te lo traen. Además, como los libros tienen PVP **no los vas a encontrar más baratos ni más caros**), encontrarás también enlaces a distintas grandes plataformas online en caso de que no te quede otra.
