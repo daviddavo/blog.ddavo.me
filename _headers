@@ -1,5 +1,5 @@
 https://:project.pages.dev/*
 	X-Robots-Tag: noindex
 
-https://drafts.*/*
+https://drafts.blog.ddavo.me/*
 	X-Robots-Tag: noindex
