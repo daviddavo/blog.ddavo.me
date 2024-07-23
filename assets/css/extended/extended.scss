@@ -6,3 +6,53 @@
 figure img {
     height: auto;
 }
+
+// https://codepen.io/nzbin/pen/GGrXbp
+.loading-text-data {
+  position: relative;
+  display: inline-block;
+  width: 1ex;
+  height: 1ex;
+  border-radius: .5ex;
+  margin-left: 2ex;
+  margin-right: 2ex;
+  background-color: #9880ff;
+  color: #9880ff;
+  animation: dot-flashing 1s infinite linear alternate;
+  animation-delay: 0.5s;
+}
+.loading-text-data::before, .loading-text-data::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 0;
+}
+.loading-text-data::before {
+  left: -1.5ex;
+  width: 1ex;
+  height: 1ex;
+  border-radius: .5ex;
+  background-color: #9880ff;
+  color: #9880ff;
+  animation: dot-flashing 1s infinite alternate;
+  animation-delay: 0s;
+}
+.loading-text-data::after {
+  left: 1.5ex;
+  width: 1ex;
+  height: 1ex;
+  border-radius: .5ex;
+  background-color: #9880ff;
+  color: #9880ff;
+  animation: dot-flashing 1s infinite alternate;
+  animation-delay: 1s;
+}
+
+@keyframes dot-flashing {
+  0% {
+    background-color: #9880ff;
+  }
+  50%, 100% {
+    background-color: rgba(152, 128, 255, 0.2);
+  }
+}

@@ -1,0 +1,7 @@
+{{- /* Check if the post has a javascript folder and include all files */ -}}
+<!-- Post scripts loaded by extended_footer -->
+{{ range .Resources.Match "**.js" }}
+  {{ $script := . | minify }}
+  {{ $scriptIntegrity := $script | fingerprint "sha256" }}
+  <script src="{{ $script.Permalink }}" integrity="{{ $scriptIntegrity.Data.Integrity }}"></script>
+{{ end }}

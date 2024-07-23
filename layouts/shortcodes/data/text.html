@@ -1,0 +1,12 @@
+{{- $id := .Get "id" | default (.Get 0) }}
+{{- $file := .Get "file" -}}
+{{- $default := .Get "default" -}}
+
+{{- $url := ($.Page.Resources.GetMatch (printf "*%s*" $file)).Permalink }}
+<span id="{{$id}}" {{ with $url }}data-url="{{ $url }}"{{- end }}>
+    {{- if $default }}
+        {{ $default }}
+    {{- else }}
+        <span class="loading-text-data"></span>
+    {{- end }}
+</span>
