@@ -23,7 +23,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       document.getElementById('criptosellos-total-tokens').innerHTML = json['total-tokens']
       document.getElementById('criptosellos-daily-avg').innerHTML = json['daily-avg']
-      // document.getElementById('criptosellos-total-users').innerHTML = json['total-users']
+      document.getElementById('criptosellos-total-holders').innerHTML = json['total-holders']
+      document.getElementById('criptosellos-holder-avg').innerHTML = Math.round(json['total-tokens'] / json['total-holders'] * 100) / 100
+
+      document.getElementById('criptosellos-holder-whale-address').innerHTML = '<a href="'+json['holder-whale-address']+'"><code>'+json['holder-whale-address'].substring(0, 10)+'</code></a>'
+      document.getElementById('criptosellos-holder-whale-count').innerHTML = json['holder-whale-count']
     })
   })
 })

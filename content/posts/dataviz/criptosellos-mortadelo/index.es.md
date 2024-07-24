@@ -1,7 +1,6 @@
 ---
 title: Sobre los criptosellos de Mortadelo y Filemón
-lastmod: 2024-07-23T21:01:16.380Z
-draft: true
+lastmod: 2024-07-24T16:02:07.174Z
 ---
 
 Hace bien poco Correos España ha decidido sacar al mercado una colección de "Criptosellos". Además del sello especial (que puede ser usado con un valor nominal de 10€) con su cajita y toda la parafernalia, te entregan un código que puede ser canjeado para obtener un NFT.
@@ -37,9 +36,11 @@ Pues supongo que para incrementar el valor de los sellos y que lo compre más ge
 Se han reclamado un total de {{< data/text id="criptosellos-total-tokens" >}} criptosellos,
 una media de {{< data/text id="criptosellos-daily-avg">}} al día.
 
-Sin embargo, esto no significa que haya cientos de personas comprándolos, en realidad tan solo {{< data/text id="criptosellos-total-users" >}} carteras distintas tienen al menos un criptosello. No podemos decir que son usuarios distintos pues, al igual que con un correo electrónico, nada impide que un usuario se cree varias cuentas. En el mundo cripto esto es muy normal: tener una cartera con una clave muy robusta en la que almacenar tus criptocosas a largo plazo, y otra más accesible (en el móvil, por ejemplo) que si hackean no pasa nada.
+Sin embargo, esto no significa que haya cientos de personas comprándolos, en realidad tan solo {{< data/text id="criptosellos-total-holders" >}} carteras distintas tienen al menos un criptosello. No podemos decir que son usuarios distintos pues, al igual que con un correo electrónico, nada impide que un usuario se cree varias cuentas. En el mundo cripto esto es muy normal: tener una cartera con una clave muy robusta en la que almacenar tus criptocosas a largo plazo, y otra más accesible (en el móvil, por ejemplo) que si hackean no pasa nada.
 
-Esto es porque hay un usuario que tiene muchos sellos, y ya unos pocos que tienen el resto, como puede verse en la siguiente imagen:
+Cada usuario que tenga al menos un criptosello en posesión se denomina _holder_. Aunque cada _holder_ tiene una media de {{< data/text id="criptosellos-holder-avg" >}} sellos, ocurre como en el famoso dicho de «si yo me como dos pollos y tu ninguno, de media nos hemos comido un pollo cada uno».
+
+La realidad es que hay un usuario con muchos más NFTs que el resto: el usuario {{<data/text id="criptosellos-holder-whale-address">}}, que tiene **{{<data/text id="criptosellos-holder-whale-count" >}} criptosellos** en posesión. Por otro lado, la mayoría de usuarios...
 
 TODO:
 - La idea es acabar demostrando que estos usuarios, en general, tampoco son criptoentusiastas y que tampoco han sido atraidos al mundo de la filatelia, sino que mas bien han llevado a filatelicos al mundo cripto

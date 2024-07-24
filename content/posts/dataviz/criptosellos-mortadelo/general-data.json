@@ -1,6 +1,8 @@
 {
-    "last-update": "1970-01-01",
-    "total-tokens": "149",
-    "daily-avg": 8.76,
-    "total-users": 68
+    "last-update": "2024-07-24",
+    "total-tokens": 170,
+    "daily-avg": 8.10,
+    "total-holders": 95,
+    "holder-whale-address": "0x31c8b682a6198c30fc91da9490229228d6b25393",
+    "holder-whale-count": 30
 }
