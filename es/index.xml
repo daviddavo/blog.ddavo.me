@@ -1,4 +1,58 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>David Davó's dev log</title><link>https://blog.ddavo.me/es/</link><description>Recent content on David Davó's dev log</description><generator>Hugo -- gohugo.io</generator><language>es</language><copyright>© David Davó 2015 - 2024</copyright><lastBuildDate>Tue, 23 Jul 2024 21:01:16 +0000</lastBuildDate><atom:link href="https://blog.ddavo.me/es/index.xml" rel="self" type="application/rss+xml"/><item><title>¿Cómo se llaman mis servidores?</title><link>https://blog.ddavo.me/es/posts/server-names/</link><pubDate>Sun, 03 Sep 2023 11:19:15 +0000</pubDate><guid>https://blog.ddavo.me/es/posts/server-names/</guid><description>Cuando uno monta un servidor, una de las primeras cosas que debe establecer es su hostname y, aunque no le demos un botellazo como a los barcos, hay que bautizarlo.
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>David Davó's dev log</title><link>https://blog.ddavo.me/es/</link><description>Recent content on David Davó's dev log</description><generator>Hugo -- gohugo.io</generator><language>es</language><copyright>© David Davó 2015 - 2024</copyright><lastBuildDate>Wed, 24 Jul 2024 16:02:07 +0000</lastBuildDate><atom:link href="https://blog.ddavo.me/es/index.xml" rel="self" type="application/rss+xml"/><item><title>Sobre los criptosellos de Mortadelo y Filemón</title><link>https://blog.ddavo.me/es/posts/dataviz/criptosellos-mortadelo/</link><pubDate>Wed, 24 Jul 2024 16:02:07 +0000</pubDate><guid>https://blog.ddavo.me/es/posts/dataviz/criptosellos-mortadelo/</guid><description>Hace bien poco Correos España ha decidido sacar al mercado una colección de &amp;ldquo;Criptosellos&amp;rdquo;. Además del sello especial (que puede ser usado con un valor nominal de 10€) con su cajita y toda la parafernalia, te entregan un código que puede ser canjeado para obtener un NFT.
+A grosso modo, un NFT o Token no Fungible es una representación de un activo (digital o físico) implementado en blockchain. Usa la tecnología de las criptomonedas pero no se pueden dividir, y dos NFTs no son equivalentes entre sí.</description><content:encoded><![CDATA[<p>Hace bien poco Correos España ha decidido sacar al mercado una colección de &ldquo;Criptosellos&rdquo;. Además del sello especial (que puede ser usado con un valor nominal de 10€) con su cajita y toda la parafernalia, te entregan un código que puede ser canjeado para obtener un NFT.</p>
+<p>A grosso modo, un NFT o Token no Fungible es una representación de un activo (digital o físico) implementado en blockchain. Usa la tecnología de las criptomonedas pero no se pueden dividir, y dos NFTs no son equivalentes entre sí. Por ejemplo, 5 euros son 5 euros, estén en billetes, en monedas, en un cheque, o en tu saldo. En los NFTs, pueden representar activos únicos (la escritura de tu casa) o que haya un número determinado e indivisible de activos iguales, como puede haber varios cromos iguales en una colección (<strong>sellos</strong> en este caso).</p>
+<p>Aunque el blockchain tiene mala fama por <a href="https://es.cointelegraph.com/news/in-2023-bitcoin-mining-consumed-more-than-one-third-of-mexicos-electrical-energy">consumir más electricidad que países como Argentina</a>, esto es culpa íntegra de Bitcoin, pues Ethereum ya no tiene ese problema desde que se actualizó a Ethereum 2.0 hace unos cuantos años. Además, el NFT de Correos se encuentra en una red alternativa llamada Polygon, que es una cadena similar a Ethereum pero mucho más rápida y eficiente (también energéticamente).</p>
+<p>En ese aspecto Correos no lo ha hecho nada mal, pero es que las dos principales razones para usar un blockchain son la <strong>transparencia</strong> y la <strong>descentralización</strong>. En el resto del post analizaremos los criptosellos desde estas perspectivas, y finalmente analizaré si se están usando o no, y como.</p>
+<h2 id="transparencia">Transparencia</h2>
+<p>Empezamos mal: no han publicado la dirección del contrato inteligente, y por lo tanto perdemos una de las pocas ventajas que tenía usar esta tecnología.</p>
+<p>Como investigador en estas movidas he conseguido llegar hasta el contrato por mis propios medios, que tiene la dirección <a href="https://polygon.blockscout.com/token/0x8fA19F4316dF640e14b30B2fE749cbdd79Da9335"><code>0x8fA19F4316dF640e14b30B2fE749cbdd79Da9335</code></a>.</p>
+<blockquote>
+<p>Actualización 14 de Junio 2024: Ha habido alguna movida y resulta que han <em>migrado</em> el contrato <a href="https://polygon.blockscout.com/token/0x4D5D215c47a43B38a58Abf735b628cF9b61273a0">a otra dirección</a>, de una manera un tanto cutre que detallaré en el siguiente apartado.</p>
+</blockquote>
+<p>Tampoco publican el código fuente del contrato inteligente, por lo que los usuarios no pueden auditar cómo funciona el contrato y si está bien hecho. Tal vez haya un error informático que permita a alguien hacerse con todos los criptosellos, y nunca podamos saberlo.</p>
+<p>Sin embargo, como las transferencias en el blockchain son transparentes, sí que podemos saber quiénes son los poseedores de los exclusivos NFTs de Mortadelo y Filemón.</p>
+<h2 id="descentralización">Descentralización</h2>
+<p>Por otro lado, desde el punto de vista de la <strong>descentralización</strong> la solución tambien deja mucho que desear. Normalmente, los NFTs utilizan soluciones descentralizadas que permiten usarlo dentro del extenso ecosistema web3: ponertelo de imagen de perfil en una red social, exponerlo en una galería virtual, usarlo en algún juego&hellip;
+En el caso del criptosello es necesario utilizar sí o sí la aplicación de la web de correos para ver la imagen asociada. Si en un par de años la consultora contratada deja de dar soporte a esta web, ya no podrás acceder a tu criptosello.</p>
+<blockquote>
+<p><strong>Si los criptosellos no son ni transparentes ni decentralizados, ¿para que existen?</strong></p>
+</blockquote>
+<p>Pues supongo que para incrementar el valor de los sellos y que lo compre más gente, ¿no? Aunque no sabemos cuantos sellos se han vendido, sí que podemos saber cuantos de ellos han sido &ldquo;canjeados&rdquo; en la blockchain, y el perfil de los usuarios que lo han hecho.</p>
+<blockquote>
+<p>Este post se actualiza automáticamente con nuevos datos. La última actualización fue el 
+<span id="criptosellos-last-update" data-url="https://blog.ddavo.me/posts/dataviz/criptosellos-mortadelo/general-data.json">
+        <span class="loading-text-data"></span>
+</span>.</p>
+</blockquote>
+<p>Se han reclamado un total de 
+<span id="criptosellos-total-tokens" data-url="https://blog.ddavo.me/posts/dataviz/criptosellos-mortadelo/general-data.json">
+        <span class="loading-text-data"></span>
+</span> criptosellos,
+una media de 
+<span id="criptosellos-daily-avg" data-url="https://blog.ddavo.me/posts/dataviz/criptosellos-mortadelo/general-data.json">
+        <span class="loading-text-data"></span>
+</span> al día.</p>
+<p>Sin embargo, esto no significa que haya cientos de personas comprándolos, en realidad tan solo 
+<span id="criptosellos-total-holders" data-url="https://blog.ddavo.me/posts/dataviz/criptosellos-mortadelo/general-data.json">
+        <span class="loading-text-data"></span>
+</span> carteras distintas tienen al menos un criptosello. No podemos decir que son usuarios distintos pues, al igual que con un correo electrónico, nada impide que un usuario se cree varias cuentas. En el mundo cripto esto es muy normal: tener una cartera con una clave muy robusta en la que almacenar tus criptocosas a largo plazo, y otra más accesible (en el móvil, por ejemplo) que si hackean no pasa nada.</p>
+<p>Cada usuario que tenga al menos un criptosello en posesión se denomina <em>holder</em>. Aunque cada <em>holder</em> tiene una media de 
+<span id="criptosellos-holder-avg" data-url="https://blog.ddavo.me/posts/dataviz/criptosellos-mortadelo/general-data.json">
+        <span class="loading-text-data"></span>
+</span> sellos, ocurre como en el famoso dicho de «si yo me como dos pollos y tu ninguno, de media nos hemos comido un pollo cada uno».</p>
+<p>La realidad es que hay un usuario con muchos más NFTs que el resto: el usuario 
+<span id="criptosellos-holder-whale-address" data-url="https://blog.ddavo.me/posts/dataviz/criptosellos-mortadelo/general-data.json">
+        <span class="loading-text-data"></span>
+</span>, que tiene <strong>
+<span id="criptosellos-holder-whale-count" data-url="https://blog.ddavo.me/posts/dataviz/criptosellos-mortadelo/general-data.json">
+        <span class="loading-text-data"></span>
+</span> criptosellos</strong> en posesión. Por otro lado, la mayoría de usuarios&hellip;</p>
+<p>TODO:</p>
+<ul>
+<li>La idea es acabar demostrando que estos usuarios, en general, tampoco son criptoentusiastas y que tampoco han sido atraidos al mundo de la filatelia, sino que mas bien han llevado a filatelicos al mundo cripto</li>
+<li>Acabar mencionando cuanto ha pagado correos por estas cosas</li>
+</ul>
+]]></content:encoded></item><item><title>¿Cómo se llaman mis servidores?</title><link>https://blog.ddavo.me/es/posts/server-names/</link><pubDate>Sun, 03 Sep 2023 11:19:15 +0000</pubDate><guid>https://blog.ddavo.me/es/posts/server-names/</guid><description>Cuando uno monta un servidor, una de las primeras cosas que debe establecer es su hostname y, aunque no le demos un botellazo como a los barcos, hay que bautizarlo.
 Como los servidores los montan informáticos y estos tienden a ser un poco frikis, los pobres acaban con nombres&amp;hellip; curiosos. En las grandes empresas suele haber estándares estrictos sobre como debe ser el nombre, normalmente con siglas, acrónimos y números indescifrables para alguien que no trabaje allí.</description><content:encoded><![CDATA[<p>Cuando uno monta un servidor, una de las primeras cosas que debe establecer es su <em>hostname</em> y, aunque no le demos un botellazo como a los barcos, hay que bautizarlo.</p>
 <p>Como los servidores los montan informáticos y estos tienden a ser un poco frikis, los pobres acaban con nombres&hellip; curiosos. En las grandes empresas suele haber estándares estrictos sobre como debe ser el nombre, normalmente con siglas, acrónimos y números indescifrables para alguien que no trabaje allí. Pero las pequeñas empresas y los que tenemos servidores por hobby tenemos más libertad, y ahí es donde comienza la fiesta.</p>
 <p>En un principio, mis equipos tenían nombres sosos: <em>davo-pc</em> y <em>davo-laptop</em>. Pero todo cambió cuando compré mi primera Raspberry Pi. En un principio era <em>rpi</em> o algo por el estilo, el nombre por defecto, vamos. Empezó a dar fallos y había que reiniciarla del botoncito, así que decidí poner una nueva tarjeta y, ya que estaba, re-instalar el SO en el resto de equipos y así borrar todos los programas tochos que había tenido que instalar para la uni.</p>
