@@ -1,6 +1,6 @@
 ---
 title: Sobre los criptosellos de Mortadelo y Filemón
-lastmod: 2024-07-27T15:31:12.280Z
+lastmod: 2024-07-27T15:50:39.829Z
 ---
 
 Hace bien poco Correos España ha decidido sacar al mercado una colección de "Criptosellos". Además del sello especial (que puede ser usado con un valor nominal de 10€) con su cajita y toda la parafernalia, te entregan un código que puede ser canjeado para obtener un NFT.
@@ -78,6 +78,8 @@ Hablando de panoja: aunque no soy un experto en la plataforma de contratación d
 ## Conclusiones
 
 - TODO: Centrar el donut
+- TODO: Poner imagen de portada
+- TODO: Poner el grafico de NFTs creados a lo largo del tiempo
 - TODO: Hacer que se actualicen los datos del post cada X horas (tal vez usando dash r2)
 - TODO: Escribir conclusiones
 - TODO: Usar frontmatter para hacer SEO y poner metadatos
