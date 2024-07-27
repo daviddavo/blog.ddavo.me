@@ -1,0 +1,24 @@
+{{- $id := .Get "id" | default (.Get 0) }}
+{{- $file := .Get "file" -}}
+
+{{- $url := ($.Page.Resources.GetMatch (printf "*%s*" $file)).Permalink }}
+<figure>
+    <div id="{{$id}}" {{ with $url }}data-url="{{ $url }}"{{- end }}>
+        <div class="loading-chart-data"></div>
+    </div>
+    {{- if or (or (.Get "title") (.Get "caption")) (.Get "attr") -}}
+        <figcaption>
+            {{ with (.Get "title") -}}
+                {{ . }}
+            {{- end -}}
+            {{- if or (.Get "caption") (.Get "attr") -}}<p>
+                {{- .Get "caption" | markdownify -}}
+                {{- with .Get "attrlink" }}
+                    <a href="{{ . }}">
+                {{- end -}}
+                {{- .Get "attr" | markdownify -}}
+                {{- if .Get "attrlink" }}</a>{{ end }}</p>
+            {{- end }}
+        </figcaption>
+    {{- end }}
+</figure>

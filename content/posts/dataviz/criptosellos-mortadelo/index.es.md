@@ -1,6 +1,6 @@
 ---
 title: Sobre los criptosellos de Mortadelo y Filemón
-lastmod: 2024-07-24T16:02:07.174Z
+lastmod: 2024-07-27T15:31:12.280Z
 ---
 
 Hace bien poco Correos España ha decidido sacar al mercado una colección de "Criptosellos". Además del sello especial (que puede ser usado con un valor nominal de 10€) con su cajita y toda la parafernalia, te entregan un código que puede ser canjeado para obtener un NFT.
@@ -40,8 +40,44 @@ Sin embargo, esto no significa que haya cientos de personas comprándolos, en re
 
 Cada usuario que tenga al menos un criptosello en posesión se denomina _holder_. Aunque cada _holder_ tiene una media de {{< data/text id="criptosellos-holder-avg" >}} sellos, ocurre como en el famoso dicho de «si yo me como dos pollos y tu ninguno, de media nos hemos comido un pollo cada uno».
 
-La realidad es que hay un usuario con muchos más NFTs que el resto: el usuario {{<data/text id="criptosellos-holder-whale-address">}}, que tiene **{{<data/text id="criptosellos-holder-whale-count" >}} criptosellos** en posesión. Por otro lado, la mayoría de usuarios...
+La realidad es que hay un usuario con muchos más NFTs que el resto: el usuario {{<data/text id="criptosellos-holder-whale-address">}}, que tiene **{{<data/text id="criptosellos-holder-whale-count" >}} criptosellos** en posesión. Por otro lado, la gran mayoría de usuarios ({{< data/text id="criptosellos-holder-oneortwo-cnt" >}}) tiene uno o dos.
 
-TODO:
-- La idea es acabar demostrando que estos usuarios, en general, tampoco son criptoentusiastas y que tampoco han sido atraidos al mundo de la filatelia, sino que mas bien han llevado a filatelicos al mundo cripto
-- Acabar mencionando cuanto ha pagado correos por estas cosas
+{{<data/chart 
+    id="criptosellos-holders-chart" 
+    file="holders.csv"
+    title="Cantidad de criptosellos por usuario"
+    caption="Los usuarios con pocos sellos (cuatro o menos) han sido agrupados para que no molesten y se muestra el total. Al poner el ratón encima se muestra la dirección completa o el número de usuarios."
+>}}
+
+Otra pregunta que nos puede surgir es si los usuarios tienen sellos de otras colecciones o no. Es decir, si eran ya conocedores de esta tecnología, o si, por el contrario, ha sido Mortadelo quien los ha traído hasta aquí.
+
+Curiosamente, la cartera que más criptosellos tiene, **NO** tenía ningún NFT con anterioridad, aunque tal vez tenga otra cuenta en la que sí que tenga alguno, nunca podremos saberlo.
+
+En general, tan solo un {{<data/text id="criptosellos-holders-had-nfts-avg">}} de los usuarios habían tenido al menos un NFT en su cartera. Ni si quiera sabemos si lo han comprado ellos, o si ha sido recibido como regalo (o como SPAM), por lo que no podemos afirmar que esos pocos usuarios son _criptoentusiastas_. Lo que si podemos afirmar con seguridad es que {{<data/text id="criptosellos-holders-had-nfts-avg-not">}} o más **no habían utilizado NFTs nunca antes**.
+
+> Nótese que estoy mirando no solo en la cadena polygon en la que se encuentran los criptosellos, si no en TODAS las cadenas registradas en [Dune Analytics](https://dune.com).
+
+## La panoja
+
+Todos sabemos que las criptocosas mueven pasta, con [algunas colecciones llegando a millones de dólares](https://forbes.es/criptomonedas/217739/la-crypto-punk-mania-este-es-el-top-10-de-colecciones-de-nft-de-2022/), pero, ¿cuanto dinero mueven los criptosellos?
+
+De momento no ha habido a penas transferencias, y ninguna de ellas por dinero a través de una casa de subastas, por lo que en ese aspecto no podemos decir si tener un criptosello tiene algún valor.
+
+Sin embargo, podemos estimar cual es el _beneficio_ que le ha reportado a Correos esta estratagema. Cada uno cuesta 15€ y tiene un valor nominal de 10€ (es decir, puedes usarlo para envíos que cuesten hasta 10€), quedando 5€ de sobreprecio para Correos.
+
+Como por el momento se han vendido {{<data/text id="criptosellos-total-tokens2">}} sellos, Correos ha recibido por lo menos {{<data/text id="criptosellos-total-money">}}€ de ingresos con el sobreprecio.
+
+Dependiendo de si el sello acaba siendo usado y en qué producto se use, el beneficio real será mayor.
+
+También habrá muchos sellos que se han comprado pero que aún no se han reclamado en la blockchain, desde luego. Pero yo creo que podemos asumir que, si el usuario no lo ha _minteado_, es porque no le interesa, y el hecho de que sea un criptosello no le ha aportado ningún valor.
+
+Hablando de panoja: aunque no soy un experto en la plataforma de contratación del sector público, estimo que Correos se ha gastado al menos {{<data/text id="criptosellos-correos-contratos" file="contratos.csv">}}€ con {{<data/text id="criptosellos-correos-contratos-cnt">}} contratos para poder lanzar esta colección. Aunque hay que tener en cuenta que parte de ese dinero era destinado a buscar un modelo de negocio y crear el marco de trabajo, por lo que puede amortizarse a lo largo de los años con nuevas colecciones.
+
+> Podéis descargar los datos que he recopilado de las adjudicaciones [aquí](./contratos.csv). Si algo es incorrecto, comentádmelo, por favor.
+
+## Conclusiones
+
+- TODO: Centrar el donut
+- TODO: Hacer que se actualicen los datos del post cada X horas (tal vez usando dash r2)
+- TODO: Escribir conclusiones
+- TODO: Usar frontmatter para hacer SEO y poner metadatos
