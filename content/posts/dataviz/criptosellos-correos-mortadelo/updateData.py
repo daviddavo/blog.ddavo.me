@@ -42,5 +42,12 @@ df = dune.get_latest_result_dataframe(3946509)
 withnft = df[df['exists_prev_nft'] == 1]
 general_data['holders-had-nfts-avg'] = withnft['cnt'].sum() / df['cnt'].sum()
 
+############################################################
+# Obtener cuantos usuarios tenían antes NFTs
+############################################################
+df = dune.get_latest_result_dataframe(3917833)
+df.to_csv("daily-mints.csv", index=False)
+print("Got", len(df), "days of mints")
+
 with open('general-data.json', 'w') as f:
     json.dump(general_data, f, indent=2)

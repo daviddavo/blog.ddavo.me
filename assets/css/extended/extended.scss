@@ -4,7 +4,13 @@
 }
 
 figure img {
-    height: auto;
+  height: auto;
+}
+
+figure .chart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 // https://codepen.io/nzbin/pen/GGrXbp

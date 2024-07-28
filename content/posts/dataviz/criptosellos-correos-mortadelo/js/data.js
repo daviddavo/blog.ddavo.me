@@ -1,4 +1,5 @@
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
+import * as Plot from "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm";
 
 console.log("Loaded data.js")
 console.log("{{ . }}")
@@ -17,9 +18,9 @@ function runOnFirstVisible(element, callback) {
 }
 
 function formatEthAddr(addr) {
-  if ( addr.startsWith('0x')) {
-    return addr.slice(0,6) + '...' + addr.slice(-4)
-  } else if ( addr.startsWith('only')) {
+  if (addr.startsWith('0x')) {
+    return addr.slice(0, 6) + '...' + addr.slice(-4)
+  } else if (addr.startsWith('only')) {
     return addr.slice('only'.length) + ' sellos p.u.'
   } else {
     return addr
@@ -30,24 +31,56 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('DOMContentLoaded')
   // runOnFirstVisible(document.getElementById('criptosellos-last-update'), (e) => {
   //   console.log("Getting data from", e.dataset.url)
-    const e = document.getElementById('criptosellos-last-update')
-    fetch(e.dataset.url).then(response => response.json()).then(json => {
-      e.innerHTML = json['last-update']
+  const e = document.getElementById('criptosellos-last-update')
+  fetch(e.dataset.url).then(response => response.json()).then(json => {
+    e.innerHTML = (new Date(json['last-update'])).toLocaleString()
 
-      document.getElementById('criptosellos-total-tokens').innerHTML = json['total-tokens']
-      document.getElementById('criptosellos-daily-avg').innerHTML = json['daily-avg']
-      document.getElementById('criptosellos-total-holders').innerHTML = json['total-holders']
-      document.getElementById('criptosellos-holder-avg').innerHTML = Math.round(json['total-tokens'] / json['total-holders'] * 100) / 100
-      document.getElementById('criptosellos-holder-whale-address').innerHTML = '<code>' + json['holders-whale-address'] + '</code>'
-      document.getElementById('criptosellos-holder-whale-count').innerHTML = json['holders-whale-cnt']
-      document.getElementById('criptosellos-holder-oneortwo-cnt').innerHTML = json['holder-oneortwo-holders-cnt'] + " de " + json['total-holders']
-      document.getElementById('criptosellos-holders-had-nfts-avg').innerHTML = Math.round(json['holders-had-nfts-avg'] * 100) + '%'
-      document.getElementById('criptosellos-holders-had-nfts-avg-not').innerHTML = 100 - Math.round(json['holders-had-nfts-avg'] * 100) + '%'
+    document.getElementById('criptosellos-total-tokens').innerHTML = json['total-tokens']
+    document.getElementById('criptosellos-daily-avg').innerHTML = Math.round(json['daily-avg'] * 10) / 10
+    document.getElementById('criptosellos-total-holders').innerHTML = json['total-holders']
+    document.getElementById('criptosellos-holder-avg').innerHTML = Math.round(json['total-tokens'] / json['total-holders'] * 100) / 100
+    document.getElementById('criptosellos-holder-whale-address').innerHTML = '<code>' + json['holders-whale-address'] + '</code>'
+    document.getElementById('criptosellos-holder-whale-count').innerHTML = json['holders-whale-cnt']
+    document.getElementById('criptosellos-holder-oneortwo-cnt').innerHTML = json['holder-oneortwo-holders-cnt'] + " de " + json['total-holders']
+    document.getElementById('criptosellos-holders-had-nfts-avg').innerHTML = Math.round(json['holders-had-nfts-avg'] * 100) + '%'
+    document.getElementById('criptosellos-holders-had-nfts-avg-not').innerHTML = 100 - Math.round(json['holders-had-nfts-avg'] * 100) + '%'
 
-      document.getElementById('criptosellos-total-tokens2').innerHTML = json['total-tokens']
-      document.getElementById('criptosellos-total-money').innerHTML = json['total-tokens'] * 5
-    })
+    document.getElementById('criptosellos-total-tokens2').innerHTML = json['total-tokens']
+    document.getElementById('criptosellos-total-money').innerHTML = json['total-tokens'] * 5
+  })
   // })
+
+  runOnFirstVisible(document.getElementById('criptosellos-diario-chart'), async (e) => {
+    console.log("Getting data from", e.dataset.url)
+    const data = await d3.csv(e.dataset.url, (d) => {
+      return {
+        Fecha: new Date(d.block_date),
+        daily: parseInt(d.Dia),
+        "Total criptosellos": parseInt(d.Total),
+      }
+    })
+
+    const plot = Plot.plot({
+      height: 300,
+      width: e.offsetWidth,
+      y: { grid: true },
+      marks: [
+        Plot.lineY(data, {
+          x: "Fecha",
+          y: "Total criptosellos",
+        }),
+        Plot.tip(data, Plot.pointerX(
+          {
+            x: "Fecha",
+            y: "Total criptosellos",
+            title: d => `${d.Fecha.toLocaleString()}\n  Total: ${d["Total criptosellos"]}\n  Variación: ↑ ${d.daily}`,
+          }
+        ))
+      ]
+    })
+
+    e.replaceChildren(plot)
+  })
 
   runOnFirstVisible(document.getElementById('criptosellos-holders-chart'), async (e) => {
     console.log("Getting data from", e.dataset.url)
@@ -63,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const pie = d3.pie()
       .padAngle(1 / radius)
-      .sort((a,b) => (a.eachCnt > b.eachCnt) && (a.cnt > b.cnt))
+      .sort((a, b) => (a.eachCnt > b.eachCnt) && (a.cnt > b.cnt))
       .value(d => d.cnt)
 
     // const color = d3.scaleOrdinal()
@@ -116,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
   runOnFirstVisible(document.getElementById('criptosellos-correos-contratos'), async (e) => {
     console.log("Getting data from", e.dataset.url)
     const data = await d3.csv(e.dataset.url)
-    const total = Math.round(d3.sum(data, d=>d.dinero) * 100) / 100
+    const total = Math.round(d3.sum(data, d => d.dinero) * 100) / 100
 
     e.innerHTML = total.toLocaleString('es-ES')
     document.getElementById('criptosellos-correos-contratos-cnt').innerHTML = data.length
