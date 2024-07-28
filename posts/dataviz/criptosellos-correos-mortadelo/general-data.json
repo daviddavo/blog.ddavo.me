@@ -1,13 +1,13 @@
 {
-  "last-update": "2024-07-27T16:44:08.987744",
+  "last-update": "2024-07-28T17:33:29.470520",
   "holders-whale-address": "0x31c8b682a6198c30fc91da9490229228d6b25393",
   "holders-whale-cnt": 30,
   "holder-oneortwo-tokens-cnt": 107,
   "holder-oneortwo-holders-cnt": 93,
-  "total-tokens": 181,
-  "total-holders": 104,
-  "last-mint": "2024-07-27 06:30:15.000 UTC",
+  "total-tokens": 187,
+  "total-holders": 107,
+  "last-mint": "2024-07-27 17:36:11.000 UTC",
   "first-mint": "2024-07-03 14:12:00.000 UTC",
-  "daily-avg": 7.869565217391305,
+  "daily-avg": 7.791666666666667,
   "holders-had-nfts-avg": 0.3132530120481928
 }
