@@ -39,7 +39,6 @@ una media de <span id="criptosellos-daily-avg" data-url="https://blog.ddavo.me/p
 </span> al día.</p>
 
 
-  
     <figure>
     <div class="chart" id="criptosellos-diario-chart" data-url="https:/r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/daily-mints.csv">
         <div class="loading-chart-data"></div>
@@ -63,7 +62,6 @@ una media de <span id="criptosellos-daily-avg" data-url="https://blog.ddavo.me/p
 </span>) tiene uno o dos.</p>
 
 
-  
     <figure>
     <div class="chart" id="criptosellos-holders-chart" data-url="https:/r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/holders.csv">
         <div class="loading-chart-data"></div>

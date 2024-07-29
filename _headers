@@ -1,3 +1,5 @@
+Access-Control-Allow-Origin: https://r2.blog.ddavo.me
+
 https://:project.pages.dev/*
 	X-Robots-Tag: noindex
 
