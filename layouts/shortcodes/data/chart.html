@@ -7,7 +7,7 @@
   {{- if hugo.IsProduction }}
     {{ $prod_base := $.Site.Params.dataviz.prodBaseUrl }}
     {{- if $prod_base -}}
-      {{ $url = path.Join $prod_base $resource.RelPermalink }}
+      {{ $url = path.Join $prod_base $.Page.Path $resource }}
     {{- end -}}
   {{- else -}}
     {{ $url = $resource.Permalink }}
