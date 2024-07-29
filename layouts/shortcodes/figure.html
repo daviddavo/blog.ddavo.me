@@ -42,11 +42,13 @@
             {{- end -}}
             {{- if or (.Get "caption") (.Get "attr") -}}<p>
                 {{- .Get "caption" | markdownify -}}
+                {{- if .Get "attr" }} / <i>{{ end }}
                 {{- with .Get "attrlink" }}
                     <a href="{{ . }}">
                 {{- end -}}
                 {{- .Get "attr" | markdownify -}}
                 {{- if .Get "attrlink" }}</a>{{ end }}</p>
+                {{- if .Get "attr" }}</i>{{ end }}
             {{- end }}
         </figcaption>
     {{- end }}
