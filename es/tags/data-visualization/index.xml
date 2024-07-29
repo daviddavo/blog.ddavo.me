@@ -40,7 +40,7 @@ una media de <span id="criptosellos-daily-avg" data-url="https://blog.ddavo.me/p
 
 
     <figure>
-    <div class="chart" id="criptosellos-diario-chart" data-url="https:/r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/daily-mints.csv">
+    <div class="chart" id="criptosellos-diario-chart" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/daily-mints.csv">
         <div class="loading-chart-data"></div>
     </div><figcaption>
             Cantidad día a día de Criptosellos registrados<p>Hay días con pocos registros, pero a veces hay rachas. / <i>
@@ -63,7 +63,7 @@ una media de <span id="criptosellos-daily-avg" data-url="https://blog.ddavo.me/p
 
 
     <figure>
-    <div class="chart" id="criptosellos-holders-chart" data-url="https:/r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/holders.csv">
+    <div class="chart" id="criptosellos-holders-chart" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/holders.csv">
         <div class="loading-chart-data"></div>
     </div><figcaption>
             Cantidad de criptosellos por usuario<p>Los usuarios con pocos sellos (cuatro o menos) han sido agrupados para que no molesten y se muestra el total. Al poner el ratón encima se muestra la dirección completa o el número de usuarios. / <i>
