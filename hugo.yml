@@ -75,3 +75,5 @@ params:
     hidden: false
     hiddenInList: false
     hiddenInSingle: false
+  dataviz:
+    prodBaseUrl: https://r2.blog.ddavo.me

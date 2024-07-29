@@ -1,7 +1,19 @@
 {{- $id := .Get "id" | default (.Get 0) }}
 {{- $file := .Get "file" -}}
 
-{{- $url := ($.Page.Resources.GetMatch (printf "*%s*" $file)).Permalink }}
+{{- $resource := ($.Page.Resources.GetMatch (printf "*%s*" $file)) }}
+{{ $url := $file }}
+{{- if $resource }}
+  {{/* - if hugo.IsProduction */}}
+  {{- if true }}
+    {{ $prod_base := $.Site.Params.dataviz.prodBaseUrl }}
+    {{- if $prod_base -}}
+      {{ $url = path.Join $prod_base $resource.RelPermalink }}
+    {{- end -}}
+  {{- else -}}
+    {{ $url = $resource.Permalink }}
+  {{- end -}}
+{{- end -}}
 <figure>
     <div class="chart" id="{{$id}}" {{ with $url }}data-url="{{ $url }}"{{- end }}>
         <div class="loading-chart-data"></div>
