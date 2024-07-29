@@ -1,11 +1,23 @@
 ---
 title: Sobre los criptosellos de Mortadelo
-lastmod: 2024-07-28T21:20:44.942Z
+lastmod: 2024-07-29T20:59:10.604Z
 cover:
     image: cover.webp
     alt: Fotografía de la presentación del criptosello de Mortadelo.
     caption: Fotografía de la presentación del criptosello por Correos. EFE/Alejandro García
 author: David Davó
+keywords:
+    - blockchain
+    - correos
+    - NFT
+    - criptosellos
+description: En este post analizaré someramente la implementación y el uso de los criptosellos en blockchain sacados recientemente por Correos
+tags:
+    - blockchain
+    - opinion
+    - data visualization
+categories:
+    - opinion
 ---
 
 Hace bien poco Correos España ha decidido sacar al mercado una colección de "Criptosellos" basados en el famoso personaje de Francisco Ibáñez: ~el profesor Bacterio~ Mortadelo. Además del sello físico especial que muestra a Mortadelo andando con su cajita y toda la parafernalia que puede ser usado con un valor nominal de 10€, te entregan un código que puede ser canjeado para obtener un NFT. Todos los sellos físicos tienen el mismo dibujo, pero el NFT muestra uno de los 5 posibles _criptosellos_ que pueden tocarte, cada uno con una tirada distinta y basados en uno de sus clásicos disfraces.
@@ -13,7 +25,9 @@ Hace bien poco Correos España ha decidido sacar al mercado una colección de "C
 {{<figure
     src="todos-criptosellos.webp"
     alt="Se muestran los 5 sellos que pueden tocar, basados en 5 disfraces de Mortadelo"
-    caption="Los 5 Criptosellos posibles y su tirada. Fuente: [Federación Española de Sociedades Filatélicas](https://fesofi.es/noticias/primer-criptosello-espanol/)."
+    caption="Los 5 Criptosellos posibles y su tirada."
+    attr="Federación Española de Sociedades Filatélicas"
+    attrlink="https://fesofi.es/noticias/primer-criptosello-espanol/"
 >}}
 
 A grosso modo, un NFT o Token no Fungible es una _representación_ de un activo (digital o físico) implementado en blockchain. Aunque usa la misma tecnología que las criptomonedas, a diferencia de estas los NFT no son líquidos y no se pueden dividir. Por ejemplo, 5 euros son 5 euros, estén en billetes, en monedas, en un cheque, o en tu saldo. Sin embargo, los NFTs representan activos indivisibles (no fungibles). Pueden representar elementos únicos e irrepetibles, como la escritura de tu casa que _representa_ a tu casa, o pueden representar a elementos repetibles pero con un número determinado, como puede haber varios cromos iguales en una colección, o **sellos** en este caso. Recordemos que un NFT es simplemente un _token_, un _símbolo_, un _ticket_. No es **la casa**, es **la escritura**. La utilidad de los NFTs es demostrar mediante la robusta criptografía de blockchain que tu eres el verdadero propietario. De este modo, en lugar de tener _un notario_ tienes una red descentralizada y un montón de algoritmos criptográficos que lo demuestran. Vamos, muy seguro todo.
@@ -57,6 +71,8 @@ una media de {{< data/text id="criptosellos-daily-avg">}} al día.
     file="daily-mints.csv"
     title="Cantidad día a día de Criptosellos registrados"
     caption="Hay días con pocos registros, pero a veces hay rachas."
+    attr="David Davó via Dune Analytics."
+    attrlink="https://dune.com/queries/3917833/6586501"
  >}}
 
 Sin embargo, esto no significa que haya tantas personas como sellos, en realidad tan solo {{< data/text id="criptosellos-total-holders" >}} carteras distintas tienen al menos un criptosello. No podemos decir que son usuarios distintos pues, al igual que con un correo electrónico, nada impide que un usuario se cree varias cuentas. En el mundo cripto esto es muy normal: tener una cartera con una clave muy robusta en la que almacenar tus criptocosas a largo plazo, y otra más accesible (en el móvil, por ejemplo) que si hackean no pasa nada.
@@ -70,6 +86,8 @@ La realidad es que hay un usuario con muchos más NFTs que el resto: el usuario 
     file="holders.csv"
     title="Cantidad de criptosellos por usuario"
     caption="Los usuarios con pocos sellos (cuatro o menos) han sido agrupados para que no molesten y se muestra el total. Al poner el ratón encima se muestra la dirección completa o el número de usuarios."
+    attr="David Davó via Dune Analytics."
+    attrlink="https://dune.com/queries/3917785/6586366"
 >}}
 
 Otra pregunta que nos puede surgir es si los usuarios tienen sellos de otras colecciones o no. Es decir, si eran ya conocedores de esta tecnología, o si, por el contrario, ha sido Mortadelo quien los ha traído hasta aquí.
@@ -105,8 +123,3 @@ En mi humilde opinión, Correos ha llegado muy tarde y un poco mal a la fiebre d
 Tal vez en un futuro consigan amortizar la apuesta con nuevas colecciones, espero que mejorando en estos aspectos de implementación. Como punto positivo, parece que la página web es bastante accesible y funciona bien.
 
 Dicho todo esto, a lo mejor gracias a esta interseccionalidad hay ahora algún friki de las criptomonedas que también se ha enganchado a comprar sellos y han conseguido un cliente de por vida.
-
-> **David Davó Laviña**: Investigador en Comunidades Blockchain en la Universidad Complutense de Madrid desde 2021.
-
-- TODO: Hacer que se actualicen los datos del post cada X horas (tal vez usando dash r2?)
-- TODO: Usar frontmatter para hacer SEO y poner metadatos
