@@ -4,8 +4,7 @@
 {{- $resource := ($.Page.Resources.GetMatch (printf "*%s*" $file)) }}
 {{ $url := $file }}
 {{- if $resource }}
-  {{/* - if hugo.IsProduction */}}
-  {{- if true }}
+  {{- if hugo.IsProduction }}
     {{ $prod_base := $.Site.Params.dataviz.prodBaseUrl }}
     {{- if $prod_base -}}
       {{ $url = path.Join $prod_base $resource.RelPermalink }}
