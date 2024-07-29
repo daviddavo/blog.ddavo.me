@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
           {
             x: "Fecha",
             y: "Total criptosellos",
-            title: d => `${d.Fecha.toLocaleString()}\n  Total: ${d["Total criptosellos"]}\n  Variación: ↑ ${d.daily}`,
+            title: d => `${d.Fecha.toLocaleDateString()}\n  Total: ${d["Total criptosellos"]}\n  Variación: ↑ ${d.daily}`,
           }
         ))
       ]

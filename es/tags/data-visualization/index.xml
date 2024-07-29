@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Data Visualization on David Davó's dev log</title><link>https://blog.ddavo.me/es/tags/data-visualization/</link><description>Recent content in Data Visualization on David Davó's dev log</description><generator>Hugo -- gohugo.io</generator><language>es</language><copyright>© David Davó 2015 - 2024</copyright><lastBuildDate>Mon, 29 Jul 2024 20:59:10 +0000</lastBuildDate><atom:link href="https://blog.ddavo.me/es/tags/data-visualization/index.xml" rel="self" type="application/rss+xml"/><item><title>Sobre los criptosellos de Mortadelo</title><link>https://blog.ddavo.me/es/posts/dataviz/criptosellos-correos-mortadelo/</link><pubDate>Mon, 29 Jul 2024 20:59:10 +0000</pubDate><guid>https://blog.ddavo.me/es/posts/dataviz/criptosellos-correos-mortadelo/</guid><description>En este post analizaré someramente la implementación y el uso de los criptosellos en blockchain sacados recientemente por Correos</description><content:encoded><![CDATA[<p>Hace bien poco Correos España ha decidido sacar al mercado una colección de &ldquo;Criptosellos&rdquo; basados en el famoso personaje de Francisco Ibáñez: <del>el profesor Bacterio</del> Mortadelo. Además del sello físico especial que muestra a Mortadelo andando con su cajita y toda la parafernalia que puede ser usado con un valor nominal de 10€, te entregan un código que puede ser canjeado para obtener un NFT. Todos los sellos físicos tienen el mismo dibujo, pero el NFT muestra uno de los 5 posibles <em>criptosellos</em> que pueden tocarte, cada uno con una tirada distinta y basados en uno de sus clásicos disfraces.</p>
+<figure>
+        <img loading="lazy" srcset="https://blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/todos-criptosellos_hufaaed248ba8d28c8bf7cb8138998d06c_207436_360x0_resize_q75_h2_box_2.webp 360w ,https://blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/todos-criptosellos_hufaaed248ba8d28c8bf7cb8138998d06c_207436_480x0_resize_q75_h2_box_2.webp 480w ,https://blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/todos-criptosellos_hufaaed248ba8d28c8bf7cb8138998d06c_207436_720x0_resize_q75_h2_box_2.webp 720w ,https://blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/todos-criptosellos_hufaaed248ba8d28c8bf7cb8138998d06c_207436_1080x0_resize_q75_h2_box_2.webp 1080w ,https://blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/todos-criptosellos_hufaaed248ba8d28c8bf7cb8138998d06c_207436_1500x0_resize_q75_h2_box_2.webp 1500w ,https://blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/todos-criptosellos.webp 2502w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="https://blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/todos-criptosellos.webp" alt="Se muestran los 5 sellos que pueden tocar, basados en 5 disfraces de Mortadelo" 
+            width="2502" height="743"><figcaption>
+            <p>Los 5 Criptosellos posibles y su tirada. / <i>
+                    <a href="https://fesofi.es/noticias/primer-criptosello-espanol/">Federación Española de Sociedades Filatélicas</a></p></i>
+        </figcaption>
+</figure>
+
+<p>A grosso modo, un NFT o Token no Fungible es una <em>representación</em> de un activo (digital o físico) implementado en blockchain. Aunque usa la misma tecnología que las criptomonedas, a diferencia de estas los NFT no son líquidos y no se pueden dividir. Por ejemplo, 5 euros son 5 euros, estén en billetes, en monedas, en un cheque, o en tu saldo. Sin embargo, los NFTs representan activos indivisibles (no fungibles). Pueden representar elementos únicos e irrepetibles, como la escritura de tu casa que <em>representa</em> a tu casa, o pueden representar a elementos repetibles pero con un número determinado, como puede haber varios cromos iguales en una colección, o <strong>sellos</strong> en este caso. Recordemos que un NFT es simplemente un <em>token</em>, un <em>símbolo</em>, un <em>ticket</em>. No es <strong>la casa</strong>, es <strong>la escritura</strong>. La utilidad de los NFTs es demostrar mediante la robusta criptografía de blockchain que tu eres el verdadero propietario. De este modo, en lugar de tener <em>un notario</em> tienes una red descentralizada y un montón de algoritmos criptográficos que lo demuestran. Vamos, muy seguro todo.</p>
+<p>Aunque el blockchain tiene mala fama por <a href="https://es.cointelegraph.com/news/in-2023-bitcoin-mining-consumed-more-than-one-third-of-mexicos-electrical-energy">consumir más electricidad que países como Argentina</a>, esto es culpa íntegra de Bitcoin, pues Ethereum ya no tiene ese problema desde que se actualizó a Ethereum 2.0 hace unos cuantos años. Además, el NFT de Correos se encuentra en una red alternativa llamada Polygon, que es una cadena similar a Ethereum pero mucho más rápida y eficiente (también energéticamente).</p>
+<p>En ese aspecto Correos no lo ha hecho nada mal, pero es que las dos principales razones para usar un blockchain son la <strong>transparencia</strong> y la <strong>descentralización</strong>. En el resto del post analizaremos los criptosellos desde estas perspectivas, y finalmente analizaré si se están usando o no, y cuanto.</p>
+<h2 id="transparencia">Transparencia</h2>
+<p>Empezamos mal: no han publicado la dirección del contrato inteligente, y por lo tanto perdemos una de las pocas ventajas que tenía usar esta tecnología.</p>
+<p>No publicar cual es la dirección del contrato es como decir que tienes un portal de transparencia, pero no decir dónde. Es ocultar la información esencial que permite a los usuarios interactuar con ese contrato.</p>
+<p>Como investigador en estas movidas he conseguido llegar hasta el contrato por mis propios medios, que tiene la dirección <a href="https://polygon.blockscout.com/token/0x8fA19F4316dF640e14b30B2fE749cbdd79Da9335"><code>0x8fA19F4316dF640e14b30B2fE749cbdd79Da9335</code></a>.</p>
+<blockquote>
+<p>Actualización 14 de Junio 2024: Ha habido alguna movida y resulta que han <em>migrado</em> el contrato <a href="https://polygon.blockscout.com/token/0x4D5D215c47a43B38a58Abf735b628cF9b61273a0">a otra dirección</a>, de una manera un tanto cutre.</p>
+</blockquote>
+<p>Tampoco publican el código fuente del contrato inteligente, por lo que los usuarios no pueden auditar cómo funciona el contrato y si está bien hecho. Tal vez haya un error informático que permita a alguien hacerse con todos los criptosellos, y nunca podamos saberlo.</p>
+<p>Aunque no sepas de programación, una práctica muy extendida en este mundillo es pagar a alguien para que &ldquo;audite&rdquo; el código de un contrato, sea tuyo o no.</p>
+<p>Por lo menos, como las transferencias en el blockchain son transparentes, sí que podemos saber quiénes son los poseedores de los exclusivos NFTs de Mortadelo.</p>
+<h2 id="descentralización">Descentralización</h2>
+<p>Por otro lado, desde el punto de vista de la <strong>descentralización</strong> la solución tambien deja mucho que desear. Normalmente, los NFTs utilizan soluciones descentralizadas que permiten usarlo dentro del extenso ecosistema web3: ponertelo de imagen de perfil en una red social, exponerlo en una galería virtual, usarlo en algún juego&hellip;
+En el caso del criptosello es necesario utilizar sí o sí la aplicación de la web de correos para ver la imagen asociada. Si en un par de años la consultora contratada deja de dar soporte a esta web, ya no podrás acceder a tu criptosello.</p>
+<p><strong>Si los criptosellos no son ni transparentes ni decentralizados, ¿para que existen?</strong></p>
+<p>Pues supongo que para incrementar el valor de los sellos y que lo compre más gente, ¿no? Aunque no sabemos cuantos sellos se han vendido, sí que podemos saber cuantos de ellos han sido &ldquo;canjeados&rdquo; (o &ldquo;reclamados&rdquo;) en la blockchain, y el perfil de los usuarios que lo han hecho.</p>
+<blockquote>
+<p>Este post se actualiza automáticamente con nuevos datos. La última actualización fue el <span id="criptosellos-last-update" data-url="https://blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/general-data.json">
+        <span class="loading-text-data"></span>
+</span>.</p>
+</blockquote>
+<p>*Redoble de tambores*&hellip; Se han reclamado un total de <span id="criptosellos-total-tokens" data-url="https://blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/general-data.json">
+        <span class="loading-text-data"></span>
+</span> criptosellos,
+una media de <span id="criptosellos-daily-avg" data-url="https://blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/general-data.json">
+        <span class="loading-text-data"></span>
+</span> al día.</p>
+
+
+  
+    <figure>
+    <div class="chart" id="criptosellos-diario-chart" data-url="https:/r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/daily-mints.csv">
+        <div class="loading-chart-data"></div>
+    </div><figcaption>
+            Cantidad día a día de Criptosellos registrados<p>Hay días con pocos registros, pero a veces hay rachas. / <i>
+                    <a href="https://dune.com/queries/3917833/6586501">David Davó via Dune Analytics.</a></p></i>
+        </figcaption>
+</figure>
+<p>Sin embargo, esto no significa que haya tantas personas como sellos, en realidad tan solo <span id="criptosellos-total-holders" data-url="https://blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/general-data.json">
+        <span class="loading-text-data"></span>
+</span> carteras distintas tienen al menos un criptosello. No podemos decir que son usuarios distintos pues, al igual que con un correo electrónico, nada impide que un usuario se cree varias cuentas. En el mundo cripto esto es muy normal: tener una cartera con una clave muy robusta en la que almacenar tus criptocosas a largo plazo, y otra más accesible (en el móvil, por ejemplo) que si hackean no pasa nada.</p>
+<p>Cada usuario que tenga al menos un criptosello en posesión se denomina <em>holder</em>. Aunque cada <em>holder</em> tiene una media de <span id="criptosellos-holder-avg" data-url="https://blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/general-data.json">
+        <span class="loading-text-data"></span>
+</span> sellos, ocurre como en el famoso dicho de «si yo me como dos pollos y tu ninguno, de media nos hemos comido un pollo cada uno».</p>
+<p>La realidad es que hay un usuario con muchos más NFTs que el resto: el usuario <span id="criptosellos-holder-whale-address" data-url="https://blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/general-data.json">
+        <span class="loading-text-data"></span>
+</span>, que tiene <strong><span id="criptosellos-holder-whale-count" data-url="https://blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/general-data.json">
+        <span class="loading-text-data"></span>
+</span> criptosellos</strong> en posesión. Por otro lado, la gran mayoría de usuarios (<span id="criptosellos-holder-oneortwo-cnt" data-url="https://blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/general-data.json">
+        <span class="loading-text-data"></span>
+</span>) tiene uno o dos.</p>
+
+
+  
+    <figure>
+    <div class="chart" id="criptosellos-holders-chart" data-url="https:/r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/holders.csv">
+        <div class="loading-chart-data"></div>
+    </div><figcaption>
+            Cantidad de criptosellos por usuario<p>Los usuarios con pocos sellos (cuatro o menos) han sido agrupados para que no molesten y se muestra el total. Al poner el ratón encima se muestra la dirección completa o el número de usuarios. / <i>
+                    <a href="https://dune.com/queries/3917785/6586366">David Davó via Dune Analytics.</a></p></i>
+        </figcaption>
+</figure>
+<p>Otra pregunta que nos puede surgir es si los usuarios tienen sellos de otras colecciones o no. Es decir, si eran ya conocedores de esta tecnología, o si, por el contrario, ha sido Mortadelo quien los ha traído hasta aquí.</p>
+<p>Curiosamente, la cartera que más criptosellos tiene, <strong>NO</strong> tenía ningún NFT con anterioridad, aunque tal vez tenga otra cuenta en la que sí que tenga alguno, nunca podremos saberlo. Tal vez sea algún vendedor de filatelia de la Plaza Mayor, quien sabe.</p>
+<p>En general, tan solo un <span id="criptosellos-holders-had-nfts-avg" data-url="https://blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/general-data.json">
+        <span class="loading-text-data"></span>
+</span> de los usuarios habían tenido al menos un NFT en su cartera. Ni si quiera sabemos si lo han comprado ellos, o si ha sido recibido como regalo (o como SPAM), por lo que no podemos afirmar que esos pocos usuarios sean <em>criptoentusiastas</em>. Lo que si podemos afirmar con seguridad es que <strong><span id="criptosellos-holders-had-nfts-avg-not" data-url="https://blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/general-data.json">
+        <span class="loading-text-data"></span>
+</span> o más no habían utilizado NFTs nunca antes</strong>.</p>
+<blockquote>
+<p>Nótese que estoy mirando no solo en la cadena polygon en la que se encuentran los criptosellos, si no en TODAS las cadenas registradas en <a href="https://dune.com">Dune Analytics</a>.</p>
+</blockquote>
+<h2 id="la-panoja">La panoja</h2>
+<p>Todos sabemos que las criptocosas mueven pasta, con <a href="https://forbes.es/criptomonedas/217739/la-crypto-punk-mania-este-es-el-top-10-de-colecciones-de-nft-de-2022/">algunas colecciones llegando a millones de dólares</a>, pero, ¿cuanto dinero mueven los criptosellos?</p>
+<p>De momento no ha habido a penas transferencias, y ninguna de ellas por dinero a través de una casa de subastas, por lo que en ese aspecto no podemos decir si tener un criptosello tiene algún valor más allá del sello físico.</p>
+<p>Sin embargo, podemos estimar cual es el <em>beneficio</em> que le ha reportado a Correos esta estratagema. Cada uno cuesta 15€ y tiene un valor nominal de 10€, es decir, puedes usarlo para envíos que cuesten hasta 10€, quedando 5€ de sobreprecio para Correos.</p>
+<p>Como por el momento se han vendido <span id="criptosellos-total-tokens2" data-url="https://blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/general-data.json">
+        <span class="loading-text-data"></span>
+</span> sellos, Correos ha recibido por lo menos <span id="criptosellos-total-money" data-url="https://blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/general-data.json">
+        <span class="loading-text-data"></span>
+</span>€ de ingresos con el sobreprecio.</p>
+<p>Dependiendo de si el sello acaba siendo usado y en qué producto se use, el beneficio real será mayor.</p>
+<p>También habrá muchos sellos que se han comprado pero que aún no se han reclamado en la blockchain, desde luego. Pero yo creo que podemos asumir que, si el usuario no lo ha registrado, es porque no le interesa. El hecho de que sea un criptosello no le ha aportado ningún valor.</p>
+<p>Hablando de panoja: aunque no soy un experto en la plataforma de contratación del sector público, parece que Correos se ha gastado al menos <span id="criptosellos-correos-contratos" data-url="https://blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/contratos.csv">
+        <span class="loading-text-data"></span>
+</span>€ en <span id="criptosellos-correos-contratos-cnt" data-url="https://blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/general-data.json">
+        <span class="loading-text-data"></span>
+</span> contratos para poder lanzar esta colección. Aunque hay que tener en cuenta que parte de ese dinero era destinado a buscar un modelo de negocio y crear el marco de trabajo, por lo que puede amortizarse a lo largo de los años con nuevas colecciones.</p>
+<blockquote>
+<p>Podéis descargar los datos que he recopilado de las adjudicaciones <a href="/posts/dataviz/criptosellos-correos-mortadelo/contratos.csv">aquí</a>. Si algo es incorrecto, comentádmelo, por favor.</p>
+</blockquote>
+<h2 id="conclusiones">Conclusiones</h2>
+<p>En mi humilde opinión, Correos ha llegado muy tarde y un poco mal a la fiebre de los NFTs de 2021 (hace ya 3 años). Además, la falta de descentralización y transparencia, valores en el núcleo de este mundillo, pueden hacer dificil que sus usuarios se animen a comprar un criptosello.</p>
+<p>Tal vez en un futuro consigan amortizar la apuesta con nuevas colecciones, espero que mejorando en estos aspectos de implementación. Como punto positivo, parece que la página web es bastante accesible y funciona bien.</p>
+<p>Dicho todo esto, a lo mejor gracias a esta interseccionalidad hay ahora algún friki de las criptomonedas que también se ha enganchado a comprar sellos y han conseguido un cliente de por vida.</p>
+]]></content:encoded></item></channel></rss>

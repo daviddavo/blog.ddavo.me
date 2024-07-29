@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on David Davó's dev log</title><link>https://blog.ddavo.me/es/posts/</link><description>Recent content in Posts on David Davó's dev log</description><generator>Hugo -- gohugo.io</generator><language>es</language><copyright>© David Davó 2015 - 2024</copyright><lastBuildDate>Sun, 28 Jul 2024 21:20:44 +0000</lastBuildDate><atom:link href="https://blog.ddavo.me/es/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Sobre los criptosellos de Mortadelo</title><link>https://blog.ddavo.me/es/posts/dataviz/criptosellos-correos-mortadelo/</link><pubDate>Sun, 28 Jul 2024 21:20:44 +0000</pubDate><guid>https://blog.ddavo.me/es/posts/dataviz/criptosellos-correos-mortadelo/</guid><description>Hace bien poco Correos España ha decidido sacar al mercado una colección de &amp;ldquo;Criptosellos&amp;rdquo; basados en el famoso personaje de Francisco Ibáñez: el profesor Bacterio Mortadelo. Además del sello físico especial que muestra a Mortadelo andando con su cajita y toda la parafernalia que puede ser usado con un valor nominal de 10€, te entregan un código que puede ser canjeado para obtener un NFT. Todos los sellos físicos tienen el mismo dibujo, pero el NFT muestra uno de los 5 posibles criptosellos que pueden tocarte, cada uno con una tirada distinta y basados en uno de sus clásicos disfraces.</description><content:encoded><![CDATA[<p>Hace bien poco Correos España ha decidido sacar al mercado una colección de &ldquo;Criptosellos&rdquo; basados en el famoso personaje de Francisco Ibáñez: <del>el profesor Bacterio</del> Mortadelo. Además del sello físico especial que muestra a Mortadelo andando con su cajita y toda la parafernalia que puede ser usado con un valor nominal de 10€, te entregan un código que puede ser canjeado para obtener un NFT. Todos los sellos físicos tienen el mismo dibujo, pero el NFT muestra uno de los 5 posibles <em>criptosellos</em> que pueden tocarte, cada uno con una tirada distinta y basados en uno de sus clásicos disfraces.</p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on David Davó's dev log</title><link>https://blog.ddavo.me/es/posts/</link><description>Recent content in Posts on David Davó's dev log</description><generator>Hugo -- gohugo.io</generator><language>es</language><copyright>© David Davó 2015 - 2024</copyright><lastBuildDate>Mon, 29 Jul 2024 20:59:10 +0000</lastBuildDate><atom:link href="https://blog.ddavo.me/es/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Sobre los criptosellos de Mortadelo</title><link>https://blog.ddavo.me/es/posts/dataviz/criptosellos-correos-mortadelo/</link><pubDate>Mon, 29 Jul 2024 20:59:10 +0000</pubDate><guid>https://blog.ddavo.me/es/posts/dataviz/criptosellos-correos-mortadelo/</guid><description>En este post analizaré someramente la implementación y el uso de los criptosellos en blockchain sacados recientemente por Correos</description><content:encoded><![CDATA[<p>Hace bien poco Correos España ha decidido sacar al mercado una colección de &ldquo;Criptosellos&rdquo; basados en el famoso personaje de Francisco Ibáñez: <del>el profesor Bacterio</del> Mortadelo. Además del sello físico especial que muestra a Mortadelo andando con su cajita y toda la parafernalia que puede ser usado con un valor nominal de 10€, te entregan un código que puede ser canjeado para obtener un NFT. Todos los sellos físicos tienen el mismo dibujo, pero el NFT muestra uno de los 5 posibles <em>criptosellos</em> que pueden tocarte, cada uno con una tirada distinta y basados en uno de sus clásicos disfraces.</p>
 <figure>
         <img loading="lazy" srcset="https://blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/todos-criptosellos_hufaaed248ba8d28c8bf7cb8138998d06c_207436_360x0_resize_q75_h2_box_2.webp 360w ,https://blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/todos-criptosellos_hufaaed248ba8d28c8bf7cb8138998d06c_207436_480x0_resize_q75_h2_box_2.webp 480w ,https://blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/todos-criptosellos_hufaaed248ba8d28c8bf7cb8138998d06c_207436_720x0_resize_q75_h2_box_2.webp 720w ,https://blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/todos-criptosellos_hufaaed248ba8d28c8bf7cb8138998d06c_207436_1080x0_resize_q75_h2_box_2.webp 1080w ,https://blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/todos-criptosellos_hufaaed248ba8d28c8bf7cb8138998d06c_207436_1500x0_resize_q75_h2_box_2.webp 1500w ,https://blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/todos-criptosellos.webp 2502w" 
             sizes="(min-width: 768px) 720px, 100vw" src="https://blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/todos-criptosellos.webp" alt="Se muestran los 5 sellos que pueden tocar, basados en 5 disfraces de Mortadelo" 
             width="2502" height="743"><figcaption>
-            <p>Los 5 Criptosellos posibles y su tirada. Fuente: <a href="https://fesofi.es/noticias/primer-criptosello-espanol/">Federación Española de Sociedades Filatélicas</a>.</p>
+            <p>Los 5 Criptosellos posibles y su tirada. / <i>
+                    <a href="https://fesofi.es/noticias/primer-criptosello-espanol/">Federación Española de Sociedades Filatélicas</a></p></i>
         </figcaption>
 </figure>
 
@@ -37,11 +38,14 @@ una media de <span id="criptosellos-daily-avg" data-url="https://blog.ddavo.me/p
         <span class="loading-text-data"></span>
 </span> al día.</p>
 
-<figure>
-    <div class="chart" id="criptosellos-diario-chart" data-url="https://blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/daily-mints.csv">
+
+  
+    <figure>
+    <div class="chart" id="criptosellos-diario-chart" data-url="https:/r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/daily-mints.csv">
         <div class="loading-chart-data"></div>
     </div><figcaption>
-            Cantidad día a día de Criptosellos registrados<p>Hay días con pocos registros, pero a veces hay rachas.</p>
+            Cantidad día a día de Criptosellos registrados<p>Hay días con pocos registros, pero a veces hay rachas. / <i>
+                    <a href="https://dune.com/queries/3917833/6586501">David Davó via Dune Analytics.</a></p></i>
         </figcaption>
 </figure>
 <p>Sin embargo, esto no significa que haya tantas personas como sellos, en realidad tan solo <span id="criptosellos-total-holders" data-url="https://blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/general-data.json">
@@ -58,11 +62,14 @@ una media de <span id="criptosellos-daily-avg" data-url="https://blog.ddavo.me/p
         <span class="loading-text-data"></span>
 </span>) tiene uno o dos.</p>
 
-<figure>
-    <div class="chart" id="criptosellos-holders-chart" data-url="https://blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/holders.csv">
+
+  
+    <figure>
+    <div class="chart" id="criptosellos-holders-chart" data-url="https:/r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/holders.csv">
         <div class="loading-chart-data"></div>
     </div><figcaption>
-            Cantidad de criptosellos por usuario<p>Los usuarios con pocos sellos (cuatro o menos) han sido agrupados para que no molesten y se muestra el total. Al poner el ratón encima se muestra la dirección completa o el número de usuarios.</p>
+            Cantidad de criptosellos por usuario<p>Los usuarios con pocos sellos (cuatro o menos) han sido agrupados para que no molesten y se muestra el total. Al poner el ratón encima se muestra la dirección completa o el número de usuarios. / <i>
+                    <a href="https://dune.com/queries/3917785/6586366">David Davó via Dune Analytics.</a></p></i>
         </figcaption>
 </figure>
 <p>Otra pregunta que nos puede surgir es si los usuarios tienen sellos de otras colecciones o no. Es decir, si eran ya conocedores de esta tecnología, o si, por el contrario, ha sido Mortadelo quien los ha traído hasta aquí.</p>
@@ -98,13 +105,6 @@ una media de <span id="criptosellos-daily-avg" data-url="https://blog.ddavo.me/p
 <p>En mi humilde opinión, Correos ha llegado muy tarde y un poco mal a la fiebre de los NFTs de 2021 (hace ya 3 años). Además, la falta de descentralización y transparencia, valores en el núcleo de este mundillo, pueden hacer dificil que sus usuarios se animen a comprar un criptosello.</p>
 <p>Tal vez en un futuro consigan amortizar la apuesta con nuevas colecciones, espero que mejorando en estos aspectos de implementación. Como punto positivo, parece que la página web es bastante accesible y funciona bien.</p>
 <p>Dicho todo esto, a lo mejor gracias a esta interseccionalidad hay ahora algún friki de las criptomonedas que también se ha enganchado a comprar sellos y han conseguido un cliente de por vida.</p>
-<blockquote>
-<p><strong>David Davó Laviña</strong>: Investigador en Comunidades Blockchain en la Universidad Complutense de Madrid desde 2021.</p>
-</blockquote>
-<ul>
-<li>TODO: Hacer que se actualicen los datos del post cada X horas (tal vez usando dash r2?)</li>
-<li>TODO: Usar frontmatter para hacer SEO y poner metadatos</li>
-</ul>
 ]]></content:encoded></item><item><title>¿Cómo se llaman mis servidores?</title><link>https://blog.ddavo.me/es/posts/server-names/</link><pubDate>Sun, 03 Sep 2023 11:19:15 +0000</pubDate><guid>https://blog.ddavo.me/es/posts/server-names/</guid><description>Cuando uno monta un servidor, una de las primeras cosas que debe establecer es su hostname y, aunque no le demos un botellazo como a los barcos, hay que bautizarlo.
 Como los servidores los montan informáticos y estos tienden a ser un poco frikis, los pobres acaban con nombres&amp;hellip; curiosos. En las grandes empresas suele haber estándares estrictos sobre como debe ser el nombre, normalmente con siglas, acrónimos y números indescifrables para alguien que no trabaje allí.</description><content:encoded><![CDATA[<p>Cuando uno monta un servidor, una de las primeras cosas que debe establecer es su <em>hostname</em> y, aunque no le demos un botellazo como a los barcos, hay que bautizarlo.</p>
 <p>Como los servidores los montan informáticos y estos tienden a ser un poco frikis, los pobres acaban con nombres&hellip; curiosos. En las grandes empresas suele haber estándares estrictos sobre como debe ser el nombre, normalmente con siglas, acrónimos y números indescifrables para alguien que no trabaje allí. Pero las pequeñas empresas y los que tenemos servidores por hobby tenemos más libertad, y ahí es donde comienza la fiesta.</p>
