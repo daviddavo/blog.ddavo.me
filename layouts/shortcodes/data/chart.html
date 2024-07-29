@@ -13,7 +13,8 @@
     {{ $url = $resource.Permalink }}
   {{- end -}}
 {{- end -}}
-<figure>
+Page path: {{ $.Page.Path }}
+<figure data-page-path="{{ $.Page.Path }}">
     <div class="chart" id="{{$id}}" {{ with $url }}data-url="{{ $url }}"{{- end }}>
         <div class="loading-chart-data"></div>
     </div>
