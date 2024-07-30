@@ -14,7 +14,7 @@ general_data = {'last-update': dt.datetime.now().isoformat()}
 ############################################################
 df: pd.DataFrame = dune.get_latest_result_dataframe(3917785).sort_values('eachCnt')
 print("Got", len(df), "different holders numbers")
-df.to_csv('holders.csv', index=False)
+df.to_csv('data/holders.csv', index=False)
 
 whale = df.loc[df[df['to'].str.startswith('0x')]['cnt'].idxmax()]
 general_data['holders-whale-address'] = whale['to']
@@ -46,8 +46,8 @@ general_data['holders-had-nfts-avg'] = withnft['cnt'].sum() / df['cnt'].sum()
 # Obtener cuantos usuarios tenían antes NFTs
 ############################################################
 df = dune.get_latest_result_dataframe(3917833)
-df.to_csv("daily-mints.csv", index=False)
+df.to_csv("data/daily-mints.csv", index=False)
 print("Got", len(df), "days of mints")
 
-with open('general-data.json', 'w') as f:
+with open('data/general-data.json', 'w') as f:
     json.dump(general_data, f, indent=2)
