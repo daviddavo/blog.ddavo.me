@@ -1,0 +1,16 @@
+{{- $file := .Get "file" -}}
+{{- if $file }}
+    {{- $resource := ($.Page.Resources.GetMatch (printf "data/*%s*" $file)) }}
+    {{ $url := $file }}
+    {{- if $resource }}
+    {{- if hugo.IsProduction }}
+        {{ $prod_base := $.Site.Params.dataviz.prodBaseUrl }}
+        {{- if $prod_base -}}
+        {{ $url = urls.JoinPath $prod_base $.Page.Path $resource }}
+        {{- end -}}
+    {{- else -}}
+        {{ $url = $resource.Permalink }}
+    {{- end -}}
+    {{- end -}}
+    {{ .Page.Scratch.Set "data-url" $url }}
+{{- end }}

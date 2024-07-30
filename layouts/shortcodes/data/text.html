@@ -1,8 +1,7 @@
 {{- $id := .Get "id" | default (.Get 0) -}}
-{{- $file := .Get "file" -}}
 {{- $default := .Get "default" -}}
-{{- $url := ($.Page.Resources.GetMatch (printf "*%s*" $file)).Permalink -}}
-<span id="{{$id}}" {{ with $url }}data-url="{{ $url }}"{{- end }}>
+{{ partial "data_url" . }}
+<span id="{{$id}}"{{ with .Page.Scratch.Get "data-url" }} data-url="{{ . }}"{{ end }}>
     {{- if $default }}
         {{ $default }}
     {{- else }}
