@@ -9,7 +9,6 @@ on:
   push:
     branches:
       - main  # Set a branch to deploy
-  pull_request:
 
 jobs:
   deploy:
@@ -20,7 +19,7 @@ jobs:
       - uses: actions/setup-python@v5
       - name: Update and upload all data
         run: ./updateAllData.sh --upload
-        with:
+        env:
           DUNE_API_KEY: ${{ secrets.DUNE_API_KEY }}
           AWS_ENDPOINT_URL: ${{ secrets.AWS_ENDPOINT_URL }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
