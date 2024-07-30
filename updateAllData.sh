@@ -84,6 +84,7 @@ find content -iname 'updateData.py' -type f -executable -print0 |
 while IFS= read -r -d '' f; do
     if [[ ! $upload_only ]]; then
     (
+        echo "Running $f/updateData.py">&2
         $cmd cd "$(dirname "${f}")"
         $cmd pip install -r requirements.txt
         $cmd python updateData.py
