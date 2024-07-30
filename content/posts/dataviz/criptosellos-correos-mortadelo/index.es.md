@@ -1,6 +1,6 @@
 ---
 title: Sobre los criptosellos de Mortadelo
-lastmod: 2024-07-29T20:59:10.604Z
+lastmod: 2024-07-30T20:14:57.777Z
 cover:
     image: cover.webp
     alt: Fotografía de la presentación del criptosello de Mortadelo.
@@ -38,7 +38,7 @@ En ese aspecto Correos no lo ha hecho nada mal, pero es que las dos principales 
 
 ## Transparencia
 
-Empezamos mal: no han publicado la dirección del contrato inteligente, y por lo tanto perdemos una de las pocas ventajas que tenía usar esta tecnología.
+Empezamos mal con este tema: el mínimo de transparencia que se le puede pedir a algo que funcione con blockchain es que publiquen la dirección del contrato inteligente, cosa que no han hecho.
 
 No publicar cual es la dirección del contrato es como decir que tienes un portal de transparencia, pero no decir dónde. Es ocultar la información esencial que permite a los usuarios interactuar con ese contrato.
 

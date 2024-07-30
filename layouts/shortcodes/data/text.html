@@ -1,6 +1,6 @@
 {{- $id := .Get "id" | default (.Get 0) -}}
 {{- $default := .Get "default" -}}
-{{ partial "data_url" . }}
+{{- partial "data_url" . -}}
 <span id="{{$id}}"{{ with .Page.Scratch.Get "data-url" }} data-url="{{ . }}"{{ end }}>
     {{- if $default }}
         {{ $default }}
