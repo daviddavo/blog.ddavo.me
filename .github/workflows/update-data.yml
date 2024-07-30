@@ -1,0 +1,28 @@
+name: Update data viz
+on:
+  schedule:
+    # Everyday at 2:42
+    # TODO: Run every hour but modify updateAllData.sh
+    # to specify when each script should run / upload
+    - cron: '42 2 * * *'
+  workflow_dispatch:
+  push:
+    branches:
+      - main  # Set a branch to deploy
+  pull_request:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-24.04
+    steps:
+      # No need for submodules in this case
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+      - name: Update and upload all data
+        run: ./updateAllData.sh --upload
+        with:
+          DUNE_API_KEY: ${{ secrets.DUNE_API_KEY }}
+          AWS_ENDPOINT_URL: ${{ secrets.AWS_ENDPOINT_URL }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_BUCKET: blog-ddavo
