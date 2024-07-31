@@ -15,13 +15,13 @@ eval set -- "$TEMP"
 usage() {
     echo "Usage: $0"
     printf "  -u,--upload\t\tWether to upload the files to r2\n"
-    printf "  -U,--upload-only\t\tDo not update the data\n"
+    printf "  -s,--skip-update\tDo not update the data\n"
     printf "  -d,--debug\t\tWether to debug\n"
     printf "  -n,--dry-run\t\tDo not run the commands, just print what should be run\n"
 }
 
 upload=false
-upload_only=false
+run_update=true
 debug=false
 cmd=''
 while [[ "$#" -gt 0 ]]; do
@@ -30,9 +30,8 @@ while [[ "$#" -gt 0 ]]; do
             upload=true
             shift
             ;;
-        -U|--upload-only)
-            upload_only=true
-            upload=true
+        -s|--skip-update)
+            run_update=false
             shift
             ;;
         -n|--dry-run)
@@ -55,7 +54,7 @@ while [[ "$#" -gt 0 ]]; do
     esac
 done
 
-if [[ $upload ]]; then
+if [[ $upload = true ]]; then
     if [[ -z "${AWS_ENDPOINT_URL:-}" ]]; then
         echo 'AWS_ENDPOINT_URL is not defined'>&2
         exit 1
@@ -65,7 +64,7 @@ if [[ $upload ]]; then
     fi
 fi
 
-if [[ ! $upload_only ]]; then
+if [[ $run_update = true ]]; then
     if [[ -z "${DUNE_API_KEY-}" ]]; then
         echo 'DUNE_API_KEY is not defined'>&2
         exit 1
@@ -82,7 +81,7 @@ fi
 # Find all folders with updateData.py or updateData.sh
 find content -iname 'updateData.py' -type f -executable -print0 |
 while IFS= read -r -d '' f; do
-    if [[ ! $upload_only ]]; then
+    if [[ $run_update = true ]]; then
     (
         echo "Running $f/updateData.py">&2
         $cmd cd "$(dirname "${f}")"
@@ -91,7 +90,7 @@ while IFS= read -r -d '' f; do
     )
     fi
 
-    if [[ $upload ]]; then
+    if [[ $upload = true ]]; then
     (
         base=$(dirname "${f}")/data
         for fu in "$base"/*; do

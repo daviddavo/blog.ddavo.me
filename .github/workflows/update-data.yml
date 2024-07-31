@@ -17,6 +17,8 @@ jobs:
       # No need for submodules in this case
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
       - name: Update and upload all data
         run: ./updateAllData.sh --upload
         env:
