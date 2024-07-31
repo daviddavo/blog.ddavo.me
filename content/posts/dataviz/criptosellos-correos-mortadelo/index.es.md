@@ -1,6 +1,6 @@
 ---
 title: Sobre los criptosellos de Mortadelo
-lastmod: 2024-07-31T07:40:44.131Z
+lastmod: 2024-07-31T07:52:18.057Z
 cover:
     image: cover.webp
     alt: Fotografía de la presentación del criptosello de Mortadelo.
@@ -120,7 +120,7 @@ Hablando de panoja: aunque no soy un experto en la plataforma de contratación d
 
 En mi humilde opinión, Correos ha llegado muy tarde y un poco mal a la fiebre de los NFTs de 2021 (hace ya 3 años). Además, la falta de descentralización y transparencia, valores en el núcleo de este mundillo, pueden hacer dificil que sus usuarios se animen a comprar un criptosello.
 
-Tal vez en un futuro consigan amortizar la apuesta con nuevas colecciones, espero que mejorando en estos aspectos de implementación. Como punto positivo, parece que la página web es bastante accesible y funciona bien.
+Tal vez en un futuro consigan amortizar la apuesta con nuevas colecciones, espero que mejorando en estos aspectos de implementación, pues por el momento se encuentra lejos de poder considerarse web3. Como punto positivo, parece que la página web es bastante accesible y funciona bien.
 
 Dicho todo esto, a lo mejor gracias a esta interseccionalidad hay ahora algún friki de las criptomonedas que también se ha enganchado a comprar sellos y han conseguido un cliente de por vida.
 
