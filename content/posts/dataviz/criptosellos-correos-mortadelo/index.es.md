@@ -1,6 +1,6 @@
 ---
 title: Sobre los criptosellos de Mortadelo
-lastmod: 2024-07-30T20:14:57.777Z
+lastmod: 2024-07-31T07:40:44.131Z
 cover:
     image: cover.webp
     alt: Fotografía de la presentación del criptosello de Mortadelo.
@@ -123,3 +123,5 @@ En mi humilde opinión, Correos ha llegado muy tarde y un poco mal a la fiebre d
 Tal vez en un futuro consigan amortizar la apuesta con nuevas colecciones, espero que mejorando en estos aspectos de implementación. Como punto positivo, parece que la página web es bastante accesible y funciona bien.
 
 Dicho todo esto, a lo mejor gracias a esta interseccionalidad hay ahora algún friki de las criptomonedas que también se ha enganchado a comprar sellos y han conseguido un cliente de por vida.
+
+> Los datos se han obtenido mediante Dune Analytics, una plataforma de analísis de datos de cadenas blockchain. [Aquí podéis encotrar las consultas y datos utilizados](https://dune.com/ddavo/criptosellos).
