@@ -104,10 +104,15 @@ figure .chart {
     & .author-description {
       text-align: initial;
     }
-    
-    & .author-social svg {
-      width: 1em;
-      height: 1em;
+
+    & .author-social {
+      gap: .3em;
+      justify-content: space-between;
+
+      & svg {
+        width: 1em;
+        height: 1em;
+      }
     }
   }
 }
