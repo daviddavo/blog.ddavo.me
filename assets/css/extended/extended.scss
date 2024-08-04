@@ -80,6 +80,14 @@ figure .chart {
 
   & .author-social {
     grid-area: social;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .7em;
+
+    & svg {
+      width: 1.4em;
+      height: 1.4em;
+    }
   }
 
   @media screen and (min-width: 600px) {
@@ -95,6 +103,11 @@ figure .chart {
 
     & .author-description {
       text-align: initial;
+    }
+    
+    & .author-social svg {
+      width: 1em;
+      height: 1em;
     }
   }
 }
