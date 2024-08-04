@@ -1,11 +1,29 @@
 <div class="author-bio" id="author-{{.Name}}">
     <img class="author-photo" src="{{ .Params.photo }}" alt="" />
+    <div class="author-social">
+        {{ range $ico := .Params.icons }}
+            <a href="{{ $ico.url }}" target="_blank">
+                {{ partial "icons/icon" (dict "vendor" (default "font-awesome-brands" $ico.vendor) "name" $ico.icon )}}
+            </a>
+        {{ end }}
+    </div>
     <div class="author-details">
         <div class="author-name">{{ T "bio_about" .Params.name }}</div>
         {{ with .Params.occupation }}<div class="author-occupation">{{.}}</div>{{end}}
-        <div class="author-description">{{ .Content }}</div>
-        <div class="author-social">
-
+        <div class="author-contact">
+            {{ with .Params.personal_site }}
+                <a href="{{ . }}" target="_blank">
+                    {{ partial "icons/icon" (dict "vendor" "feather" "name" "home") }}
+                    {{ replaceRE `https?://` "" . }}
+                </a>
+            {{end}}
+            {{ with .Params.email }}
+                <a href="mailto:{{ . }}">
+                    {{ partial "icons/icon" (dict "vendor" "feather" "name" "mail") }}
+                    {{ . }}
+                </a>
+            {{end}}
         </div>
+        <div class="author-description">{{ .Content }}</div>
     </div>
 </div>

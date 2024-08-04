@@ -14,8 +14,14 @@ figure .chart {
 }
 
 .author-bio {
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  column-gap: 20px;
+  row-gap: 10px;
+  justify-items: center;
+  grid-template-areas:
+    "photo"
+    "main"
+    "social";
 
   font-size: .9em;
   margin: var(--content-gap) 0;
@@ -24,9 +30,19 @@ figure .chart {
   border-radius: var(--radius);
   border: 1px solid var(--border);
 
+  & .author-photo {
+    border-radius: 50%;
+    max-width: 150px;
+    width: 100%;
+    height: auto;
+    grid-area: photo;
+  }
+
   & .author-details {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    grid-area: main;
   }
 
   & .author-name {
@@ -39,29 +55,48 @@ figure .chart {
     font-size: smaller;
   }
 
-  & .author-description {
+  & .author-contact {
+    color: var(--tertiary);
     font-size: smaller;
+
+    & svg {
+      vertical-align: -.15em;
+      width: 1em;
+      height: 1em;
+      display: inline-block;
+    }
+
+    &>a:not(:first-child)::before {
+      content: '|';
+      padding-left: .3em;
+      padding-right: .5em;
+    }
   }
 
-  @media screen and (max-width: 600px) {
-    flex-direction: column;
-    align-items: center;
-    
+  & .author-description {
+    font-size: smaller;
+    text-align: center;
+  }
+
+  & .author-social {
+    grid-area: social;
+  }
+
+  @media screen and (min-width: 600px) {
+    grid-template-columns: 128px 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      "photo  main"
+      "social main";
+
     & .author-details {
-      align-items: center;
+      align-items: initial;
     }
 
     & .author-description {
-      text-align: center;
+      text-align: initial;
     }
   }
-}
-
-.author-photo {
-  border-radius: 50%;
-  width: 80px;
-  height: 80px;
-  margin-right: 20px;
 }
 
 

@@ -1,0 +1,10 @@
+github.com/bradp/hugo-feather-icons v0.0.0-20201218123216-bacfffa6ca3d h1:IPM6fGOA2uA3GcFOzSQP/39H4ddXcfq/mNUAV36kDkE=
+github.com/bradp/hugo-feather-icons v0.0.0-20201218123216-bacfffa6ca3d/go.mod h1:SmXXFJhLi+umt5zQhwYmW8GlbbAURjqyDP4kKdGSg7A=
+github.com/feathericons/feather v4.29.2+incompatible h1:T71K08C6i0/Ke6R7EEKjo+rOfo7EmH10uEkaRv1XPSw=
+github.com/feathericons/feather v4.29.2+incompatible/go.mod h1:+F8Ba9cmRHWu0pOVoZtid0iwkNJ8hr959HyPwj3hsRg=
+github.com/hugomods/icons v0.6.4 h1:SeDMpN2kjc8mbuXfi8zED4IN5IGZmqJdmmUQr9tIpxw=
+github.com/hugomods/icons v0.6.4/go.mod h1:cIkSvK6W0q6N4U6n9KGz+QfRWQXAW0INd+1P31gPNGg=
+github.com/hugomods/icons/vendors/feather v0.2.5 h1:qEldsvpaQifUGx7RGk73OqiWWPMPqFmc50MA5owFbFU=
+github.com/hugomods/icons/vendors/feather v0.2.5/go.mod h1:dLqOrAWHMxJ33twAwnbHnM8TXx/9Zpbb5+CAeiqJbFQ=
+github.com/hugomods/icons/vendors/font-awesome v0.6.8 h1:wcqovckhWxcYTkOn4JOp2HljVmus+59AwDP9cAYWiMg=
+github.com/hugomods/icons/vendors/font-awesome v0.6.8/go.mod h1:IwJEJX8eFwDFCcxMjFBIgVWlPTf16yFVk78Rc3RUBjs=
