@@ -50,6 +50,12 @@
     {{- partial "social_links.html" . }}
     {{- end }}
 
+  {{- range .Params.authors }}
+    {{- with $.Site.GetPage "taxonomyTerm" (printf "authors/%s" (urlize .)) }}
+      {{- partial "author_box.html" . }}
+    {{ end }}
+  {{ end }}
+
     {{- if (.Param "ShowPostNavLinks") }}
     {{- partial "post_nav_links.html" . }}
     {{- end }}

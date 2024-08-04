@@ -1,0 +1,2 @@
+- id: bio_about
+  translation: About {{ . }}

@@ -5,7 +5,8 @@ cover:
     image: cover.webp
     alt: Fotografía de la presentación del criptosello de Mortadelo.
     caption: Fotografía de la presentación del criptosello por Correos. EFE/Alejandro García
-author: David Davó
+authors: 
+    - ddavo
 keywords:
     - blockchain
     - correos

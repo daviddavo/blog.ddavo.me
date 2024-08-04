@@ -12,8 +12,9 @@ tags:
 categories:
     - Python
     - Seaborn
-author: David Dav
-lastmod: 2024-05-25T18:55:56.974Z
+authors:
+    - ddavo
+lastmod: 2024-08-03T18:47:28.511Z
 math: false
 type: default
 slug: confusing-confusion-matrices-seaborn

@@ -38,6 +38,10 @@ markup:
 services:
   youtube:
     PrivacyEnhanced: true
+taxonomies:
+  author: authors
+  tag: tags
+  category: categories
 params:
   description: >
     David Davó's dev log where you'll find notes about my projects, among other things
