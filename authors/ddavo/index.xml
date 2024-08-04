@@ -80,4 +80,1009 @@ Algorithm Performance</a> (full reference below, on <em>further reading</em>).</
 <li><a href="https://en.wikipedia.org/wiki/Confusion_matrix">Confusion Matrix - Wikipedia</a></li>
 </ul>
 <p>Finally, if you liked this post, you might like other posts about data visualization like <a href="https://blog.ddavo.me/posts/tutorials/seaborn-heatmap-marginal-distribution/">Creating a HeatMap with marginal distributions using Seaborn</a></p>
+]]></content:encoded></item><item><title>Using hugo from a GitHub codespace</title><link>https://blog.ddavo.me/posts/tutorials/hugo-codespace/</link><pubDate>Wed, 22 May 2024 17:54:42 +0000</pubDate><guid>https://blog.ddavo.me/posts/tutorials/hugo-codespace/</guid><description>In this tutorial we will learn how to set up GitHub codespaces to comfortably write your Hugo posts</description><content:encoded><![CDATA[<p>Once again, this post is more like a tutorial for myself (because every time I want to write a post I forget how it worked) that then I decide to share with everyone.</p>
+<h2 id="setting-up-the-devcontainer">Setting up the devcontainer</h2>
+<p>The devcontainer file tells GitHub Codespaces how to create your file. You can find my current codespaces file <a href="https://github.com/daviddavo/blog.ddavo.me/blob/main/.devcontainer/devcontainer.json">on GitHub</a>.</p>
+<p>Bellow, I copied the simplified version that was used while I was writing this post:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Ubuntu&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nt">&#34;image&#34;</span><span class="p">:</span> <span class="s2">&#34;mcr.microsoft.com/devcontainers/base:jammy&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">&#34;features&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nt">&#34;ghcr.io/devcontainers/features/hugo:1&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="nt">&#34;extended&#34;</span><span class="p">:</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl">		<span class="p">},</span>
+</span></span><span class="line"><span class="cl">		<span class="nt">&#34;ghcr.io/devcontainers-contrib/features/actionlint:1&#34;</span><span class="p">:</span> <span class="p">{},</span>
+</span></span><span class="line"><span class="cl">		<span class="nt">&#34;ghcr.io/devcontainers-contrib/features/gh-cli:1&#34;</span><span class="p">:</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">},</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">&#34;customizations&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nt">&#34;vscode&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="nt">&#34;extensions&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">				<span class="s2">&#34;eliostruyf.vscode-front-matter&#34;</span>
+</span></span><span class="line"><span class="cl">			<span class="p">]</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">},</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// Features to add to the dev container. More info: https://containers.dev/features.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// &#34;features&#34;: {},
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Use &#39;forwardPorts&#39; to make a list of ports inside the container available locally.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nt">&#34;forwardPorts&#34;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1313</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// You can use go mod instead
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nt">&#34;postCreateCommand&#34;</span><span class="p">:</span> <span class="s2">&#34;git submodule update --init&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>The most important part is <code>forwardPorts</code>, as it will &ldquo;open&rdquo; the port that hugo server uses. You can also specify what extensions you want to be installed. I really like FrontMatter, as it has multiple useful features for writing blog posts.</p>
+<h2 id="running-hugo">Running hugo</h2>
+<p>Finally, we have to run hugo, which is, surprisignly, the most difficult part. I just wrote this post to save and publish this command.</p>
+<p>We will use some readily available environment variables to set the base url, that is changed by github to allow you and only you to access the open port.</p>
+<ul>
+<li><code>CODESPACE_NAME</code>: This is the name of the codespace, e.g.: curly-fortnight-asfajkghajhgajhg</li>
+<li><code>GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN</code>: This is the base domain that github uses for these redirects: <code>app.github.dev</code></li>
+</ul>
+<p>We can combine these two variables to create the URL that will be used by your blog, and enter it into hugo:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo server -D --appendPort<span class="o">=</span><span class="nb">false</span> --baseURL https://<span class="nv">$CODESPACE_NAME</span>-1313.<span class="nv">$GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN</span>
+</span></span></code></pre></div><h2 id="ussing-frontmatters-run-server-button">Ussing FrontMatter&rsquo;s RUN SERVER button</h2>
+<p>To finish, the Front Matter extension has a cool &ldquo;START SERVER&rdquo; button, we can set what it does by just modifying Visual Studio&rsquo;s config, and then we will just have to press that button.</p>
+]]></content:encoded></item><item><title>Creating a HeatMap with marginal distributions using Seaborn</title><link>https://blog.ddavo.me/posts/tutorials/seaborn-heatmap-marginal-distribution/</link><pubDate>Fri, 16 Feb 2024 16:34:58 +0000</pubDate><guid>https://blog.ddavo.me/posts/tutorials/seaborn-heatmap-marginal-distribution/</guid><description>In this post I create a neat heatmap using Seaborn&amp;#39;s JointGrid without modifying the DataFrame, and using data from my master&amp;#39;s thesis&amp;#34;</description><content:encoded><![CDATA[<p>In this short post I will just share the code on how I created a very neat Heatmap for my Master&rsquo;s Thesis using <a href="https://seaborn.pydata.org">Seaborn</a>. It took me a while but I&rsquo;m very proud of how it turned out.</p>
+<p>For this, I used the <a href="https://seaborn.pydata.org/generated/seaborn.JointGrid.html#seaborn.JointGrid">JointGrid</a> tool, which allows me to make a multi-plot grid for conditional relationships, where we can show the marginal distributions on the top and right parts of the graph.</p>
+<p>The <a href="https://seaborn.pydata.org/generated/seaborn.jointplot.html#seaborn.jointplot">jointplot</a> function has already many things built in, for plotting something like a scatter plot (with x and y variables) while showing its distribution.</p>
+<figure>
+            <img loading="lazy" src="https://seaborn.pydata.org/_images/jointplot_17_0.png" alt=""/> <figcaption>
+            <p>Sample figure from Seaborn&rsquo;s official documentation</p>
+        </figcaption>
+</figure>
+
+<p>In my case, what I wanted to plot wasn&rsquo;t a scatter plot, It did not have an x nor an y, it was a ol&rsquo; heatmap created from a <a href="https://pandas.pydata.org/docs/reference/api/pandas.crosstab.html">pd.crosstab</a>.</p>
+<p>This is my data:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">array([[4850, 5713, 2401, 1715, 1523, 1328,  848],
+</span></span><span class="line"><span class="cl">       [1335, 5474, 6127, 3121, 2153, 1792, 1239],
+</span></span><span class="line"><span class="cl">       [1618,  874, 4309, 5731, 2849, 2117, 1381],
+</span></span><span class="line"><span class="cl">       [1802, 1353,  950, 4494, 5385, 2781, 1994],
+</span></span><span class="line"><span class="cl">       [2199, 1401,  989,  636, 4047, 4811, 2754],
+</span></span><span class="line"><span class="cl">       [2267, 1306,  973,  649,  542, 3161, 3462],
+</span></span><span class="line"><span class="cl">       [2988, 1452, 1035,  606,  602,  506, 2917]])
+</span></span></code></pre></div><p>At first, I was going to create a Heatmap and two barplots, but then I decided to try to combine them all into one, and <strong>here is the result</strong>:</p>
+<figure>
+        <img loading="lazy" srcset="https://blog.ddavo.me/posts/tutorials/seaborn-heatmap-marginal-distribution/download_hua9674c314d701374f65f1d9b70634b14_80081_360x0_resize_box_3.png 360w ,https://blog.ddavo.me/posts/tutorials/seaborn-heatmap-marginal-distribution/download_hua9674c314d701374f65f1d9b70634b14_80081_480x0_resize_box_3.png 480w ,https://blog.ddavo.me/posts/tutorials/seaborn-heatmap-marginal-distribution/download.png 655w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="https://blog.ddavo.me/posts/tutorials/seaborn-heatmap-marginal-distribution/download.png" alt="My own Heatmap with marginal distributions" 
+            width="655" height="641"><figcaption>
+            <p>A heatmap on when a proposal is created and when is voted in a certain voting system (to be published)</p>
+        </figcaption>
+</figure>
+
+<p>The code to accomplish this was the following:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># _toplot = pd.crosstab(...)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Create an empty joint grid</span>
+</span></span><span class="line"><span class="cl"><span class="n">grid</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">JointGrid</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Fill the centre with our heatmap</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">_toplot</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">grid</span><span class="o">.</span><span class="n">ax_joint</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;mako&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Draw total bars, both with width 1, but the Y one with horizontal orientation</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">_toplot</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">ax</span><span class="o">=</span><span class="n">grid</span><span class="o">.</span><span class="n">ax_marg_x</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">_toplot</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">ax</span><span class="o">=</span><span class="n">grid</span><span class="o">.</span><span class="n">ax_marg_y</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Offset value (just half an unit)</span>
+</span></span><span class="line"><span class="cl"><span class="n">_off</span> <span class="o">=</span> <span class="mf">.5</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Fix x</span>
+</span></span><span class="line"><span class="cl"><span class="n">_xmin</span><span class="p">,</span> <span class="n">_xmax</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">ax_joint</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">grid</span><span class="o">.</span><span class="n">ax_joint</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">_xmin</span><span class="o">+</span><span class="n">_off</span><span class="p">,</span> <span class="n">_xmax</span><span class="o">+</span><span class="n">_off</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">bar</span> <span class="ow">in</span> <span class="n">grid</span><span class="o">.</span><span class="n">ax_marg_x</span><span class="o">.</span><span class="n">containers</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">bar</span><span class="o">.</span><span class="n">set_x</span><span class="p">(</span><span class="n">bar</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span> <span class="o">+</span> <span class="n">_off</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Fix y</span>
+</span></span><span class="line"><span class="cl"><span class="n">_ymin</span><span class="p">,</span> <span class="n">_ymax</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">ax_joint</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">grid</span><span class="o">.</span><span class="n">ax_joint</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">_ymin</span><span class="o">+</span><span class="n">_off</span><span class="p">,</span> <span class="n">_ymax</span><span class="o">+</span><span class="n">_off</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">bar</span> <span class="ow">in</span> <span class="n">grid</span><span class="o">.</span><span class="n">ax_marg_y</span><span class="o">.</span><span class="n">containers</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">bar</span><span class="o">.</span><span class="n">set_y</span><span class="p">(</span><span class="n">bar</span><span class="o">.</span><span class="n">get_y</span><span class="p">()</span> <span class="o">+</span> <span class="n">_off</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Need to use this to set the horizontal_alignment</span>
+</span></span><span class="line"><span class="cl"><span class="n">grid</span><span class="o">.</span><span class="n">ax_joint</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">grid</span><span class="o">.</span><span class="n">ax_joint</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">(),</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">rotation</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>    
+</span></span><span class="line"><span class="cl">    <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">grid</span><span class="o">.</span><span class="n">ax_joint</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">grid</span><span class="o">.</span><span class="n">ax_joint</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Día de votación&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">grid</span><span class="o">.</span><span class="n">ax_joint</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Día de creación&#39;</span><span class="p">)</span>
+</span></span></code></pre></div><h2 id="further-reading">Further reading</h2>
+<p>After coming up with this solution, I found this StackOverflow post:</p>
+<ul>
+<li><a href="https://stackoverflow.com/a/65921757/4505998">How to create a heatmap with marginal histograms, similar to a jointplot?</a></li>
+</ul>
+<p>But the answer relies too much on modifying the data, and won&rsquo;t work if the indexes are not a range of integers.</p>
+<p>There&rsquo;s also a <a href="https://github.com/mwaskom/seaborn/discussions/3198">discussion on GitHub</a> about this which I replied to.</p>
+]]></content:encoded></item><item><title>Migrating from SSHFS to NFS</title><link>https://blog.ddavo.me/posts/tutorials/migrating-from-sshfs-to-nfs/</link><pubDate>Mon, 28 Aug 2023 15:40:21 +0000</pubDate><guid>https://blog.ddavo.me/posts/tutorials/migrating-from-sshfs-to-nfs/</guid><description>First of all, this is not a tutorial, this is more like a lab notebook of my experience trying to ditch sshfs and start using NFS.
+The main problem I had with sshfs is that it is not very reliable as a file system to remain mounted 24/7. For example, I had some problems unmounting it when it got stuck in a machine, creating lots of zombie processes. The only solution was to literally restart the machine&amp;hellip; Furthermore, its GitHub repo was archived more than a year ago, so these issues will not be addressed soon.</description><content:encoded><![CDATA[<p>First of all, this is not a tutorial, this is more like a lab notebook of my experience trying to ditch sshfs and start using NFS.</p>
+<p>The main problem I had with sshfs is that it is not very reliable as a file system to remain mounted 24/7. For example, I had some problems unmounting it when it got stuck in a machine, creating lots of zombie processes. The only solution was to literally restart the machine&hellip; Furthermore, its <a href="https://github.com/libfuse/sshfs">GitHub repo</a> was archived more than a year ago, so these issues will not be addressed soon.</p>
+<h2 id="previous-setup">Previous setup</h2>
+<p>Instead of mounting the volume(s) using fstab, I decided to use a <code>.mount</code> file. It is a systemd unit that you can enable/disable using the <code>systemctl</code> command. You can check if the unit was successfully mounted just using <code>systemctl status</code>. In most systems, a <code>fstab</code> entry will just be converted to a <code>.mount</code> unit anyway. I discovered it recently, but you can just do <code>systemctl cat -- -.mount</code> and see the unit file created to mount your root filesystem.</p>
+<p>In my case, the unit file I created was:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="line"><span class="cl"><span class="k">[Unit]</span>
+</span></span><span class="line"><span class="cl"><span class="na">Description</span><span class="o">=</span><span class="s">Mount publicmedia (/mnt/chikyuu/tdarr/PublicMedia)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">[Mount]</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># chikyuu hostname defined in /etc/hosts</span>
+</span></span><span class="line"><span class="cl"><span class="na">What</span><span class="o">=</span><span class="s">tdarr@chikyuu:PublicMedia</span>
+</span></span><span class="line"><span class="cl"><span class="na">Where</span><span class="o">=</span><span class="s">/mnt/chikyuu/tdarr/PublicMedia</span>
+</span></span><span class="line"><span class="cl"><span class="na">Type</span><span class="o">=</span><span class="s">fuse.sshfs</span>
+</span></span><span class="line"><span class="cl"><span class="na">Options</span><span class="o">=</span><span class="s">noauto,port=222,x-systemd.automount,_netdev,user,default_permissions,allow&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#TimeoutSec=seconds</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">[Install]</span>
+</span></span><span class="line"><span class="cl"><span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span>
+</span></span></code></pre></div><p>It&rsquo;s a lot easier to read, modify and check than using just <code>fstab</code>.</p>
+<h2 id="new-setup">New setup</h2>
+<p>I configured the NFS server using <a href="https://www.openmediavault.org/">openmediavault</a>, installed on a Raspberry Pi using Armbian. It was as easy as any other config method. The only difference is that NFS by default doesn&rsquo;t make any user id translations, but in my case it was fine as I preferred having the original user and groups ids. I had to create the groups on the client machines and change some uids.</p>
+<p>You can create a group with a certain group id using the following command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo groupadd -g <span class="s2">&#34;gid&#34;</span> <span class="s2">&#34;group name&#34;</span>
+</span></span></code></pre></div><p>It&rsquo;s similar for users, with the command <code>useradd</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo useradd -u <span class="s2">&#34;uid&#34;</span> <span class="s2">&#34;user name&#34;</span>
+</span></span></code></pre></div><p>Then, you can add your personal user to a certain group using <code>usermod</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo usermod -a -G <span class="s2">&#34;group name&#34;</span> <span class="s2">&#34;user name&#34;</span>
+</span></span></code></pre></div><p>Now, the <code>.mount</code> file is more simple, as you don&rsquo;t need anything to do with permissions, and you don&rsquo;t need an IdentityFile. It seems less secure, but I configured the server so only some devices (which are on a separate VLAN) can access the NFS.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="line"><span class="cl"><span class="k">[Unit]</span>
+</span></span><span class="line"><span class="cl"><span class="na">Description</span><span class="o">=</span><span class="s">Mount publicmedia (/mnt/chikyuu/tdarr/PublicMedia)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">[Mount]</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># chikyuu hostname defined in /etc/hosts</span>
+</span></span><span class="line"><span class="cl"><span class="na">What</span><span class="o">=</span><span class="s">chikyuu:/PublicMedia</span>
+</span></span><span class="line"><span class="cl"><span class="na">Where</span><span class="o">=</span><span class="s">/mnt/chikyuu/tdarr/PublicMedia</span>
+</span></span><span class="line"><span class="cl"><span class="na">Type</span><span class="o">=</span><span class="s">nfs4</span>
+</span></span><span class="line"><span class="cl"><span class="na">Options</span><span class="o">=</span><span class="s">rw,noauto,x-systemd.automount,x-systemd.mount-timeout=10,x-systemd.idle-timeout=1hour</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">[Install]</span>
+</span></span><span class="line"><span class="cl"><span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span>
+</span></span></code></pre></div><p>And this is everything, I just restarted the service and everything went smoothly. I still don&rsquo;t know if it hangs less often, as sshfs hanged just one or two times each month.</p>
+<h3 id="bonus-mounting-using-docker-compose">Bonus: Mounting using docker-compose</h3>
+<p>The fact is, I don&rsquo;t even need the service anymore. I used to mount the filesystem to make it available to some docker containers. But now I can just define it inside the <code>docker-compose.yml</code> file like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">nfs_publicmedia</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">driver_opts</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">nfs4</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">o</span><span class="p">:</span><span class="w"> </span><span class="l">addr=192.168.1.31,nolock,soft,rw</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">device</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;:/PublicMedia&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">ubuntu_test</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">ubuntu</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">nfs_publicmedia:/media</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l">ls /media &amp;&amp; sleep 3600</span><span class="w">
+</span></span></span></code></pre></div><p>There&rsquo;s no need anymore to mount the filesystem in each machine, it is automatically deployed thanks to docker stack!</p>
+]]></content:encoded></item><item><title>Computing information retrieval metrics in Pytorch Geometric</title><link>https://blog.ddavo.me/posts/pytorch-geometric-metrics/</link><pubDate>Fri, 04 Aug 2023 18:21:50 +0000</pubDate><guid>https://blog.ddavo.me/posts/pytorch-geometric-metrics/</guid><description>How to calculate metrics like precision@k, recall@k and r-precision for information retrieval and recommender systems in PyTorch Geometric</description><content:encoded><![CDATA[<h2 id="formulas-and-definitions">Formulas and Definitions</h2>
+<p>There are multiple metrics used both in information retrieval and recommender systems that are analagous to standard metrics. Precision and recall at k (also called precision@k and recall@k) both answer the simple question of &ldquo;whats the precision/recall if I retrieve k documents using my system&rdquo;.</p>
+<blockquote>
+<p>$$ p@k = \frac{|\{\text{relevant documents}\}\cap\{\text{top k retrieved documents}\}|}{k} $$</p>
+</blockquote>
+<p>But with both of these metrics, the constant <em>k</em> needs to be known. A user that only interacted 3 times with items will have a maximum p@5 of 3/5, but for a user with hundreds of interactions, scoring a good p@5 would be too easy for our system. Furthermore, if you have hundreds of interactions for every user, the recall will be pretty low.</p>
+<p>If we could just vary the <em>k</em> for each user&hellip; Thats when R-precission comes in handy. Is like precision@k, but the k is different for each user, and is equal to the number of relevant items for the user. The difference between the old simple recall and r-precision is that the number of documents to retrieve is equal to the number of relevant documents.</p>
+<blockquote>
+<p>$$ r-precision = \frac{\left|\{\text{relevant documents}\}\cap \{\text{top R retrieved documents}\}\right| }{R} $$</p>
+<p>Where \(R = |\{\text{relevant documents}\}|\)</p>
+</blockquote>
+<h2 id="implementation-and-pytorch-geometric-code">Implementation and PyTorch Geometric code</h2>
+<p>Let&rsquo;s imagine the graph is implemented as a tensor <code>edge_index</code> of size <code>[2,n_users]</code>, where <code>edge_index[0]</code> is the source of each edge, and <code>edge_index[1]</code> is the destination. We also have a model with a method <code>model.recommend</code> (like <a href="https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.nn.models.LightGCN.html?highlight=lightgcn">LightGCN</a>), that, given a value <em>k</em> returns the top <em>k</em> recommendations of nodes.</p>
+<p>The code of the following function is thoroughly commented to make it easier to understand. It receives a k and returns both the precision and recall at k, and the R-precision.</p>
+<p>I assume that the model and the graph are out of the scope of the function (they are global variables, or this functions is inside a bigger function).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nd">@torch.no_grad</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">prec_rec</span><span class="p">(</span><span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># gt: ground truth (all edges)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">gt_index</span> <span class="o">=</span> <span class="n">original</span><span class="p">[</span><span class="s1">&#39;voter&#39;</span><span class="p">,</span> <span class="s1">&#39;votes&#39;</span><span class="p">,</span> <span class="s1">&#39;proposal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">edge_index</span>
+</span></span><span class="line"><span class="cl">    <span class="n">edge_index</span> <span class="o">=</span> <span class="n">validation</span><span class="p">[</span><span class="s1">&#39;voter&#39;</span><span class="p">,</span> <span class="s1">&#39;votes&#39;</span><span class="p">,</span> <span class="s1">&#39;proposal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">edge_index</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># First, we will need to obtain the R value for each node</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># In graph terms, this is just the degree of the graph</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># (the number of items each user interacted with)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">R</span> <span class="o">=</span> <span class="n">item_count</span> <span class="o">=</span> <span class="n">PyG</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">gt_index</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">num_nodes</span><span class="o">=</span><span class="n">n_users</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Then, we get the top max(R) recomendations. This is a bit</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># expensive but less than sorting all the recommendations</span>
+</span></span><span class="line"><span class="cl">    <span class="n">topr</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">recommend</span><span class="p">(</span><span class="n">edge_index</span><span class="p">,</span> <span class="n">src_index</span><span class="o">=</span><span class="n">users</span><span class="p">,</span> <span class="n">dst_index</span><span class="o">=</span><span class="n">items</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">max</span><span class="p">()),</span> <span class="nb">sorted</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># We transform the pair of vertices format to a </span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># bipartite adjacency matrix</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ground_truth</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="n">n_users</span><span class="p">,</span> <span class="n">n_items</span><span class="p">),</span> <span class="kc">False</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">bool</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ground_truth</span><span class="p">[</span><span class="n">gt_index</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">gt_index</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">n_users</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Then, we gather the results of that matrix using</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># the top recommendations obtained before</span>
+</span></span><span class="line"><span class="cl">    <span class="n">isin_rmat</span> <span class="o">=</span> <span class="n">ground_truth</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">topr</span> <span class="o">-</span> <span class="n">n_users</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># For p@k and r@k we just need the first k recommendations</span>
+</span></span><span class="line"><span class="cl">    <span class="n">isin_mat</span> <span class="o">=</span> <span class="n">isin_rmat</span><span class="p">[:,</span> <span class="p">:</span><span class="n">k</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># We calculate mean precision and recall using the formulas</span>
+</span></span><span class="line"><span class="cl">    <span class="n">prec</span> <span class="o">=</span> <span class="p">(</span><span class="n">isin_mat</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">k</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">n_users</span>
+</span></span><span class="line"><span class="cl">    <span class="n">rec</span> <span class="o">=</span> <span class="p">(</span><span class="n">isin_mat</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">item_count</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">n_users</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># We can&#39;t do isin_rmat[:, :R] because R is not an scalar</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># My solution is to create a mask with as much ones as R</span>
+</span></span><span class="line"><span class="cl">    <span class="n">msk</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">R</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">R</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">isin_rmat</span><span class="p">[</span><span class="n">msk</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Calculate the mean R-precision using the formula</span>
+</span></span><span class="line"><span class="cl">    <span class="n">rprec</span> <span class="o">=</span> <span class="p">(</span><span class="n">isin_rmat</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">R</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">n_users</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Finally, we convert the 1-d one item tensors to float</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">prec</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">rec</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">rprec</span><span class="p">)</span>
+</span></span></code></pre></div><p>Even if you don&rsquo;t use PyTorch Geometric and you prefer other library, the code should be useful. Just accomodate the edge index and create a similar recommend method and you will be able to calculate r-precision.</p>
+<h2 id="sources-and-more-information">Sources and more information</h2>
+<ul>
+<li><a href="https://pytorch-geometric.readthedocs.io/en/latest/">PyTorch Geometric - Read The Docs</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Evaluation_measures_(information_retrieval)#Precision_at_k">Wikipedia - Evaluation measures (information retrieval)</a></li>
+<li><a href="https://stackoverflow.com/questions/76837716/how-to-slice-a-2d-tensor-using-a-1d-tensor-instead-of-scalar">StackOverflow - How to slice a 2D tensor using a 1D tensor instead of scalar</a></li>
+<li><a href="https://discuss.pytorch.org/t/how-to-use-a-1d-tensor-as-an-index-to-slice-a-2d-tensor/185736">PyTorch Forums - How to use a 1d tensor as an index to slice a 2d tensor</a></li>
+</ul>
+]]></content:encoded></item><item><title>Death to the algorithm: Alternatives to recommendation systems</title><link>https://blog.ddavo.me/posts/death-to-the-algorithm/</link><pubDate>Tue, 30 May 2023 18:11:58 +0000</pubDate><guid>https://blog.ddavo.me/posts/death-to-the-algorithm/</guid><description>Recommendation systems are useful, but sometimes we just want to discover new things by ourselves. In this article I present 6 alternatives to &amp;#34;the algorithm&amp;#34;.</description><content:encoded><![CDATA[<p>Often, we find ourselves exhausted by the overwhelming amount of content available on our favourite platforms. It can be a real challenge to make a selection from the vast sea of options. Luckily, all platforms have a great <em>algorithm</em> that chooses for you and <strong>reduces the sea of options to just a dozen of items</strong>. Furthermore, it&rsquo;s usually accurate&hellip; If I enjoyed Toy Story 3, I&rsquo;d certainly like Toy Story 4. It&rsquo;s almost always spot on.</p>
+<p>A recommendation system, also known as &ldquo;the algorithm,&rdquo; is a system designed to predict how you will rate items like Netflix series, YouTube videos, or Amazon products based on your past ratings. It goes beyond just your explicit likes or dislikes and takes into consideration factors such as watching a video until the end, which can be even more influential in understanding your preferences.</p>
+<figure>
+        <img loading="lazy" srcset="https://blog.ddavo.me/posts/death-to-the-algorithm/youtube_hu04233eebc058b943f626a2d2ae01c26c_905639_360x0_resize_box_3.png 360w ,https://blog.ddavo.me/posts/death-to-the-algorithm/youtube_hu04233eebc058b943f626a2d2ae01c26c_905639_480x0_resize_box_3.png 480w ,https://blog.ddavo.me/posts/death-to-the-algorithm/youtube_hu04233eebc058b943f626a2d2ae01c26c_905639_720x0_resize_box_3.png 720w ,https://blog.ddavo.me/posts/death-to-the-algorithm/youtube_hu04233eebc058b943f626a2d2ae01c26c_905639_1080x0_resize_box_3.png 1080w ,https://blog.ddavo.me/posts/death-to-the-algorithm/youtube.png 1267w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="https://blog.ddavo.me/posts/death-to-the-algorithm/youtube.png" alt="Screenshot of my YouTube recommendations" 
+            width="1267" height="827"><figcaption>
+            <p>YouTube&rsquo;s algorithm is like a mirror</p>
+        </figcaption>
+</figure>
+
+<p>In this article, I won&rsquo;t go into detail about how these systems work. There is plenty of information about it available online, and I want to keep this article concise. You can find some videos and articles I found interesting at <a href="/posts/death-to-the-algorithm/#further-reading">the end of this article</a>.</p>
+<p>In simple terms, recommendation systems are typically machine learning systems that aim to find groups of users with similar preferences and recommend items within those groups. E.g: <strong>if Alice and Bob have similar tastes and Bob discovers a new music group that he enjoys, probably, Alice will also like that group</strong>.</p>
+<p>It is quite common for these systems to not know the content or genre of a video or song. They solely consider the similarity of tastes between Alice and Bob. The recommendation systems don&rsquo;t take into account the specific details of the content but rather focus on the alignment of preferences between Alice and Bob.</p>
+<p>However, the ultimate goal of any machine learning system is to optimize something. Is it for &ldquo;fun,&rdquo; &ldquo;entertainment,&rdquo; or &ldquo;learning&rdquo;? Well, most likely, the companies that design these algorithms decide to optimize them for generating the highest possible amount of revenue. In other words, they aim to keep you hooked on their recommendations for as long as possible. And they are incredibly effective at achieving this goal.</p>
+<p>Sometimes, we want to break free from the comfort zone created by &ldquo;the algorithm&rdquo; and explore new things. We might want to start buying fantasy books even if we&rsquo;ve never read one before or listen to some electro-psychedelic cumbia, if such a genre exists. However, taming the algorithm to show us exactly what we want can be extremely challenging. It often leads us either to mainstream content or down a rabbit hole with no way out, eventually leading us to unexpected and undiscovered niches.</p>
+<p>For these reasons, in this article, I present 6 alternatives to recommendation algorithms:</p>
+<blockquote>
+<p>This article is <em>alive</em> and was updated on August 4, 2024</p>
+</blockquote>
+<h2 id="1-the-curator-podcasts-radios-blogs">1. The Curator: Podcasts, radios, blogs&hellip;</h2>
+<p>I will start by talking about Radio 3, from whom I borrowed the slogan &ldquo;death to the algorithm!&rdquo; for the title of this article. For readers outside of Spain, Radio 3 is a Spanish public radio known for its alternative but wide programming. In their last publicity campaign, they decided to emphasize human curation and DJ selection rather than relying on algorithms for music recommendations.</p>
+<p>A great option for discovering new things is to seek out <strong>knowledgeable individuals</strong> who specialize in discussing those topics. Read blogs, listen to radio shows and podcasts, watch videos and vlogs, ask people you know, read articles in magazines—whatever works for you!</p>
+<p>In addition to discovering new things, actively engaging in your favourite hobbies can provide a fresh perspective and be an enjoyable hobby in itself. <strong>The mere act of reading about a topic can be entertaining and fulfilling</strong>. For instance, when it comes to anime and video games, I personally enjoy reading both online and offline magazines. In addition to discussing manga and anime, they also feature various articles that analyze Japanese culture and the industry itself. It&rsquo;s incredible how many titles I wouldn&rsquo;t have discovered if it weren&rsquo;t for their coverage.</p>
+<p>When it comes to music, in addition to their live radio broadcasts, Radio 3 uploads all of their shows in a podcast format so you can listen to them whenever you want. Some programs focus on playing music with minimal commentary, while others feature interviews or analyze the latest releases of the week. Lately, I&rsquo;ve been hooked on El sótano (The Basement) and Melodías Pizarras (&ldquo;Pizarre&rdquo; Melodies, a pun with bizarre and the name of the host) which expose me to music that isn&rsquo;t readily available on many platforms.</p>
+<p>In the end, you end up building a roster of &ldquo;influencers&rdquo; to whom you can return to discover new things.</p>
+<h2 id="2-roll-with-_playlists_-_mixes_-_series_">2. Roll with <em>playlists</em>, <em>mixes</em>, <em>series</em>&hellip;</h2>
+<p>However, it is true that sometimes we just want to watch a movie without delving into an interesting program about the director&rsquo;s inspirations or related topics. Similarly, there are times when we simply want to hit play and listen to music without considering the specific song, album, or artist playing at that moment.</p>
+<p>That&rsquo;s why film series, playlists, and remixes were created. They are curated packages of content that someone thought would go well together.</p>
+<p>In Deezer, for example, you have playlists created by specialists based on moods, genres, eras, or whatever you prefer. Additionally, there are plenty of community-created playlists available through the search feature. If nothing satisfies you, you can always rely on automatic mixes and let the algorithm guide you. On the other hand, Filmin completely bypasses algorithms and exclusively offers <strong>handcrafted collections</strong> and film series with titles like &ldquo;Time for Elections,&rdquo; &ldquo;00&rsquo;s Icons,&rdquo; or &ldquo;California Dreamin&rsquo;.&rdquo;</p>
+<figure>
+        <img loading="lazy" srcset="https://blog.ddavo.me/posts/death-to-the-algorithm/filmin_hu368d394aea90b9466c84177a4f9776c4_1845422_360x0_resize_box_3.png 360w ,https://blog.ddavo.me/posts/death-to-the-algorithm/filmin_hu368d394aea90b9466c84177a4f9776c4_1845422_480x0_resize_box_3.png 480w ,https://blog.ddavo.me/posts/death-to-the-algorithm/filmin_hu368d394aea90b9466c84177a4f9776c4_1845422_720x0_resize_box_3.png 720w ,https://blog.ddavo.me/posts/death-to-the-algorithm/filmin_hu368d394aea90b9466c84177a4f9776c4_1845422_1080x0_resize_box_3.png 1080w ,https://blog.ddavo.me/posts/death-to-the-algorithm/filmin_hu368d394aea90b9466c84177a4f9776c4_1845422_1500x0_resize_box_3.png 1500w ,https://blog.ddavo.me/posts/death-to-the-algorithm/filmin.png 1886w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="https://blog.ddavo.me/posts/death-to-the-algorithm/filmin.png" alt="Screenshot of Filmin&#39;s list titles" 
+            width="1886" height="949"><figcaption>
+            <p>In Filmin, you can find titles grouped into collections curated by a <em>human</em></p>
+        </figcaption>
+</figure>
+
+<p>Personally, when it comes to music, I love the hour-long videos on YouTube from the channel <a href="https://www.youtube.com/@MyAnalogJournal">My Analog Journal</a>. The channel <a href="https://www.youtube.com/@umekotakun2810">umetokakun</a> also offers mixes with creatively titled playlists such as &ldquo;Citypop to Escape Your Feelings&rdquo; or &ldquo;Rare Psychedelic Soft Indie Rock to Lie in the Snow and Contemplate Life.&rdquo; Just the way the songs are presented, including the titles, their order, and the subtle transitions, creates an experience in itself that surpasses any algorithm.</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<div style="width:100%; position: relative; padding-bottom: 56.15%; height: 0; overflow: hidden;">
+  <iframe
+    style="position: absolute; top: 0; left:0; width: 100%; height: 100%; border: 0;"
+    loading="lazy";
+    srcdoc="<style>
+      * {
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+      }
+      body, html {
+        height: 100%;
+      }
+      img, svg {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+      }
+      svg {
+        filter: drop-shadow(1px 1px 10px hsl(206.5, 70.7%, 8%));
+        transition: all 250ms ease-in-out;
+      }
+      body:hover svg {
+        filter: drop-shadow(1px 1px 10px hsl(206.5, 0%, 10%));
+        transform: scale(1.2);
+      }
+    </style>
+    <a href='https://www.youtube.com/embed/E_b-Q0xiTmo?autoplay=1'>
+      <img src='https://img.youtube.com/vi/E_b-Q0xiTmo/hqdefault.jpg' alt='YouTube Video'>
+      <svg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 24 24' fill='none' stroke='#ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-play-circle'><circle cx='12' cy='12' r='10'></circle><polygon points='10 8 16 12 10 16 10 8'></polygon></svg>
+    </a>
+    "
+    src="https://www.youtube.com/embed/E_b-Q0xiTmo"
+    title="YouTube Video"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+</div>
+</div>
+
+<h2 id="3-the-snowball-effect">3. The snowball effect</h2>
+<p>The snowball effect is widely used by scientists to discover new articles to read. In our case, you go to the citations and references of an article that interests you to discover new interesting articles. In those articles, you go back to the references again to discover even more articles, and before you know it, you experience exponential growth in discovery.</p>
+<p>If we want to apply it to entertainment, we can look for things that have something in common with what we just read/listened/watched. We can search for more albums and songs from the same band (or even the same record label), more books from the same publisher, more movies from the same director or a specific actor, more TV series from the same production company, etc.
+Before you know it, you&rsquo;ll have a long list of things you want to explore, and you&rsquo;ll have learned a bit of history and culture along the way, which can come in handy for trivia games.</p>
+<p>For example, Bandcamp allows you to explore the <em>tags</em> of an album, where you can discover genres you didn&rsquo;t even know existed.</p>
+<h2 id="4-platforms-and-user-generated-content">4. Platforms and user-generated content</h2>
+<p>There are user-generated content platforms like <a href="https://myanimelist.net/profile/daviddavo">MyAnimeList</a> where users can make recommendations based on what they&rsquo;ve watched. Usually, these recommendations can be accompanied by a brief text where you <em>justify</em> why you would recommend that. For books, you also have <a href="https://www.goodreads.com/">Goodreads</a>. And for movies and series, there&rsquo;s <a href="https://letterboxd.com">Letterboxd</a>. In the music world, you can rely on the old and trustworthy <a href="https://www.last.fm/user/davidavo">last.fm</a>.</p>
+<figure>
+        <img loading="lazy" srcset="https://blog.ddavo.me/posts/death-to-the-algorithm/myanimelist_hu305bb524df96e84324aab94ffa598737_174783_360x0_resize_box_3.png 360w ,https://blog.ddavo.me/posts/death-to-the-algorithm/myanimelist_hu305bb524df96e84324aab94ffa598737_174783_480x0_resize_box_3.png 480w ,https://blog.ddavo.me/posts/death-to-the-algorithm/myanimelist_hu305bb524df96e84324aab94ffa598737_174783_720x0_resize_box_3.png 720w ,https://blog.ddavo.me/posts/death-to-the-algorithm/myanimelist.png 852w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="https://blog.ddavo.me/posts/death-to-the-algorithm/myanimelist.png" alt="Screenshot of recommendations on MyAnimeList" 
+            width="852" height="310"><figcaption>
+            <p>As <em>BlueYoshi</em> and 117 other users say: if you liked Cowboy Bebop, you&rsquo;ll like Samurai Champloo</p>
+        </figcaption>
+</figure>
+
+<p>Additionally, it&rsquo;s not necessary to explicitly visit recommendation pages. You can find room for suggestions on any social media or platform. Try searching on Google for &ldquo;Reddit recommendation [TOPIC]&rdquo; and you&rsquo;ll be surprised by the good results you get. And if all else fails, you can always ask for recommendations yourself.</p>
+<h2 id="5-judge-a-book-by-its-spine">5. Judge a book by its spine</h2>
+<p>It is often said, &ldquo;Don&rsquo;t judge a book by its cover&rdquo;, but if that were true, then why do books have covers? I propose letting ourselves go a little more and being more judgmental, not overthinking things and <em>judging the book by its spine</em>.</p>
+<p>In this accelerationist society, we are optimizing even our leisure time, and it seems necessary that every minute we spend <strong>consuming content</strong> is of the highest possible quality and provides us with the most value. We end up prioritizing watching things that are &ldquo;of better quality&rdquo; over things we would like to watch or simply ignoring something because &ldquo;it doesn&rsquo;t ring a bell&rdquo; before even considering whether to watch it.</p>
+<p>The next time you see the cover of a movie that catches your eye, or a book with a very interesting title, take a look at it even if you&rsquo;ve never heard of it before and you&rsquo;re not sure if it&rsquo;s the movie of the year or not.</p>
+<h2 id="6-transparent-algorithms">6. Transparent algorithms</h2>
+<p><strong>Saying that a website has no algorithms is like saying that fruit has no chemicals</strong>. Organic matter is composed of molecules, and software is composed of algorithms, it&rsquo;s a fact.</p>
+<p>However, just as there are chemical compounds to avoid for not being particularly good for health, there are also better algorithms that can help users discover what they want.</p>
+<p>An example of this is <a href="https://music-map.com">music-map.com</a>, which shows you a wide range of artists similar to a given artist, where the distance represents similarity.</p>
+<figure>
+        <img loading="lazy" srcset="https://blog.ddavo.me/posts/death-to-the-algorithm/music-map_hu5d708a4afd784ea7a8ad5c108205cf0a_89651_360x0_resize_box_3.png 360w ,https://blog.ddavo.me/posts/death-to-the-algorithm/music-map_hu5d708a4afd784ea7a8ad5c108205cf0a_89651_480x0_resize_box_3.png 480w ,https://blog.ddavo.me/posts/death-to-the-algorithm/music-map_hu5d708a4afd784ea7a8ad5c108205cf0a_89651_720x0_resize_box_3.png 720w ,https://blog.ddavo.me/posts/death-to-the-algorithm/music-map.png 893w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="https://blog.ddavo.me/posts/death-to-the-algorithm/music-map.png" alt="Screenshot of music-map.com" 
+            width="893" height="957"><figcaption>
+            <p>It seems that Zombies is very similar to The Kinks, but if I want to go off on a tangent I can listen to The Who</p>
+        </figcaption>
+</figure>
+
+<p><a href="https://everynoise.com/">Every Noise at Once</a> is a similar website that showcases a huge variety of music genres, and you can see which ones are similar to each other. Additionally, by clicking, you can listen to an audio sample and see if you like it.</p>
+<p>Certainly, any algorithm that shows you <strong>why</strong> it recommends you something or allows you to select the starting point will be better for expanding your horizons.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Although recommendation algorithms are powerful tools that help us navigate through the vast amount of content available on our favourite platforms, sometimes we desire to escape their influence and discover new things on our own. Fortunately, there are other options that empower us to take control of our choices and broaden the horizons of our entertainment.</p>
+<blockquote>
+<p>If you think there&rsquo;s something else I can add to this article, feel free to leave a comment or send an email to david [at] ddavo.me.</p>
+</blockquote>
+<h2 id="further-reading">Further reading</h2>
+<ul>
+<li>The entertaining 5-minute video channel <em>Half as Interesting</em> presents <a href="https://www.youtube.com/watch?v=RzuvZDSmIco">Spotify&rsquo;s Mathematical System for Determining Your Music Taste</a>.</li>
+<li><a href="https://youtu.be/n3RKsY2H-NE">How Recommender Systems Work</a>: A 10-minute video that delves into the mathematics behind the subject.</li>
+<li>To celebrate reaching one million subscribers, <em>Answer in Progress</em> has created an extensive (50-minute) yet engaging <a href="https://youtu.be/r1N81RRQ4ec">video on the history of the YouTube algorithm</a>, explaining in the process how its opaque system works.</li>
+<li>Towardsdatascience has a really great <a href="https://towardsdatascience.com/introduction-to-recommender-systems-6c66cf15ada">introductory article to recommendation systems</a></li>
+</ul>
+]]></content:encoded></item><item><title>How to export your Pocket data to Omnivore</title><link>https://blog.ddavo.me/posts/tutorials/pocket-to-omnivore/</link><pubDate>Sun, 21 May 2023 18:13:36 +0000</pubDate><guid>https://blog.ddavo.me/posts/tutorials/pocket-to-omnivore/</guid><description>In this tutorial I provide a Jupyter notebook to exp your data from Pocket and upload it to Omnivoreort</description><content:encoded><![CDATA[<blockquote>
+<p><strong>Important notice</strong>: Pocket connection is now officialy available in their <a href="https://omnivore.app/settings/integrations">integrations</a> page</p>
+<p>&ndash; <a href="https://docs.omnivore.app/using/importing.html#importing-data-from-pocket">https://docs.omnivore.app/using/importing.html#importing-data-from-pocket</a></p>
+<p>Nevertheless, you can read our code if you want to learn about
+web information processing</p>
+</blockquote>
+<p>I tried to use Pocket, I really tried, but I had to stop using it because it only allowed you 3 highlights per post for free.
+I know that Pocket is just a company and that they are just trying to provide value to its shareholders, but, come on, is that really a
+PREMIUM feature? Are you really trying to charge me for a couple of extra bytes?</p>
+<p>That&rsquo;s why I decided to search for another read-it-later app, and I came across <a href="https://omnivore.app">Omnivore</a>. It is also
+Open Source, which would let me self-host the application if I wanted to. I&rsquo;d be more than happy to pay a fair price for a
+service I like, but in this case, it isn&rsquo;t necessary because it&rsquo;s completely free.</p>
+<p>But first, I needed to migrate my data from Pocket to Omnivore. There is currently an open Issue in GitHub (<a href="https://github.com/omnivore-app/omnivore/issues/2050">#2050</a>) to provide an official Pocket integration, check in that thread if it has been already implemented before
+continuing in this tutorial. In my case, after waiting a few weeks, I decided to get on my knees and implement it myself,
+learning a bit of GraphQL on the way.</p>
+<h2 id="exporting-your-data-from-pocket">Exporting your data from Pocket</h2>
+<p>This was by far the easiest part, just visit <a href="https://getpocket.com/export">getpocket.com/export</a> and download the <code>ril_export.html</code> file.</p>
+<h2 id="uploading-your-data-to-omnivore">Uploading your data to Omnivore</h2>
+<p>I created a Jupyter Notebook to parse the <code>ril_export.html</code> file and make the proper GraphQL queries to Omnivore&rsquo;s API.
+This notebook doesn&rsquo;t just create the article, it also archives it if it has been read in Pocket, and sets the upload date.</p>
+<h3 id="getting-an-omnivore-api-key">Getting an Omnivore API key</h3>
+<p>Because we are using a custom-made application, you will need a key to interact with Omnivore. You can find info on how
+to create an Omnivore API key in the <a href="https://docs.omnivore.app/integrations/api.html#getting-an-api-token">official documentation</a>.</p>
+<p><img loading="lazy" src="/images/omnivore-web-create-api-token.png" type="" alt="Getting an omnivore API key"  /></p>
+<p>Keep in mind that this API key will be hidden, so make sure to copy it somewhere and don&rsquo;t lose it, as we will need it in the next step.</p>
+<p>If you lose it, don&rsquo;t worry though, you can always create a new one and delete the unused one.</p>
+<h3 id="running-the-jupyter-notebook">Running the Jupyter Notebook</h3>
+<p>I made a Jupyter Notebook using Beautiful Soup to process the <code>ril_export.html</code> file, and gql to run the GraphQL queries, as simple as it is. You can <a href="https://mybinder.org/v2/gh/daviddavo/pocket2omnivore/HEAD?labpath=pocket2omnivore.ipynb">run it online on Binder</a>.</p>
+<blockquote>
+<p>You can also download the notebook from <a href="https://github.com/daviddavo/pocket2omnivore/blob/main/pocket2omnivore.ipynb">GitHub</a> and run it in VSCode or Jupyter. In that case, install all the packages required by running:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">pip install -r https://raw.githubusercontent.com/daviddavo/pocket2omnivore/main/requirements.txt
+</span></span></code></pre></div></blockquote>
+<p>After running the second cell, It will ask you to upload the <code>ril_export.html</code> file. And then to enter your omnivore API key in the next one. Just paste the API key you obtained in the previous step into the prompt and press ENTER. The text that prompts for the API key can be pretty small, but the notebook won&rsquo;t continue running until you press ENTER.</p>
+<blockquote>
+<p>If you know any programming, you can also change the <code>OMNIVORE_API_KEY</code> environment variable.</p>
+</blockquote>
+<h4 id="continuing">Continuing</h4>
+<p>After running all the remaining cells, it will start uploading the URLs one by one. It will take a while. If you visit Omnivore, you&rsquo;ll see that some of these posts don&rsquo;t
+have a title or a description. This is because it takes a while to crawl the website.</p>
+<p>If it raises a 403 error, the most probable thing is that you entered your API key wrong, or that it expired. Feel free to comment any errors you encounter below or in <a href="https://github.com/daviddavo/pocket2omnivore/issues">GitHub Issues</a>.</p>
+<p>By the way, did you know that this page is intended to be fully compatible with Omnivore? Try adding some of my posts to your list!</p>
+]]></content:encoded></item><item><title>Using ROS2 in Coppelia</title><link>https://blog.ddavo.me/posts/tutorials/ros2-coppelia-lidar/</link><pubDate>Tue, 31 Jan 2023 20:08:41 +0000</pubDate><guid>https://blog.ddavo.me/posts/tutorials/ros2-coppelia-lidar/</guid><description>With this tutorial you will learn how to use ROS2 in the Coppelia simulator (formerly V-REP) with the simExtROS2 library, using the lidar to build a map.</description><content:encoded><![CDATA[<h2 id="introduction">Introduction</h2>
+<p>Let&rsquo;s be honest, if you&rsquo;re here it&rsquo;s probably because you found this blog on Google.
+As I understand it, at the moment there are no comprehensible resources to use
+ROS2 with the Coppelia simulator (previously known as V-REP), and it is no simple task.</p>
+<p>In this tutorial, we will make a simple project using a Pioneer P3DX with a Lidar, in which we
+will use <em>Slam Toolbox</em> to create a map of the room, all using ROS2 tools like RVIZ2
+and NAV2&rsquo;s Slam Toolbox, but using Coppelia as a simulator instead of Gazebo.</p>
+<p>The end product will look something like this:</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<div style="width:100%; position: relative; padding-bottom: 56.15%; height: 0; overflow: hidden;">
+  <iframe
+    style="position: absolute; top: 0; left:0; width: 100%; height: 100%; border: 0;"
+    loading="lazy";
+    srcdoc="<style>
+      * {
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+      }
+      body, html {
+        height: 100%;
+      }
+      img, svg {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+      }
+      svg {
+        filter: drop-shadow(1px 1px 10px hsl(206.5, 70.7%, 8%));
+        transition: all 250ms ease-in-out;
+      }
+      body:hover svg {
+        filter: drop-shadow(1px 1px 10px hsl(206.5, 0%, 10%));
+        transform: scale(1.2);
+      }
+    </style>
+    <a href='https://www.youtube.com/embed/SYblPjsOgAM?autoplay=1'>
+      <img src='https://img.youtube.com/vi/SYblPjsOgAM/hqdefault.jpg' alt='YouTube Video'>
+      <svg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 24 24' fill='none' stroke='#ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-play-circle'><circle cx='12' cy='12' r='10'></circle><polygon points='10 8 16 12 10 16 10 8'></polygon></svg>
+    </a>
+    "
+    src="https://www.youtube.com/embed/SYblPjsOgAM"
+    title="YouTube Video"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+</div>
+</div>
+
+<p>I made it work but I&rsquo;m no expert in robotics, so if I made some error, please let
+me know in the comments or <a href="https://github.com/daviddavo/blog.ddavo.me">on GitHub</a>.</p>
+<p>I will center on the programming part because the way of adding a robot and lidar is the same whether you&rsquo;re using ROS2 or not.</p>
+<blockquote>
+<p>The original project was made as homework for the Master Universitario en Inteligencia Articial (MUIA) at Universidad Politécnica de Madrid (UPM)</p>
+</blockquote>
+<h2 id="installing-simextros2">Installing simExtROS2</h2>
+<p>ROS2 works by creating publishers and subscribers that emit and receive messages of a <em>message type</em>. To be able to do this from Coppelia, we will use the module <a href="https://github.com/CoppeliaRobotics/simExtROS2">simExtROS2</a>.</p>
+<p>Coppelia comes with this module installed, but it&rsquo;s compiled with too few message types embedded.
+If you try publishing some sensor data, it will fail. You need to modify a config file from the source code and
+compile it again so it supports that message type.</p>
+<p>First, we will download the source code. Because I&rsquo;m using Coppelia 4.4.0, I&rsquo;ll checkout to that version too. Feel free to change the version number if you need to.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone --recursive https://github.com/CoppeliaRobotics/simExtROS2.git
+</span></span><span class="line"><span class="cl"><span class="c1"># according to the docs, we have to rename the folder</span>
+</span></span><span class="line"><span class="cl">mv simExtROS2 sim_ros2_interface
+</span></span><span class="line"><span class="cl">git checkout coppeliasim-v4.4.0-rev0
+</span></span></code></pre></div><p>Before compiling, we need to modify a config file to specify the message types you want to compile. This file is <code>meta/interfaces.txt</code>, and in my case, it ended up with the following contents:</p>
+<p><details >
+  <summary markdown="span"><code>meta/interfaces.txt</code></summary>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">builtin_interfaces</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">Duration</span>
+</span></span><span class="line"><span class="cl"><span class="n">builtin_interfaces</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">Time</span>
+</span></span><span class="line"><span class="cl"><span class="n">rosgraph_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">Clock</span>
+</span></span><span class="line"><span class="cl"><span class="n">geometry_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">Quaternion</span>
+</span></span><span class="line"><span class="cl"><span class="n">geometry_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="ne">Transform</span>
+</span></span><span class="line"><span class="cl"><span class="n">geometry_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">TransformStamped</span>
+</span></span><span class="line"><span class="cl"><span class="n">geometry_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="ne">Vector3</span>
+</span></span><span class="line"><span class="cl"><span class="n">geometry_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">Point</span>
+</span></span><span class="line"><span class="cl"><span class="n">geometry_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">Pose</span>
+</span></span><span class="line"><span class="cl"><span class="n">geometry_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">PoseStamped</span>
+</span></span><span class="line"><span class="cl"><span class="n">geometry_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">Twist</span>
+</span></span><span class="line"><span class="cl"><span class="n">geometry_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">PoseWithCovariance</span>
+</span></span><span class="line"><span class="cl"><span class="n">geometry_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">TwistWithCovariance</span>
+</span></span><span class="line"><span class="cl"><span class="n">sensor_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="ne">Image</span>
+</span></span><span class="line"><span class="cl"><span class="n">sensor_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">PointCloud2</span>
+</span></span><span class="line"><span class="cl"><span class="n">sensor_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">PointField</span>
+</span></span><span class="line"><span class="cl"><span class="n">sensor_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">LaserScan</span>
+</span></span><span class="line"><span class="cl"><span class="n">std_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">Bool</span>
+</span></span><span class="line"><span class="cl"><span class="n">std_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">Byte</span>
+</span></span><span class="line"><span class="cl"><span class="n">std_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">ColorRGBA</span>
+</span></span><span class="line"><span class="cl"><span class="n">std_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">Empty</span>
+</span></span><span class="line"><span class="cl"><span class="n">std_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">Float32</span>
+</span></span><span class="line"><span class="cl"><span class="n">std_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">Float64</span>
+</span></span><span class="line"><span class="cl"><span class="n">std_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">Header</span>
+</span></span><span class="line"><span class="cl"><span class="n">std_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">Int8</span>
+</span></span><span class="line"><span class="cl"><span class="n">std_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">Int16</span>
+</span></span><span class="line"><span class="cl"><span class="n">std_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">Int32</span>
+</span></span><span class="line"><span class="cl"><span class="n">std_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">Int64</span>
+</span></span><span class="line"><span class="cl"><span class="n">std_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="ne">String</span>
+</span></span><span class="line"><span class="cl"><span class="n">std_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">UInt8</span>
+</span></span><span class="line"><span class="cl"><span class="n">std_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">UInt16</span>
+</span></span><span class="line"><span class="cl"><span class="n">std_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">UInt32</span>
+</span></span><span class="line"><span class="cl"><span class="n">std_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">UInt64</span>
+</span></span><span class="line"><span class="cl"><span class="n">std_srvs</span><span class="o">/</span><span class="n">srv</span><span class="o">/</span><span class="n">Empty</span>
+</span></span><span class="line"><span class="cl"><span class="n">std_srvs</span><span class="o">/</span><span class="n">srv</span><span class="o">/</span><span class="n">SetBool</span>
+</span></span><span class="line"><span class="cl"><span class="n">std_srvs</span><span class="o">/</span><span class="n">srv</span><span class="o">/</span><span class="n">Trigger</span>
+</span></span><span class="line"><span class="cl"><span class="n">nav_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">Odometry</span>
+</span></span></code></pre></div>
+</details></p>
+
+<p>Ultimately, you will have to add the following environment variable, either modifying ROS&rsquo; <code>setup.bash</code> or your <code>.bashrc</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">COPPELIASIM_ROOT_DIR</span><span class="o">=</span><span class="s2">&#34;&lt;your coppelia installation path&gt;&#34;</span>
+</span></span></code></pre></div><p>Now we can proceed to compile and install the library</p>
+<h3 id="compiling-libsimextros2">Compiling libsimExtROS2</h3>
+<p>After downloading everything, we can install it with <em>Colcon</em>, using the following command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">colcon build --symlink-install
+</span></span></code></pre></div><p>This will take lots of resources and will take up a while the first time, but don&rsquo;t worry, it will finish and install it.</p>
+<h2 id="modifications-in-coppelia">Modifications in Coppelia</h2>
+<h3 id="publishing-the-simulation-time">Publishing the simulation time</h3>
+<p>We can&rsquo;t use a &ldquo;wall clock&rdquo; because the simulation is not in real-time. Let&rsquo;s imagine
+you implement an odometry module, and you try to calculate your speed by subtracting
+your current position from a previous position and dividing by the number of seconds
+elapsed. This formula will be wrong if your simulation is a bit slow, or if it is too fast.
+That&rsquo;s why we need to publish Coppelia&rsquo;s simulation time into the topic <code>/clock</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-lua" data-lang="lua"><span class="line"><span class="cl"><span class="kr">function</span> <span class="nf">sysCall_init</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="n">simTimePub</span><span class="o">=</span><span class="n">simROS2.createPublisher</span><span class="p">(</span><span class="s1">&#39;/clock&#39;</span><span class="p">,</span><span class="s1">&#39;rosgraph_msgs/msg/Clock&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="kr">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">function</span> <span class="nf">sysCall_actuation</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="n">t</span><span class="o">=</span><span class="n">sim.getSimulationTime</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="n">simROS2.publish</span><span class="p">(</span><span class="n">simTimePub</span><span class="p">,</span> <span class="p">{</span><span class="n">clock</span><span class="o">=</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">sec</span><span class="o">=</span><span class="n">math.floor</span><span class="p">(</span><span class="n">t</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">nanosec</span><span class="o">=</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">math.floor</span><span class="p">(</span><span class="n">t</span><span class="p">))</span><span class="o">*</span><span class="mi">10</span><span class="o">^</span><span class="mi">9</span><span class="p">}}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="kr">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">function</span> <span class="nf">sysCall_cleanup</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="n">simROS2.shutdownPublisher</span><span class="p">(</span><span class="n">simTimePub</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="kr">end</span>
+</span></span></code></pre></div><h3 id="publishing-transforms">Publishing transforms</h3>
+<p>The transforms allow ROS modules to calculate the exact distance between any two objects, publishing just the partial distances. For example, we can publish the distance of the laser&rsquo;s reference frame to the robot, and ROS can able to calculate the distance from the laser to anything automatically.</p>
+<p>
+  <img loading="lazy" src="https://navigation.ros.org/_images/simple_robot.png" alt="Image of the robot transforms"  /></p>
+<p>
+  <img loading="lazy" src="https://navigation.ros.org/_images/tf_robot.png" alt="Another sample image of how the transforms work"  /></p>
+<p>Each published transform has a parent, and the <em>root</em> of this hierarchy is the transform that is not published (it is just referenced as a parent). According to the standard <a href="https://www.ros.org/reps/rep-0105.html">REP105</a>, this root should be <code>world</code> or <code>map</code> if we have just one robot.</p>
+<p>We will publish the following transforms:</p>
+<ul>
+<li>From the lidar frame to the robot frame</li>
+<li>From the robot to the odometry frame</li>
+<li>From the wheels to the robot frame (needed to display the robot in the simulator)</li>
+</ul>
+<p>The final transform, from the odometry frame to the world map is published by another module, so we won&rsquo;t send it from Coppelia.</p>
+<p>To publish all these transforms, we use the following code (remember to change the constants as needed):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-lua" data-lang="lua"><span class="line"><span class="cl"><span class="kr">function</span> <span class="nf">getTransformStamped</span><span class="p">(</span><span class="n">objHandle</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="n">relTo</span><span class="p">,</span><span class="n">relToName</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">p</span><span class="o">=</span><span class="n">sim.getObjectPosition</span><span class="p">(</span><span class="n">objHandle</span><span class="p">,</span><span class="n">relTo</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">o</span><span class="o">=</span><span class="n">sim.getObjectQuaternion</span><span class="p">(</span><span class="n">objHandle</span><span class="p">,</span><span class="n">relTo</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">header</span><span class="o">=</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">stamp</span><span class="o">=</span><span class="n">simROS2.getSimulationTime</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">      <span class="n">frame_id</span><span class="o">=</span><span class="n">relToName</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="n">child_frame_id</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">transform</span><span class="o">=</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">translation</span><span class="o">=</span><span class="p">{</span><span class="n">x</span><span class="o">=</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">y</span><span class="o">=</span><span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">z</span><span class="o">=</span><span class="n">p</span><span class="p">[</span><span class="mi">3</span><span class="p">]},</span>
+</span></span><span class="line"><span class="cl">      <span class="n">rotation</span><span class="o">=</span><span class="p">{</span><span class="n">x</span><span class="o">=</span><span class="n">o</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">y</span><span class="o">=</span><span class="n">o</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">z</span><span class="o">=</span><span class="n">o</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span><span class="n">w</span><span class="o">=</span><span class="n">o</span><span class="p">[</span><span class="mi">4</span><span class="p">]}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kr">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">function</span> <span class="nf">sysCall_actuation</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="n">simROS2.sendTransforms</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">    <span class="n">getTransformStamped</span><span class="p">(</span><span class="n">robotHandle</span><span class="p">,</span> <span class="n">ROBOT_FRAME_ID</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">PODOM_FRAME_ID</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">getTransformStamped</span><span class="p">(</span><span class="n">leftWheel</span><span class="p">,</span> <span class="s1">&#39;Pioneer_p3dx_leftWheel&#39;</span><span class="p">,</span> <span class="n">robotHandle</span><span class="p">,</span> <span class="n">ROBOT_FRAME_ID</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">getTransformStamped</span><span class="p">(</span><span class="n">rightWheel</span><span class="p">,</span> <span class="s1">&#39;Pioneer_p3dx_rightWheel&#39;</span><span class="p">,</span> <span class="n">robotHandle</span><span class="p">,</span><span class="n">ROBOT_FRAME_ID</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">getTransformStamped</span><span class="p">(</span><span class="n">caster_link</span><span class="p">,</span> <span class="s1">&#39;Pioneer_p3dx_caster_link&#39;</span><span class="p">,</span> <span class="n">robotHandle</span><span class="p">,</span> <span class="n">ROBOT_FRAME_ID</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">getTransformStamped</span><span class="p">(</span><span class="n">caster_wheel</span><span class="p">,</span> <span class="s1">&#39;Pioneer_p3dx_caster_wheel&#39;</span><span class="p">,</span> <span class="n">caster_link</span><span class="p">,</span> <span class="s1">&#39;Pioneer_p3dx_caster_link&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">getTransformStamped</span><span class="p">(</span><span class="n">sensorRefHandle</span><span class="p">,</span> <span class="n">SENSOR_REF_FRAME</span><span class="p">,</span> <span class="n">robotHandle</span><span class="p">,</span> <span class="n">ROBOT_FRAME_ID</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">  <span class="p">})</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="kr">end</span>
+</span></span></code></pre></div><h3 id="publishing-lidar-pointcloud">Publishing Lidar PointCloud</h3>
+<p>The lidar we used returns a PointCloud in Coppelia&rsquo;s signal <code>Pioneer_p3dx_lidar_data</code>. This PointCloud is an array of triplets of floats, each triplet representing the x, y and z coordinates of each point. We want to publish this data in a topic of type <a href="https://docs.ros2.org/foxy/api/sensor_msgs/msg/PointCloud2.html"><code>sensor_msgs/msg/PointCloud2</code></a>.</p>
+<p>This message needs us to send a stream of binary data and specify the type of this data in the parameter <code>fields</code>. We will see exactly how with the following commented code:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-lua" data-lang="lua"><span class="line"><span class="cl"><span class="kr">function</span> <span class="nf">sysCall_init</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="n">lidarDataTopicName</span> <span class="o">=</span> <span class="s1">&#39;/lidarPC&#39;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">lidarDataPub</span><span class="o">=</span><span class="n">simROS2.createPublisher</span><span class="p">(</span><span class="n">lidarDataTopicName</span><span class="p">,</span> <span class="s1">&#39;sensor_msgs/msg/PointCloud2&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="kr">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">function</span> <span class="nf">sysCall_actuation</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="n">lidar_signal</span> <span class="o">=</span> <span class="s1">&#39;Pioneer_p3dx_lidar_data&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1">-- Get binary data from signal</span>
+</span></span><span class="line"><span class="cl">  <span class="n">data</span> <span class="o">=</span> <span class="n">sim.getStringSignal</span><span class="p">(</span><span class="n">lidar_signal</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kr">if</span> <span class="p">(</span><span class="n">data</span> <span class="o">==</span> <span class="kc">nil</span> <span class="ow">or</span> <span class="o">#</span><span class="n">data</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="kr">then</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">-- It&#39;s normal for this to happend in the first iteration of simulation</span>
+</span></span><span class="line"><span class="cl">    <span class="n">sim.addLog</span><span class="p">(</span><span class="n">sim.verbosity_scripterrors</span><span class="p">,</span> <span class="s1">&#39;signal name &#39;</span> <span class="o">..</span> <span class="n">lidar_signal</span> <span class="o">..</span> <span class="s1">&#39;, returned nil value&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">else</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">-- Unpack binary data as array of floats</span>
+</span></span><span class="line"><span class="cl">    <span class="n">floats</span> <span class="o">=</span> <span class="n">sim.unpackFloatTable</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">-- Each point is 3 floats, so the number of points</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">-- is number of floats / 3</span>
+</span></span><span class="line"><span class="cl">    <span class="n">n</span> <span class="o">=</span> <span class="o">#</span><span class="n">floats</span><span class="o">//</span><span class="mi">3</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">simROS2.publish</span><span class="p">(</span><span class="n">lidarDataPub</span><span class="p">,</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">header</span><span class="o">=</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">stamp</span><span class="o">=</span><span class="n">simROS2.getSimulationTime</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">frame_id</span><span class="o">=</span><span class="s1">&#39;lidar_ref_frame&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="n">height</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">-- Number of points (not bytes)</span>
+</span></span><span class="line"><span class="cl">      <span class="n">width</span><span class="o">=</span><span class="n">n</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">-- Each point is 3*4 = 12 bytes</span>
+</span></span><span class="line"><span class="cl">      <span class="n">point_step</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="n">fields</span><span class="o">=</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">-- datatype 7 is FLOAT32</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">-- the offset is in BYTES</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">datatype</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">datatype</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">datatype</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">-- Unpack data as bytes (uint8)</span>
+</span></span><span class="line"><span class="cl">      <span class="n">data</span><span class="o">=</span><span class="n">sim.unpackUInt8Table</span><span class="p">(</span><span class="n">data</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">end</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="kr">end</span>
+</span></span></code></pre></div><p>After all of this, the PointCloud message will be available on the topic <code>/lidarPC</code></p>
+<h3 id="setting-the-robots-speed">Setting the robot&rsquo;s speed</h3>
+<p>In this case, instead of a publisher, we will need to create a subscriber that receives
+a message of type <em>Twist</em>. This message contains the desired linear and angular velocities.</p>
+<p>We need to convert this to the angular velocity of the motors of the wheels, so, after applying some basic arithmetics, we get the following code:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-lua" data-lang="lua"><span class="line"><span class="cl"><span class="kr">function</span> <span class="nf">sysCall_init</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="n">velSub</span> <span class="o">=</span> <span class="n">simROS2.createSubscription</span><span class="p">(</span><span class="s1">&#39;/cmd_vel&#39;</span><span class="p">,</span> <span class="s1">&#39;geometry_msgs/msg/Twist&#39;</span><span class="p">,</span> <span class="s1">&#39;setVelocity_cb&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="kr">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">function</span> <span class="nf">setVelocity_cb</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">-- The message provides linear velocity in m/s</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">-- but coppelia receives it in rad/s, we need to convert it</span>
+</span></span><span class="line"><span class="cl">  <span class="n">linear</span> <span class="o">=</span> <span class="n">msg.linear</span><span class="p">.</span><span class="n">x</span>
+</span></span><span class="line"><span class="cl">  <span class="n">angular</span> <span class="o">=</span> <span class="n">msg.angular</span><span class="p">.</span><span class="n">z</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1">-- https://www.inf.ufrgs.br/~prestes/Courses/Robotics/manual_pioneer.pdf</span>
+</span></span><span class="line"><span class="cl">  <span class="n">wheel_radius</span> <span class="o">=</span> <span class="mf">0.195</span> <span class="o">/</span> <span class="mi">2</span> <span class="c1">-- 19.5 cmm</span>
+</span></span><span class="line"><span class="cl">  <span class="n">robot_width</span> <span class="o">=</span> <span class="mf">0.33</span> <span class="c1">-- 38 cm minus wheel width</span>
+</span></span><span class="line"><span class="cl">  <span class="n">vl</span> <span class="o">=</span> <span class="n">linear</span> <span class="o">-</span> <span class="p">(</span><span class="n">angular</span> <span class="o">*</span> <span class="n">robot_width</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl">  <span class="n">vr</span> <span class="o">=</span> <span class="n">linear</span> <span class="o">+</span> <span class="p">(</span><span class="n">angular</span> <span class="o">*</span> <span class="n">robot_width</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">sim.setJointTargetVelocity</span><span class="p">(</span><span class="n">leftMotor</span><span class="p">,</span> <span class="n">vl</span> <span class="o">/</span> <span class="n">wheel_radius</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">sim.setJointTargetVelocity</span><span class="p">(</span><span class="n">rightMotor</span><span class="p">,</span> <span class="n">vr</span> <span class="o">/</span> <span class="n">wheel_radius</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kr">end</span>
+</span></span></code></pre></div><h2 id="ros2">ROS2</h2>
+<p>The main advantage of using ROS2 instead of programming the behavior of our robot
+directly on Coppelia is that ROS2 is platform agnostic and we can use it with any simulator, and even with a real robot.</p>
+<p>The system has just 3 nodes:</p>
+<ul>
+<li><a href="https://github.com/ros-perception/pointcloud_to_laserscan"><code>pointcloud_to_laserscan</code></a>: It transforms the data from type <em>Pointcloud2</em> to <em>LaserScan</em> so Slam Toolbox is able to use it.</li>
+<li><a href="https://github.com/SteveMacenski/slam_toolbox"><code>async_toolbox_node</code></a>: Makes a map and localizes the robot in the map.</li>
+<li><a href="https://github.com/ros2/teleop_twist_keyboard"><code>teleop_twist_keyboard</code></a>: Allows us to move the robot</li>
+</ul>
+<p>You&rsquo;ll need to install them before proceeding</p>
+<h3 id="running-the-nodes">Running the nodes</h3>
+<p>The easiest way by far is to open three terminals and run the command to start the
+node in each one. The order doesn&rsquo;t really matter as nodes usually wait for the info
+to become available.</p>
+<blockquote>
+<p>Remember to source the ROS <code>setup.bash</code> file to make the <code>ros2</code> command available!</p>
+</blockquote>
+<p><details >
+  <summary markdown="span">Starting <code>pointcloud_to_laserscan</code></summary>
+  <p>We&rsquo;ll use the following bash command</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ros2 run pointcloud_to_laserscan pointcloud_to_laserscan_node --ros-args <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -p use_sim_time:<span class="o">=</span><span class="nb">true</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --remap cloud_in:<span class="o">=</span>/lidarPC
+</span></span></code></pre></div><p>This will create a new topic called <code>/scan</code> with the data converted.</p>
+
+</details></p>
+
+<p><details >
+  <summary markdown="span">Starting <code>async_toolbox_node</code></summary>
+  <p>We need to specify the name of the frames (remember to change the name of the frames if you changed them)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ros2 run slam_toolbox async_slam_toolbox_ndoe --ros-args <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -p base_frame:<span class="o">=</span><span class="s2">&#34;base_link&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -p odom_frame:<span class="o">=</span><span class="s2">&#34;odom&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -p map_frame:<span class="o">=</span><span class="s2">&#34;map&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -p scan_topic:<span class="o">=</span><span class="s2">&#34;/scan&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -p use_sim_time:<span class="o">=</span><span class="nb">true</span>
+</span></span></code></pre></div><p>This will create a <code>/map</code> topic</p>
+
+</details></p>
+
+<p><details >
+  <summary markdown="span">Starting <code>teleop_twist_keyboard</code></summary>
+  <p>We don&rsquo;t need to modify anything, so the command is just</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ros2 run teleop_twist_keyboard teleop_twist_keyboard
+</span></span></code></pre></div><p>This will send the velocity commands via the <code>/cmd_vel</code> topic</p>
+
+</details></p>
+
+<h2 id="conclusion">Conclusion</h2>
+<p>Finally, you can open rviz2 and start adding visualizations to visualize the map
+that SLAM Toolbox created, you can also visualize the position and velocity of
+the robot, and even the PointCloud and LaserScan!</p>
+<p>Using the <code>teleop_twist_keyboard</code> you can move the robot around, and the map will change
+in real-time. Pretty fun to drive. If you want, you can try with other nodes, or even
+create your own to make the robot move autonomously.</p>
+<p>If you have any doubts, feel free to leave a comment or <a href="https://github.com/daviddavo/blog.ddavo.me/issues">open an issue on GitHub</a>. If you already know a bit about robotics and you detect some mistake that I made, please tell me so and I&rsquo;ll modify the post. Thank you for reading me and see you next time!</p>
+<h2 id="sources-and-more-information">Sources and more information</h2>
+<ul>
+<li><a href="https://wiki.archlinux.org/title/ROS">ArchWiki - ROS</a>. On how to install ROS and solve problems in ArchLinux / Manjaro.</li>
+<li><a href="https://www.coppeliarobotics.com/helpFiles/en/ros2Interface.htm">CoppeliaSim User Manual</a>. One of these things that is not on google, but solves a lot of problems.</li>
+<li><a href="https://github.com/CoppeliaRobotics/simExtROS2">GitHub - coppeliaRobotics/simExtROS2</a>. In the &ldquo;Issues&rdquo; part there are some interesting problems and solutions.</li>
+<li><a href="https://navigation.ros.org/setup_guides/transformation/setup_transforms.html">ROS Planning. Setting Up Transformations</a>. NAV2 documentation is overall a good source material to understand how ROS works.</li>
+<li><a href="https://www.ros.org/reps/rep-0105.html">REP 105 &ndash; Coordinate Frames for Mobile Platforms</a></li>
+</ul>
+]]></content:encoded></item><item><title>Compiling and publishing multilingual LaTeX with GitHub</title><link>https://blog.ddavo.me/posts/tutorials/automatic-latex-cv/</link><pubDate>Thu, 01 Sep 2022 19:14:22 +0000</pubDate><guid>https://blog.ddavo.me/posts/tutorials/automatic-latex-cv/</guid><description>I have been wanting to publish my CV in my personal site for quite some time, but first I needed to make sure that it was always up-to-date. I.e. that it was compiled and published automatically every time I made some changes to the source file.
+Since 5 years ago, my CV is written using LaTeX, using (and modifying) the Awesome CV template. On top of that, I added a few things to make it bilingual, compiling either in Spanish or English, making the document available in multiple languages.</description><content:encoded><![CDATA[<p>I have been wanting to publish my CV in my personal site for quite some time, but first I needed
+to make sure that it was always up-to-date. I.e. that it was compiled and published automatically
+every time I made some changes to the source file.</p>
+<p>Since 5 years ago, my CV is written using LaTeX, using (and modifying) the <a href="https://github.com/posquit0/Awesome-CV">Awesome CV</a> template. On top of that, I added a few things to make it bilingual, compiling
+either in Spanish or English, making the document available in multiple languages.</p>
+<p>Thanks to <code>iflang</code>, depending on the option you pass to the <code>babel</code> package, the document will be rendered in Spanish or English.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="line"><span class="cl"><span class="k">\documentclass</span><span class="na">[a4paper]</span><span class="nb">{</span>awesome-cv<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\usepackage</span><span class="na">[&lt;lang&gt;]</span><span class="nb">{</span>babel<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\usepackage</span><span class="nb">{</span>iflang<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\es</span><span class="nb">}</span>[1]<span class="nb">{</span><span class="k">\IfLanguageName</span><span class="nb">{</span>spanish<span class="nb">}{</span>#1<span class="nb">}{}}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\en</span><span class="nb">}</span>[1]<span class="nb">{</span><span class="k">\IfLanguageName</span><span class="nb">{</span>english<span class="nb">}{</span>#1<span class="nb">}{}}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">\es</span><span class="nb">{</span>¡Hola Mundo!<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">\en</span><span class="nb">{</span>Hello World!<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
+</span></span></code></pre></div><p>Nevertheless, we need to change <code>&lt;lang&gt;</code> by hand, it can&rsquo;t be automated. A simple option to automate it
+would be to use <code>sed</code> to modify that file, but it may not be installed in the system (Windows&hellip;), and I wanted a pure LaTeX solution.</p>
+<p>Juan Carlos Fabero gave me the idea of using a couple of <em>wrappers</em> that define a variable and import
+the contents of <code>main.tex</code>. We&rsquo;d have to add a couple of lines to the main file to take that
+variable into account, checking if it&rsquo;s been defined.</p>
+<h3 id="modifying-maintex">Modifying <code>main.tex</code></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="line"><span class="cl"><span class="c">% Usamos la variable si está definida
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\ifdefined\babellang</span>
+</span></span><span class="line"><span class="cl">    <span class="k">\usepackage</span><span class="na">[\babellang]</span><span class="nb">{</span>babel<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="c">% Si no, usamos el por defecto (o cambiado manualmente desde el IDE)
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\else</span>
+</span></span><span class="line"><span class="cl">    <span class="k">\usepackage</span><span class="na">[english]</span><span class="nb">{</span>babel<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\fi</span>
+</span></span></code></pre></div><h3 id="file-englishtex">File <code>english.tex</code></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="line"><span class="cl"><span class="k">\def\babellang</span><span class="nb">{</span>english<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\input</span><span class="nb">{</span>main.tex<span class="nb">}</span>
+</span></span></code></pre></div><h3 id="file-spanishtex">File <code>spanish.tex</code></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="line"><span class="cl"><span class="k">\def\babellang</span><span class="nb">{</span>spanish<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\input</span><span class="nb">{</span>main.tex<span class="nb">}</span>
+</span></span></code></pre></div><p>This way, if we compile <code>english.tex</code>, we will get an English document, and if we compile <code>spanish.tex</code> we&rsquo;ll get the Spanish one.</p>
+<h2 id="automation-with-github-pages">Automation with GitHub pages</h2>
+<p>We can&rsquo;t forget about doing all this automatically. The source files are located in a <a href="https://github.com/daviddavo/22CV">GitHub project</a>, and every time a new commit is pushed, the files are compiled and published using GitHub pages. Both files are available through <em>github.io</em>:</p>
+<ul>
+<li>English: <a href="https://daviddavo.github.io/22CV/David_Davo_CV_English.pdf">https://daviddavo.github.io/22CV/David_Davo_CV_English.pdf</a></li>
+<li>Spanish: <a href="https://daviddavo.github.io/22CV/David_Davo_CV_Spanish.pdf">https://daviddavo.github.io/22CV/David_Davo_CV_Spanish.pdf</a></li>
+</ul>
+<p>The workflow used is very simple, I created it just using the web interface, adding a build action that uses <a href="https://github.com/marketplace/actions/github-action-for-latex">latex-action</a> to compile the document, and then a publish action to upload the generated files to GitHub pages. Furthermore, I added an assert to check
+that the files are only two pages long.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">CI</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># Controls when the workflow will run</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">on</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Triggers the workflow on push or pull request events but only for the &#34;main&#34; branch</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">push</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&#34;main&#34;</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Allows you to run this workflow manually from the Actions tab</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">workflow_dispatch</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># A workflow run is made up of one or more jobs that can run sequentially or in parallel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">jobs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">build</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># The type of runner that the job will run on</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l">ubuntu-latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># Steps represent a sequence of tasks that will be executed as part of the job</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/checkout@v3</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Build LaTeX</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">xu-cheng/latex-action@v2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">latexmk_use_xelatex</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="c"># Compile multiple documents</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">root_file</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">            english.tex
+</span></span></span><span class="line"><span class="cl"><span class="sd">            spanish.tex</span><span class="w">            
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Assert built files are 2 pages long</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">          sudo apt-get install -y poppler-utils
+</span></span></span><span class="line"><span class="cl"><span class="sd">          [ $(pdfinfo english.pdf | awk &#39;/^Pages:/ {print $2}&#39;) -le 2 ]
+</span></span></span><span class="line"><span class="cl"><span class="sd">          [ $(pdfinfo spanish.pdf | awk &#39;/^Pages:/ {print $2}&#39;) -le 2 ]</span><span class="w">          
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Build Github page</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">          mv english.pdf _site/David_Davo_CV_English.pdf
+</span></span></span><span class="line"><span class="cl"><span class="sd">          mv spanish.pdf _site/David_Davo_CV_Spanish.pdf</span><span class="w">          
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Upload GitHub Pages artifact</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/upload-pages-artifact@v1.0.3</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">deploy</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">needs</span><span class="p">:</span><span class="w"> </span><span class="l">build</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># Grant GITHUB_TOKEN the permissions required to make a Pages deployment</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">permissions</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">pages</span><span class="p">:</span><span class="w"> </span><span class="l">write     </span><span class="w"> </span><span class="c"># to deploy to Pages</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">id-token</span><span class="p">:</span><span class="w"> </span><span class="l">write  </span><span class="w"> </span><span class="c"># to verify the deployment originates from an appropriate source</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># Deploy to the github-pages environment</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">github-pages</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">${{ steps.deployment.outputs.page_url }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># Specify runner + deployment step</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l">ubuntu-latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Deploy to GitHub Pages</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l">deployment</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/deploy-pages@v1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">artifact-name</span><span class="p">:</span><span class="w"> </span><span class="l">build</span><span class="w">
+</span></span></span></code></pre></div><p>The final touch is a small raw HTML page that redirects to my personal webpage, in the event someone
+goes into the root of the page: <a href="https://daviddavo.github.io/22CV">daviddavo.github.io/22CV</a></p>
+]]></content:encoded></item><item><title>How to create a "Work in progress" banner for your website</title><link>https://blog.ddavo.me/posts/tutorials/work-in-progress/</link><pubDate>Mon, 15 Aug 2022 22:38:38 +0200</pubDate><guid>https://blog.ddavo.me/posts/tutorials/work-in-progress/</guid><description>My personal website is currently made in Symfony. Yeah, I know, not the best thing for this purpose, but I started it a few years ago, when I was younger and carelessler&amp;hellip;
+A few days ago, I decided I wanted to refactor my website and create a whole new one, using a static site generator. Ended up deciding on Hugo, btw.
+As the old one was a bit, well, clunky, I wanted the new one to be online ASAP as possible.</description><content:encoded><![CDATA[<p>My personal website is currently made in Symfony. Yeah, I know, not the best thing for this purpose, but I started it a few years ago, when I was younger and carelessler&hellip;</p>
+<p>A few days ago, I decided I wanted to refactor my website and create a whole new one, using a static site generator. Ended up deciding on Hugo, btw.</p>
+<p>As the old one was a bit, well, clunky, I wanted the new one to be online ASAP as possible. But I needed a banner that said &ldquo;hey, I&rsquo;m still working on it, be careful&rdquo;. Well, I don&rsquo;t really needed it, but it&rsquo;s cool nevertheless.</p>
+<p>My objective was to emulate a kind of &ldquo;caution&rdquo; tape, the yellow and black one that reminds you of roadworks. Making a stripes background wasn&rsquo;t difficult, thanks to tools like <a href="https://stripesgenerator.com/">stripesgenerator.com</a>, but the most important thing of all is adding a little tilt, simulating the falling tape.</p>
+<p>This could be accomplished thanks to the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/rotate"><code>transform: rotate()</code></a> CSS property.</p>
+<p>It ended up being something like this:</p>
+<p class="codepen" data-height="300" data-default-tab="css,result" data-slug-hash="bGvQdxo" data-user="daviddavo" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/daviddavo/pen/bGvQdxo">
+  Untitled</a> by David Davó (<a href="https://codepen.io/daviddavo">@daviddavo</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+<p>What do you think? Pretty neat, huh? If you have any comments on it, share your modifications!.</p>
+]]></content:encoded></item><item><title>How to override some domain names in your local network</title><link>https://blog.ddavo.me/posts/tutorials/bind-override/</link><pubDate>Wed, 22 Dec 2021 13:17:17 +0100</pubDate><guid>https://blog.ddavo.me/posts/tutorials/bind-override/</guid><description>In this tutorial you will learn how to override some domain names in your local network configuring a Response Policy Zone in the bind9 server</description><content:encoded><![CDATA[<p>If you have a small home local network, perhaps you&rsquo;ve had problems accessing your domain names.
+As you may already know, in your home network you have a public IP (given by your ISP) and a set of private or local IP addresses used among your devices in your local network.
+The technology that allows mapping a lot of private addresses to a unique public address is called masquerading or Network Address Translation (NAT).</p>
+<p>Issues arise when you use a DNS to assign a domain name to a service. For example, let&rsquo;s say you have a blog, and you want to map the domain <code>blog.example.com</code> to the public IP <code>1.2.3.4</code>. In your router, you do a port mapping to the device with a local address <code>192.168.1.66</code>. But when you want to access <code>blog.example.com</code> in your web browser inside your local network&hellip; it doesn&rsquo;t work! It says something along the lines of &ldquo;Unable to connect to the host&rdquo; &ndash; but the host is just right THERE! &ndash;.
+The thing is, your computer is trying to connect to <code>1.2.3.4</code> (the address resolved by the DNS), when what you really want is to connect to <code>192.168.1.66</code> (your local address). You could modify the <code>/etc/hosts</code> file in every device in your home, but there&rsquo;s an alternative: hosting your own DNS.</p>
+<blockquote>
+<p>Requirements before reading this post</p>
+<ul>
+<li>Knowing what is DNS and how to change the records in your registrar</li>
+</ul>
+</blockquote>
+<h2 id="bind-the-ubiquitous-domain-name-system-server">BIND: The ubiquitous Domain Name System server</h2>
+<p>With the Domain Name System, you ask a Domain Name server for the IP associated to a Domain Name. I&rsquo;m pretty sure that you already have a bind system in your home without you knowing it, your ISP given router. In fact, having a DNS server in your LAN has a lot of advantages, because you are querying a device located 10 meters from you, instead of a server hundreds of kilometers from you.</p>
+<p>To override some records we can use a <em>Response Policy Zone</em> (RPZ), which allows us to override some domain name mappings inside our local network.</p>
+<p>Let&rsquo;s see how to set up everything</p>
+<h2 id="installing-bind">Installing BIND</h2>
+<p>Depending on your Linux distro or your operating system, the installing process (and the files to modify) may vary. In this tutorial, we use a machine with Debian/Ubuntu. We just need to install a couple of packages, using the following command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo apt install bind9 bind9utils bind9-doc
+</span></span></code></pre></div><h2 id="bind-configuration-for-your-local-network">BIND configuration for your local network</h2>
+<blockquote>
+<p>Remember: To be able to modify these file you&rsquo;ll need to be root or use <code>sudo</code></p>
+</blockquote>
+<p>First, we need to set up a new zone to add our subdomains, we are going to call it &ldquo;rpz&rdquo;, and we&rsquo;ll set its DNS database at <code>/etc/bind/db.rpz</code>. We&rsquo;ll edit the file <code>/etc/bind/named.conf.default-zones</code> and add the following lines:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">zone &#34;rpz&#34; {
+</span></span><span class="line"><span class="cl">    type master;
+</span></span><span class="line"><span class="cl">    file &#34;/etc/bind/db.rpz&#34;;
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div><p>Now, we add our records to the database (<code>/etc/bind/db.rpz</code>)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dns" data-lang="dns"><span class="line"><span class="cl"><span class="c">; Our LAN records</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="na">$TTL</span><span class="w"> </span><span class="sc">3600</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">; These two records specify which is the DNS for this zone</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nc">@</span><span class="w">		</span><span class="k">IN</span><span class="w">	</span><span class="k">SOA</span><span class="w">	</span><span class="py">localhost. root.localhost. </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			      </span><span class="sc">2</span><span class="w">		</span><span class="c">; Serial</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			 </span><span class="sc">604800</span><span class="w">		</span><span class="c">; Refresh</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			  </span><span class="sc">86400</span><span class="w">		</span><span class="c">; Retry</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="sc">2419200</span><span class="w">		</span><span class="c">; Expire</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			 </span><span class="sc">604800</span><span class="w"> </span><span class="p">)</span><span class="w">	</span><span class="c">; Negative Cache TTL</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nc">@</span><span class="w">		</span><span class="k">IN</span><span class="w">	</span><span class="k">NS</span><span class="w">	</span><span class="py">localhost.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">; Using $ORIGIN we can add only the subdomain and not the full domain</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="na">$ORIGIN</span><span class="w"> </span><span class="nc">example.com</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nc">nas</span><span class="w">                  </span><span class="k">A</span><span class="w">       </span><span class="mi">192.168.1.42</span><span class="w">              </span><span class="c">; IPv4 address of nas.example.com</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nc">nas</span><span class="w">                  </span><span class="k">AAAA</span><span class="w">    </span><span class="il">fe80::1ff:fe23:4567:890a</span><span class="w">  </span><span class="c">; IPv6 address of nas.example.com</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nc">ftp</span><span class="w">                  </span><span class="k">CNAME</span><span class="w">   </span><span class="err">nas</span><span class="w">                       </span><span class="c">; Un simple alias of ftp.example.com a nas.example.com</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="py">blog.example2.org. </span><span class="w">  </span><span class="k">A</span><span class="w">       </span><span class="mi">192.168.1.31</span><span class="w">              </span><span class="c">; We can also add fully qualified domain names</span><span class="w">
+</span></span></span></code></pre></div><p>But we need to tell the DNS to ask for the records (domain name) it doesn&rsquo;t have in its database to another server. For this, we need to enable <em>recursion</em> and to specify the upstream servers to ask when we don&rsquo;t have the record in our RPZ.</p>
+<blockquote>
+<p>The forwarders servers can be given by your ISP, or your local router (192.168.1.1), but I recommend using Google&rsquo;s or Cloudflare&rsquo;s DNS servers because of their reliability and speed.</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">options</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">directory</span> <span class="s2">&#34;/var/cache/bind&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">recursion</span> <span class="n">yes</span><span class="p">;</span> <span class="c1"># Enabling recursion</span>
+</span></span><span class="line"><span class="cl">	<span class="n">listen</span><span class="o">-</span><span class="n">on</span> <span class="p">{</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.11</span><span class="p">;</span> <span class="p">};</span> <span class="c1"># The IP address of THIS DNS server</span>
+</span></span><span class="line"><span class="cl">	<span class="c1"># You can set it to any if you want it to listen to petitions</span>
+</span></span><span class="line"><span class="cl">	<span class="c1"># from outside</span>
+</span></span><span class="line"><span class="cl">	<span class="n">allow</span><span class="o">-</span><span class="n">transfer</span> <span class="p">{</span> <span class="n">none</span><span class="p">;</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">	<span class="n">response</span><span class="o">-</span><span class="n">policy</span> <span class="p">{</span> <span class="n">zone</span> <span class="s2">&#34;rpz&#34;</span><span class="p">;</span> <span class="p">}</span> <span class="k">break</span><span class="o">-</span><span class="n">dnssec</span> <span class="n">yes</span><span class="p">;</span> <span class="c1"># The response policy zone name</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">forwarders</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="mf">8.8</span><span class="o">.</span><span class="mf">8.8</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="mf">8.8</span><span class="o">.</span><span class="mf">4.4</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="mf">1.1</span><span class="o">.</span><span class="mf">1.1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">dnssec</span><span class="o">-</span><span class="n">validation</span> <span class="n">auto</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">listen</span><span class="o">-</span><span class="n">on</span><span class="o">-</span><span class="n">v6</span> <span class="p">{</span> <span class="n">any</span><span class="p">;</span> <span class="p">};</span> <span class="c1"># You can set it to &#34;none&#34; if you don&#39;t want to use IPv6 DNS</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></div><blockquote>
+<p>It is important to tell the server to ignore dnssec requests.
+If we don&rsquo;t do that, the server could reply with a signed response, but with
+an incorrect (outside) address.</p>
+</blockquote>
+<blockquote>
+<p>It is important to tell the server to ignore dnssec requests.
+If we don&rsquo;t do that, the server could reply with a signed response, but with
+an incorrect (outside) address.</p>
+</blockquote>
+<h3 id="starting-the-dns-server">Starting the DNS server</h3>
+<p>To apply the changes, we start the server using systemctl</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo systemctl <span class="nb">enable</span> --now bind9
+</span></span></code></pre></div><p>We can check whether it works using <code>dig</code> (perhaps you need to install it first),
+which allows us to make queries to a given DNS server instead of using the default.</p>
+<p>First, we check if usual queries work, like google.com</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> dig google.es
+</span></span><span class="line"><span class="cl"><span class="go">; &lt;&lt;&gt;&gt; DiG 9.16.23 &lt;&lt;&gt;&gt; google.es
+</span></span></span><span class="line"><span class="cl"><span class="go">;; global options: +cmd
+</span></span></span><span class="line"><span class="cl"><span class="go">;; Got answer:
+</span></span></span><span class="line"><span class="cl"><span class="go">;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 5016
+</span></span></span><span class="line"><span class="cl"><span class="go">;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">;; OPT PSEUDOSECTION:
+</span></span></span><span class="line"><span class="cl"><span class="go">; EDNS: version: 0, flags:; udp: 4096
+</span></span></span><span class="line"><span class="cl"><span class="go">; COOKIE: 01db1f47a27adb9e90e4c7fb61c24bc2bf8c6a88296c3923 (good)
+</span></span></span><span class="line"><span class="cl"><span class="go">;; QUESTION SECTION:
+</span></span></span><span class="line"><span class="cl"><span class="go">;google.es.			IN	A
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">;; ANSWER SECTION:
+</span></span></span><span class="line"><span class="cl"><span class="go">google.es.		300	IN	A	142.250.200.131
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">;; Query time: 39 msec
+</span></span></span><span class="line"><span class="cl"><span class="go">;; SERVER: 192.168.1.11#53(192.168.1.11)
+</span></span></span><span class="line"><span class="cl"><span class="go">;; WHEN: Tue Dec 21 22:48:50 CET 2021
+</span></span></span><span class="line"><span class="cl"><span class="go">;; MSG SIZE  rcvd: 82
+</span></span></span></code></pre></div><p>Now we check that our RPZ works</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> dig chikyuu.ddavo.me @192.168.1.11
+</span></span><span class="line"><span class="cl"><span class="go">; &lt;&lt;&gt;&gt; DiG 9.16.23 &lt;&lt;&gt;&gt; nas.example.com
+</span></span></span><span class="line"><span class="cl"><span class="go">;; global options: +cmd
+</span></span></span><span class="line"><span class="cl"><span class="go">;; Got answer:
+</span></span></span><span class="line"><span class="cl"><span class="go">;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 45881
+</span></span></span><span class="line"><span class="cl"><span class="go">;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">;; OPT PSEUDOSECTION:
+</span></span></span><span class="line"><span class="cl"><span class="go">; EDNS: version: 0, flags:; udp: 4096
+</span></span></span><span class="line"><span class="cl"><span class="go">; COOKIE: d200bc3ba9741e2ab2c8935661c24b4b401d43ae997c39de (good)
+</span></span></span><span class="line"><span class="cl"><span class="go">;; QUESTION SECTION:
+</span></span></span><span class="line"><span class="cl"><span class="go">;nas.example.com.		IN	A
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">;; ANSWER SECTION:
+</span></span></span><span class="line"><span class="cl"><span class="go">nas.example.com.	5	IN	A	192.168.1.42
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">;; Query time: 0 msec
+</span></span></span><span class="line"><span class="cl"><span class="go">;; SERVER: 192.168.1.11#53(192.168.1.11)
+</span></span></span><span class="line"><span class="cl"><span class="go">;; WHEN: Tue Dec 21 22:46:51 CET 2021
+</span></span></span><span class="line"><span class="cl"><span class="go">;; MSG SIZE  rcvd: 89
+</span></span></span></code></pre></div><p><strong>It works!!</strong> The returned IP address is the address from our local network, instead of the global one.</p>
+<h3 id="using-the-dns-server">Using the DNS server</h3>
+<p>Nevertheless, it doesn&rsquo;t work in the web browser, or with any other program apart from <code>dig</code>&hellip;</p>
+<p>We need to set our DNS server as the default DNS in each device. Every device is different, but it shouldn&rsquo;t be very difficult. Perhaps your router can propagate its config using DHCP through the local network!</p>
+<p>If you have any questions, you can let me know in the comments</p>
+<h2 id="sources--more-information">Sources &amp; more information</h2>
+<ul>
+<li><a href="https://serverfault.com/questions/18748/overriding-some-dns-entries-in-bind-for-internal-networks">Serverfault.com: Overriding some DNS entries in BIND for internal networks</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Response_policy_zone">Wikipedia: Response policy zone</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Network_address_translation">Wikipedia: Network Address Translation</a></li>
+<li><a href="https://dnsrpz.info/">dnsrpz.info</a></li>
+</ul>
+]]></content:encoded></item><item><title>Just Get My Data: Get your data from various web services</title><link>https://blog.ddavo.me/posts/projects/jgmd/</link><pubDate>Sat, 09 Jan 2021 11:50:13 +0100</pubDate><guid>https://blog.ddavo.me/posts/projects/jgmd/</guid><description>We all know that since the last couple of years we can ask any web that services EU citizens to delete our data, but&amp;hellip; we can also ask them to send us our data, in a legible format.
+To prevent us from exerting our rights, a lot of sites use dark patterns, tricks that make you do things that you didn&amp;rsquo;t mean to, so you give up before finishing your task.</description><content:encoded><![CDATA[<p>We all know that since the last couple of years we can ask any web that services EU citizens to delete our data, but&hellip; <strong>we can also ask them to send us our data, in a legible format.</strong></p>
+<p>To prevent us from exerting our rights, a lot of sites use <a href="https://darkpatterns.org/">dark patterns</a>, tricks that make you do things that you didn&rsquo;t mean to, so you give up before finishing your task. An aggressive design that can frustrate users and makes us scream against the screen: &ldquo;I DON&rsquo;T WANT MY DATA ANY MORE!!&rdquo;</p>
+<p>That&rsquo;s why <a href="https://justgetmydata.com/es">Just Get My Data</a> was created. It&rsquo;s a directory of direct links, with notes and mini-tutorials to make it easier to get your data. There are a lot of services, and you can sort, search and filter them (by difficulty, for example).</p>
+<p>For example, Apple, Coinbase, LinkedIn and Google have a green, easy difficulty level. This means that they have set up an automatized and easy to follow process to exercise your GDPR rights. On the other hand, platforms like Twitch have a red, difficult colour, as you have to follow a manual process, sending them e-mails in English (which can be a problem if it&rsquo;s not your main language), giving them more personal data, telling them why you want your data, and finding the One Ring.</p>
+<p>This <em>semaphore</em> system allows us to call-out companies and, maybe some CEO doesn&rsquo;t like to have their company listed in red.</p>
+<p>JustGetMyData is a fork of <a href="https://justdeleteme.xyz/">JustDeleteMe</a>, a web that helps you similarly to delete your account from online services sorting out dark patterns.</p>
+<p>It&rsquo;s free software, so you can help too if you want. A lot of people helped translate the page to multiple languages, or new entries on how to get your data from a service. If you want to participate developing Just Get My Data, you can do so on <a href="https://github.com/justgetmydata/jgmd">GitHub</a>, we are happy to receive any help!</p>
+<p>Did you know all your rights? Or did you just know about the right to delete your data?</p>
 ]]></content:encoded></item></channel></rss>
