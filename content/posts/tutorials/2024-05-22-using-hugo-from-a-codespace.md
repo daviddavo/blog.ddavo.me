@@ -10,9 +10,10 @@ tags:
     - Hugo
 categories:
     - tutorial
-author: David Davó
+authors:
+    - ddavo
 slug: hugo-codespace
-lastmod: 2024-05-22T18:28:03.974Z
+lastmod: 2024-08-04T18:17:00.623Z
 math: false
 type: tutorial
 keywords:

@@ -2,16 +2,17 @@
 title: ¿Cómo se llaman mis servidores?
 date: 2023-09-03T11:19:15.811Z
 tags:
-  - personal
-  - homelab
+    - personal
+    - homelab
 categories: []
-author: David Davó
-lastmod: 2023-09-05T08:33:08.398Z
+authors:
+    - ddavo
+lastmod: 2024-08-04T18:17:00.700Z
 math: false
 type: ""
 cover:
-  image: permanence.webp
-  alt: Composición del logotipo de Correos, Amiami, y Aduanas de España
+    image: permanence.webp
+    alt: Composición del logotipo de Correos, Amiami, y Aduanas de España
 ---
 
 Cuando uno monta un servidor, una de las primeras cosas que debe establecer es su _hostname_ y, aunque no le demos un botellazo como a los barcos, hay que bautizarlo.

@@ -4,20 +4,21 @@ description: How to calculate metrics like precision@k, recall@k and r-precision
 date: 2023-08-04T18:21:50.040Z
 draft: false
 tags:
-  - artificial intelligence
-  - PyTorch
-  - Python
+    - artificial intelligence
+    - PyTorch
+    - Python
 categories:
-  - tutorial
-author: David Davó
+    - tutorial
+authors:
+    - ddavo
 slug: pytorch-geometric-metrics
 math: true
-lastmod: 2023-08-16T11:29:07.998Z
+lastmod: 2024-08-04T18:17:00.602Z
 keywords:
-  - precision
-  - pytorch
-  - pytorch geometric
-  - recall
+    - precision
+    - pytorch
+    - pytorch geometric
+    - recall
 type: default
 ---
 

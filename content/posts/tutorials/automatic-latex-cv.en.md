@@ -1,14 +1,15 @@
 ---
 title: Compiling and publishing multilingual LaTeX with GitHub
 date: 2022-09-01T19:14:22.496Z
-author: David Davó
+authors:
+    - ddavo
 tags:
-  - tutorial
-  - LaTeX
-  - GitHub actions
-lastmod: 2022-09-04T10:35:26.103Z
+    - tutorial
+    - LaTeX
+    - GitHub actions
+lastmod: 2024-08-04T18:17:00.629Z
 categories:
-  - tutorial
+    - tutorial
 ---
 
 I have been wanting to publish my CV in my personal site for quite some time, but first I needed

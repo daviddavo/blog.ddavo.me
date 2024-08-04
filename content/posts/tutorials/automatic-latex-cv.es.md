@@ -1,14 +1,15 @@
 ---
 title: Compilando LaTeX bilingüe y publicándolo con GitHub pages
 date: 2022-09-01T19:14:22.496Z
-author: David Davó
+authors:
+    - ddavo
 tags:
-  - tutorial
-  - LaTeX
-  - GitHub actions
-lastmod: 2022-09-01T19:15:51.706Z
+    - tutorial
+    - LaTeX
+    - GitHub actions
+lastmod: 2024-08-04T18:17:00.672Z
 categories:
-  - tutorial
+    - tutorial
 ---
 
 Hace tiempo que quería poner mi currículum en la página web, pero para ello

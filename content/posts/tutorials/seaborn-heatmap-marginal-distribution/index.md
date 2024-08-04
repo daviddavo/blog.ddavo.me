@@ -9,8 +9,9 @@ tags:
     - seaborn
 categories:
     - python
-author: David Davó
-lastmod: 2024-02-16T17:00:18.283Z
+authors:
+    - ddavo
+lastmod: 2024-08-04T18:17:00.684Z
 math: false
 cover:
     image: cover.webp

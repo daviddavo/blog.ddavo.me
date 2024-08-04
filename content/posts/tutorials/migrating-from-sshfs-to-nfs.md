@@ -3,10 +3,11 @@ title: Migrating from SSHFS to NFS
 date: 2023-08-28T15:40:21.871Z
 draft: false
 tags:
-  - tutorial
-  - self-hosting
-author: David Davó
-lastmod: 2023-08-28T21:13:12.689Z
+    - tutorial
+    - self-hosting
+authors:
+    - ddavo
+lastmod: 2024-08-04T18:17:00.655Z
 math: false
 ---
 

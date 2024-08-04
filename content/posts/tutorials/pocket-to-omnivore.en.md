@@ -1,20 +1,21 @@
 ---
 title: How to export your Pocket data to Omnivore
 date: 2023-05-21T18:13:36.792Z
-author: David Davó
+authors:
+    - ddavo
 tags:
-  - tutorial
-  - Pocket
-  - Omnivore
-  - Read Later
+    - tutorial
+    - Pocket
+    - Omnivore
+    - Read Later
 categories:
-  - tutorial
-lastmod: 2023-11-01T10:32:20.978Z
+    - tutorial
+lastmod: 2024-08-04T18:17:00.678Z
 keywords:
-  - pocket
-  - omnivore
-  - export
-  - import
+    - pocket
+    - omnivore
+    - export
+    - import
 description: In this tutorial I provide a Jupyter notebook to exp your data from Pocket and upload it to Omnivoreort
 ---
 

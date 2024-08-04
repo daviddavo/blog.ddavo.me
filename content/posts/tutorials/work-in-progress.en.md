@@ -1,11 +1,12 @@
 ---
 title: How to create a "Work in progress" banner for your website
 date: 2022-08-15T22:38:38+02:00
-author: David Davó
+authors:
+    - ddavo
 tags:
-  - tutorial
-  - web design
-lastmod: 2022-08-15T21:00:40.657Z
+    - tutorial
+    - web design
+lastmod: 2024-08-04T18:17:00.640Z
 ---
 
 My personal website is currently made in Symfony. Yeah, I know, not the best thing for this purpose, but I started it a few years ago, when I was younger and carelessler...

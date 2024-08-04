@@ -2,7 +2,8 @@
 title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
 draft: true
-author: David Davó
+authors:
+    - ddavo
 tags: [here, some, sample, tags]
 showToc: false
 ---

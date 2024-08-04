@@ -1,19 +1,20 @@
 ---
 title: How to override some domain names in your local network
 date: 2021-12-22T13:17:17+01:00
-author: David Davó
+authors:
+    - ddavo
 tags:
-  - tutorial
-  - dns
-  - self-hosting
-  - homelab
+    - tutorial
+    - dns
+    - self-hosting
+    - homelab
 showToc: true
 keywords:
-  - lan
-  - local network
-  - domain name
-description: In this tutorial you will learn how to override some domain names in your
-  local network configuring a Response Policy Zone in the bind9 server
+    - lan
+    - local network
+    - domain name
+description: In this tutorial you will learn how to override some domain names in your local network configuring a Response Policy Zone in the bind9 server
+lastmod: 2024-08-04T18:17:00.646Z
 ---
 If you have a small home local network, perhaps you've had problems accessing your domain names.
 As you may already know, in your home network you have a public IP (given by your ISP) and a set of private or local IP addresses used among your devices in your local network.

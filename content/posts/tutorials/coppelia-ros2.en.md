@@ -1,27 +1,28 @@
 ---
 title: Using ROS2 in Coppelia
 date: 2023-01-31T20:08:41.804Z
-author: David Davó
+authors:
+    - ddavo
 tags:
-  - tutorial
-  - ROS2
-  - Coppelia
-  - Robotics
+    - tutorial
+    - ROS2
+    - Coppelia
+    - Robotics
 categories:
-  - tutorial
+    - tutorial
 showToc: true
 draft: false
 keywords:
-  - Coppelia
-  - lidar
-  - PointCloud
-  - ros2
-  - V-REP
-  - SLAM toolbox
+    - Coppelia
+    - lidar
+    - PointCloud
+    - ros2
+    - V-REP
+    - SLAM toolbox
 slug: ros2-coppelia-lidar
-description: With this tutorial you will learn how to use ROS2 in the Coppelia simulator
-  (formerly V-REP) with the simExtROS2 library, using the lidar to build a map.
+description: With this tutorial you will learn how to use ROS2 in the Coppelia simulator (formerly V-REP) with the simExtROS2 library, using the lidar to build a map.
 type: default
+lastmod: 2024-08-04T18:17:00.617Z
 ---
 
 ## Introduction

@@ -1,11 +1,12 @@
 ---
 title: Como crear un banner de "Sitio en construcción"
 date: 2022-08-15T22:38:38+02:00
-author: David Davó
+authors:
+    - ddavo
 tags:
-  - tutorial
-  - web design
-lastmod: 2022-08-15T21:08:03.127Z
+    - tutorial
+    - web design
+lastmod: 2024-08-04T18:17:00.635Z
 ---
 
 Mi página personal está hecha en Symfony. Ya, ya sé, no es la mejor elección, pero empecé cuando era joven y más descuidado, pensando que iba a haber más dinamismo, haría muchas cosas, y una página web compilada no sería suficiente.
