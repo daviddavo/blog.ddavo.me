@@ -33,7 +33,7 @@ general_data['total-holders'] = int(query_result['holders'])
 general_data['last-mint'] = query_result['last_mint']
 general_data['first-mint'] = query_result['first_mint']
 # general_data['daily-avg'] = query_result['Avg. day since start']
-general_data['daily-avg'] = query_result['Avg. day to last mint']
+general_data['daily-avg'] = float(query_result['Avg. day to last mint'])
 
 ############################################################
 # Obtener cuantos usuarios tenían antes NFTs
