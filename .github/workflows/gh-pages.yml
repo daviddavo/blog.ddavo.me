@@ -12,11 +12,21 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-20.04
+    env:
+      FLEEK_TOKEN: ${{ secrets.FLEEK_TOKEN }}
+      FLEEK_PROJECT_ID: ${{ secrets.FLEEK_PROJECT_ID }}
     steps:
       - uses: actions/checkout@v4
         with:
           submodules: true  # Fetch Hugo themes (true OR recursive)
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Fleek CLI
+        run: npm i -g @fleek-platform/cli
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
@@ -35,6 +45,5 @@ jobs:
           publish_dir: ./public
 
       - name: Deploy Fleek
-        uses: fleekhq/action-deploy@v1
-        with:
-          apiKey: ${{ secrets.FLEEK_API_KEY }}
+        if: github.ref == 'refs/heads/main'
+        run: fleek sites deploy
