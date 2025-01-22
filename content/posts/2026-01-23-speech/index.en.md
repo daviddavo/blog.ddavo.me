@@ -19,7 +19,7 @@ tags:
 categories:
     - divulgation
 original:
-    site:LinkedIn
+    site: LinkedIn
     link: https://lnkd.in/eFpjQbxT
 ---
 Languages like Spanish and Japanese do get more "syllables per second" out than English, but syllable speed isn't the whole story.
