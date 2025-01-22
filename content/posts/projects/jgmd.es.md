@@ -2,14 +2,14 @@
 title: "Just Get My Data: Accede a tus datos de distintos servicios web"
 date: 2021-01-09T11:50:13+01:00
 authors:
-    - ddavo
+    - ddavo24
 original:
     site: LiGNUx.com
     link: https://lignux.com/justgetmydata-accede-a-tus-datos-de-distintos-servicios-web
 tags:
     - projects
     - imported
-lastmod: 2024-08-04T18:17:00.718Z
+lastmod: 2026-01-22T14:39:28.072Z
 ---
 
 Muchos sabemos que desde hace un par de años podemos pedir a cualquier servicio de la Unión Europea que borre nuestros datos, pero... **también podemos pedir que nos los envíen en un formato legible.**

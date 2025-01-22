@@ -6,8 +6,8 @@ tags:
     - homelab
 categories: []
 authors:
-    - ddavo
-lastmod: 2024-08-04T18:17:00.700Z
+    - ddavo24
+lastmod: 2026-01-22T14:39:28.129Z
 math: false
 type: ""
 cover:

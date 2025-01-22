@@ -12,9 +12,9 @@ tags:
 categories:
     - tutorial
 authors:
-    - ddavo
+    - ddavo24
 slug: aduanas-envios-correos-amiami
-lastmod: 2024-08-04T18:17:00.692Z
+lastmod: 2026-01-22T14:39:28.035Z
 keywords:
     - correos
     - aduanas

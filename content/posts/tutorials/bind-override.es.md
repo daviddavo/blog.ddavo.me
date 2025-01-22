@@ -2,14 +2,14 @@
 title: Cómo sobreescribir solo algunos subdominios en tu red local
 date: 2021-12-22T13:17:17+01:00
 authors:
-    - ddavo
+    - ddavo24
 tags:
     - tutorial
     - dns
     - self-hosting
     - homelab
 showToc: true
-lastmod: 2024-08-04T18:17:00.667Z
+lastmod: 2026-01-22T14:39:28.110Z
 ---
 Si tienes una pequeña red en casa, alguna vez habrás tenido problemas con el tema de dominios.
 Como ya sabrás, está la IP pública (la que se ve desde fuera de tu red, y conecta con el router), y las IPs privadas (las de tu red local, que empiezan por 192.168.0...).

@@ -1,6 +1,6 @@
 ---
 name: David Davó Laviña
-occupation: Investigador en Universidad Complutense de Madrid
+occupation: Ingeniero-Investigador en Barcelona Supercomputing Center
 photo: 'https://ddavo.me/images/perfil_huba47176c86c69447ba79fdf42134ec50_849216_200x200_fit_box_3.png'
 personal_site: https://ddavo.me
 email: david@ddavo.me
@@ -18,4 +18,4 @@ icons:
     - icon: google-scholar
       url: https://scholar.google.com/citations?user=LNSSvv4AAAAJ
 ---
-Investigando sobre comunidades online basadas en blockchain en la Universidad Complutense de Madrid desde 2021. En 2022 obtuve el grado en Ingeniería Informática en la UCM y en 2024 el Máster en Inteligencia Artificial de la UPM.
+Trabajé durante 3 años investigando sobre comunidades online basadas en blockchain en la Universidad Complutense de Madrid desde 2021. En 2022 obtuve el grado en Ingeniería Informática en la UCM y en 2024 el Máster en Inteligencia Artificial de la UPM. Desde 2025 trabajo en el Barcelona Supercomputing Center y realizo un doctorado en Arquitectura de Computadores en la Universitat Politècnica de Catalunya.

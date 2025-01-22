@@ -10,8 +10,8 @@ tags:
 categories:
     - python
 authors:
-    - ddavo
-lastmod: 2024-08-04T18:17:00.684Z
+    - ddavo24
+lastmod: 2026-01-22T14:39:28.115Z
 math: false
 cover:
     image: cover.webp

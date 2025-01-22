@@ -2,7 +2,7 @@
 title: "Just Get My Data: Get your data from various web services"
 date: 2021-01-09T11:50:13+01:00
 authors:
-    - ddavo
+    - ddavo24
 original:
     site: LiGNUx.com
     link: https://lignux.com/justgetmydata-accede-a-tus-datos-de-distintos-servicios-web
@@ -10,7 +10,7 @@ tags:
     - projects
     - imported
     - translated
-lastmod: 2024-08-04T18:17:00.712Z
+lastmod: 2026-01-22T14:39:28.074Z
 ---
 We all know that since the last couple of years we can ask any web that services EU citizens to delete our data, but... **we can also ask them to send us our data, in a legible format.**
 

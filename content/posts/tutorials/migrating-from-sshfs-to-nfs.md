@@ -6,8 +6,8 @@ tags:
     - tutorial
     - self-hosting
 authors:
-    - ddavo
-lastmod: 2024-08-04T18:17:00.655Z
+    - ddavo24
+lastmod: 2026-01-22T14:39:28.111Z
 math: false
 ---
 

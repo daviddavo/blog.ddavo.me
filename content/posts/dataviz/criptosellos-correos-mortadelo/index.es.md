@@ -1,12 +1,12 @@
 ---
 title: Sobre los criptosellos de Mortadelo
-lastmod: 2024-07-31T07:52:18.057Z
+lastmod: 2026-01-22T14:39:53.724Z
 cover:
     image: cover.webp
     alt: Fotografía de la presentación del criptosello de Mortadelo.
     caption: Fotografía de la presentación del criptosello por Correos. EFE/Alejandro García
-authors: 
-    - ddavo
+authors:
+    - ddavo24
 keywords:
     - blockchain
     - correos

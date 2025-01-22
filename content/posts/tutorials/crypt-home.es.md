@@ -2,14 +2,14 @@
 title: Como encriptar tu home y desencriptarla automágicamente
 date: 2022-01-30T15:38:09.185Z
 authors:
-    - ddavo
+    - ddavo24
 tags:
     - tutorial
     - crypt
     - manjaro
     - archlinux
 showToc: true
-lastmod: 2024-08-04T18:17:00.661Z
+lastmod: 2026-01-22T14:39:28.078Z
 ---
 Alguna que otra vez toca llevar de paseo el portátil por las calles y el Metro de Madrid, con todos los riesgos que ello conlleva.
 

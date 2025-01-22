@@ -2,22 +2,22 @@
 title: "Death to the algorithm: Alternatives to recommendation systems"
 date: 2023-05-30T18:11:58.112Z
 authors:
-  - ddavo
-lastmod: 2024-08-04T15:49:49.047Z
+    - ddavo24
+lastmod: 2026-01-22T14:39:28.123Z
 description: Recommendation systems are useful, but sometimes we just want to discover new things by ourselves. In this article I present 6 alternatives to "the algorithm".
 cover:
-  image: cover.webp
-  alt: Abstract graph illustrating the article
+    image: cover.webp
+    alt: Abstract graph illustrating the article
 tags:
-  - algorithms
-  - artificial intelligence
-  - opinion
-  - data governance
+    - algorithms
+    - artificial intelligence
+    - opinion
+    - data governance
 categories:
-  - artificial intelligence
+    - artificial intelligence
 keywords:
-  - algorithm
-  - recommendation system
+    - algorithm
+    - recommendation system
 slug: death-to-the-algorithm
 ---
 

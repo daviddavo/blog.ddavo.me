@@ -51,6 +51,7 @@ params:
     David Davó's dev log where you'll find notes about my projects, among other things
   authors:
     - ddavo
+    - ddavo24
   shortTitle: David Davó
   keywords: [Blog, Portfolio, Devlog]
   DateFormat: "2006-01-02"

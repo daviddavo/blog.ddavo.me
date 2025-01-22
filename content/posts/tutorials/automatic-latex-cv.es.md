@@ -2,12 +2,12 @@
 title: Compilando LaTeX bilingüe y publicándolo con GitHub pages
 date: 2022-09-01T19:14:22.496Z
 authors:
-    - ddavo
+    - ddavo24
 tags:
     - tutorial
     - LaTeX
     - GitHub actions
-lastmod: 2024-08-04T18:17:00.672Z
+lastmod: 2026-01-22T14:39:28.079Z
 categories:
     - tutorial
 ---

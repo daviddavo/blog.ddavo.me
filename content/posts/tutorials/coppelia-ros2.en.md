@@ -2,7 +2,7 @@
 title: Using ROS2 in Coppelia
 date: 2023-01-31T20:08:41.804Z
 authors:
-    - ddavo
+    - ddavo24
 tags:
     - tutorial
     - ROS2
@@ -22,7 +22,7 @@ keywords:
 slug: ros2-coppelia-lidar
 description: With this tutorial you will learn how to use ROS2 in the Coppelia simulator (formerly V-REP) with the simExtROS2 library, using the lidar to build a map.
 type: default
-lastmod: 2024-08-04T18:17:00.617Z
+lastmod: 2026-01-22T14:39:28.030Z
 ---
 
 ## Introduction

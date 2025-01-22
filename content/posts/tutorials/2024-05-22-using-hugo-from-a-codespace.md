@@ -11,9 +11,9 @@ tags:
 categories:
     - tutorial
 authors:
-    - ddavo
+    - ddavo24
 slug: hugo-codespace
-lastmod: 2024-08-04T18:17:00.623Z
+lastmod: 2026-01-22T14:39:28.032Z
 math: false
 type: tutorial
 keywords:

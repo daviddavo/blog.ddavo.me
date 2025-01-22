@@ -2,21 +2,21 @@
 title: "Muerte al algoritmo: Alternativas a los sistemas recomendadores"
 date: 2023-05-30T18:11:58.112Z
 authors:
-  - ddavo
-lastmod: 2024-08-04T15:50:13.186Z
+    - ddavo24
+lastmod: 2026-01-22T14:39:28.119Z
 description: Los algoritmos recomendadores son útiles, pero en ocasiones queremos descubrir contenido por nosotros mismos.
 cover:
-  image: cover.webp
-  alt: Grafo abstracto de ilustracion del articulo
+    image: cover.webp
+    alt: Grafo abstracto de ilustracion del articulo
 tags:
-  - algorithms
-  - artificial intelligence
-  - opinion
-  - data governance
+    - algorithms
+    - artificial intelligence
+    - opinion
+    - data governance
 categories:
-  - artificial intelligence
+    - artificial intelligence
 keywords:
-  - alternativa algoritmo
+    - alternativa algoritmo
 ---
 
 A veces estamos cansados y abrumados por la gran oferta de contenido que nos

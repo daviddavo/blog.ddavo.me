@@ -2,7 +2,7 @@
 title: How to export your Pocket data to Omnivore
 date: 2023-05-21T18:13:36.792Z
 authors:
-    - ddavo
+    - ddavo24
 tags:
     - tutorial
     - Pocket
@@ -10,7 +10,7 @@ tags:
     - Read Later
 categories:
     - tutorial
-lastmod: 2024-08-04T18:17:00.678Z
+lastmod: 2026-01-22T14:39:28.102Z
 keywords:
     - pocket
     - omnivore

@@ -2,12 +2,12 @@
 title: Compiling and publishing multilingual LaTeX with GitHub
 date: 2022-09-01T19:14:22.496Z
 authors:
-    - ddavo
+    - ddavo24
 tags:
     - tutorial
     - LaTeX
     - GitHub actions
-lastmod: 2024-08-04T18:17:00.629Z
+lastmod: 2026-01-22T14:39:28.106Z
 categories:
     - tutorial
 ---

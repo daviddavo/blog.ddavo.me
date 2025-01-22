@@ -13,8 +13,8 @@ categories:
     - Python
     - Seaborn
 authors:
-    - ddavo
-lastmod: 2024-08-03T18:47:28.511Z
+    - ddavo24
+lastmod: 2026-01-22T14:39:28.033Z
 math: false
 type: default
 slug: confusing-confusion-matrices-seaborn

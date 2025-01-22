@@ -1,19 +1,19 @@
 ---
 title: Computing information retrieval metrics in Pytorch Geometric
-description: How to calculate metrics like precision@k, recall@k and r-precision for information retrieval and recommender systems in PyTorch Geometric
 date: 2023-08-04T18:21:50.040Z
 draft: false
+authors:
+    - ddavo24
 tags:
     - artificial intelligence
     - PyTorch
     - Python
+lastmod: 2026-01-22T14:39:28.028Z
+description: How to calculate metrics like precision@k, recall@k and r-precision for information retrieval and recommender systems in PyTorch Geometric
 categories:
     - tutorial
-authors:
-    - ddavo
 slug: pytorch-geometric-metrics
 math: true
-lastmod: 2024-08-04T18:17:00.602Z
 keywords:
     - precision
     - pytorch
