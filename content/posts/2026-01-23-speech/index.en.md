@@ -4,7 +4,7 @@ lastmod: 2026-01-23T00:00:00.000Z
 authors:
     - ddavo
 cover:
-    image: cover.png
+    image: cover.jpg
     alt: Colorful illustrated flowers with "goodbye" in different languages including CIAO, SHALOM, FARVEL, GOOD BYE, AU REVOIR, ADEUS, and CHI JIAN
     caption: Languages across the world express the same ideas at remarkably similar rates.
 keywords:
