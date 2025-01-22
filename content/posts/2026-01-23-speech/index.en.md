@@ -20,7 +20,7 @@ categories:
     - divulgation
 original:
     site: LinkedIn
-    link: https://lnkd.in/eFpjQbxT
+    link: https://www.linkedin.com/posts/ddavo_languages-like-spanish-and-japanese-do-get-activity-7407691244128182272-jO1R
 ---
 Languages like Spanish and Japanese do get more "syllables per second" out than English, but syllable speed isn't the whole story.
 
@@ -33,3 +33,7 @@ This trade-off is similar to computer networks, where, according to Nyquist and 
 Although languages convey information at the same rate, I do wonder what would happen if we measured different SNR (Signal-Noise Ratio) conditions.
 
 Theoretically, Spanish and Japanese should be more robust in low SNR (noisy) environments than high-density languages like Mandarin or English.
+
+---
+
+*This is a short piece of scientific outreach based on the article: Coupé, C., Oh, Y. M., Dediu, D., & Pellegrino, F. (2019). Different languages, similar encoding efficiency: Comparable information rates across the human communicative niche. Science Advances, 5(9). https://doi.org/10.1126/sciadv.aaw2594*
