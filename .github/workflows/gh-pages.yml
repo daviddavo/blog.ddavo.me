@@ -46,3 +46,11 @@ jobs:
           kubo-api-url: ${{ secrets.KUBO_API_URL }} 
           kubo-api-auth: ${{ secrets.KUBO_AUTH }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update IPNS Pointer for Blog
+        run: |
+          # Notice the &key=blog-site at the end of the URL
+          K_USER=$(echo "${{ secrets.KUBO_AUTH }}" | cut -d':' -f2)
+          K_PASS=$(echo "${{ secrets.KUBO_AUTH }}" | cut -d':' -f3)
+          curl -X POST -u "$K_USER:$K_PASS" \
+          "${{ secrets.KUBO_API_URL }}/api/v0/name/publish?resolve=true&arg=${{ steps.shipyard.outputs.cid }}&key=blog"
