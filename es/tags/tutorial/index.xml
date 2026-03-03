@@ -1,5 +1,22 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Tutorial on David Davó's dev log</title><link>./es/tags/tutorial/</link><description>Recent content in Tutorial on David Davó's dev log</description><generator>Hugo -- gohugo.io</generator><language>es</language><copyright>© David Davó 2015 - 2024</copyright><lastBuildDate>Thu, 01 Sep 2022 19:14:22 +0000</lastBuildDate><atom:link href="./es/tags/tutorial/index.xml" rel="self" type="application/rss+xml"/><item><title>Compilando LaTeX bilingüe y publicándolo con GitHub pages</title><link>./es/posts/tutorials/automatic-latex-cv/</link><pubDate>Thu, 01 Sep 2022 19:14:22 +0000</pubDate><guid>./es/posts/tutorials/automatic-latex-cv/</guid><description>Hace tiempo que quería poner mi currículum en la página web, pero para ello debía asegurarme de que estaba SIEMPRE actualizado. Es decir, que se compilaba y publicaba automáticamente cada vez que realizase cambios en el fichero fuente.
-Desde hace ya más de 5 años, mi currículum está escrito en LaTeX, usando (y modificando) la plantilla Awesome CV. Además, le añadí un par de cosas para hacerlo &amp;ldquo;bilingüe&amp;rdquo; y poder compilar o bien al inglés o al castellano, haciendo que el documento esté disponible en múltiples idiomas.</description><content:encoded><![CDATA[<p>Hace tiempo que quería poner mi currículum en la página web, pero para ello
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tutorial on David Davó&#39;s dev log</title>
+    <link>/es/tags/tutorial/</link>
+    <description>Recent content in Tutorial on David Davó&#39;s dev log</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es</language>
+    <copyright>© David Davó 2015 - 2024</copyright>
+    <lastBuildDate>Thu, 01 Sep 2022 19:14:22 +0000</lastBuildDate><atom:link href="/es/tags/tutorial/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Compilando LaTeX bilingüe y publicándolo con GitHub pages</title>
+      <link>/es/posts/tutorials/automatic-latex-cv/</link>
+      <pubDate>Thu, 01 Sep 2022 19:14:22 +0000</pubDate>
+      
+      <guid>/es/posts/tutorials/automatic-latex-cv/</guid>
+      <description>Hace tiempo que quería poner mi currículum en la página web, pero para ello debía asegurarme de que estaba SIEMPRE actualizado. Es decir, que se compilaba y publicaba automáticamente cada vez que realizase cambios en el fichero fuente.
+Desde hace ya más de 5 años, mi currículum está escrito en LaTeX, usando (y modificando) la plantilla Awesome CV. Además, le añadí un par de cosas para hacerlo &amp;ldquo;bilingüe&amp;rdquo; y poder compilar o bien al inglés o al castellano, haciendo que el documento esté disponible en múltiples idiomas.</description>
+      <content:encoded><![CDATA[<p>Hace tiempo que quería poner mi currículum en la página web, pero para ello
 debía asegurarme de que estaba SIEMPRE actualizado. Es decir, que se compilaba y
 publicaba automáticamente cada vez que realizase cambios en el fichero fuente.</p>
 <p>Desde hace ya más de 5 años, mi currículum está escrito en LaTeX, usando (y modificando) la
@@ -108,8 +125,18 @@ el PDF generado no tiene más de 2 páginas (un folio por las dos caras).</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">artifact-name</span><span class="p">:</span><span class="w"> </span><span class="l">build</span><span class="w">
 </span></span></span></code></pre></div><p>El toque final está en una pequeña página html por si alguien entra en la raíz del GitHub pages (<a href="https://daviddavo.github.io/22CV">daviddavo.github.io/22CV</a>),
 que simplemente redirige a mi página web personal.</p>
-]]></content:encoded></item><item><title>Como crear un banner de "Sitio en construcción"</title><link>./es/posts/tutorials/work-in-progress/</link><pubDate>Mon, 15 Aug 2022 22:38:38 +0200</pubDate><guid>./es/posts/tutorials/work-in-progress/</guid><description>Mi página personal está hecha en Symfony. Ya, ya sé, no es la mejor elección, pero empecé cuando era joven y más descuidado, pensando que iba a haber más dinamismo, haría muchas cosas, y una página web compilada no sería suficiente.
-Hace un par de días decidí que ya era hora de empezar de cero y crear una página nueva, esta vez usando un generador estático. Acabé decidiéndome por Hugo.</description><content:encoded><![CDATA[<p>Mi página personal está hecha en Symfony. Ya, ya sé, no es la mejor elección, pero empecé cuando era joven y más descuidado, pensando que iba a haber más dinamismo, haría muchas cosas, y una página web compilada no sería suficiente.</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Como crear un banner de &#34;Sitio en construcción&#34;</title>
+      <link>/es/posts/tutorials/work-in-progress/</link>
+      <pubDate>Mon, 15 Aug 2022 22:38:38 +0200</pubDate>
+      
+      <guid>/es/posts/tutorials/work-in-progress/</guid>
+      <description>Mi página personal está hecha en Symfony. Ya, ya sé, no es la mejor elección, pero empecé cuando era joven y más descuidado, pensando que iba a haber más dinamismo, haría muchas cosas, y una página web compilada no sería suficiente.
+Hace un par de días decidí que ya era hora de empezar de cero y crear una página nueva, esta vez usando un generador estático. Acabé decidiéndome por Hugo.</description>
+      <content:encoded><![CDATA[<p>Mi página personal está hecha en Symfony. Ya, ya sé, no es la mejor elección, pero empecé cuando era joven y más descuidado, pensando que iba a haber más dinamismo, haría muchas cosas, y una página web compilada no sería suficiente.</p>
 <p>Hace un par de días decidí que ya era hora de empezar de cero y crear una página nueva, esta vez usando un generador estático. Acabé decidiéndome por <a href="https://gohugo.io">Hugo</a>.</p>
 <p>Como la página antigua era un poco&hellip; malurria, quería sacar la nueva lo antes posible. Sin embargo, aún me faltaba un banner que dijese &ldquo;eh, aún estoy trabajando en ello y seguro que faltan cosas&rdquo;. Bueno, en realidad no es completamente necesario, pero queda chulo.</p>
 <p>Mi objetivo era emular una especie de cinta de peligro, de estas negras y amarillas que te recuerdan a las obras. Hacer el fondo de rayas no fue difícil, gracias a herramientas como <a href="https://stripesgenerator.com/">stripesgenerator.com</a>, pero lo más importante es girar un poquito el componente, simulando una cinta mal colocada y cediendo ante la gravedad.</p>
@@ -122,14 +149,24 @@ Hace un par de días decidí que ya era hora de empezar de cero y crear una pág
 </p>
 <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 <p>¿Qué opinas? Ha quedado chulo, ¿no? Si haces alguna modificación, ¡no te olvides de compartirla!</p>
-]]></content:encoded></item><item><title>Como encriptar tu home y desencriptarla automágicamente</title><link>./es/posts/tutorials/crypt-home/</link><pubDate>Sun, 30 Jan 2022 15:38:09 +0000</pubDate><guid>./es/posts/tutorials/crypt-home/</guid><description>Alguna que otra vez toca llevar de paseo el portátil por las calles y el Metro de Madrid, con todos los riesgos que ello conlleva.
-El portátil en sí no me da mucha pena, pero en el disco duro hay datos. Datos relevantes. Todos pensamos que no hemos hecho nada malo y que no tenemos nada que ocultar&amp;hellip; &amp;ndash;&amp;quot;¿por qué iba a querer encriptar cosas si no soy de la mafia?</description><content:encoded><![CDATA[<p>Alguna que otra vez toca llevar de paseo el portátil por las calles y el Metro de Madrid, con todos los riesgos que ello conlleva.</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Como encriptar tu home y desencriptarla automágicamente</title>
+      <link>/es/posts/tutorials/crypt-home/</link>
+      <pubDate>Sun, 30 Jan 2022 15:38:09 +0000</pubDate>
+      
+      <guid>/es/posts/tutorials/crypt-home/</guid>
+      <description>Alguna que otra vez toca llevar de paseo el portátil por las calles y el Metro de Madrid, con todos los riesgos que ello conlleva.
+El portátil en sí no me da mucha pena, pero en el disco duro hay datos. Datos relevantes. Todos pensamos que no hemos hecho nada malo y que no tenemos nada que ocultar&amp;hellip; &amp;ndash;&amp;quot;¿por qué iba a querer encriptar cosas si no soy de la mafia?</description>
+      <content:encoded><![CDATA[<p>Alguna que otra vez toca llevar de paseo el portátil por las calles y el Metro de Madrid, con todos los riesgos que ello conlleva.</p>
 <p>El portátil en sí no me da mucha pena, pero en el disco duro hay datos. Datos relevantes.
 Todos pensamos que no hemos hecho nada malo y que no tenemos nada que ocultar&hellip; &ndash;&quot;¿por qué iba a
 querer encriptar cosas si no soy de la mafia?&quot;</p>
 <p>Pero seguro que tienes una o dos copias de tus DNIs. Tanto caducados como vigentes. Y también tendrás
 alguna factura con tu dirección de casa, y correos electrónicos con alguna contraseña, y papeles de la universidad/trabajo, y&hellip; Pues eso.</p>
-<p><img loading="lazy" src="./gifs/dwight-theoffice-identity-theft.gif" type="" alt="Gif from The Office with Dwight saying &amp;ldquo;Identity Theft is not a joke, Jim!&amp;rdquo;"  /></p>
+<p><img loading="lazy" src="/gifs/dwight-theoffice-identity-theft.gif" type="" alt="Gif from The Office with Dwight saying &amp;ldquo;Identity Theft is not a joke, Jim!&amp;rdquo;"  /></p>
 <blockquote>
 <p>El robo de identidad no es una broma, Jim!
 &ndash; Dwight K. Schrute</p>
@@ -178,7 +215,17 @@ Debería estar todo justo donde lo dejaste.</p>
 <li><a href="https://wiki.archlinux.org/title/PAM">PAM - ArchWiki</a></li>
 <li><a href="https://wiki.archlinux.org/title/Pam_mount">pam_mount - ArchWiki</a></li>
 </ul>
-]]></content:encoded></item><item><title>Cómo sobreescribir solo algunos subdominios en tu red local</title><link>./es/posts/tutorials/bind-override/</link><pubDate>Wed, 22 Dec 2021 13:17:17 +0100</pubDate><guid>./es/posts/tutorials/bind-override/</guid><description>Si tienes una pequeña red en casa, alguna vez habrás tenido problemas con el tema de dominios. Como ya sabrás, está la IP pública (la que se ve desde fuera de tu red, y conecta con el router), y las IPs privadas (las de tu red local, que empiezan por 192.168.0&amp;hellip;). Esta tecnología de asignar varias &amp;ldquo;IP privadas&amp;rdquo; a una única &amp;ldquo;IP pública&amp;rdquo; se llama enmascaramiento o &amp;ldquo;Traducción de Direcciones de Red&amp;rdquo; (NAT por sus siglas en inglés).</description><content:encoded><![CDATA[<p>Si tienes una pequeña red en casa, alguna vez habrás tenido problemas con el tema de dominios.
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Cómo sobreescribir solo algunos subdominios en tu red local</title>
+      <link>/es/posts/tutorials/bind-override/</link>
+      <pubDate>Wed, 22 Dec 2021 13:17:17 +0100</pubDate>
+      
+      <guid>/es/posts/tutorials/bind-override/</guid>
+      <description>Si tienes una pequeña red en casa, alguna vez habrás tenido problemas con el tema de dominios. Como ya sabrás, está la IP pública (la que se ve desde fuera de tu red, y conecta con el router), y las IPs privadas (las de tu red local, que empiezan por 192.168.0&amp;hellip;). Esta tecnología de asignar varias &amp;ldquo;IP privadas&amp;rdquo; a una única &amp;ldquo;IP pública&amp;rdquo; se llama enmascaramiento o &amp;ldquo;Traducción de Direcciones de Red&amp;rdquo; (NAT por sus siglas en inglés).</description>
+      <content:encoded><![CDATA[<p>Si tienes una pequeña red en casa, alguna vez habrás tenido problemas con el tema de dominios.
 Como ya sabrás, está la IP pública (la que se ve desde fuera de tu red, y conecta con el router), y las IPs privadas (las de tu red local, que empiezan por 192.168.0&hellip;).
 Esta tecnología de asignar varias &ldquo;IP privadas&rdquo; a una única &ldquo;IP pública&rdquo; se llama enmascaramiento o &ldquo;Traducción de Direcciones de Red&rdquo; (NAT por sus siglas en inglés).</p>
 <p>Esto puede causar problemas si usas DNS para asignarle un nombre de dominio a un servicio. Pongamos que tienes un blog, y le asignas el dominio <code>blog.example.com</code> a la IP pública <code>1.2.3.4</code>. En tu rúter mapeas los puertos a tu dirección local <code>192.168.1.66</code>, pero cuando quieres acceder a <code>blog.example.com</code>&hellip; ¡no funciona! Te dirá que no se puede conectar al
@@ -320,4 +367,8 @@ para que se propague al resto de dispositivos automágicamente.</p>
 <li><a href="https://en.wikipedia.org/wiki/Response_policy_zone">Wikipedia: Response policy zone</a></li>
 <li><a href="https://dnsrpz.info/">dnsrpz.info</a></li>
 </ul>
-]]></content:encoded></item></channel></rss>
+]]></content:encoded>
+    </item>
+    
+  </channel>
+</rss>

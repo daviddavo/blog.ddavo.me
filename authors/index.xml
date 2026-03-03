@@ -1,6 +1,37 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Authors on David Davó's dev log</title><link>./authors/</link><description>Recent content in Authors on David Davó's dev log</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>© David Davó 2015 - 2024</copyright><lastBuildDate>Fri, 23 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="./authors/index.xml" rel="self" type="application/rss+xml"/><item><title/><link>./authors/ddavo/</link><pubDate>Fri, 23 Jan 2026 00:00:00 +0000</pubDate><guid>./authors/ddavo/</guid><description>Research-Engineer at the Barcelona Supercomputing Center and doctoral candidate in Computer Architecture at the Polytechnic University of Catalonia.
-I hold a BsC in Computer Science from the Complutense University of Madrid (2022) and an MsC in Artificial Intelligence from the Polytechnic University of Madrid (2024). Previously, I researched online communities in blockchain at the Complutense University of Madrid.</description><content:encoded>&lt;p>Research-Engineer at the Barcelona Supercomputing Center and doctoral candidate in Computer Architecture at the Polytechnic University of Catalonia.&lt;/p>
-&lt;p>I hold a BsC in Computer Science from the Complutense University of Madrid (2022) and an MsC in Artificial Intelligence from the Polytechnic University of Madrid (2024). Previously, I researched online communities in blockchain at the Complutense University of Madrid.&lt;/p>
-</content:encoded></item><item><title/><link>./authors/ddavo24/</link><pubDate>Wed, 22 May 2024 18:27:50 +0000</pubDate><guid>./authors/ddavo24/</guid><description>Research assistant that just finished its Master’s in Artificial Intelligence at the Politechnic University of Madrid. Researching about online communities in blockchain at the Complutense University of Madrid since 2021. In 2022 I received the BsC in Computer Science at that same university, and in 2024 a MsC in Artificial Intelligence at the Politechnic University of Madrid.</description><content:encoded>&lt;p>Research assistant that just finished its Master’s in Artificial Intelligence at the Politechnic University of Madrid.
-Researching about online communities in blockchain at the Complutense University of Madrid since 2021. In 2022 I received the BsC in Computer Science at that same university, and in 2024 a MsC in Artificial Intelligence at the Politechnic University of Madrid.&lt;/p>
-</content:encoded></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Authors on David Davó&#39;s dev log</title>
+    <link>/authors/</link>
+    <description>Recent content in Authors on David Davó&#39;s dev log</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© David Davó 2015 - 2024</copyright>
+    <lastBuildDate>Fri, 23 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="/authors/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>/authors/ddavo/</link>
+      <pubDate>Fri, 23 Jan 2026 00:00:00 +0000</pubDate>
+      
+      <guid>/authors/ddavo/</guid>
+      <description>Research-Engineer at the Barcelona Supercomputing Center and doctoral candidate in Computer Architecture at the Polytechnic University of Catalonia.
+I hold a BsC in Computer Science from the Complutense University of Madrid (2022) and an MsC in Artificial Intelligence from the Polytechnic University of Madrid (2024). Previously, I researched online communities in blockchain at the Complutense University of Madrid.</description>
+      <content:encoded><![CDATA[<p>Research-Engineer at the Barcelona Supercomputing Center and doctoral candidate in Computer Architecture at the Polytechnic University of Catalonia.</p>
+<p>I hold a BsC in Computer Science from the Complutense University of Madrid (2022) and an MsC in Artificial Intelligence from the Polytechnic University of Madrid (2024). Previously, I researched online communities in blockchain at the Complutense University of Madrid.</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/authors/ddavo24/</link>
+      <pubDate>Wed, 22 May 2024 18:27:50 +0000</pubDate>
+      
+      <guid>/authors/ddavo24/</guid>
+      <description>Research assistant that just finished its Master’s in Artificial Intelligence at the Politechnic University of Madrid. Researching about online communities in blockchain at the Complutense University of Madrid since 2021. In 2022 I received the BsC in Computer Science at that same university, and in 2024 a MsC in Artificial Intelligence at the Politechnic University of Madrid.</description>
+      <content:encoded><![CDATA[<p>Research assistant that just finished its Master’s in Artificial Intelligence at the Politechnic University of Madrid.
+Researching about online communities in blockchain at the Complutense University of Madrid since 2021. In 2022 I received the BsC in Computer Science at that same university, and in 2024 a MsC in Artificial Intelligence at the Politechnic University of Madrid.</p>
+]]></content:encoded>
+    </item>
+    
+  </channel>
+</rss>

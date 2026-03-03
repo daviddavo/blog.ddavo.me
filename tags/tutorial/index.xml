@@ -1,4 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Tutorial on David Davó's dev log</title><link>./tags/tutorial/</link><description>Recent content in Tutorial on David Davó's dev log</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>© David Davó 2015 - 2024</copyright><lastBuildDate>Wed, 22 May 2024 17:54:42 +0000</lastBuildDate><atom:link href="./tags/tutorial/index.xml" rel="self" type="application/rss+xml"/><item><title>Using hugo from a GitHub codespace</title><link>./posts/tutorials/hugo-codespace/</link><pubDate>Wed, 22 May 2024 17:54:42 +0000</pubDate><guid>./posts/tutorials/hugo-codespace/</guid><description>In this tutorial we will learn how to set up GitHub codespaces to comfortably write your Hugo posts</description><content:encoded><![CDATA[<p>Once again, this post is more like a tutorial for myself (because every time I want to write a post I forget how it worked) that then I decide to share with everyone.</p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tutorial on David Davó&#39;s dev log</title>
+    <link>/tags/tutorial/</link>
+    <description>Recent content in Tutorial on David Davó&#39;s dev log</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© David Davó 2015 - 2024</copyright>
+    <lastBuildDate>Wed, 22 May 2024 17:54:42 +0000</lastBuildDate><atom:link href="/tags/tutorial/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Using hugo from a GitHub codespace</title>
+      <link>/posts/tutorials/hugo-codespace/</link>
+      <pubDate>Wed, 22 May 2024 17:54:42 +0000</pubDate>
+      
+      <guid>/posts/tutorials/hugo-codespace/</guid>
+      <description>In this tutorial we will learn how to set up GitHub codespaces to comfortably write your Hugo posts</description>
+      <content:encoded><![CDATA[<p>Once again, this post is more like a tutorial for myself (because every time I want to write a post I forget how it worked) that then I decide to share with everyone.</p>
 <h2 id="setting-up-the-devcontainer">Setting up the devcontainer</h2>
 <p>The devcontainer file tells GitHub Codespaces how to create your file. You can find my current codespaces file <a href="https://github.com/daviddavo/blog.ddavo.me/blob/main/.devcontainer/devcontainer.json">on GitHub</a>.</p>
 <p>Bellow, I copied the simplified version that was used while I was writing this post:</p>
@@ -42,8 +59,18 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo server -D --appendPort<span class="o">=</span><span class="nb">false</span> --baseURL https://<span class="nv">$CODESPACE_NAME</span>-1313.<span class="nv">$GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN</span>
 </span></span></code></pre></div><h2 id="ussing-frontmatters-run-server-button">Ussing FrontMatter&rsquo;s RUN SERVER button</h2>
 <p>To finish, the Front Matter extension has a cool &ldquo;START SERVER&rdquo; button, we can set what it does by just modifying Visual Studio&rsquo;s config, and then we will just have to press that button.</p>
-]]></content:encoded></item><item><title>Migrating from SSHFS to NFS</title><link>./posts/tutorials/migrating-from-sshfs-to-nfs/</link><pubDate>Mon, 28 Aug 2023 15:40:21 +0000</pubDate><guid>./posts/tutorials/migrating-from-sshfs-to-nfs/</guid><description>First of all, this is not a tutorial, this is more like a lab notebook of my experience trying to ditch sshfs and start using NFS.
-The main problem I had with sshfs is that it is not very reliable as a file system to remain mounted 24/7. For example, I had some problems unmounting it when it got stuck in a machine, creating lots of zombie processes. The only solution was to literally restart the machine&amp;hellip; Furthermore, its GitHub repo was archived more than a year ago, so these issues will not be addressed soon.</description><content:encoded><![CDATA[<p>First of all, this is not a tutorial, this is more like a lab notebook of my experience trying to ditch sshfs and start using NFS.</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Migrating from SSHFS to NFS</title>
+      <link>/posts/tutorials/migrating-from-sshfs-to-nfs/</link>
+      <pubDate>Mon, 28 Aug 2023 15:40:21 +0000</pubDate>
+      
+      <guid>/posts/tutorials/migrating-from-sshfs-to-nfs/</guid>
+      <description>First of all, this is not a tutorial, this is more like a lab notebook of my experience trying to ditch sshfs and start using NFS.
+The main problem I had with sshfs is that it is not very reliable as a file system to remain mounted 24/7. For example, I had some problems unmounting it when it got stuck in a machine, creating lots of zombie processes. The only solution was to literally restart the machine&amp;hellip; Furthermore, its GitHub repo was archived more than a year ago, so these issues will not be addressed soon.</description>
+      <content:encoded><![CDATA[<p>First of all, this is not a tutorial, this is more like a lab notebook of my experience trying to ditch sshfs and start using NFS.</p>
 <p>The main problem I had with sshfs is that it is not very reliable as a file system to remain mounted 24/7. For example, I had some problems unmounting it when it got stuck in a machine, creating lots of zombie processes. The only solution was to literally restart the machine&hellip; Furthermore, its <a href="https://github.com/libfuse/sshfs">GitHub repo</a> was archived more than a year ago, so these issues will not be addressed soon.</p>
 <h2 id="previous-setup">Previous setup</h2>
 <p>Instead of mounting the volume(s) using fstab, I decided to use a <code>.mount</code> file. It is a systemd unit that you can enable/disable using the <code>systemctl</code> command. You can check if the unit was successfully mounted just using <code>systemctl status</code>. In most systems, a <code>fstab</code> entry will just be converted to a <code>.mount</code> unit anyway. I discovered it recently, but you can just do <code>systemctl cat -- -.mount</code> and see the unit file created to mount your root filesystem.</p>
@@ -99,7 +126,17 @@ The main problem I had with sshfs is that it is not very reliable as a file syst
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">nfs_publicmedia:/media</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l">ls /media &amp;&amp; sleep 3600</span><span class="w">
 </span></span></span></code></pre></div><p>There&rsquo;s no need anymore to mount the filesystem in each machine, it is automatically deployed thanks to docker stack!</p>
-]]></content:encoded></item><item><title>How to export your Pocket data to Omnivore</title><link>./posts/tutorials/pocket-to-omnivore/</link><pubDate>Sun, 21 May 2023 18:13:36 +0000</pubDate><guid>./posts/tutorials/pocket-to-omnivore/</guid><description>In this tutorial I provide a Jupyter notebook to exp your data from Pocket and upload it to Omnivoreort</description><content:encoded><![CDATA[<blockquote>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>How to export your Pocket data to Omnivore</title>
+      <link>/posts/tutorials/pocket-to-omnivore/</link>
+      <pubDate>Sun, 21 May 2023 18:13:36 +0000</pubDate>
+      
+      <guid>/posts/tutorials/pocket-to-omnivore/</guid>
+      <description>In this tutorial I provide a Jupyter notebook to exp your data from Pocket and upload it to Omnivoreort</description>
+      <content:encoded><![CDATA[<blockquote>
 <p><strong>Important notice</strong>: Pocket connection is now officialy available in their <a href="https://omnivore.app/settings/integrations">integrations</a> page</p>
 <p>&ndash; <a href="https://docs.omnivore.app/using/importing.html#importing-data-from-pocket">https://docs.omnivore.app/using/importing.html#importing-data-from-pocket</a></p>
 <p>Nevertheless, you can read our code if you want to learn about
@@ -122,7 +159,7 @@ This notebook doesn&rsquo;t just create the article, it also archives it if it h
 <h3 id="getting-an-omnivore-api-key">Getting an Omnivore API key</h3>
 <p>Because we are using a custom-made application, you will need a key to interact with Omnivore. You can find info on how
 to create an Omnivore API key in the <a href="https://docs.omnivore.app/integrations/api.html#getting-an-api-token">official documentation</a>.</p>
-<p><img loading="lazy" src="./images/omnivore-web-create-api-token.png" type="" alt="Getting an omnivore API key"  /></p>
+<p><img loading="lazy" src="/images/omnivore-web-create-api-token.png" type="" alt="Getting an omnivore API key"  /></p>
 <p>Keep in mind that this API key will be hidden, so make sure to copy it somewhere and don&rsquo;t lose it, as we will need it in the next step.</p>
 <p>If you lose it, don&rsquo;t worry though, you can always create a new one and delete the unused one.</p>
 <h3 id="running-the-jupyter-notebook">Running the Jupyter Notebook</h3>
@@ -140,7 +177,17 @@ to create an Omnivore API key in the <a href="https://docs.omnivore.app/integrat
 have a title or a description. This is because it takes a while to crawl the website.</p>
 <p>If it raises a 403 error, the most probable thing is that you entered your API key wrong, or that it expired. Feel free to comment any errors you encounter below or in <a href="https://github.com/daviddavo/pocket2omnivore/issues">GitHub Issues</a>.</p>
 <p>By the way, did you know that this page is intended to be fully compatible with Omnivore? Try adding some of my posts to your list!</p>
-]]></content:encoded></item><item><title>Using ROS2 in Coppelia</title><link>./posts/tutorials/ros2-coppelia-lidar/</link><pubDate>Tue, 31 Jan 2023 20:08:41 +0000</pubDate><guid>./posts/tutorials/ros2-coppelia-lidar/</guid><description>With this tutorial you will learn how to use ROS2 in the Coppelia simulator (formerly V-REP) with the simExtROS2 library, using the lidar to build a map.</description><content:encoded><![CDATA[<h2 id="introduction">Introduction</h2>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Using ROS2 in Coppelia</title>
+      <link>/posts/tutorials/ros2-coppelia-lidar/</link>
+      <pubDate>Tue, 31 Jan 2023 20:08:41 +0000</pubDate>
+      
+      <guid>/posts/tutorials/ros2-coppelia-lidar/</guid>
+      <description>With this tutorial you will learn how to use ROS2 in the Coppelia simulator (formerly V-REP) with the simExtROS2 library, using the lidar to build a map.</description>
+      <content:encoded><![CDATA[<h2 id="introduction">Introduction</h2>
 <p>Let&rsquo;s be honest, if you&rsquo;re here it&rsquo;s probably because you found this blog on Google.
 As I understand it, at the moment there are no comprehensible resources to use
 ROS2 with the Coppelia simulator (previously known as V-REP), and it is no simple task.</p>
@@ -471,8 +518,18 @@ create your own to make the robot move autonomously.</p>
 <li><a href="https://navigation.ros.org/setup_guides/transformation/setup_transforms.html">ROS Planning. Setting Up Transformations</a>. NAV2 documentation is overall a good source material to understand how ROS works.</li>
 <li><a href="https://www.ros.org/reps/rep-0105.html">REP 105 &ndash; Coordinate Frames for Mobile Platforms</a></li>
 </ul>
-]]></content:encoded></item><item><title>Compiling and publishing multilingual LaTeX with GitHub</title><link>./posts/tutorials/automatic-latex-cv/</link><pubDate>Thu, 01 Sep 2022 19:14:22 +0000</pubDate><guid>./posts/tutorials/automatic-latex-cv/</guid><description>I have been wanting to publish my CV in my personal site for quite some time, but first I needed to make sure that it was always up-to-date. I.e. that it was compiled and published automatically every time I made some changes to the source file.
-Since 5 years ago, my CV is written using LaTeX, using (and modifying) the Awesome CV template. On top of that, I added a few things to make it bilingual, compiling either in Spanish or English, making the document available in multiple languages.</description><content:encoded><![CDATA[<p>I have been wanting to publish my CV in my personal site for quite some time, but first I needed
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Compiling and publishing multilingual LaTeX with GitHub</title>
+      <link>/posts/tutorials/automatic-latex-cv/</link>
+      <pubDate>Thu, 01 Sep 2022 19:14:22 +0000</pubDate>
+      
+      <guid>/posts/tutorials/automatic-latex-cv/</guid>
+      <description>I have been wanting to publish my CV in my personal site for quite some time, but first I needed to make sure that it was always up-to-date. I.e. that it was compiled and published automatically every time I made some changes to the source file.
+Since 5 years ago, my CV is written using LaTeX, using (and modifying) the Awesome CV template. On top of that, I added a few things to make it bilingual, compiling either in Spanish or English, making the document available in multiple languages.</description>
+      <content:encoded><![CDATA[<p>I have been wanting to publish my CV in my personal site for quite some time, but first I needed
 to make sure that it was always up-to-date. I.e. that it was compiled and published automatically
 every time I made some changes to the source file.</p>
 <p>Since 5 years ago, my CV is written using LaTeX, using (and modifying) the <a href="https://github.com/posquit0/Awesome-CV">Awesome CV</a> template. On top of that, I added a few things to make it bilingual, compiling
@@ -579,9 +636,19 @@ that the files are only two pages long.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">artifact-name</span><span class="p">:</span><span class="w"> </span><span class="l">build</span><span class="w">
 </span></span></span></code></pre></div><p>The final touch is a small raw HTML page that redirects to my personal webpage, in the event someone
 goes into the root of the page: <a href="https://daviddavo.github.io/22CV">daviddavo.github.io/22CV</a></p>
-]]></content:encoded></item><item><title>How to create a "Work in progress" banner for your website</title><link>./posts/tutorials/work-in-progress/</link><pubDate>Mon, 15 Aug 2022 22:38:38 +0200</pubDate><guid>./posts/tutorials/work-in-progress/</guid><description>My personal website is currently made in Symfony. Yeah, I know, not the best thing for this purpose, but I started it a few years ago, when I was younger and carelessler&amp;hellip;
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>How to create a &#34;Work in progress&#34; banner for your website</title>
+      <link>/posts/tutorials/work-in-progress/</link>
+      <pubDate>Mon, 15 Aug 2022 22:38:38 +0200</pubDate>
+      
+      <guid>/posts/tutorials/work-in-progress/</guid>
+      <description>My personal website is currently made in Symfony. Yeah, I know, not the best thing for this purpose, but I started it a few years ago, when I was younger and carelessler&amp;hellip;
 A few days ago, I decided I wanted to refactor my website and create a whole new one, using a static site generator. Ended up deciding on Hugo, btw.
-As the old one was a bit, well, clunky, I wanted the new one to be online ASAP as possible.</description><content:encoded><![CDATA[<p>My personal website is currently made in Symfony. Yeah, I know, not the best thing for this purpose, but I started it a few years ago, when I was younger and carelessler&hellip;</p>
+As the old one was a bit, well, clunky, I wanted the new one to be online ASAP as possible.</description>
+      <content:encoded><![CDATA[<p>My personal website is currently made in Symfony. Yeah, I know, not the best thing for this purpose, but I started it a few years ago, when I was younger and carelessler&hellip;</p>
 <p>A few days ago, I decided I wanted to refactor my website and create a whole new one, using a static site generator. Ended up deciding on Hugo, btw.</p>
 <p>As the old one was a bit, well, clunky, I wanted the new one to be online ASAP as possible. But I needed a banner that said &ldquo;hey, I&rsquo;m still working on it, be careful&rdquo;. Well, I don&rsquo;t really needed it, but it&rsquo;s cool nevertheless.</p>
 <p>My objective was to emulate a kind of &ldquo;caution&rdquo; tape, the yellow and black one that reminds you of roadworks. Making a stripes background wasn&rsquo;t difficult, thanks to tools like <a href="https://stripesgenerator.com/">stripesgenerator.com</a>, but the most important thing of all is adding a little tilt, simulating the falling tape.</p>
@@ -594,7 +661,17 @@ As the old one was a bit, well, clunky, I wanted the new one to be online ASAP a
 </p>
 <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 <p>What do you think? Pretty neat, huh? If you have any comments on it, share your modifications!.</p>
-]]></content:encoded></item><item><title>How to override some domain names in your local network</title><link>./posts/tutorials/bind-override/</link><pubDate>Wed, 22 Dec 2021 13:17:17 +0100</pubDate><guid>./posts/tutorials/bind-override/</guid><description>In this tutorial you will learn how to override some domain names in your local network configuring a Response Policy Zone in the bind9 server</description><content:encoded><![CDATA[<p>If you have a small home local network, perhaps you&rsquo;ve had problems accessing your domain names.
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>How to override some domain names in your local network</title>
+      <link>/posts/tutorials/bind-override/</link>
+      <pubDate>Wed, 22 Dec 2021 13:17:17 +0100</pubDate>
+      
+      <guid>/posts/tutorials/bind-override/</guid>
+      <description>In this tutorial you will learn how to override some domain names in your local network configuring a Response Policy Zone in the bind9 server</description>
+      <content:encoded><![CDATA[<p>If you have a small home local network, perhaps you&rsquo;ve had problems accessing your domain names.
 As you may already know, in your home network you have a public IP (given by your ISP) and a set of private or local IP addresses used among your devices in your local network.
 The technology that allows mapping a lot of private addresses to a unique public address is called masquerading or Network Address Translation (NAT).</p>
 <p>Issues arise when you use a DNS to assign a domain name to a service. For example, let&rsquo;s say you have a blog, and you want to map the domain <code>blog.example.com</code> to the public IP <code>1.2.3.4</code>. In your router, you do a port mapping to the device with a local address <code>192.168.1.66</code>. But when you want to access <code>blog.example.com</code> in your web browser inside your local network&hellip; it doesn&rsquo;t work! It says something along the lines of &ldquo;Unable to connect to the host&rdquo; &ndash; but the host is just right THERE! &ndash;.
@@ -734,4 +811,8 @@ which allows us to make queries to a given DNS server instead of using the defau
 <li><a href="https://en.wikipedia.org/wiki/Network_address_translation">Wikipedia: Network Address Translation</a></li>
 <li><a href="https://dnsrpz.info/">dnsrpz.info</a></li>
 </ul>
-]]></content:encoded></item></channel></rss>
+]]></content:encoded>
+    </item>
+    
+  </channel>
+</rss>

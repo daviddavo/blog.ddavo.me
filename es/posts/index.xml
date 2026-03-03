@@ -1,4 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on David Davó's dev log</title><link>./es/posts/</link><description>Recent content in Posts on David Davó's dev log</description><generator>Hugo -- gohugo.io</generator><language>es</language><copyright>© David Davó 2015 - 2024</copyright><lastBuildDate>Fri, 23 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="./es/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>El ancho de banda del lenguaje</title><link>./es/posts/2026-01-23-speech/</link><pubDate>Fri, 23 Jan 2026 00:00:00 +0000</pubDate><guid>./es/posts/2026-01-23-speech/</guid><description>Cómo diferentes idiomas equilibran la densidad de sílabas y el contenido de información para transmitir información a aproximadamente la misma velocidad</description><content:encoded><![CDATA[<p>Es cierto que idiomas como el español y el japonés son más rápidos que el inglés en &ldquo;sílabas por segundo&rdquo;, pero la velocidad de articulación no lo es todo.</p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Posts on David Davó&#39;s dev log</title>
+    <link>/es/posts/</link>
+    <description>Recent content in Posts on David Davó&#39;s dev log</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es</language>
+    <copyright>© David Davó 2015 - 2024</copyright>
+    <lastBuildDate>Fri, 23 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="/es/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>El ancho de banda del lenguaje</title>
+      <link>/es/posts/2026-01-23-speech/</link>
+      <pubDate>Fri, 23 Jan 2026 00:00:00 +0000</pubDate>
+      
+      <guid>/es/posts/2026-01-23-speech/</guid>
+      <description>Cómo diferentes idiomas equilibran la densidad de sílabas y el contenido de información para transmitir información a aproximadamente la misma velocidad</description>
+      <content:encoded><![CDATA[<p>Es cierto que idiomas como el español y el japonés son más rápidos que el inglés en &ldquo;sílabas por segundo&rdquo;, pero la velocidad de articulación no lo es todo.</p>
 <p>Los idiomas que se hablan más rápido tienden a incluir menos información por sílaba, compensando así la diferencia. Por el contrario, idiomas como el mandarín concentran más información en cada sílaba, aunque se hablen a menor velocidad.</p>
 <p>Al combinar ambos factores, resulta que transmitimos información a una velocidad prácticamente constante, independientemente del idioma: aproximadamente 39 bits por segundo.</p>
 <p>Este equilibrio recuerda al funcionamiento de las redes de comunicación, donde según Nyquist y Shannon, con menos símbolos puedes transmitir más rápido manteniendo el mismo ancho de banda.</p>
@@ -6,10 +23,20 @@
 <p>En teoría, el español y el japonés deberían ser más resistentes en entornos ruidosos (bajo SNR) que idiomas de alta densidad informativa como el mandarín o el inglés.</p>
 <hr>
 <p><em>Este es un breve artículo de divulgación científica basado en: Coupé, C., Oh, Y. M., Dediu, D., &amp; Pellegrino, F. (2019). Different languages, similar encoding efficiency: Comparable information rates across the human communicative niche. Science Advances, 5(9). <a href="https://doi.org/10.1126/sciadv.aaw2594">https://doi.org/10.1126/sciadv.aaw2594</a></em></p>
-]]></content:encoded></item><item><title>Sobre los criptosellos de Mortadelo</title><link>./es/posts/dataviz/criptosellos-correos-mortadelo/</link><pubDate>Thu, 22 Jan 2026 14:39:53 +0000</pubDate><guid>./es/posts/dataviz/criptosellos-correos-mortadelo/</guid><description>En este post analizaré someramente la implementación y el uso de los criptosellos en blockchain sacados recientemente por Correos</description><content:encoded><![CDATA[<p>Hace bien poco Correos España ha decidido sacar al mercado una colección de &ldquo;Criptosellos&rdquo; basados en el famoso personaje de Francisco Ibáñez: <del>el profesor Bacterio</del> Mortadelo. Además del sello físico especial que muestra a Mortadelo andando con su cajita y toda la parafernalia que puede ser usado con un valor nominal de 10€, te entregan un código que puede ser canjeado para obtener un NFT. Todos los sellos físicos tienen el mismo dibujo, pero el NFT muestra uno de los 5 posibles <em>criptosellos</em> que pueden tocarte, cada uno con una tirada distinta y basados en uno de sus clásicos disfraces.</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Sobre los criptosellos de Mortadelo</title>
+      <link>/es/posts/dataviz/criptosellos-correos-mortadelo/</link>
+      <pubDate>Thu, 22 Jan 2026 14:39:53 +0000</pubDate>
+      
+      <guid>/es/posts/dataviz/criptosellos-correos-mortadelo/</guid>
+      <description>En este post analizaré someramente la implementación y el uso de los criptosellos en blockchain sacados recientemente por Correos</description>
+      <content:encoded><![CDATA[<p>Hace bien poco Correos España ha decidido sacar al mercado una colección de &ldquo;Criptosellos&rdquo; basados en el famoso personaje de Francisco Ibáñez: <del>el profesor Bacterio</del> Mortadelo. Además del sello físico especial que muestra a Mortadelo andando con su cajita y toda la parafernalia que puede ser usado con un valor nominal de 10€, te entregan un código que puede ser canjeado para obtener un NFT. Todos los sellos físicos tienen el mismo dibujo, pero el NFT muestra uno de los 5 posibles <em>criptosellos</em> que pueden tocarte, cada uno con una tirada distinta y basados en uno de sus clásicos disfraces.</p>
 <figure>
-        <img loading="lazy" srcset="./posts/dataviz/criptosellos-correos-mortadelo/todos-criptosellos_hufaaed248ba8d28c8bf7cb8138998d06c_207436_360x0_resize_q75_h2_box_2.webp 360w ,./posts/dataviz/criptosellos-correos-mortadelo/todos-criptosellos_hufaaed248ba8d28c8bf7cb8138998d06c_207436_480x0_resize_q75_h2_box_2.webp 480w ,./posts/dataviz/criptosellos-correos-mortadelo/todos-criptosellos_hufaaed248ba8d28c8bf7cb8138998d06c_207436_720x0_resize_q75_h2_box_2.webp 720w ,./posts/dataviz/criptosellos-correos-mortadelo/todos-criptosellos_hufaaed248ba8d28c8bf7cb8138998d06c_207436_1080x0_resize_q75_h2_box_2.webp 1080w ,./posts/dataviz/criptosellos-correos-mortadelo/todos-criptosellos_hufaaed248ba8d28c8bf7cb8138998d06c_207436_1500x0_resize_q75_h2_box_2.webp 1500w ,./posts/dataviz/criptosellos-correos-mortadelo/todos-criptosellos.webp 2502w" 
-            sizes="(min-width: 768px) 720px, 100vw" src="./posts/dataviz/criptosellos-correos-mortadelo/todos-criptosellos.webp" alt="Se muestran los 5 sellos que pueden tocar, basados en 5 disfraces de Mortadelo" 
+        <img loading="lazy" srcset="/posts/dataviz/criptosellos-correos-mortadelo/todos-criptosellos_hufaaed248ba8d28c8bf7cb8138998d06c_207436_360x0_resize_q75_h2_box_2.webp 360w ,/posts/dataviz/criptosellos-correos-mortadelo/todos-criptosellos_hufaaed248ba8d28c8bf7cb8138998d06c_207436_480x0_resize_q75_h2_box_2.webp 480w ,/posts/dataviz/criptosellos-correos-mortadelo/todos-criptosellos_hufaaed248ba8d28c8bf7cb8138998d06c_207436_720x0_resize_q75_h2_box_2.webp 720w ,/posts/dataviz/criptosellos-correos-mortadelo/todos-criptosellos_hufaaed248ba8d28c8bf7cb8138998d06c_207436_1080x0_resize_q75_h2_box_2.webp 1080w ,/posts/dataviz/criptosellos-correos-mortadelo/todos-criptosellos_hufaaed248ba8d28c8bf7cb8138998d06c_207436_1500x0_resize_q75_h2_box_2.webp 1500w ,/posts/dataviz/criptosellos-correos-mortadelo/todos-criptosellos.webp 2502w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="/posts/dataviz/criptosellos-correos-mortadelo/todos-criptosellos.webp" alt="Se muestran los 5 sellos que pueden tocar, basados en 5 disfraces de Mortadelo" 
             width="2502" height="743"><figcaption>
             <p>Los 5 Criptosellos posibles y su tirada. / <i>
                     <a href="https://fesofi.es/noticias/primer-criptosello-espanol/">Federación Española de Sociedades Filatélicas</a></p></i>
@@ -122,14 +149,24 @@ una media de <span id="criptosellos-daily-avg" data-url="https://r2.blog.ddavo.m
 <blockquote>
 <p>Los datos se han obtenido mediante Dune Analytics, una plataforma de analísis de datos de cadenas blockchain. <a href="https://dune.com/ddavo/criptosellos">Aquí podéis encotrar las consultas y datos utilizados</a>.</p>
 </blockquote>
-]]></content:encoded></item><item><title>¿Cómo se llaman mis servidores?</title><link>./es/posts/server-names/</link><pubDate>Sun, 03 Sep 2023 11:19:15 +0000</pubDate><guid>./es/posts/server-names/</guid><description>Cuando uno monta un servidor, una de las primeras cosas que debe establecer es su hostname y, aunque no le demos un botellazo como a los barcos, hay que bautizarlo.
-Como los servidores los montan informáticos y estos tienden a ser un poco frikis, los pobres acaban con nombres&amp;hellip; curiosos. En las grandes empresas suele haber estándares estrictos sobre como debe ser el nombre, normalmente con siglas, acrónimos y números indescifrables para alguien que no trabaje allí.</description><content:encoded><![CDATA[<p>Cuando uno monta un servidor, una de las primeras cosas que debe establecer es su <em>hostname</em> y, aunque no le demos un botellazo como a los barcos, hay que bautizarlo.</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>¿Cómo se llaman mis servidores?</title>
+      <link>/es/posts/server-names/</link>
+      <pubDate>Sun, 03 Sep 2023 11:19:15 +0000</pubDate>
+      
+      <guid>/es/posts/server-names/</guid>
+      <description>Cuando uno monta un servidor, una de las primeras cosas que debe establecer es su hostname y, aunque no le demos un botellazo como a los barcos, hay que bautizarlo.
+Como los servidores los montan informáticos y estos tienden a ser un poco frikis, los pobres acaban con nombres&amp;hellip; curiosos. En las grandes empresas suele haber estándares estrictos sobre como debe ser el nombre, normalmente con siglas, acrónimos y números indescifrables para alguien que no trabaje allí.</description>
+      <content:encoded><![CDATA[<p>Cuando uno monta un servidor, una de las primeras cosas que debe establecer es su <em>hostname</em> y, aunque no le demos un botellazo como a los barcos, hay que bautizarlo.</p>
 <p>Como los servidores los montan informáticos y estos tienden a ser un poco frikis, los pobres acaban con nombres&hellip; curiosos. En las grandes empresas suele haber estándares estrictos sobre como debe ser el nombre, normalmente con siglas, acrónimos y números indescifrables para alguien que no trabaje allí. Pero las pequeñas empresas y los que tenemos servidores por hobby tenemos más libertad, y ahí es donde comienza la fiesta.</p>
 <p>En un principio, mis equipos tenían nombres sosos: <em>davo-pc</em> y <em>davo-laptop</em>. Pero todo cambió cuando compré mi primera Raspberry Pi. En un principio era <em>rpi</em> o algo por el estilo, el nombre por defecto, vamos. Empezó a dar fallos y había que reiniciarla del botoncito, así que decidí poner una nueva tarjeta y, ya que estaba, re-instalar el SO en el resto de equipos y así borrar todos los programas tochos que había tenido que instalar para la uni.</p>
 <p>Por esa época, yo estaba viendo el anime de ciencia ficción  <em>Space Battleship Yamato</em>. En esta serie, la humanidad se ha diezmado por una pandemia y unos valientes deben ir en el barco espacial <em>Yamato</em> desde la tierra (<em>Chikyuu</em> en Japonés) hasta <em>Iscandar</em>, el planeta donde se encuentra la cura. Por esa razón, decidí llamar a mi raspberry <strong>Chikyuu</strong>, a mi pc principal y servidor secundario <strong>Iscandar</strong> y, al portátil que usaba desde fuera de casa para conectarme a ambos, <strong>Yamato</strong>. Además, este tocho portátil de varios kilos era igual de basto que el propio Yamato.</p>
 <figure>
-        <img loading="lazy" srcset="./posts/server-names/yamato_hu25f52de6b49f4bb2901d18b48758f647_224546_360x0_resize_q75_h2_box_2.webp 360w ,./posts/server-names/yamato_hu25f52de6b49f4bb2901d18b48758f647_224546_480x0_resize_q75_h2_box_2.webp 480w ,./posts/server-names/yamato_hu25f52de6b49f4bb2901d18b48758f647_224546_720x0_resize_q75_h2_box_2.webp 720w ,./posts/server-names/yamato_hu25f52de6b49f4bb2901d18b48758f647_224546_1080x0_resize_q75_h2_box_2.webp 1080w ,./posts/server-names/yamato.webp 1200w" 
-            sizes="(min-width: 768px) 720px, 100vw" src="./posts/server-names/yamato.webp" alt="Visualización del barco destructor Yamato, en el espacio" 
+        <img loading="lazy" srcset="/posts/server-names/yamato_hu25f52de6b49f4bb2901d18b48758f647_224546_360x0_resize_q75_h2_box_2.webp 360w ,/posts/server-names/yamato_hu25f52de6b49f4bb2901d18b48758f647_224546_480x0_resize_q75_h2_box_2.webp 480w ,/posts/server-names/yamato_hu25f52de6b49f4bb2901d18b48758f647_224546_720x0_resize_q75_h2_box_2.webp 720w ,/posts/server-names/yamato_hu25f52de6b49f4bb2901d18b48758f647_224546_1080x0_resize_q75_h2_box_2.webp 1080w ,/posts/server-names/yamato.webp 1200w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="/posts/server-names/yamato.webp" alt="Visualización del barco destructor Yamato, en el espacio" 
             width="1200" height="675"><figcaption>
             <p>El famoso Barco Espacial Yamato surcando los confines del espacio hacia Iscandar. Fuente: <a href="https://www.crunchyroll.com/es-es/series/GG5H5X3Z9/space-battleship-yamato">Crunchyroll</a></p>
         </figcaption>
@@ -140,15 +177,25 @@ Como los servidores los montan informáticos y estos tienden a ser un poco friki
 <p>Pero esta vez estaba viendo otro anime de ciencia ficción distinto: Mobile Suit Gundam: The Witch from Mercury.
 En este caso, el nuevo portátil fue bautizado como <strong>Aerial</strong>, igual que el mecha de la protagonista de la serie. Limpié el antiguo Yamato, le instalé un disco duro nuevo con un sistema operativo de servidor, con el objetivo de que se convirtiese en mi servidor multimedia y que tsuki no trabajase tanto. Este &ldquo;nuevo&rdquo; servidor recibió el nombre de <em>Suisei</em> (Mercurio en Japonés), en honor al planeta de origen de la protagonista.</p>
 <figure>
-        <img loading="lazy" srcset="./posts/server-names/aerial_hu83a3cbb80a2c94beb601d671cab415a1_64610_360x0_resize_q75_h2_box_2.webp 360w ,./posts/server-names/aerial_hu83a3cbb80a2c94beb601d671cab415a1_64610_480x0_resize_q75_h2_box_2.webp 480w ,./posts/server-names/aerial_hu83a3cbb80a2c94beb601d671cab415a1_64610_720x0_resize_q75_h2_box_2.webp 720w ,./posts/server-names/aerial.webp 728w" 
-            sizes="(min-width: 768px) 720px, 100vw" src="./posts/server-names/aerial.webp" alt="Suletta Mercury y su robot Aerial" 
+        <img loading="lazy" srcset="/posts/server-names/aerial_hu83a3cbb80a2c94beb601d671cab415a1_64610_360x0_resize_q75_h2_box_2.webp 360w ,/posts/server-names/aerial_hu83a3cbb80a2c94beb601d671cab415a1_64610_480x0_resize_q75_h2_box_2.webp 480w ,/posts/server-names/aerial_hu83a3cbb80a2c94beb601d671cab415a1_64610_720x0_resize_q75_h2_box_2.webp 720w ,/posts/server-names/aerial.webp 728w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="/posts/server-names/aerial.webp" alt="Suletta Mercury y su robot Aerial" 
             width="728" height="379"><figcaption>
             <p>Suletta Mercury y su robot mecha Aerial. Fuente: <a href="https://www.pixiv.net/en/artworks/107380318">Pixiv</a></p>
         </figcaption>
 </figure>
 
 <p>Los nombres que elegimos para los servidores reflejan nuestros intereses y experiencias, cada nombre cuenta una historia. Para los que tenemos este hobby, nuestros dispositivos se convierten en algo más que simples herramientas, son <em>personajes</em> dentro de nuestra épica y narrativa, personajes por los que llegamos a sentir cierto cariño u orgullo, por los que sentimos cierta pena cuando dejan de funcionar y hay que desconectarlos de la red tras años de servicio. Asi que, la próxima vez que estés configurando un equipo, recuerda que el nombre que le das puede ser mucho más que una etiqueta, es una forma de expresar nuestra conexión personal con la tecnología, un arte.</p>
-]]></content:encoded></item><item><title>Evitar los gastos de aduanas de Amiami España</title><link>./es/posts/tutorials/aduanas-envios-correos-amiami/</link><pubDate>Wed, 09 Aug 2023 20:03:41 +0000</pubDate><guid>./es/posts/tutorials/aduanas-envios-correos-amiami/</guid><description>En este tutorial veremos como evitar pagar entre 5 y 25€ al pasar por aduanas en un envío que viene por correos España</description><content:encoded><![CDATA[<p>En primer lugar y antes de empezar, este <strong>no es un tutorial de evasión de impuestos</strong>. Por internet rulan muchos trucos del almendruco para ahorrarse pagar el IVA, que si los paquetes de Amiami por SAL tardan más pero no los suelen parar, que si EMS lo paran siempre&hellip; Son rumores urbanos del pasado, porque desde hace un par de años <a href="https://www.eleconomista.es/tecnologia/noticias/11262237/06/21/Se-acabo-el-chollo-de-AliExpress-sera-mas-caro-comprar-en-tiendas-de-importacion.html">todos los bienes de importación en la Unión Europea están sujetos a IVA</a>, sin importar su precio. Es verdad que antes si parecía barato y estaban ocupados no lo paraban, pero ya no puedes contar con ello.</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Evitar los gastos de aduanas de Amiami España</title>
+      <link>/es/posts/tutorials/aduanas-envios-correos-amiami/</link>
+      <pubDate>Wed, 09 Aug 2023 20:03:41 +0000</pubDate>
+      
+      <guid>/es/posts/tutorials/aduanas-envios-correos-amiami/</guid>
+      <description>En este tutorial veremos como evitar pagar entre 5 y 25€ al pasar por aduanas en un envío que viene por correos España</description>
+      <content:encoded><![CDATA[<p>En primer lugar y antes de empezar, este <strong>no es un tutorial de evasión de impuestos</strong>. Por internet rulan muchos trucos del almendruco para ahorrarse pagar el IVA, que si los paquetes de Amiami por SAL tardan más pero no los suelen parar, que si EMS lo paran siempre&hellip; Son rumores urbanos del pasado, porque desde hace un par de años <a href="https://www.eleconomista.es/tecnologia/noticias/11262237/06/21/Se-acabo-el-chollo-de-AliExpress-sera-mas-caro-comprar-en-tiendas-de-importacion.html">todos los bienes de importación en la Unión Europea están sujetos a IVA</a>, sin importar su precio. Es verdad que antes si parecía barato y estaban ocupados no lo paraban, pero ya no puedes contar con ello.</p>
 <p>Entonces, ¿por qué hago este tutorial? Pues porque algo que fastidia mucho es que, además de el IVA (un 10% en libros y un 21% en otros productos como nendoroids o figuras de anime), Correos te cobra 8-25 euros en concepto de &ldquo;Gestión de la importación de envíos de escaso valor con tramitazión del cobro en Oficina o Domicilio&rdquo;. Un dinero que puedes ahorrarte, desde luego.</p>
 <p>Otros mensajeros también te cobran un pastón además de aduanas, aunque en este tutorial me centraré en Correos, tal vez te sirva para otro tipo de pedidos.</p>
 <p>Esto depende de una cosa: ¿los productos que has comprado en Amiami tienen un valor mayor o menor a 150€? Tranquilo porque lo que vas a pagar es lo mismo, la única diferencia es el procedimiento.</p>
@@ -164,8 +211,8 @@ En este caso, el nuevo portátil fue bautizado como <strong>Aerial</strong>, igu
 <p>Tienes que meterte todos los días un par de veces a ver cómo está tu envío, hasta que aparezca un mensaje diciendo que ya está en aduanas. Aunque Correos no manda SMS ni e-mails avisando del estado de tu pedido, puedes usar la web de <a href="https://trackings.post.japanpost.jp/services/srv/search/?locale=en">Japan Post</a> para seguir el envío y activar alertas por correo electrónico.</p>
 <p>Una vez en la aplicación salga el aviso de que está en aduanas, puedes ir al apartado de &ldquo;Gestión de Envíos&rdquo; de la App y seleccionar &ldquo;Aduanas&rdquo;, ahí ya podrás <em>crear un nuevo trámite</em>, introducir el código del envío y pagar el IVA + 1.50€ con tu tarjeta de crédito, dejando todo resuelto.</p>
 <figure>
-        <img loading="lazy" srcset="./posts/tutorials/aduanas-amiami/Screenshot_2023-06-23-11-00-24-033_es.correos.widget_huc8e3abeb0654f14e6cd2aca2557347d1_192506_360x0_resize_q75_box.jpg 360w ,./posts/tutorials/aduanas-amiami/Screenshot_2023-06-23-11-00-24-033_es.correos.widget_huc8e3abeb0654f14e6cd2aca2557347d1_192506_480x0_resize_q75_box.jpg 480w ,./posts/tutorials/aduanas-amiami/Screenshot_2023-06-23-11-00-24-033_es.correos.widget_huc8e3abeb0654f14e6cd2aca2557347d1_192506_720x0_resize_q75_box.jpg 720w ,./posts/tutorials/aduanas-amiami/Screenshot_2023-06-23-11-00-24-033_es.correos.widget_huc8e3abeb0654f14e6cd2aca2557347d1_192506_1080x0_resize_q75_box.jpg 1080w ,./posts/tutorials/aduanas-amiami/Screenshot_2023-06-23-11-00-24-033_es.correos.widget.jpg 1080w" 
-            sizes="(min-width: 768px) 720px, 100vw" src="./posts/tutorials/aduanas-amiami/Screenshot_2023-06-23-11-00-24-033_es.correos.widget.jpg" alt="Captura de pantalla de la aplicación de Correos" 
+        <img loading="lazy" srcset="/posts/tutorials/aduanas-amiami/Screenshot_2023-06-23-11-00-24-033_es.correos.widget_huc8e3abeb0654f14e6cd2aca2557347d1_192506_360x0_resize_q75_box.jpg 360w ,/posts/tutorials/aduanas-amiami/Screenshot_2023-06-23-11-00-24-033_es.correos.widget_huc8e3abeb0654f14e6cd2aca2557347d1_192506_480x0_resize_q75_box.jpg 480w ,/posts/tutorials/aduanas-amiami/Screenshot_2023-06-23-11-00-24-033_es.correos.widget_huc8e3abeb0654f14e6cd2aca2557347d1_192506_720x0_resize_q75_box.jpg 720w ,/posts/tutorials/aduanas-amiami/Screenshot_2023-06-23-11-00-24-033_es.correos.widget_huc8e3abeb0654f14e6cd2aca2557347d1_192506_1080x0_resize_q75_box.jpg 1080w ,/posts/tutorials/aduanas-amiami/Screenshot_2023-06-23-11-00-24-033_es.correos.widget.jpg 1080w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="/posts/tutorials/aduanas-amiami/Screenshot_2023-06-23-11-00-24-033_es.correos.widget.jpg" alt="Captura de pantalla de la aplicación de Correos" 
             width="1080" height="2149">
 </figure>
 
@@ -178,8 +225,8 @@ En este caso, el nuevo portátil fue bautizado como <strong>Aerial</strong>, igu
 <p>Con este método no hace falta crearse una cuenta, tan solo tienes que entrar en <a href="https://www.correosaduanas.es">correosaduanas.es</a>.</p>
 <p>Tienes que entrar todos los días un par de veces y poner el número de envío en donde pone &ldquo;Situación de mi envío&rdquo;. Hasta que no llegue a España, no saldrá en la aplicación, así que no te preocupes si en el localizador de envíos de Correos o Japan Post sale pero aquí no.</p>
 <figure>
-        <img loading="lazy" srcset="./posts/tutorials/aduanas-amiami/Captura_seguimiento_pre_hu5d99eb7eb5b6f2e5be81143e1b562652_75137_360x0_resize_box_3.png 360w ,./posts/tutorials/aduanas-amiami/Captura_seguimiento_pre_hu5d99eb7eb5b6f2e5be81143e1b562652_75137_480x0_resize_box_3.png 480w ,./posts/tutorials/aduanas-amiami/Captura_seguimiento_pre_hu5d99eb7eb5b6f2e5be81143e1b562652_75137_720x0_resize_box_3.png 720w ,./posts/tutorials/aduanas-amiami/Captura_seguimiento_pre.png 931w" 
-            sizes="(min-width: 768px) 720px, 100vw" src="./posts/tutorials/aduanas-amiami/Captura_seguimiento_pre.png" alt="Captura de pantalla del seguimiento de envío de Correos" 
+        <img loading="lazy" srcset="/posts/tutorials/aduanas-amiami/Captura_seguimiento_pre_hu5d99eb7eb5b6f2e5be81143e1b562652_75137_360x0_resize_box_3.png 360w ,/posts/tutorials/aduanas-amiami/Captura_seguimiento_pre_hu5d99eb7eb5b6f2e5be81143e1b562652_75137_480x0_resize_box_3.png 480w ,/posts/tutorials/aduanas-amiami/Captura_seguimiento_pre_hu5d99eb7eb5b6f2e5be81143e1b562652_75137_720x0_resize_box_3.png 720w ,/posts/tutorials/aduanas-amiami/Captura_seguimiento_pre.png 931w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="/posts/tutorials/aduanas-amiami/Captura_seguimiento_pre.png" alt="Captura de pantalla del seguimiento de envío de Correos" 
             width="931" height="757"><figcaption>
             <p>En concreto, deberás esperar hasta que en el seguimiento de envío aparezca el estado «En tramitación aduanera: El envío está a la espera de presentación a la Aduana»</p>
         </figcaption>
@@ -187,8 +234,8 @@ En este caso, el nuevo portátil fue bautizado como <strong>Aerial</strong>, igu
 
 <p>El estado irá cambiando hasta que aparezca un enlace que te permita &ldquo;Hacer el pago del IVA&rdquo;. Sigues las instrucciones para pagar por tarjeta de crédito y te cobrarán el 21% de tu pedido más 1.50 euros de gastos de gestión (en lugar de 8 o 15 o lo que tocase). Si te cobran un poco más o un poco menos del 21% es porque hacen el cambio Yen-Euro el día que entra a aduanas, no el día que lo compraste. Es el mercado amigos.</p>
 <figure>
-        <img loading="lazy" srcset="./posts/tutorials/aduanas-amiami/correosaduanas_pago_hucd63f7a0b1a0b86b0215f55e4157d92c_127391_360x0_resize_box_3.png 360w ,./posts/tutorials/aduanas-amiami/correosaduanas_pago_hucd63f7a0b1a0b86b0215f55e4157d92c_127391_480x0_resize_box_3.png 480w ,./posts/tutorials/aduanas-amiami/correosaduanas_pago_hucd63f7a0b1a0b86b0215f55e4157d92c_127391_720x0_resize_box_3.png 720w ,./posts/tutorials/aduanas-amiami/correosaduanas_pago_hucd63f7a0b1a0b86b0215f55e4157d92c_127391_1080x0_resize_box_3.png 1080w ,./posts/tutorials/aduanas-amiami/correosaduanas_pago_hucd63f7a0b1a0b86b0215f55e4157d92c_127391_1500x0_resize_box_3.png 1500w ,./posts/tutorials/aduanas-amiami/correosaduanas_pago.png 1879w" 
-            sizes="(min-width: 768px) 720px, 100vw" src="./posts/tutorials/aduanas-amiami/correosaduanas_pago.png" alt="Captura de pantalla del seguimiento de envío en correosaduanas" 
+        <img loading="lazy" srcset="/posts/tutorials/aduanas-amiami/correosaduanas_pago_hucd63f7a0b1a0b86b0215f55e4157d92c_127391_360x0_resize_box_3.png 360w ,/posts/tutorials/aduanas-amiami/correosaduanas_pago_hucd63f7a0b1a0b86b0215f55e4157d92c_127391_480x0_resize_box_3.png 480w ,/posts/tutorials/aduanas-amiami/correosaduanas_pago_hucd63f7a0b1a0b86b0215f55e4157d92c_127391_720x0_resize_box_3.png 720w ,/posts/tutorials/aduanas-amiami/correosaduanas_pago_hucd63f7a0b1a0b86b0215f55e4157d92c_127391_1080x0_resize_box_3.png 1080w ,/posts/tutorials/aduanas-amiami/correosaduanas_pago_hucd63f7a0b1a0b86b0215f55e4157d92c_127391_1500x0_resize_box_3.png 1500w ,/posts/tutorials/aduanas-amiami/correosaduanas_pago.png 1879w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="/posts/tutorials/aduanas-amiami/correosaduanas_pago.png" alt="Captura de pantalla del seguimiento de envío en correosaduanas" 
             width="1879" height="588"><figcaption>
             <p>Así será la pantalla en la que por fin de permiten pagar el IVA de tu envío.</p>
         </figcaption>
@@ -203,7 +250,17 @@ En este caso, el nuevo portátil fue bautizado como <strong>Aerial</strong>, igu
 <p>Si quieres intentarlo, aquí tienes la <a href="https://sede.agenciatributaria.gob.es/Sede/procedimientoini/DB20.shtml">Web de la Agencia Tributaria con información al respecto</a>. Es necesario certificado digital o DNI electrónico para tramitar el formulario H7, pero con el método de Correos, no.</p>
 <h2 id="valor-mayor-de-150">Valor mayor de 150€</h2>
 <p>Aún no hemos realizado ningún pedido en amiami que valga más de 150€, pero si vosotros sí y queréis ahorarros los 25€ de gastos de gestión de correos, deberéis realizar un autodespacho. El tutorial de <a href="https://alixblog.com/autodespacho-aduanas/">Alixblog</a> deja bastante claro como hacerlo.</p>
-]]></content:encoded></item><item><title>Muerte al algoritmo: Alternativas a los sistemas recomendadores</title><link>./es/posts/muerte-al-algoritmo/</link><pubDate>Tue, 30 May 2023 18:11:58 +0000</pubDate><guid>./es/posts/muerte-al-algoritmo/</guid><description>Los algoritmos recomendadores son útiles, pero en ocasiones queremos descubrir contenido por nosotros mismos.</description><content:encoded><![CDATA[<p>A veces estamos cansados y abrumados por la gran oferta de contenido que nos
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Muerte al algoritmo: Alternativas a los sistemas recomendadores</title>
+      <link>/es/posts/muerte-al-algoritmo/</link>
+      <pubDate>Tue, 30 May 2023 18:11:58 +0000</pubDate>
+      
+      <guid>/es/posts/muerte-al-algoritmo/</guid>
+      <description>Los algoritmos recomendadores son útiles, pero en ocasiones queremos descubrir contenido por nosotros mismos.</description>
+      <content:encoded><![CDATA[<p>A veces estamos cansados y abrumados por la gran oferta de contenido que nos
 dan nuestras plataformas favoritas, y de entre Todas Las Cosas Del Universo, pues
 nos cuesta elegir. Pero no te preocupes, que por algo todas estas plataformas
 tienen un <em>algoritmo</em> que elige por tí y reduce Todas Las Cosas Del Universo
@@ -213,8 +270,8 @@ Toy Story 3, pues me gustará Toy Story 4. Razón no le falta.</p>
 que intenta predecir la valoración que le darás a un <em>ítem</em>, como puede ser una
 serie de Netflix, un vídeo de YouTube, o un producto de Amazon, basándose en las valoraciones que hayas hecho. Ojo, que ver un vídeo hasta el final también es una valoración (y mucho más importante que que le des a like o dislike).</p>
 <figure>
-        <img loading="lazy" srcset="./posts/death-to-the-algorithm/youtube_hu04233eebc058b943f626a2d2ae01c26c_905639_360x0_resize_box_3.png 360w ,./posts/death-to-the-algorithm/youtube_hu04233eebc058b943f626a2d2ae01c26c_905639_480x0_resize_box_3.png 480w ,./posts/death-to-the-algorithm/youtube_hu04233eebc058b943f626a2d2ae01c26c_905639_720x0_resize_box_3.png 720w ,./posts/death-to-the-algorithm/youtube_hu04233eebc058b943f626a2d2ae01c26c_905639_1080x0_resize_box_3.png 1080w ,./posts/death-to-the-algorithm/youtube.png 1267w" 
-            sizes="(min-width: 768px) 720px, 100vw" src="./posts/death-to-the-algorithm/youtube.png" alt="Captura de pantalla de mis recomendaciones de YouTube" 
+        <img loading="lazy" srcset="/posts/death-to-the-algorithm/youtube_hu04233eebc058b943f626a2d2ae01c26c_905639_360x0_resize_box_3.png 360w ,/posts/death-to-the-algorithm/youtube_hu04233eebc058b943f626a2d2ae01c26c_905639_480x0_resize_box_3.png 480w ,/posts/death-to-the-algorithm/youtube_hu04233eebc058b943f626a2d2ae01c26c_905639_720x0_resize_box_3.png 720w ,/posts/death-to-the-algorithm/youtube_hu04233eebc058b943f626a2d2ae01c26c_905639_1080x0_resize_box_3.png 1080w ,/posts/death-to-the-algorithm/youtube.png 1267w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="/posts/death-to-the-algorithm/youtube.png" alt="Captura de pantalla de mis recomendaciones de YouTube" 
             width="1267" height="827"><figcaption>
             <p>El algoritmo de YouTube es el reflejo del alma</p>
         </figcaption>
@@ -222,7 +279,7 @@ serie de Netflix, un vídeo de YouTube, o un producto de Amazon, basándose en l
 
 <p>En este artículo no me voy a explayar en cómo funcionan. Aunque aún no hay mucha
 divulgación en castellano, no quiero que se alargue demasiado. Sin embargo, puedes
-encontrar una lista con más info <a href="es/posts/muerte-al-algoritmo/#más-información">al final de este artículo</a>.</p>
+encontrar una lista con más info <a href="/es/posts/muerte-al-algoritmo/#más-información">al final de este artículo</a>.</p>
 <p>En resumidas cuentas, normalmente son sistemas de aprendizaje automático
 encargados de buscar grupos de usuarios con gustos similares, y recomendarles cosas
 entre ellos. <strong>Si a Alicia y Bob les gustan casi los mismos grupos, y de repente
@@ -267,8 +324,8 @@ algún extraño ha considerado que está guay que vayan juntos.</p>
 <p>En Deezer, por ejemplo, cuentas con Playlists creadas por especialistas basadas en estados de ánimo, géneros, épocas,
 lo que quieras. Además en el buscador también hay multitud de playlists de la comunidad. Si no te convence nada, siempre puedes tirar de los mixes automáticos y dejarte llevar por el algoritmo. En Filmin, sin embargo, directamente pasan de algoritmos y solo cuentan con colecciones y ciclos <strong>hechos a mano</strong> con títulos como «Tiempo de elecciones», «00&rsquo;s icons» o «California Dreamin&rsquo;».</p>
 <figure>
-        <img loading="lazy" srcset="./posts/death-to-the-algorithm/filmin_hu368d394aea90b9466c84177a4f9776c4_1845422_360x0_resize_box_3.png 360w ,./posts/death-to-the-algorithm/filmin_hu368d394aea90b9466c84177a4f9776c4_1845422_480x0_resize_box_3.png 480w ,./posts/death-to-the-algorithm/filmin_hu368d394aea90b9466c84177a4f9776c4_1845422_720x0_resize_box_3.png 720w ,./posts/death-to-the-algorithm/filmin_hu368d394aea90b9466c84177a4f9776c4_1845422_1080x0_resize_box_3.png 1080w ,./posts/death-to-the-algorithm/filmin_hu368d394aea90b9466c84177a4f9776c4_1845422_1500x0_resize_box_3.png 1500w ,./posts/death-to-the-algorithm/filmin.png 1886w" 
-            sizes="(min-width: 768px) 720px, 100vw" src="./posts/death-to-the-algorithm/filmin.png" alt="Captura de pantalla de las listas de Filmin" 
+        <img loading="lazy" srcset="/posts/death-to-the-algorithm/filmin_hu368d394aea90b9466c84177a4f9776c4_1845422_360x0_resize_box_3.png 360w ,/posts/death-to-the-algorithm/filmin_hu368d394aea90b9466c84177a4f9776c4_1845422_480x0_resize_box_3.png 480w ,/posts/death-to-the-algorithm/filmin_hu368d394aea90b9466c84177a4f9776c4_1845422_720x0_resize_box_3.png 720w ,/posts/death-to-the-algorithm/filmin_hu368d394aea90b9466c84177a4f9776c4_1845422_1080x0_resize_box_3.png 1080w ,/posts/death-to-the-algorithm/filmin_hu368d394aea90b9466c84177a4f9776c4_1845422_1500x0_resize_box_3.png 1500w ,/posts/death-to-the-algorithm/filmin.png 1886w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="/posts/death-to-the-algorithm/filmin.png" alt="Captura de pantalla de las listas de Filmin" 
             width="1886" height="949"><figcaption>
             <p>En Filmin podemos encontrar loss títulos agrupados por colecciones creadas por un <em>humano</em></p>
         </figcaption>
@@ -327,8 +384,8 @@ lo que quieras. Además en el buscador también hay multitud de playlists de la 
 <h2 id="4-plataformas-y-usuarios">4. Plataformas y usuarios</h2>
 <p>Existen plataformas de contenido generado por usuarios como <a href="https://myanimelist.net/profile/daviddavo">MyAnimeList</a> en el que los usuarios pueden hacer recomendaciones basadas en algo que hayas visto. Normalmente, estas recomendaciones pueden ir acompañadas de un pequeño texto en el que <em>argumentas</em> por qué recomendarías esa otra cosa. Para libros también tienes <a href="https://www.goodreads.com/">Goodreads</a>. Y, para pelis y series, <a href="https://letterboxd.com">Letterboxd</a>. En música existe el viejo y confiable <a href="https://www.last.fm/user/davidavo">last.fm</a>.</p>
 <figure>
-        <img loading="lazy" srcset="./posts/death-to-the-algorithm/myanimelist_hu305bb524df96e84324aab94ffa598737_174783_360x0_resize_box_3.png 360w ,./posts/death-to-the-algorithm/myanimelist_hu305bb524df96e84324aab94ffa598737_174783_480x0_resize_box_3.png 480w ,./posts/death-to-the-algorithm/myanimelist_hu305bb524df96e84324aab94ffa598737_174783_720x0_resize_box_3.png 720w ,./posts/death-to-the-algorithm/myanimelist.png 852w" 
-            sizes="(min-width: 768px) 720px, 100vw" src="./posts/death-to-the-algorithm/myanimelist.png" alt="Captura de pantalla de las recomendaciones de MyAnimeList" 
+        <img loading="lazy" srcset="/posts/death-to-the-algorithm/myanimelist_hu305bb524df96e84324aab94ffa598737_174783_360x0_resize_box_3.png 360w ,/posts/death-to-the-algorithm/myanimelist_hu305bb524df96e84324aab94ffa598737_174783_480x0_resize_box_3.png 480w ,/posts/death-to-the-algorithm/myanimelist_hu305bb524df96e84324aab94ffa598737_174783_720x0_resize_box_3.png 720w ,/posts/death-to-the-algorithm/myanimelist.png 852w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="/posts/death-to-the-algorithm/myanimelist.png" alt="Captura de pantalla de las recomendaciones de MyAnimeList" 
             width="852" height="310"><figcaption>
             <p>Como dicen <em>BlueYoshi</em> y otros 117 usuarios: si te gustó Cowboy Bebop te gustará Samurai Champloo</p>
         </figcaption>
@@ -344,8 +401,8 @@ lo que quieras. Además en el buscador también hay multitud de playlists de la 
 <p>Sin embargo, igual que existen compuestos químicos a evitar por no ser precisamente buenos para la salud, también existen algoritmos mejores que pueden ayudar al usuario a descubrir lo que quieren.</p>
 <p>Un ejemplo de ello es <a href="https://music-map.com">music-map.com</a>, que te muestra un amplio conjunto de artistas parecidos a un artista dado, donde la distancia representa la similitud.</p>
 <figure>
-        <img loading="lazy" srcset="./posts/death-to-the-algorithm/music-map_hu5d708a4afd784ea7a8ad5c108205cf0a_89651_360x0_resize_box_3.png 360w ,./posts/death-to-the-algorithm/music-map_hu5d708a4afd784ea7a8ad5c108205cf0a_89651_480x0_resize_box_3.png 480w ,./posts/death-to-the-algorithm/music-map_hu5d708a4afd784ea7a8ad5c108205cf0a_89651_720x0_resize_box_3.png 720w ,./posts/death-to-the-algorithm/music-map.png 893w" 
-            sizes="(min-width: 768px) 720px, 100vw" src="./posts/death-to-the-algorithm/music-map.png" alt="Captura de pantalla de music-map.com" 
+        <img loading="lazy" srcset="/posts/death-to-the-algorithm/music-map_hu5d708a4afd784ea7a8ad5c108205cf0a_89651_360x0_resize_box_3.png 360w ,/posts/death-to-the-algorithm/music-map_hu5d708a4afd784ea7a8ad5c108205cf0a_89651_480x0_resize_box_3.png 480w ,/posts/death-to-the-algorithm/music-map_hu5d708a4afd784ea7a8ad5c108205cf0a_89651_720x0_resize_box_3.png 720w ,/posts/death-to-the-algorithm/music-map.png 893w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="/posts/death-to-the-algorithm/music-map.png" alt="Captura de pantalla de music-map.com" 
             width="893" height="957"><figcaption>
             <p>Parece ser que Zombies es muy parecido a The Kinks, pero si quiero irme por la tangente puedo escuchar The Who</p>
         </figcaption>
@@ -367,8 +424,18 @@ lo que quieras. Además en el buscador también hay multitud de playlists de la 
 <li>&#x1f1ea;&#x1f1f8; La página de <a href="Sistema_de_recomendaci%C3%B3n">Sistemas de recomendación de Wikipedia</a> tampoco está nada mal</li>
 <li>&#x1f1ec;&#x1f1e7; Towardsdatascience tiene un muy buen <a href="https://towardsdatascience.com/introduction-to-recommender-systems-6c66cf15ada">artículo introductorio a la implementación de sistemas recomendadores</a>.</li>
 </ul>
-]]></content:encoded></item><item><title>Compilando LaTeX bilingüe y publicándolo con GitHub pages</title><link>./es/posts/tutorials/automatic-latex-cv/</link><pubDate>Thu, 01 Sep 2022 19:14:22 +0000</pubDate><guid>./es/posts/tutorials/automatic-latex-cv/</guid><description>Hace tiempo que quería poner mi currículum en la página web, pero para ello debía asegurarme de que estaba SIEMPRE actualizado. Es decir, que se compilaba y publicaba automáticamente cada vez que realizase cambios en el fichero fuente.
-Desde hace ya más de 5 años, mi currículum está escrito en LaTeX, usando (y modificando) la plantilla Awesome CV. Además, le añadí un par de cosas para hacerlo &amp;ldquo;bilingüe&amp;rdquo; y poder compilar o bien al inglés o al castellano, haciendo que el documento esté disponible en múltiples idiomas.</description><content:encoded><![CDATA[<p>Hace tiempo que quería poner mi currículum en la página web, pero para ello
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Compilando LaTeX bilingüe y publicándolo con GitHub pages</title>
+      <link>/es/posts/tutorials/automatic-latex-cv/</link>
+      <pubDate>Thu, 01 Sep 2022 19:14:22 +0000</pubDate>
+      
+      <guid>/es/posts/tutorials/automatic-latex-cv/</guid>
+      <description>Hace tiempo que quería poner mi currículum en la página web, pero para ello debía asegurarme de que estaba SIEMPRE actualizado. Es decir, que se compilaba y publicaba automáticamente cada vez que realizase cambios en el fichero fuente.
+Desde hace ya más de 5 años, mi currículum está escrito en LaTeX, usando (y modificando) la plantilla Awesome CV. Además, le añadí un par de cosas para hacerlo &amp;ldquo;bilingüe&amp;rdquo; y poder compilar o bien al inglés o al castellano, haciendo que el documento esté disponible en múltiples idiomas.</description>
+      <content:encoded><![CDATA[<p>Hace tiempo que quería poner mi currículum en la página web, pero para ello
 debía asegurarme de que estaba SIEMPRE actualizado. Es decir, que se compilaba y
 publicaba automáticamente cada vez que realizase cambios en el fichero fuente.</p>
 <p>Desde hace ya más de 5 años, mi currículum está escrito en LaTeX, usando (y modificando) la
@@ -477,8 +544,18 @@ el PDF generado no tiene más de 2 páginas (un folio por las dos caras).</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">artifact-name</span><span class="p">:</span><span class="w"> </span><span class="l">build</span><span class="w">
 </span></span></span></code></pre></div><p>El toque final está en una pequeña página html por si alguien entra en la raíz del GitHub pages (<a href="https://daviddavo.github.io/22CV">daviddavo.github.io/22CV</a>),
 que simplemente redirige a mi página web personal.</p>
-]]></content:encoded></item><item><title>Como crear un banner de "Sitio en construcción"</title><link>./es/posts/tutorials/work-in-progress/</link><pubDate>Mon, 15 Aug 2022 22:38:38 +0200</pubDate><guid>./es/posts/tutorials/work-in-progress/</guid><description>Mi página personal está hecha en Symfony. Ya, ya sé, no es la mejor elección, pero empecé cuando era joven y más descuidado, pensando que iba a haber más dinamismo, haría muchas cosas, y una página web compilada no sería suficiente.
-Hace un par de días decidí que ya era hora de empezar de cero y crear una página nueva, esta vez usando un generador estático. Acabé decidiéndome por Hugo.</description><content:encoded><![CDATA[<p>Mi página personal está hecha en Symfony. Ya, ya sé, no es la mejor elección, pero empecé cuando era joven y más descuidado, pensando que iba a haber más dinamismo, haría muchas cosas, y una página web compilada no sería suficiente.</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Como crear un banner de &#34;Sitio en construcción&#34;</title>
+      <link>/es/posts/tutorials/work-in-progress/</link>
+      <pubDate>Mon, 15 Aug 2022 22:38:38 +0200</pubDate>
+      
+      <guid>/es/posts/tutorials/work-in-progress/</guid>
+      <description>Mi página personal está hecha en Symfony. Ya, ya sé, no es la mejor elección, pero empecé cuando era joven y más descuidado, pensando que iba a haber más dinamismo, haría muchas cosas, y una página web compilada no sería suficiente.
+Hace un par de días decidí que ya era hora de empezar de cero y crear una página nueva, esta vez usando un generador estático. Acabé decidiéndome por Hugo.</description>
+      <content:encoded><![CDATA[<p>Mi página personal está hecha en Symfony. Ya, ya sé, no es la mejor elección, pero empecé cuando era joven y más descuidado, pensando que iba a haber más dinamismo, haría muchas cosas, y una página web compilada no sería suficiente.</p>
 <p>Hace un par de días decidí que ya era hora de empezar de cero y crear una página nueva, esta vez usando un generador estático. Acabé decidiéndome por <a href="https://gohugo.io">Hugo</a>.</p>
 <p>Como la página antigua era un poco&hellip; malurria, quería sacar la nueva lo antes posible. Sin embargo, aún me faltaba un banner que dijese &ldquo;eh, aún estoy trabajando en ello y seguro que faltan cosas&rdquo;. Bueno, en realidad no es completamente necesario, pero queda chulo.</p>
 <p>Mi objetivo era emular una especie de cinta de peligro, de estas negras y amarillas que te recuerdan a las obras. Hacer el fondo de rayas no fue difícil, gracias a herramientas como <a href="https://stripesgenerator.com/">stripesgenerator.com</a>, pero lo más importante es girar un poquito el componente, simulando una cinta mal colocada y cediendo ante la gravedad.</p>
@@ -491,14 +568,24 @@ Hace un par de días decidí que ya era hora de empezar de cero y crear una pág
 </p>
 <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 <p>¿Qué opinas? Ha quedado chulo, ¿no? Si haces alguna modificación, ¡no te olvides de compartirla!</p>
-]]></content:encoded></item><item><title>Como encriptar tu home y desencriptarla automágicamente</title><link>./es/posts/tutorials/crypt-home/</link><pubDate>Sun, 30 Jan 2022 15:38:09 +0000</pubDate><guid>./es/posts/tutorials/crypt-home/</guid><description>Alguna que otra vez toca llevar de paseo el portátil por las calles y el Metro de Madrid, con todos los riesgos que ello conlleva.
-El portátil en sí no me da mucha pena, pero en el disco duro hay datos. Datos relevantes. Todos pensamos que no hemos hecho nada malo y que no tenemos nada que ocultar&amp;hellip; &amp;ndash;&amp;quot;¿por qué iba a querer encriptar cosas si no soy de la mafia?</description><content:encoded><![CDATA[<p>Alguna que otra vez toca llevar de paseo el portátil por las calles y el Metro de Madrid, con todos los riesgos que ello conlleva.</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Como encriptar tu home y desencriptarla automágicamente</title>
+      <link>/es/posts/tutorials/crypt-home/</link>
+      <pubDate>Sun, 30 Jan 2022 15:38:09 +0000</pubDate>
+      
+      <guid>/es/posts/tutorials/crypt-home/</guid>
+      <description>Alguna que otra vez toca llevar de paseo el portátil por las calles y el Metro de Madrid, con todos los riesgos que ello conlleva.
+El portátil en sí no me da mucha pena, pero en el disco duro hay datos. Datos relevantes. Todos pensamos que no hemos hecho nada malo y que no tenemos nada que ocultar&amp;hellip; &amp;ndash;&amp;quot;¿por qué iba a querer encriptar cosas si no soy de la mafia?</description>
+      <content:encoded><![CDATA[<p>Alguna que otra vez toca llevar de paseo el portátil por las calles y el Metro de Madrid, con todos los riesgos que ello conlleva.</p>
 <p>El portátil en sí no me da mucha pena, pero en el disco duro hay datos. Datos relevantes.
 Todos pensamos que no hemos hecho nada malo y que no tenemos nada que ocultar&hellip; &ndash;&quot;¿por qué iba a
 querer encriptar cosas si no soy de la mafia?&quot;</p>
 <p>Pero seguro que tienes una o dos copias de tus DNIs. Tanto caducados como vigentes. Y también tendrás
 alguna factura con tu dirección de casa, y correos electrónicos con alguna contraseña, y papeles de la universidad/trabajo, y&hellip; Pues eso.</p>
-<p><img loading="lazy" src="./gifs/dwight-theoffice-identity-theft.gif" type="" alt="Gif from The Office with Dwight saying &amp;ldquo;Identity Theft is not a joke, Jim!&amp;rdquo;"  /></p>
+<p><img loading="lazy" src="/gifs/dwight-theoffice-identity-theft.gif" type="" alt="Gif from The Office with Dwight saying &amp;ldquo;Identity Theft is not a joke, Jim!&amp;rdquo;"  /></p>
 <blockquote>
 <p>El robo de identidad no es una broma, Jim!
 &ndash; Dwight K. Schrute</p>
@@ -547,7 +634,17 @@ Debería estar todo justo donde lo dejaste.</p>
 <li><a href="https://wiki.archlinux.org/title/PAM">PAM - ArchWiki</a></li>
 <li><a href="https://wiki.archlinux.org/title/Pam_mount">pam_mount - ArchWiki</a></li>
 </ul>
-]]></content:encoded></item><item><title>Cómo sobreescribir solo algunos subdominios en tu red local</title><link>./es/posts/tutorials/bind-override/</link><pubDate>Wed, 22 Dec 2021 13:17:17 +0100</pubDate><guid>./es/posts/tutorials/bind-override/</guid><description>Si tienes una pequeña red en casa, alguna vez habrás tenido problemas con el tema de dominios. Como ya sabrás, está la IP pública (la que se ve desde fuera de tu red, y conecta con el router), y las IPs privadas (las de tu red local, que empiezan por 192.168.0&amp;hellip;). Esta tecnología de asignar varias &amp;ldquo;IP privadas&amp;rdquo; a una única &amp;ldquo;IP pública&amp;rdquo; se llama enmascaramiento o &amp;ldquo;Traducción de Direcciones de Red&amp;rdquo; (NAT por sus siglas en inglés).</description><content:encoded><![CDATA[<p>Si tienes una pequeña red en casa, alguna vez habrás tenido problemas con el tema de dominios.
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Cómo sobreescribir solo algunos subdominios en tu red local</title>
+      <link>/es/posts/tutorials/bind-override/</link>
+      <pubDate>Wed, 22 Dec 2021 13:17:17 +0100</pubDate>
+      
+      <guid>/es/posts/tutorials/bind-override/</guid>
+      <description>Si tienes una pequeña red en casa, alguna vez habrás tenido problemas con el tema de dominios. Como ya sabrás, está la IP pública (la que se ve desde fuera de tu red, y conecta con el router), y las IPs privadas (las de tu red local, que empiezan por 192.168.0&amp;hellip;). Esta tecnología de asignar varias &amp;ldquo;IP privadas&amp;rdquo; a una única &amp;ldquo;IP pública&amp;rdquo; se llama enmascaramiento o &amp;ldquo;Traducción de Direcciones de Red&amp;rdquo; (NAT por sus siglas en inglés).</description>
+      <content:encoded><![CDATA[<p>Si tienes una pequeña red en casa, alguna vez habrás tenido problemas con el tema de dominios.
 Como ya sabrás, está la IP pública (la que se ve desde fuera de tu red, y conecta con el router), y las IPs privadas (las de tu red local, que empiezan por 192.168.0&hellip;).
 Esta tecnología de asignar varias &ldquo;IP privadas&rdquo; a una única &ldquo;IP pública&rdquo; se llama enmascaramiento o &ldquo;Traducción de Direcciones de Red&rdquo; (NAT por sus siglas en inglés).</p>
 <p>Esto puede causar problemas si usas DNS para asignarle un nombre de dominio a un servicio. Pongamos que tienes un blog, y le asignas el dominio <code>blog.example.com</code> a la IP pública <code>1.2.3.4</code>. En tu rúter mapeas los puertos a tu dirección local <code>192.168.1.66</code>, pero cuando quieres acceder a <code>blog.example.com</code>&hellip; ¡no funciona! Te dirá que no se puede conectar al
@@ -689,8 +786,18 @@ para que se propague al resto de dispositivos automágicamente.</p>
 <li><a href="https://en.wikipedia.org/wiki/Response_policy_zone">Wikipedia: Response policy zone</a></li>
 <li><a href="https://dnsrpz.info/">dnsrpz.info</a></li>
 </ul>
-]]></content:encoded></item><item><title>Hola Mundo!</title><link>./es/posts/hw/</link><pubDate>Tue, 14 Dec 2021 22:39:51 +0100</pubDate><guid>./es/posts/hw/</guid><description>Buenos días. Primero, me presento: Soy David Davó, estudiante de último año de Ingeniería Informática en la Universidad Complutense de Madrid.
-Me gusta mucho jugar con los ordenadores, montar cosas, romperlas, y luego volverlas a arrelgar. Pero, a veces, para poder arreglar las cosas necesitas acordarte de cómo lo hiciste la ultima vez (lo que puede ser difícil si nunca te acuerdas de nada) Por eso y por muchas otras razones estoy montando este blog.</description><content:encoded><![CDATA[<p>Buenos días. Primero, me presento: Soy David Davó, estudiante de último año de Ingeniería Informática en la Universidad Complutense de Madrid.</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Hola Mundo!</title>
+      <link>/es/posts/hw/</link>
+      <pubDate>Tue, 14 Dec 2021 22:39:51 +0100</pubDate>
+      
+      <guid>/es/posts/hw/</guid>
+      <description>Buenos días. Primero, me presento: Soy David Davó, estudiante de último año de Ingeniería Informática en la Universidad Complutense de Madrid.
+Me gusta mucho jugar con los ordenadores, montar cosas, romperlas, y luego volverlas a arrelgar. Pero, a veces, para poder arreglar las cosas necesitas acordarte de cómo lo hiciste la ultima vez (lo que puede ser difícil si nunca te acuerdas de nada) Por eso y por muchas otras razones estoy montando este blog.</description>
+      <content:encoded><![CDATA[<p>Buenos días. Primero, me presento: Soy David Davó, estudiante de último año de Ingeniería Informática en la Universidad Complutense de Madrid.</p>
 <p>Me gusta mucho jugar con los ordenadores, montar cosas, romperlas, y luego volverlas a arrelgar.
 Pero, a veces, para poder arreglar las cosas necesitas acordarte de cómo lo hiciste la ultima vez (lo que puede ser difícil si nunca te acuerdas de nada)
 Por eso y por muchas otras razones estoy montando este blog. Para que, cada vez que rompa algo en la red de mi casa
@@ -707,8 +814,18 @@ por si acaso a alguien le son útiles.</p>
 </ul>
 <p>Si ves que esta entrada no es la primera, es porque cuando publique mis notas sobre proyectos, las añadiré
 con la fecha en la que escribí la nota (y no en la que la subí al blog)</p>
-]]></content:encoded></item><item><title>Just Get My Data: Accede a tus datos de distintos servicios web</title><link>./es/posts/projects/jgmd/</link><pubDate>Sat, 09 Jan 2021 11:50:13 +0100</pubDate><guid>./es/posts/projects/jgmd/</guid><description>Muchos sabemos que desde hace un par de años podemos pedir a cualquier servicio de la Unión Europea que borre nuestros datos, pero&amp;hellip; también podemos pedir que nos los envíen en un formato legible.
-Para evitar que ejerzas tal derecho, muchas páginas web utilizan dark patterns, o diseños web laberínticos para que desistas antes de cumplir tu cometido. Una forma agresiva de diseño que hace que acabemos gritando ¡pues ya no quiero mis datos!</description><content:encoded><![CDATA[<p>Muchos sabemos que desde hace un par de años podemos pedir a cualquier servicio de la Unión Europea que borre nuestros datos, pero&hellip; <strong>también podemos pedir que nos los envíen en un formato legible.</strong></p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Just Get My Data: Accede a tus datos de distintos servicios web</title>
+      <link>/es/posts/projects/jgmd/</link>
+      <pubDate>Sat, 09 Jan 2021 11:50:13 +0100</pubDate>
+      
+      <guid>/es/posts/projects/jgmd/</guid>
+      <description>Muchos sabemos que desde hace un par de años podemos pedir a cualquier servicio de la Unión Europea que borre nuestros datos, pero&amp;hellip; también podemos pedir que nos los envíen en un formato legible.
+Para evitar que ejerzas tal derecho, muchas páginas web utilizan dark patterns, o diseños web laberínticos para que desistas antes de cumplir tu cometido. Una forma agresiva de diseño que hace que acabemos gritando ¡pues ya no quiero mis datos!</description>
+      <content:encoded><![CDATA[<p>Muchos sabemos que desde hace un par de años podemos pedir a cualquier servicio de la Unión Europea que borre nuestros datos, pero&hellip; <strong>también podemos pedir que nos los envíen en un formato legible.</strong></p>
 <p>Para evitar que ejerzas tal derecho, muchas páginas web utilizan <a href="https://darkpatterns.org/">dark patterns</a>, o diseños web laberínticos para que desistas antes de cumplir tu cometido. Una forma agresiva de diseño que hace que acabemos gritando ¡pues ya no quiero mis datos!</p>
 <p>Por eso surge <a href="https://justgetmydata.com/es">Just Get My Data</a>, un directorio con enlaces y notas para que sea más fácil acceder a tus datos. Cuentas con montón de servicios ordenados alfabéticamente, pero también puedes buscar, filtrar por dificultad, o mostrar simplemente los más populares.</p>
 <p>Por ejemplo, Apple, Coinbase, LinkedIn o Google salen con dificultad &ldquo;fácil&rdquo; en verde. Tienen un proceso automatizado o con guías fáciles de seguir. Sin embargo, sitios como Twitch salen en rojo como &ldquo;difícil&rdquo; pues hay que seguir un proceso manual, enviando correos en Inglés, dando más datos personales, alegando motivos por los que quieres ejercer tal derecho, y buscando el anillo único.</p>
@@ -716,4 +833,8 @@ Para evitar que ejerzas tal derecho, muchas páginas web utilizan dark patterns,
 <p>JustGetMyData es un fork o ramificación de <a href="https://justdeleteme.xyz/">JustDeleteMe</a>, página web que ayuda del mismo modo a eliminar tus datos de internet, evitando los patrones oscuros.</p>
 <p>Se trata de Software Libre por lo que, a pesar de su corta vida, muchas personas contribuyen en el proyecto añadiendo traducciones a diversos idiomas, o nuevas entradas sobre como acceder a tus datos de distintos sitios, por lo que cada vez hay más información disponible. Si quieres participar en Just Get My Data puedes hacerlo en <a href="https://github.com/justgetmydata/jgmd">GitHub</a>, ¡estamos encantados de recibir ayuda!</p>
 <p>¿Y tú? ¿Conocías tus derechos? ¿O tal vez solo conocías el derecho a borrar tus datos?</p>
-]]></content:encoded></item></channel></rss>
+]]></content:encoded>
+    </item>
+    
+  </channel>
+</rss>
