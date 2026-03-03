@@ -1,4 +1,6 @@
 baseURL: 'https://blog.ddavo.me/'
+relativeURLs: true
+canonifyURLs: false
 defaultContentLanguage: en
 defaultContentLanguageInSubdir: false
 enableEmoji: true
