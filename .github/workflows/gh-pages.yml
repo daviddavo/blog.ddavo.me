@@ -12,9 +12,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-20.04
-    env:
-      FLEEK_TOKEN: ${{ secrets.FLEEK_TOKEN }}
-      FLEEK_PROJECT_ID: ${{ secrets.FLEEK_PROJECT_ID }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -24,9 +21,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-
-      - name: Install Fleek CLI
-        run: npm i -g @fleek-platform/cli
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
@@ -44,6 +38,11 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
 
-      - name: Deploy Fleek
-        if: github.ref == 'refs/heads/main'
-        run: fleek sites deploy
+      - name: Deploy to Kubo
+        uses: ipshipyard/ipfs-deploy-action@v1
+        id: shipyard
+        with:
+          path-to-deploy: './public'
+          kubo-api-url: ${{ secrets.KUBO_API_URL }} 
+          kubo-api-auth: ${{ secrets.KUBO_AUTH }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
