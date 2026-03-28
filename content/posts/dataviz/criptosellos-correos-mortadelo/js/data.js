@@ -17,11 +17,11 @@ function runOnFirstVisible(element, callback) {
   observer.observe(element)
 }
 
-function formatEthAddr(addr) {
+function formatEthAddr(addr, i18n) {
   if (addr.startsWith('0x')) {
     return addr.slice(0, 6) + '...' + addr.slice(-4)
   } else if (addr.startsWith('only')) {
-    return addr.slice('only'.length) + ' sellos p.u.'
+    return addr.slice('only'.length) + ' ' + i18n.stampsPerUserShort
   } else {
     return addr
   }
@@ -29,11 +29,26 @@ function formatEthAddr(addr) {
 
 document.addEventListener('DOMContentLoaded', () => {
   console.log('DOMContentLoaded')
+  const htmlLang = (document.documentElement.lang || '').toLowerCase()
+  const isEnglish = htmlLang.startsWith('en')
+  const locale = isEnglish ? 'en-US' : 'es-ES'
+  const i18n = {
+    ofLabel: isEnglish ? 'of' : 'de',
+    dateKey: isEnglish ? 'Date' : 'Fecha',
+    totalStampsKey: isEnglish ? 'Total crypto stamps' : 'Total criptosellos',
+    totalLabel: isEnglish ? 'Total' : 'Total',
+    changeLabel: isEnglish ? 'Change' : 'Variacion',
+    addressLabel: isEnglish ? 'Address' : 'Dir',
+    multipleAddressesLabel: isEnglish ? 'Multiple addresses' : 'Multiples direcciones',
+    stampsLabel: isEnglish ? 'stamps' : 'sellos',
+    usersLabel: isEnglish ? 'users' : 'usuarios',
+    stampsPerUserShort: isEnglish ? 'stamps p.u.' : 'sellos p.u.',
+  }
   // runOnFirstVisible(document.getElementById('criptosellos-last-update'), (e) => {
   //   console.log("Getting data from", e.dataset.url)
   const e = document.getElementById('criptosellos-last-update')
   fetch(e.dataset.url).then(response => response.json()).then(json => {
-    e.innerHTML = (new Date(json['last-update'])).toLocaleString()
+    e.innerHTML = (new Date(json['last-update'])).toLocaleString(locale)
 
     document.getElementById('criptosellos-total-tokens').innerHTML = json['total-tokens']
     document.getElementById('criptosellos-daily-avg').innerHTML = Math.round(json['daily-avg'] * 10) / 10
@@ -41,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('criptosellos-holder-avg').innerHTML = Math.round(json['total-tokens'] / json['total-holders'] * 100) / 100
     document.getElementById('criptosellos-holder-whale-address').innerHTML = '<code>' + json['holders-whale-address'] + '</code>'
     document.getElementById('criptosellos-holder-whale-count').innerHTML = json['holders-whale-cnt']
-    document.getElementById('criptosellos-holder-oneortwo-cnt').innerHTML = json['holder-oneortwo-holders-cnt'] + " de " + json['total-holders']
+    document.getElementById('criptosellos-holder-oneortwo-cnt').innerHTML = json['holder-oneortwo-holders-cnt'] + " " + i18n.ofLabel + " " + json['total-holders']
     document.getElementById('criptosellos-holders-had-nfts-avg').innerHTML = Math.round(json['holders-had-nfts-avg'] * 100) + '%'
     document.getElementById('criptosellos-holders-had-nfts-avg-not').innerHTML = 100 - Math.round(json['holders-had-nfts-avg'] * 100) + '%'
 
@@ -54,9 +69,9 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("Getting data from", e.dataset.url)
     const data = await d3.csv(e.dataset.url, (d) => {
       return {
-        Fecha: new Date(d.block_date),
-        daily: parseInt(d.Dia),
-        "Total criptosellos": parseInt(d.Total),
+        [i18n.dateKey]: new Date(d.block_date),
+        daily: parseInt(d.Dia ?? d.Day),
+        [i18n.totalStampsKey]: parseInt(d.Total),
       }
     })
 
@@ -66,14 +81,14 @@ document.addEventListener('DOMContentLoaded', () => {
       y: { grid: true },
       marks: [
         Plot.lineY(data, {
-          x: "Fecha",
-          y: "Total criptosellos",
+          x: i18n.dateKey,
+          y: i18n.totalStampsKey,
         }),
         Plot.tip(data, Plot.pointerX(
           {
-            x: "Fecha",
-            y: "Total criptosellos",
-            title: d => `${d.Fecha.toLocaleDateString()}\n  Total: ${d["Total criptosellos"]}\n  Variación: ↑ ${d.daily}`,
+            x: i18n.dateKey,
+            y: i18n.totalStampsKey,
+            title: d => `${d[i18n.dateKey].toLocaleDateString(locale)}\n  ${i18n.totalLabel}: ${d[i18n.totalStampsKey]}\n  ${i18n.changeLabel}: ↑ ${d.daily}`,
           }
         ))
       ]
@@ -119,9 +134,9 @@ document.addEventListener('DOMContentLoaded', () => {
       .append("title")
       .text(d => {
         if (d.data.cnt / d.data.eachCnt == 1) {
-          return `Dir: ${d.data.to}\n  ${d.data.cnt} sellos`
+          return `${i18n.addressLabel}: ${d.data.to}\n  ${d.data.cnt} ${i18n.stampsLabel}`
         } else {
-          return `Múltiples direcciones\n  ${d.data.eachCnt} sellos por usuario\n  ${d.data.cnt / d.data.eachCnt} usuarios`
+          return `${i18n.multipleAddressesLabel}\n  ${d.data.eachCnt} ${i18n.stampsPerUserShort}\n  ${d.data.cnt / d.data.eachCnt} ${i18n.usersLabel}`
         }
       });
 
@@ -136,12 +151,12 @@ document.addEventListener('DOMContentLoaded', () => {
       .call(text => text.append("tspan")
         .attr("y", "-0.4em")
         .attr("font-weight", "bold")
-        .text(d => formatEthAddr(d.data.to)))
+        .text(d => formatEthAddr(d.data.to, i18n)))
       .call(text => text.filter(d => (d.endAngle - d.startAngle) > 0.25).append("tspan")
         .attr("x", 0)
         .attr("y", "0.7em")
         .attr("fill-opacity", 0.7)
-        .text(d => d.data.cnt.toLocaleString("es-ES")));
+        .text(d => d.data.cnt.toLocaleString(locale)));
 
     e.replaceChildren(svg.node())
   })
@@ -151,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const data = await d3.csv(e.dataset.url)
     const total = Math.round(d3.sum(data, d => d.dinero) * 100) / 100
 
-    e.innerHTML = total.toLocaleString('es-ES')
+    e.innerHTML = total.toLocaleString(locale)
     document.getElementById('criptosellos-correos-contratos-cnt').innerHTML = data.length
   })
 })
