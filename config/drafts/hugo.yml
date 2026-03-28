@@ -1,1 +1,3 @@
 baseURL: 'https://drafts.blog.ddavo.me/'
+relativeURLs: true
+canonifyURLs: false
