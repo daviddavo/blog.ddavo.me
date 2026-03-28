@@ -16,7 +16,7 @@
                 />
   </url><url>
     <loc>/es/authors/</loc>
-    <lastmod>2026-01-23T00:00:00+00:00</lastmod>
+    <lastmod>2026-03-28T15:40:38+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -29,7 +29,7 @@
                 />
   </url><url>
     <loc>/es/categories/</loc>
-    <lastmod>2026-01-23T00:00:00+00:00</lastmod>
+    <lastmod>2026-03-28T15:40:38+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -42,7 +42,7 @@
                 />
   </url><url>
     <loc>/es/</loc>
-    <lastmod>2026-01-23T00:00:00+00:00</lastmod>
+    <lastmod>2026-03-28T15:40:38+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -77,7 +77,7 @@
     <lastmod>2026-01-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/es/posts/</loc>
-    <lastmod>2026-01-23T00:00:00+00:00</lastmod>
+    <lastmod>2026-03-28T15:40:38+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -90,7 +90,7 @@
                 />
   </url><url>
     <loc>/es/tags/</loc>
-    <lastmod>2026-01-23T00:00:00+00:00</lastmod>
+    <lastmod>2026-03-28T15:40:38+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -103,7 +103,7 @@
                 />
   </url><url>
     <loc>/es/authors/ddavo24/</loc>
-    <lastmod>2026-01-22T14:39:53+00:00</lastmod>
+    <lastmod>2026-03-28T15:40:38+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -116,10 +116,20 @@
                 />
   </url><url>
     <loc>/es/tags/blockchain/</loc>
-    <lastmod>2026-01-22T14:39:53+00:00</lastmod>
+    <lastmod>2026-03-28T15:40:38+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/tags/blockchain/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/tags/blockchain/"
+                />
   </url><url>
     <loc>/es/tags/data-visualization/</loc>
-    <lastmod>2026-01-22T14:39:53+00:00</lastmod>
+    <lastmod>2026-03-28T15:40:38+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -132,7 +142,7 @@
                 />
   </url><url>
     <loc>/es/tags/opinion/</loc>
-    <lastmod>2026-01-22T14:39:53+00:00</lastmod>
+    <lastmod>2026-03-28T15:40:38+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -145,10 +155,30 @@
                 />
   </url><url>
     <loc>/es/categories/opinion/</loc>
-    <lastmod>2026-01-22T14:39:53+00:00</lastmod>
+    <lastmod>2026-03-28T15:40:38+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/categories/opinion/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/categories/opinion/"
+                />
   </url><url>
     <loc>/es/posts/dataviz/criptosellos-correos-mortadelo/</loc>
-    <lastmod>2026-01-22T14:39:53+00:00</lastmod>
+    <lastmod>2026-03-28T15:40:38+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/posts/dataviz/criptosellos-correos-mortadelo/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/posts/dataviz/criptosellos-correos-mortadelo/"
+                />
   </url><url>
     <loc>/es/posts/server-names/</loc>
     <lastmod>2026-01-22T14:39:28+00:00</lastmod>

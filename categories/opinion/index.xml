@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Opinion on David Davó&#39;s dev log</title>
+    <link>/categories/opinion/</link>
+    <description>Recent content in Opinion on David Davó&#39;s dev log</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© David Davó 2015 - 2024</copyright>
+    <lastBuildDate>Fri, 14 Jun 2024 19:14:22 +0000</lastBuildDate><atom:link href="/categories/opinion/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>On Spanish National Postal Service Crypto Stamps</title>
+      <link>/posts/dataviz/criptosellos-correos-mortadelo/</link>
+      <pubDate>Fri, 14 Jun 2024 19:14:22 +0000</pubDate>
+      
+      <guid>/posts/dataviz/criptosellos-correos-mortadelo/</guid>
+      <description>In this post I briefly analyze how the crypto stamps recently released by Correos are implemented and used.</description>
+      <content:encoded><![CDATA[<p>Very recently, Correos (Spain&rsquo;s national postal service) decided to launch a collection of &ldquo;crypto stamps&rdquo; based on Francisco Ibañez&rsquo;s famous character Mortadelo. Along with a special physical stamp that shows Mortadelo walking with his little case and all the usual gadgets, usable at a face value of 10€, you also get a code that can be redeemed for an NFT. All physical stamps have the same artwork, but the NFT shows one of 5 possible <em>criptosellos</em> (<em>crypto stamps</em>), each with a different print run and based on one of his classic disguises.</p>
+<figure>
+        <img loading="lazy" srcset="/posts/dataviz/criptosellos-correos-mortadelo/todos-criptosellos_hufaaed248ba8d28c8bf7cb8138998d06c_207436_360x0_resize_q75_h2_box_2.webp 360w ,/posts/dataviz/criptosellos-correos-mortadelo/todos-criptosellos_hufaaed248ba8d28c8bf7cb8138998d06c_207436_480x0_resize_q75_h2_box_2.webp 480w ,/posts/dataviz/criptosellos-correos-mortadelo/todos-criptosellos_hufaaed248ba8d28c8bf7cb8138998d06c_207436_720x0_resize_q75_h2_box_2.webp 720w ,/posts/dataviz/criptosellos-correos-mortadelo/todos-criptosellos_hufaaed248ba8d28c8bf7cb8138998d06c_207436_1080x0_resize_q75_h2_box_2.webp 1080w ,/posts/dataviz/criptosellos-correos-mortadelo/todos-criptosellos_hufaaed248ba8d28c8bf7cb8138998d06c_207436_1500x0_resize_q75_h2_box_2.webp 1500w ,/posts/dataviz/criptosellos-correos-mortadelo/todos-criptosellos.webp 2502w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="/posts/dataviz/criptosellos-correos-mortadelo/todos-criptosellos.webp" alt="The 5 possible stamps are shown, based on 5 Mortadelo disguises" 
+            width="2502" height="743"><figcaption>
+            <p>The 5 possible Crypto Stamps and their print runs. / <i>
+                    <a href="https://fesofi.es/noticias/primer-criptosello-espanol/">Spanish Federation of Philatelic Societies</a></p></i>
+        </figcaption>
+</figure>
+
+<p>Broadly speaking, an NFT (Non-Fungible Token) is a <em>representation</em> of an asset (digital or physical) implemented on a blockchain. Even though it uses the same technology as cryptocurrencies, unlike cryptocurrencies NFTs are not liquid and cannot be divided. For example, 5 euros are still 5 euros whether they are banknotes, coins, a check, or your account balance. NFTs, however, represent indivisible assets (non-fungible). They can represent unique one-of-a-kind items, like the deed to your house that <em>represents</em> your house, or repeatable items with limited supply, like collectible cards in a set, or <strong>stamps</strong> in this case. Remember that an NFT is just a <em>token</em>, a <em>symbol</em>, a <em>ticket</em>. It is not <strong>the house</strong>, it is <strong>the deed</strong>. The value proposition of NFTs is that strong blockchain cryptography proves you are the real owner. So, instead of <em>a notary</em> or a government registry, you get a decentralized network plus a bunch of cryptographic algorithms proving it.</p>
+<p>Blockchain has a bad reputation because it <a href="https://es.cointelegraph.com/news/in-2023-bitcoin-mining-consumed-more-than-one-third-of-mexicos-electrical-energy">can consume more electricity than countries such as Argentina</a>, but that is basically a Bitcoin issue. Ethereum no longer has that problem since the Ethereum 2.0 transition a few years ago. Also, Correos&rsquo; NFT runs on an alternative network called Polygon, a chain similar to Ethereum but much faster and more efficient (including energy efficiency).</p>
+<p>In that sense, Correos did not do too badly. But the two main reasons to use blockchain are <strong>transparency</strong> and <strong>decentralization</strong>. In the rest of this post I will analyze these crypto stamps from those perspectives, and finally whether people are actually using them, and how much.</p>
+<h2 id="transparency">Transparency</h2>
+<p>This already starts poorly: the bare minimum transparency you should expect from something blockchain-based is publishing the smart contract address, and they did not do that.</p>
+<p>Not publishing the contract address is like saying you have a transparency portal but not saying where it is. It hides the essential information users need to interact with the contract.</p>
+<p>As someone who researches this stuff, I managed to find the contract on my own. Its address was <a href="https://polygon.blockscout.com/token/0x8fA19F4316dF640e14b30B2fE749cbdd79Da9335"><code>0x8fA19F4316dF640e14b30B2fE749cbdd79Da9335</code></a>.</p>
+<blockquote>
+<p>Update June 14, 2024: Some weird stuff happened and they <em>migrated</em> the contract <a href="https://polygon.blockscout.com/token/0x4D5D215c47a43B38a58Abf735b628cF9b61273a0">to another address</a>, in a rather clumsy way.</p>
+</blockquote>
+<p>They also do not publish the smart contract source code, so users cannot audit how it works or whether it is implemented correctly. There could be a bug that allows someone to grab all crypto stamps, and we might never know.</p>
+<p>Even if you do not know programming, a common practice in this ecosystem is paying someone to audit contract code, yours or someone else&rsquo;s.</p>
+<p>At least blockchain transfers are transparent, so we can still see who owns these exclusive Mortadelo NFTs.</p>
+<h2 id="decentralization">Decentralization</h2>
+<p>On the <strong>decentralization</strong> side, the solution is also quite disappointing. Normally NFTs use decentralized standards that let you use them across the wider web3 ecosystem: set one as your social media profile picture, show it in a virtual gallery, use it in games, and so on.
+With these crypto stamps, you must use the Correos web app to view the associated image. When the consultancy firm maintaining that website drops support in a couple of years, you may lose access to your crypto stamp.</p>
+<p><strong>If crypto stamps are neither transparent nor decentralized, why do they exist?</strong></p>
+<p>I guess to increase stamp value and sell more units, right? We do not know how many stamps have been sold, but we can track how many were &ldquo;redeemed&rdquo; (or &ldquo;claimed&rdquo;) on-chain, and what kind of users did it.</p>
+<blockquote>
+<p>This post updates automatically with new data. Last update: 
+    
+        <span id="criptosellos-last-update" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/general-data.json">
+        <span class="loading-text-data"></span>
+</span>.</p>
+</blockquote>
+<p><em>Drum roll</em>&hellip; a total of <span id="criptosellos-total-tokens" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/general-data.json">
+        <span class="loading-text-data"></span>
+</span> crypto stamps have been claimed,
+an average of <span id="criptosellos-daily-avg" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/general-data.json">
+        <span class="loading-text-data"></span>
+</span> per day.</p>
+
+
+    
+        
+<figure data-page-path="/posts/dataviz/criptosellos-correos-mortadelo">
+    <div class="chart" id="criptosellos-diario-chart"data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/daily-mints.csv">
+        <div class="loading-chart-data"></div>
+    </div><figcaption>
+            Daily number of registered Crypto Stamps<p>Some days have very few claims, but there are occasional streaks. / <i>
+                    <a href="https://dune.com/queries/3917833/6586501">David Davo via Dune Analytics.</a></p></i>
+        </figcaption>
+</figure>
+<p>However, that does not mean there are as many people as stamps. In reality only <span id="criptosellos-total-holders" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/daily-mints.csv">
+        <span class="loading-text-data"></span>
+</span> different wallets hold at least one crypto stamp. We cannot claim these are unique users, because just like with email there is nothing stopping one person from creating multiple accounts. In crypto this is normal: keep one wallet with a very strong key for long-term storage, and another easier-to-use one (for example on your phone) so if it gets hacked, losses are limited.</p>
+<p>Each user that holds at least one crypto stamp is called a <em>holder</em>. Although each <em>holder</em> has an average of <span id="criptosellos-holder-avg" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/daily-mints.csv">
+        <span class="loading-text-data"></span>
+</span> stamps, this is the classic &ldquo;if I eat two chickens and you eat none, on average we ate one each&rdquo; problem.</p>
+<p>The reality is that one user has way more NFTs than everyone else: <span id="criptosellos-holder-whale-address" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/daily-mints.csv">
+        <span class="loading-text-data"></span>
+</span>, who holds <strong><span id="criptosellos-holder-whale-count" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/daily-mints.csv">
+        <span class="loading-text-data"></span>
+</span> crypto stamps</strong>. Meanwhile, most users (<span id="criptosellos-holder-oneortwo-cnt" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/daily-mints.csv">
+        <span class="loading-text-data"></span>
+</span>) hold one or two.</p>
+
+
+    
+        
+<figure data-page-path="/posts/dataviz/criptosellos-correos-mortadelo">
+    <div class="chart" id="criptosellos-holders-chart"data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/holders.csv">
+        <div class="loading-chart-data"></div>
+    </div><figcaption>
+            Number of crypto stamps per user<p>Users with few stamps (four or fewer) are grouped together. Hover to see the full address or user count. / <i>
+                    <a href="https://dune.com/queries/3917785/6586366">David Davo via Dune Analytics.</a></p></i>
+        </figcaption>
+</figure>
+<p>Another interesting question is whether these users had stamps from other collections. In other words, were they already familiar with this technology, or did Mortadelo bring them in?</p>
+<p>Curiously, the wallet with the most crypto stamps had <strong>no</strong> previous NFTs, though maybe that person has another wallet with some; we can never know. Maybe it is a stamp seller from Plaza Mayor, who knows.</p>
+<p>Overall, only <span id="criptosellos-holders-had-nfts-avg" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/holders.csv">
+        <span class="loading-text-data"></span>
+</span> of users had ever held at least one NFT in their wallet. We do not even know whether they bought those NFTs or received them as gifts (or spam), so we cannot claim those few users are true <em>crypto enthusiasts</em>. What we can say confidently is that <strong><span id="criptosellos-holders-had-nfts-avg-not" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/holders.csv">
+        <span class="loading-text-data"></span>
+</span> or more had never used NFTs before</strong>. What this means is that this product did not manage to attract crypto enthusiasts to the stamp collecting hobby, but the other way around.</p>
+<blockquote>
+<p>Note that I am checking not just Polygon (where these crypto stamps live), but all chains indexed in <a href="https://dune.com">Dune Analytics</a>.</p>
+</blockquote>
+<h2 id="money-talk">Money talk</h2>
+<p>We all know crypto can move serious money, with <a href="https://forbes.es/criptomonedas/217739/la-crypto-punk-mania-este-es-el-top-10-de-colecciones-de-nft-de-2022/">some collections reaching millions of dollars</a>, but how much money do these crypto stamps move?</p>
+<p>So far there have barely been any transfers, and none of them involved money through auction houses, so from that angle we cannot say whether owning a crypto stamp has any value beyond the physical stamp.</p>
+<p>Still, we can estimate the <em>profit</em> this strategy has generated for Correos. Each unit costs 15€ and has a face value of 10€, meaning you can use it for postage up to 10€ and Correos keeps a 5€ markup.</p>
+<p>Since <span id="criptosellos-total-tokens2" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/holders.csv">
+        <span class="loading-text-data"></span>
+</span> stamps have been sold so far, Correos has made at least <span id="criptosellos-total-money" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/holders.csv">
+        <span class="loading-text-data"></span>
+</span> EUR in markup revenue.</p>
+<p>Depending on whether the stamp is eventually used and for which postal product, real profit could be higher.</p>
+<p>There are likely many stamps that were bought but not yet claimed on-chain. Still, I think it is fair to assume that if a buyer did not register it, then the crypto part added no value for that person.</p>
+<p>Speaking of money: while I am not an expert in Spain&rsquo;s public procurement platform, it seems Correos has spent at least 
+    
+        <span id="criptosellos-correos-contratos" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/contratos.csv">
+        <span class="loading-text-data"></span>
+</span> EUR across <span id="criptosellos-correos-contratos-cnt" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/contratos.csv">
+        <span class="loading-text-data"></span>
+</span> contracts to launch this collection. That said, part of that budget went into business-model research and framework design, so it could be amortized over future collections.</p>
+<blockquote>
+<p>You can download the procurement data I collected <a href="./contratos.csv">here</a>. If you spot anything wrong, please let me know.</p>
+</blockquote>
+<h2 id="conclusions">Conclusions</h2>
+<p>In my humble opinion, Correos arrived very late and somewhat awkwardly to the 2021 NFT boom (already three years ago). On top of that, the lack of decentralization and transparency, two core values in this ecosystem, may make users less likely to buy crypto stamps.</p>
+<p>Maybe they will recover the investment in future collections, hopefully with better implementation choices, because right now this is still far from what could reasonably be called web3. On the plus side, the website seems fairly accessible and works well.</p>
+<p>That said, maybe this crossover has made at least one crypto nerd start collecting physical stamps and become a lifelong customer.</p>
+<blockquote>
+<p>Data was obtained through Dune Analytics, a blockchain data analysis platform. <a href="https://dune.com/ddavo/criptosellos">You can find the queries and datasets used here</a>.</p>
+</blockquote>
+]]></content:encoded>
+    </item>
+    
+  </channel>
+</rss>
