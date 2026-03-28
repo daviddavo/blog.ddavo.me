@@ -2,15 +2,16 @@
 {{- if $file }}
     {{- $resource := ($.Page.Resources.GetMatch (printf "data/*%s*" $file)) }}
     {{ $url := $file }}
+    {{ $localUrl := $file }}
     {{- if $resource }}
-    {{- if hugo.IsProduction }}
+        {{ $localUrl = $resource.RelPermalink }}
         {{ $prod_base := $.Site.Params.dataviz.prodBaseUrl }}
         {{- if $prod_base -}}
-        {{ $url = urls.JoinPath $prod_base $.Page.Path $resource }}
+            {{ $url = urls.JoinPath $prod_base $localUrl }}
+        {{- else -}}
+            {{ $url = $localUrl }}
         {{- end -}}
-    {{- else -}}
-        {{ $url = $resource.Permalink }}
-    {{- end -}}
     {{- end -}}
     {{ .Page.Scratch.Set "data-url" $url }}
+    {{ .Page.Scratch.Set "data-local-url" $localUrl }}
 {{- end }}

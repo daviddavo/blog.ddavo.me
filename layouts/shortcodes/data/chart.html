@@ -1,7 +1,7 @@
 {{- $id := .Get "id" | default (.Get 0) }}
 {{ partial "data_url" . }}
 <figure data-page-path="{{ $.Page.Path }}">
-    <div class="chart" id="{{$id}}" {{- with .Page.Scratch.Get "data-url" }}data-url="{{ . }}"{{- end }}>
+    <div class="chart" id="{{$id}}" {{- with .Page.Scratch.Get "data-url" }}data-url="{{ . }}"{{- end }} {{- with .Page.Scratch.Get "data-local-url" }}data-local-url="{{ . }}"{{- end }}>
         <div class="loading-chart-data"></div>
     </div>
     {{- if or (or (.Get "title") (.Get "caption")) (.Get "attr") -}}

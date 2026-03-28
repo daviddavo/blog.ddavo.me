@@ -17,6 +17,45 @@ function runOnFirstVisible(element, callback) {
   observer.observe(element)
 }
 
+function getDataUrls(element) {
+  const urls = [element?.dataset?.url, element?.dataset?.localUrl]
+    .filter(Boolean)
+  return [...new Set(urls)]
+}
+
+async function loadWithFallback(element, loader) {
+  const urls = getDataUrls(element)
+  if (urls.length === 0) {
+    throw new Error('No data-url configured for element')
+  }
+
+  let lastError = null
+  for (const url of urls) {
+    try {
+      return await loader(url)
+    } catch (error) {
+      lastError = error
+      console.warn('Data load failed, trying fallback if available:', url, error)
+    }
+  }
+
+  throw lastError ?? new Error('All data sources failed')
+}
+
+async function loadJson(element) {
+  return loadWithFallback(element, async (url) => {
+    const response = await fetch(url)
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status} for ${url}`)
+    }
+    return response.json()
+  })
+}
+
+async function loadCsv(element, row) {
+  return loadWithFallback(element, (url) => d3.csv(url, row))
+}
+
 function formatEthAddr(addr, i18n) {
   if (addr.startsWith('0x')) {
     return addr.slice(0, 6) + '...' + addr.slice(-4)
@@ -42,12 +81,12 @@ document.addEventListener('DOMContentLoaded', () => {
     multipleAddressesLabel: isEnglish ? 'Multiple addresses' : 'Multiples direcciones',
     stampsLabel: isEnglish ? 'stamps' : 'sellos',
     usersLabel: isEnglish ? 'users' : 'usuarios',
-    stampsPerUserShort: isEnglish ? 'stamps p.u.' : 'sellos p.u.',
+    stampsPerUserShort: isEnglish ? 'stamps p.u. (per user)' : 'sellos p.u. (por usuario)',
   }
   // runOnFirstVisible(document.getElementById('criptosellos-last-update'), (e) => {
   //   console.log("Getting data from", e.dataset.url)
   const e = document.getElementById('criptosellos-last-update')
-  fetch(e.dataset.url).then(response => response.json()).then(json => {
+  loadJson(e).then(json => {
     e.innerHTML = (new Date(json['last-update'])).toLocaleString(locale)
 
     document.getElementById('criptosellos-total-tokens').innerHTML = json['total-tokens']
@@ -67,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   runOnFirstVisible(document.getElementById('criptosellos-diario-chart'), async (e) => {
     console.log("Getting data from", e.dataset.url)
-    const data = await d3.csv(e.dataset.url, (d) => {
+    const data = await loadCsv(e, (d) => {
       return {
         [i18n.dateKey]: new Date(d.block_date),
         daily: parseInt(d.Dia ?? d.Day),
@@ -99,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   runOnFirstVisible(document.getElementById('criptosellos-holders-chart'), async (e) => {
     console.log("Getting data from", e.dataset.url)
-    const data = await d3.csv(e.dataset.url)
+    const data = await loadCsv(e)
     const width = 500
 
     const height = Math.min(width, 500)
@@ -163,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   runOnFirstVisible(document.getElementById('criptosellos-correos-contratos'), async (e) => {
     console.log("Getting data from", e.dataset.url)
-    const data = await d3.csv(e.dataset.url)
+    const data = await loadCsv(e)
     const total = Math.round(d3.sum(data, d => d.dinero) * 100) / 100
 
     e.innerHTML = total.toLocaleString(locale)
