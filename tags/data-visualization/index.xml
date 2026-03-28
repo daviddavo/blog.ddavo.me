@@ -46,47 +46,56 @@ With these crypto stamps, you must use the Correos web app to view the associate
 <blockquote>
 <p>This post updates automatically with new data. Last update: 
     
-        <span id="criptosellos-last-update" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/general-data.json">
+    
+        
+        
+    <span id="criptosellos-last-update" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/general-data.json" data-local-url="/posts/dataviz/criptosellos-correos-mortadelo/data/general-data.json">
         <span class="loading-text-data"></span>
 </span>.</p>
 </blockquote>
-<p><em>Drum roll</em>&hellip; a total of <span id="criptosellos-total-tokens" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/general-data.json">
+<p><em>Drum roll</em>&hellip; a total of <span id="criptosellos-total-tokens" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/general-data.json" data-local-url="/posts/dataviz/criptosellos-correos-mortadelo/data/general-data.json">
         <span class="loading-text-data"></span>
 </span> crypto stamps have been claimed,
-an average of <span id="criptosellos-daily-avg" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/general-data.json">
+an average of <span id="criptosellos-daily-avg" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/general-data.json" data-local-url="/posts/dataviz/criptosellos-correos-mortadelo/data/general-data.json">
         <span class="loading-text-data"></span>
 </span> per day.</p>
 
 
     
+    
         
+        
+    
 <figure data-page-path="/posts/dataviz/criptosellos-correos-mortadelo">
-    <div class="chart" id="criptosellos-diario-chart"data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/daily-mints.csv">
+    <div class="chart" id="criptosellos-diario-chart"data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/daily-mints.csv"data-local-url="/posts/dataviz/criptosellos-correos-mortadelo/data/daily-mints.csv">
         <div class="loading-chart-data"></div>
     </div><figcaption>
             Daily number of registered Crypto Stamps<p>Some days have very few claims, but there are occasional streaks. / <i>
                     <a href="https://dune.com/queries/3917833/6586501">David Davo via Dune Analytics.</a></p></i>
         </figcaption>
 </figure>
-<p>However, that does not mean there are as many people as stamps. In reality only <span id="criptosellos-total-holders" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/daily-mints.csv">
+<p>However, that does not mean there are as many people as stamps. In reality only <span id="criptosellos-total-holders" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/daily-mints.csv" data-local-url="/posts/dataviz/criptosellos-correos-mortadelo/data/daily-mints.csv">
         <span class="loading-text-data"></span>
 </span> different wallets hold at least one crypto stamp. We cannot claim these are unique users, because just like with email there is nothing stopping one person from creating multiple accounts. In crypto this is normal: keep one wallet with a very strong key for long-term storage, and another easier-to-use one (for example on your phone) so if it gets hacked, losses are limited.</p>
-<p>Each user that holds at least one crypto stamp is called a <em>holder</em>. Although each <em>holder</em> has an average of <span id="criptosellos-holder-avg" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/daily-mints.csv">
+<p>Each user that holds at least one crypto stamp is called a <em>holder</em>. Although each <em>holder</em> has an average of <span id="criptosellos-holder-avg" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/daily-mints.csv" data-local-url="/posts/dataviz/criptosellos-correos-mortadelo/data/daily-mints.csv">
         <span class="loading-text-data"></span>
 </span> stamps, this is the classic &ldquo;if I eat two chickens and you eat none, on average we ate one each&rdquo; problem.</p>
-<p>The reality is that one user has way more NFTs than everyone else: <span id="criptosellos-holder-whale-address" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/daily-mints.csv">
+<p>The reality is that one user has way more NFTs than everyone else: <span id="criptosellos-holder-whale-address" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/daily-mints.csv" data-local-url="/posts/dataviz/criptosellos-correos-mortadelo/data/daily-mints.csv">
         <span class="loading-text-data"></span>
-</span>, who holds <strong><span id="criptosellos-holder-whale-count" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/daily-mints.csv">
+</span>, who holds <strong><span id="criptosellos-holder-whale-count" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/daily-mints.csv" data-local-url="/posts/dataviz/criptosellos-correos-mortadelo/data/daily-mints.csv">
         <span class="loading-text-data"></span>
-</span> crypto stamps</strong>. Meanwhile, most users (<span id="criptosellos-holder-oneortwo-cnt" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/daily-mints.csv">
+</span> crypto stamps</strong>. Meanwhile, most users (<span id="criptosellos-holder-oneortwo-cnt" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/daily-mints.csv" data-local-url="/posts/dataviz/criptosellos-correos-mortadelo/data/daily-mints.csv">
         <span class="loading-text-data"></span>
 </span>) hold one or two.</p>
 
 
     
+    
         
+        
+    
 <figure data-page-path="/posts/dataviz/criptosellos-correos-mortadelo">
-    <div class="chart" id="criptosellos-holders-chart"data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/holders.csv">
+    <div class="chart" id="criptosellos-holders-chart"data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/holders.csv"data-local-url="/posts/dataviz/criptosellos-correos-mortadelo/data/holders.csv">
         <div class="loading-chart-data"></div>
     </div><figcaption>
             Number of crypto stamps per user<p>Users with few stamps (four or fewer) are grouped together. Hover to see the full address or user count. / <i>
@@ -95,9 +104,9 @@ an average of <span id="criptosellos-daily-avg" data-url="https://r2.blog.ddavo.
 </figure>
 <p>Another interesting question is whether these users had stamps from other collections. In other words, were they already familiar with this technology, or did Mortadelo bring them in?</p>
 <p>Curiously, the wallet with the most crypto stamps had <strong>no</strong> previous NFTs, though maybe that person has another wallet with some; we can never know. Maybe it is a stamp seller from Plaza Mayor, who knows.</p>
-<p>Overall, only <span id="criptosellos-holders-had-nfts-avg" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/holders.csv">
+<p>Overall, only <span id="criptosellos-holders-had-nfts-avg" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/holders.csv" data-local-url="/posts/dataviz/criptosellos-correos-mortadelo/data/holders.csv">
         <span class="loading-text-data"></span>
-</span> of users had ever held at least one NFT in their wallet. We do not even know whether they bought those NFTs or received them as gifts (or spam), so we cannot claim those few users are true <em>crypto enthusiasts</em>. What we can say confidently is that <strong><span id="criptosellos-holders-had-nfts-avg-not" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/holders.csv">
+</span> of users had ever held at least one NFT in their wallet. We do not even know whether they bought those NFTs or received them as gifts (or spam), so we cannot claim those few users are true <em>crypto enthusiasts</em>. What we can say confidently is that <strong><span id="criptosellos-holders-had-nfts-avg-not" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/holders.csv" data-local-url="/posts/dataviz/criptosellos-correos-mortadelo/data/holders.csv">
         <span class="loading-text-data"></span>
 </span> or more had never used NFTs before</strong>. What this means is that this product did not manage to attract crypto enthusiasts to the stamp collecting hobby, but the other way around.</p>
 <blockquote>
@@ -107,18 +116,21 @@ an average of <span id="criptosellos-daily-avg" data-url="https://r2.blog.ddavo.
 <p>We all know crypto can move serious money, with <a href="https://forbes.es/criptomonedas/217739/la-crypto-punk-mania-este-es-el-top-10-de-colecciones-de-nft-de-2022/">some collections reaching millions of dollars</a>, but how much money do these crypto stamps move?</p>
 <p>So far there have barely been any transfers, and none of them involved money through auction houses, so from that angle we cannot say whether owning a crypto stamp has any value beyond the physical stamp.</p>
 <p>Still, we can estimate the <em>profit</em> this strategy has generated for Correos. Each unit costs 15€ and has a face value of 10€, meaning you can use it for postage up to 10€ and Correos keeps a 5€ markup.</p>
-<p>Since <span id="criptosellos-total-tokens2" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/holders.csv">
+<p>Since <span id="criptosellos-total-tokens2" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/holders.csv" data-local-url="/posts/dataviz/criptosellos-correos-mortadelo/data/holders.csv">
         <span class="loading-text-data"></span>
-</span> stamps have been sold so far, Correos has made at least <span id="criptosellos-total-money" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/holders.csv">
+</span> stamps have been sold so far, Correos has made at least <span id="criptosellos-total-money" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/holders.csv" data-local-url="/posts/dataviz/criptosellos-correos-mortadelo/data/holders.csv">
         <span class="loading-text-data"></span>
 </span> € in markup revenue.</p>
 <p>Depending on whether the stamp is eventually used and for which postal product, real profit could be higher.</p>
 <p>There are likely many stamps that were bought but not yet claimed on-chain. Still, I think it is fair to assume that if a buyer did not register it, then the crypto part added no value for that person.</p>
 <p>Speaking of money: while I am not an expert in Spain&rsquo;s public procurement platform, it seems Correos has spent at least 
     
-        <span id="criptosellos-correos-contratos" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/contratos.csv">
+    
+        
+        
+    <span id="criptosellos-correos-contratos" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/contratos.csv" data-local-url="/posts/dataviz/criptosellos-correos-mortadelo/data/contratos.csv">
         <span class="loading-text-data"></span>
-</span> EUR across <span id="criptosellos-correos-contratos-cnt" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/contratos.csv">
+</span> EUR across <span id="criptosellos-correos-contratos-cnt" data-url="https://r2.blog.ddavo.me/posts/dataviz/criptosellos-correos-mortadelo/data/contratos.csv" data-local-url="/posts/dataviz/criptosellos-correos-mortadelo/data/contratos.csv">
         <span class="loading-text-data"></span>
 </span> contracts to launch this collection. That said, part of that budget went into business-model research and framework design, so it could be amortized over future collections.</p>
 <blockquote>
