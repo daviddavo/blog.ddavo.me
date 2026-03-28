@@ -1,6 +1,6 @@
 ---
 title: On Spanish National Postal Service Crypto Stamps
-lastmod: 2026-03-28T15:40:55.305Z
+lastmod: 2026-03-28T15:52:28.536Z
 date: 2024-06-14T19:14:22.496Z
 cover:
     image: cover.webp
@@ -108,7 +108,7 @@ So far there have barely been any transfers, and none of them involved money thr
 
 Still, we can estimate the _profit_ this strategy has generated for Correos. Each unit costs 15€ and has a face value of 10€, meaning you can use it for postage up to 10€ and Correos keeps a 5€ markup.
 
-Since {{<data/text id="criptosellos-total-tokens2">}} stamps have been sold so far, Correos has made at least {{<data/text id="criptosellos-total-money">}} EUR in markup revenue.
+Since {{<data/text id="criptosellos-total-tokens2">}} stamps have been sold so far, Correos has made at least {{<data/text id="criptosellos-total-money">}} € in markup revenue.
 
 Depending on whether the stamp is eventually used and for which postal product, real profit could be higher.
 
