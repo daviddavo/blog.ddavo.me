@@ -1,6 +1,7 @@
 ---
 title: Sobre los criptosellos de Mortadelo
-lastmod: 2026-01-22T14:39:53.724Z
+lastmod: 2026-03-28T15:40:38.246Z
+date: 2024-06-14T19:14:22.496Z
 cover:
     image: cover.webp
     alt: Fotografía de la presentación del criptosello de Mortadelo.
